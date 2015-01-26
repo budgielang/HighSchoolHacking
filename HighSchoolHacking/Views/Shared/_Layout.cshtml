@@ -6,7 +6,7 @@
     <meta name="keywords" content="programming, rpi, microsoft, josh goldberg, computer science, c, c++, c#, javascript, typescript" />
     <meta name="description" content="High School Hacks is a program for high schoolers to get more involved with programming." />
     
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>HighSchoolHacking.Club</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script type="text/javascript">
@@ -24,6 +24,8 @@
     <div class="container body-content">
         @RenderBody()
     </div>
+
+    @Html.Partial("~/Views/Footer.cshtml")
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

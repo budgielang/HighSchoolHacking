@@ -1,0 +1,51 @@
+﻿@model HighSchoolHacking.Models.Section
+
+<section class="changer border background @Model.Color">
+    <h2>
+        <span title="@Model.Title">
+            @Model.Title
+        </span>
+    </h2>
+
+    <article>
+        @if (Model.Slogans != null && Model.Slogans.Length > 0)
+        {
+            int index = new Random().Next(Model.Slogans.Length);
+            string slogan = Model.Slogans[index];
+            <h3 class="slogan">
+                @slogan
+            </h3>
+            <hr />
+        }
+
+        <div class="paragraphs">
+            @{
+                foreach (string paragraph in Model.Paragraphs)
+                {
+                    <p>@paragraph</p>
+                }
+
+                if (!String.IsNullOrWhiteSpace(Model.Goto))
+                {
+                    <h4>
+                        &gt; &gt; Go to @Html.ActionLink(Model.Goto, Model.Goto) &gt; &gt;
+                    </h4>
+                }
+
+                if (Model.Links != null && Model.Links.Count > 0)
+                {
+                    <hr />
+
+                    <ul class="links">
+                        @foreach (KeyValuePair<string, string> link in Model.Links)
+                        {
+                            <li>
+                                <strong>@link.Key</strong>: @Html.ActionLink(link.Value, link.Value)
+                            </li>
+                        }
+                    </ul>
+                }
+            }
+        </div>
+    </article>
+</section>
