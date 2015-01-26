@@ -4,7 +4,8 @@
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
         Color = "steel",
-        Title = "High School Hacking!",
+        Title = "High School Hacking",
+        Extension = "club",
         Slogans = new string[] {
             "A little Object Oriented Programming never hurt anyone.",
             "What's a pirate's favorite language? It's not C, it's R!",
@@ -14,7 +15,8 @@
         Paragraphs = new string[] {
             "High School Hacks is a program for high schoolers to get more involved with programming. You don't need to be in a coding class to be here, but you should want to learn.",
             "If you've never coded before, you'll be fine here, but it would be helpful to do <a href='www.codeacademy.com'>Code Academy</a>'s tutorial on Python or JavaScript on your own time. Do the first hour or two (say, 10 to 20 minutes a day for six days) and you'll be set."
-        }
+        },
+        Large = true
     });
 
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
@@ -70,6 +72,6 @@
             "We don't have any more lesson plans for you, now that you've finished our Python and JavaScript ones. Sorry!",
             "Fortunately, Project Euler is a site that has a lot of more advanced puzzles similar to ours. You can do them in whatever language you want, and they get progressively harder."    
         },
-        Goto = "http://www.projecteuler.net"
+        Goto = "https://www.projecteuler.net"
     });
 }

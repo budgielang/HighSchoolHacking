@@ -23,6 +23,11 @@ namespace HighSchoolHacking.Models
         public string Title { get; set; }
 
         /// <summary>
+        /// An optional domain extension to place next to the title, smaller.
+        /// </summary>
+        public string Extension { get; set; }
+
+        /// <summary>
         /// Any slogans that may be randomly chosen from as the h3 sub-title.
         /// </summary>
         public string[] Slogans { get; set; }
@@ -42,5 +47,10 @@ namespace HighSchoolHacking.Models
         /// An optional URI link to emphasize after Links. Typically null.
         /// </summary>
         public string Goto { get; set; }
+
+        /// <summary>
+        /// Whether the section is "large" (h1 instead of h2 for the title).
+        /// </summary>
+        public bool Large { get; set; }
     }
 }
