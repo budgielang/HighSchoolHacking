@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{86215F46-F016-46AF-B9F3-8A9222B634EA}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
+		HighSchoolHacking\Content\styling.scss = HighSchoolHacking\Content\styling.scss
 	EndProjectSection
 EndProject
 Global
