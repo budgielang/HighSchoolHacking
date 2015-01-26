@@ -31,18 +31,18 @@ namespace HighSchoolHacking.Models
         /// Any slogans that may be randomly chosen from as the h3 sub-title.
         /// </summary>
         public string[] Slogans { get; set; }
-        
+
         /// <summary>
         /// The text content in the section, each of which will be wrapped in
         /// a paragraph tag.
         /// </summary>
         public string[] Paragraphs { get; set; }
-        
+
         /// <summary>
         /// Any URI links to be listed below the section paragraphs.
         /// </summary>
         public Dictionary<string, string> Links { get; set; }
-        
+
         /// <summary>
         /// An optional URI link to emphasize after Links. Typically null.
         /// </summary>
@@ -52,5 +52,37 @@ namespace HighSchoolHacking.Models
         /// Whether the section is "large" (h1 instead of h2 for the title).
         /// </summary>
         public bool Large { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="language"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static string WrapCode(string language, string code)
+        {
+            return String.Join("", new string[] 
+            {
+                "<pre><code class=\"language-" + language + "\">",
+                 HttpUtility.HtmlEncode(code),
+                "</code></pre>"
+            });
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="language"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static string WrapCode(string language, string[] code)
+        {
+            return String.Join("", new string[] 
+            {
+                "<pre><code class=\"language-" + language + "\">",
+                 HttpUtility.HtmlEncode(String.Join(Environment.NewLine, code)),
+                "</code></pre>"
+            });
+        }
     }
 }

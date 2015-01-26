@@ -12,5 +12,10 @@ namespace HighSchoolHacking.Controllers
         {
             return View();
         }
+
+        public ActionResult Week1()
+        {
+            return View();
+        }
     }
 }

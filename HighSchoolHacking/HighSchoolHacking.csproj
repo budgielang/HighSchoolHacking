@@ -215,6 +215,7 @@
     <Content Include="Views\Templating\Section.cshtml" />
     <Content Include="Views\Python\Index.cshtml" />
     <Content Include="Views\JavaScript\Index.cshtml" />
+    <Content Include="Views\Python\Week1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

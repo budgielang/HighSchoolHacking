@@ -99,7 +99,6 @@
         for (i = 0; i < elements.length; i += 1) {
             element = elements[i];
             email = element.textContent.replace(" at ", "@");
-            console.log("Got", email, element);
 
             element.textContent = email;
             element.setAttribute("href", "mailto:" + email);

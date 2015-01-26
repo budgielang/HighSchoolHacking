@@ -116,8 +116,12 @@ article {
     }
 
     pre {
+        /*margin: 0 7px !important;*/
+        background: rgba(49, 49, 49, 0.49);
+        border-radius: 0 !important;
+        border: 1px solid rgba(140, 140, 140, .63);
+        /*box-shadow: 0 0 14px rgba(175, 175, 175, .84);*/
         overflow-x: scroll;
-        background: #212121;
         font-size: .77em;
     }
 }
@@ -158,6 +162,11 @@ footer {
 .blue {
     background-color: #001A3C;
     border-color: #92b7e5;
+}
+
+.purple {
+    background-color: #350035;
+    border-color: #770077;
 }
 
 .brown {
