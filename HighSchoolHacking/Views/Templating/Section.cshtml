@@ -22,7 +22,7 @@
             @{
                 foreach (string paragraph in Model.Paragraphs)
                 {
-                    <p>@paragraph</p>
+                    <p>@Html.Raw(paragraph)</p>
                 }
 
                 if (!String.IsNullOrWhiteSpace(Model.Goto))

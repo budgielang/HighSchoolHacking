@@ -3,6 +3,7 @@
 @{
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
+        Color = "steel",
         Title = "High School Hacking!",
         Slogans = new string[] {
             "A little Object Oriented Programming never hurt anyone.",
@@ -12,12 +13,13 @@
         },
         Paragraphs = new string[] {
             "High School Hacks is a program for high schoolers to get more involved with programming. You don't need to be in a coding class to be here, but you should want to learn.",
-            "If you've never coded before, you'll be fine here, but it would be helpful to do www.codeacademy.com's tutorial on Python or JavaScript on your own time. Do the first hour or two (say, 10 to 20 minutes a day for six days) and you'll be set."
+            "If you've never coded before, you'll be fine here, but it would be helpful to do <a href='www.codeacademy.com'>Code Academy</a>'s tutorial on Python or JavaScript on your own time. Do the first hour or two (say, 10 to 20 minutes a day for six days) and you'll be set."
         }
     });
 
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
+        Color = "green",
         Title = "Python",
         Slogans = new string[]
         {
@@ -37,11 +39,14 @@
 
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
+        Color = "blue",
         Title = "JavaScript",
-        Slogans = new string[] {
+        Slogans = new string[] 
+        {
             "You're more advanced, so we can do some mischief now.",
         },
-        Paragraphs = new string[] {
+        Paragraphs = new string[] 
+        {
             "JavaScript is an incredibly popular language, and is the the language of the web. That means learning JavaScript will give you power over websites on the internet. It's still easier than Java.",
             "After introducing you to the basics of JavaScript and how it's different from Python or Java, these lessons will show you how to tinker with recipe ingredient names, cheat at Cookie Clicker, spam Facebook messages, and make images on Tumblr and other sites look demonic."
         },
@@ -50,5 +55,21 @@
         {
             { "JavaScript Online", "repl.it/languages/javascript" }
         }
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "red",
+        Title = "Project Euler",
+        Slogans = new string[] 
+        {
+            "You're too good for us. Go away."
+        },
+        Paragraphs = new string[] 
+        { 
+            "We don't have any more lesson plans for you, now that you've finished our Python and JavaScript ones. Sorry!",
+            "Fortunately, Project Euler is a site that has a lot of more advanced puzzles similar to ours. You can do them in whatever language you want, and they get progressively harder."    
+        },
+        Goto = "http://www.projecteuler.net"
     });
 }

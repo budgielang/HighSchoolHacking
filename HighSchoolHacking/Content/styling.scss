@@ -1,2 +1,191 @@
-﻿body {
+﻿/* General styles */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #111;
+}
+
+body {
+    color: white;
+    font-family: 'Georgia', 'Times New Roman';
+    text-shadow: 1px 1px 7px black;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240,240,255,.84);
+    text-shadow: 1px 1px 7px rgba(175,175,240,.49);
+    transition: text-shadow 117ms, color 175ms, border-bottom 280ms;
+}
+
+a:hover {
+    color: white;
+    border-bottom: 1px solid rgba(240,240,240,1);
+    text-shadow: 1px 1px 7px rgba(140,140,240,.84);
+}
+
+
+/* Header elements */
+
+h1 {
+    font-size: 4.2em;
+}
+
+h2 {
+    font-size: 3.5em;
+    cursor: pointer;
+}
+
+h3 {
+    margin: 7px 0;
+    font-size: 1.4em;
+    line-height: 140%;
+}
+
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, .35);
+    font-style: italic;
+}
+
+h1 small,
+h2 small {
+    display: inline-block;
+    font-size: .56em;
+}
+
+
+/* Section plus/minus icons */
+
+section:not(.expanded) {
+    h2 span:before {
+        float: right;
+        margin-top: 14px;
+        height: 0;
+        font-size: 49%;
+        font-weight: bold;
+        content: "+";
+        opacity: .35;
+    }
+
+    h2:not([clicked=off]) span:before {
+        content: "-";
+    }
+}
+
+section:nth-of-type(2n+1) h2 span:before {
+    float: left;
+}
+
+
+/* Section article elements */
+
+body:not(.noShadow) section {
+    box-shadow: 0 0 7px black inset;
+}
+
+section img {
+    box-shadow: 0 0 14px black;
+    transition: 350ms border-radius ease-in-out;
+}
+
+section:nth-of-type(2n) img {
+    border-radius: 49px 7px;
+}
+
+section:nth-of-type(2n+1) img {
+    border-radius: 7px 49px;
+}
+
+article {
+    font-size: 1.33em;
+    line-height: 140%;
+    overflow-y: hidden;
+    transition: 350ms height;
+
+    p {
+        text-align: justify;
+    }
+
+    .links {
+        overflow-x: hidden;
+    }
+
+    pre {
+        overflow-x: scroll;
+        background: #212121;
+        font-size: .77em;
+    }
+}
+
+.paragraphs p:first-of-type {
+    margin-top: 7px;
+}
+
+footer {
+    p {
+        font-size: 1.05em;
+        text-align: justify;
+        color: #dddddd;
+
+        a {
+            color: #e7e7e7;
+        }
+    }
+}
+
+/* Colors */
+
+.red {
+    background-color: darkRed;
+    border-color: #c56b6b;
+}
+
+.gold {
+    background-color: darkGoldenrod;
+    border-color: goldenrod;
+}
+
+.green {
+    background-color: darkGreen;
+    border-color: lightGreen;
+}
+
+.blue {
+    background-color: #16283f;
+    border-color: #92b7e5;
+}
+
+.brown {
+    background-color: saddleBrown;
+    border-color: saddleBrown;
+}
+
+.steel {
+    background-color: #333;
+    border-color: #111;
+}
+
+
+/* Medium displays */
+
+@media (max-width: 700px), (max-aspect-ratio: 1/1) {
+    h3 {
+        font-size: 2.1em;
+    }
+
+    section img {
+        border-radius: 100%;
+    }
+
+    section article p,
+    footer p {
+        /* font-size: 1.75em; */
+        line-height: 140%;
+        text-align: left;
+    }
 }
