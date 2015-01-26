@@ -1,0 +1,18 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "green",
+        Title = "Python",
+        Extension = "highschoolhacking",
+        Slogans = new string[] {
+            "Something something snake pun.",
+        },
+        Paragraphs = new string[] {
+            "Python is one of the best languages to start coding with, if not the best. It's simple, easy to explain, and less nitpicky than almost every other language.",
+            "These lessons will familiarize you with basic Python syntax and the basics of coding, then guide you through a few hacking-style puzzles to find secret codes, show you how to make a basic AI chat bot, and help you generate your own Mad Libs."
+        },
+        Large = true
+    });
+}
