@@ -470,14 +470,9 @@
 		<xs:all>
 			<xs:element name="jsEngine" type="JsEngineSettings_SchemaType" minOccurs="0" maxOccurs="1" />
 		</xs:all>
-		<xs:attribute name="useDefaultLib" type="Boolean_SchemaType" use="optional" default="true">
+		<xs:attribute name="noEmitOnError" type="Boolean_SchemaType" use="optional" default="false">
 			<xs:annotation>
-				<xs:documentation>Flag for whether to include a default lib.d.ts with global declarations</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="removeComments" type="Boolean_SchemaType" use="optional" default="false">
-			<xs:annotation>
-				<xs:documentation>Flag for whether to do not emit comments to output</xs:documentation>
+				<xs:documentation>Flag for whether to do not emit outputs if any type checking errors were reported</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="noImplicitAny" type="Boolean_SchemaType" use="optional" default="false">
@@ -485,14 +480,35 @@
 				<xs:documentation>Flag for whether to warn on expressions and declarations with an implied 'any' type</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="codeGenTarget" use="optional" default="EcmaScript3">
+		<xs:attribute name="noLib" type="Boolean_SchemaType" use="optional" default="false">
 			<xs:annotation>
-				<xs:documentation>ECMAScript target version ("EcmaScript3" (default), or "EcmaScript5")</xs:documentation>
+				<xs:documentation>Flag for whether to do not include a default library (`lib.d.ts` or `lib.es6.d.ts`)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="preserveConstEnums" type="Boolean_SchemaType" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag for whether to do not erase const enum declarations in generated code</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="removeComments" type="Boolean_SchemaType" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag for whether to do not emit comments to output</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="suppressImplicitAnyIndexErrors" type="Boolean_SchemaType" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag for whether to suppress noImplicitAny errors for indexing objects lacking index signatures</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="target" use="optional" default="EcmaScript3">
+			<xs:annotation>
+				<xs:documentation>ECMAScript target version: `EcmaScript3` (default), `EcmaScript5`, or `EcmaScript6` (experimental)</xs:documentation>
 			</xs:annotation>
 			<xs:simpleType>
 				<xs:restriction base="xs:NMTOKEN">
 					<xs:enumeration value="EcmaScript3" />
 					<xs:enumeration value="EcmaScript5" />
+					<xs:enumeration value="EcmaScript6" />
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
@@ -1306,6 +1322,11 @@ to preserve references to external symbols.</xs:documentation>
 				<xs:documentation>Flag for whether to disable full compliance with Internet Explorer 6-8 quirks</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="keepFunctionNames" type="Boolean_SchemaType" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag for whether to do not mangle/drop function names. Useful for code relying on `Function.prototype.name`.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="severity" use="optional" default="0">
 			<xs:annotation>
 				<xs:documentation>Severity level of errors:
@@ -1659,55 +1680,15 @@ to preserve references to external symbols.</xs:documentation>
 		<xs:annotation>
 			<xs:documentation>Configuration settings of Clean CSS-minifier</xs:documentation>
 		</xs:annotation>
-		<xs:attribute name="keepSpecialComments" use="optional" default="KeepAll">
+		<xs:attribute name="advanced" type="Boolean_SchemaType" use="optional" default="true">
 			<xs:annotation>
-				<xs:documentation>Special comments mode</xs:documentation>
-			</xs:annotation>
-			<xs:simpleType>
-				<xs:restriction base="xs:NMTOKEN">
-					<xs:enumeration value="KeepAll">
-						<xs:annotation>
-							<xs:documentation>Keep all special comments</xs:documentation>
-						</xs:annotation>
-					</xs:enumeration>
-					<xs:enumeration value="KeepFirstOne">
-						<xs:annotation>
-							<xs:documentation>Keep first one special comment</xs:documentation>
-						</xs:annotation>
-					</xs:enumeration>
-					<xs:enumeration value="RemoveAll">
-						<xs:annotation>
-							<xs:documentation>Remove all special comments</xs:documentation>
-						</xs:annotation>
-					</xs:enumeration>
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:attribute>
-		<xs:attribute name="keepBreaks" type="Boolean_SchemaType" use="optional" default="false">
-			<xs:annotation>
-				<xs:documentation>Flag for whether to keep line breaks</xs:documentation>
+				<xs:documentation>Flag for whether to enable advanced optimizations (selector and property merging, reduction, etc)</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="noAdvanced" type="Boolean_SchemaType" use="optional" default="false">
+		<xs:attribute name="aggressiveMerging" type="Boolean_SchemaType" use="optional" default="true">
 			<xs:annotation>
-				<xs:documentation>Flag for whether to disable advanced optimizations (selector and property merging, reduction, etc)</xs:documentation>
+				<xs:documentation>Flag for whether to enable properties merging based on their order</xs:documentation>
 			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="noAggressiveMerging" type="Boolean_SchemaType" use="optional" default="false">
-			<xs:annotation>
-				<xs:documentation>Flag for whether to disable properties merging based on their order</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="roundingPrecision" use="optional" default="2">
-			<xs:annotation>
-				<xs:documentation>Rounding precision</xs:documentation>
-			</xs:annotation>
-			<xs:simpleType>
-				<xs:restriction base="xs:int">
-					<xs:minInclusive value="0" />
-					<xs:maxInclusive value="2147483647" />
-				</xs:restriction>
-			</xs:simpleType>
 		</xs:attribute>
 		<xs:attribute name="compatibility" use="optional" default="Ie7">
 			<xs:annotation>
@@ -1732,6 +1713,51 @@ to preserve references to external symbols.</xs:documentation>
 					</xs:enumeration>
 				</xs:restriction>
 			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="keepBreaks" type="Boolean_SchemaType" use="optional" default="false">
+			<xs:annotation>
+				<xs:documentation>Flag for whether to keep line breaks</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="keepSpecialComments" use="optional" default="KeepAll">
+			<xs:annotation>
+				<xs:documentation>Special comments mode</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="KeepAll">
+						<xs:annotation>
+							<xs:documentation>Keep all special comments</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="KeepFirstOne">
+						<xs:annotation>
+							<xs:documentation>Keep first one special comment</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="RemoveAll">
+						<xs:annotation>
+							<xs:documentation>Remove all special comments</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="roundingPrecision" use="optional" default="2">
+			<xs:annotation>
+				<xs:documentation>Rounding precision. -1 disables rounding.</xs:documentation>
+			</xs:annotation>
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="-1" />
+					<xs:maxInclusive value="2147483647" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="shorthandCompacting" type="Boolean_SchemaType" use="optional" default="true">
+			<xs:annotation>
+				<xs:documentation>Flag for whether to enable shorthand compacting</xs:documentation>
+			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="severity" use="optional" default="0">
 			<xs:annotation>
