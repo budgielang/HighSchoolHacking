@@ -53,13 +53,19 @@ namespace HighSchoolHacking.Models
         /// </summary>
         public bool Large { get; set; }
 
-
         /// <summary>
-        /// 
+        /// HTML wrapper to print out code surrounded by pre and code tags. The
+        /// correct class is given to make this become an outlined box
+        /// highlighted by prism.js.
         /// </summary>
-        /// <param name="language"></param>
-        /// <param name="code"></param>
-        /// <returns></returns>
+        /// <param name="language">
+        /// The language to highlight, typically "python" or "javascript".
+        /// </param>
+        /// <param name="code">A chunk of code to print.</param>
+        /// <returns>
+        /// HTML code formatted to display the given chunk of code in the
+        /// given language.
+        /// </returns>
         public static string WrapCode(string language, string code)
         {
             return String.Join("", new string[] 
@@ -69,12 +75,20 @@ namespace HighSchoolHacking.Models
                 "</code></pre>"
             });
         }
+
         /// <summary>
-        /// 
+        /// HTML wrapper to print out lines of code surrounded by pre and code
+        /// tags. The correct class is given to make this become an outlined
+        /// box highlighted by prism.js.
         /// </summary>
-        /// <param name="language"></param>
-        /// <param name="code"></param>
-        /// <returns></returns>
+        /// <param name="language">
+        /// The language to highlight, typically "python" or "javascript".
+        /// </param>
+        /// <param name="code">Individual lines of code to print.</param>
+        /// <returns>
+        /// HTML code formatted to display the given lines of code in the
+        /// given language.
+        /// </returns>
         public static string WrapCode(string language, string[] code)
         {
             return String.Join("", new string[] 
@@ -82,6 +96,50 @@ namespace HighSchoolHacking.Models
                 "<pre><code class=\"language-" + language + "\">",
                  HttpUtility.HtmlEncode(String.Join(Environment.NewLine, code)),
                 "</code></pre>"
+            });
+        }
+
+        /// <summary>
+        /// HTML wrapper to print a list with its list elements.
+        /// </summary>
+        /// <param name="lines">The HTML contents of the list elements.</param>
+        /// <param name="ordered">
+        /// Whether this should be an ordered ("ol" or unordered "ul") list.
+        /// </param>
+        /// <returns></returns>
+        public static string WrapList(string[] lines, bool ordered = true)
+        {
+            string tag = ordered ? "ol" : "ul";
+
+            return String.Join(Environment.NewLine, new string[]
+            {
+                "<" + tag + ">",
+                "<li>",
+                String.Join("</li><li>", lines),
+                "</li>",
+                "</" + tag + ">"
+            });
+        }
+
+        /// <summary>
+        /// HTML wrapper to print a list with its list elements.
+        /// </summary>
+        /// <param name="ordered">
+        /// Whether this should be an ordered ("ol" or unordered "ul") list.
+        /// </param>
+        /// <param name="lines">The HTML contents of the list elements.</param>
+        /// <returns></returns>
+        public static string WrapList(bool ordered, string[] lines)
+        {
+            string tag = ordered ? "ol" : "ul";
+
+            return String.Join(Environment.NewLine, new string[]
+            {
+                "<" + tag + ">",
+                "<li>",
+                String.Join("</li><li>", lines),
+                "</li>",
+                "</" + tag + ">"
             });
         }
     }

@@ -126,8 +126,15 @@ article {
     }
 }
 
-.paragraphs p:first-of-type {
-    margin-top: 7px;
+.paragraphs {
+    p:first-of-type {
+        margin-top: 7px;
+    }
+
+    h3 {
+        border-bottom: 1px solid white;
+        padding-top: .49em;
+    }
 }
 
 footer {
@@ -150,7 +157,7 @@ footer {
 }
 
 .orange {
-    background-color: rgb(175, 77, 0);
+    background-color: rgb(117, 49, 0);
     border-color: goldenrod;
 }
 

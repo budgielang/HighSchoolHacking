@@ -12,6 +12,7 @@
         },
         Large = true
     });
+
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
         Color = "purple",
@@ -21,7 +22,22 @@
         },
         Paragraphs = new string[] {
             "We're going to spend the first few lessons getting you used to working in Python. It's a bit different (and a lot simpler) than Java, so you want to get used to the syntax.",
+            "This lesson shows you how to actually write simple Python code, then what 'strings' are and how to work with them."
         },
         Goto = "Week1"
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "blue",
+        Title = "Week 2",
+        Slogans = new string[] {
+            "Numbers, if/else, beauty.",
+        },
+        Paragraphs = new string[] {
+            "You've got the very basics of Python. We delve a little deeper into the language here and look into how we can manipulate our variables.",
+            "This lesson introduces how Python deals with numbers, and how to run different pieces of code depending on your program. It also goes over Python's recommended ways of coding, to make it easier for you."
+        },
+        Goto = "Week2"
     });
 }
