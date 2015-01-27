@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighSchoolHacking", "HighSc
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{86215F46-F016-46AF-B9F3-8A9222B634EA}"
 	ProjectSection(SolutionItems) = preProject
+		HighSchoolHacking\App_Start\BundleConfig.cs = HighSchoolHacking\App_Start\BundleConfig.cs
 		.nuget\packages.config = .nuget\packages.config
 		HighSchoolHacking\Content\styling.scss = HighSchoolHacking\Content\styling.scss
 	EndProjectSection

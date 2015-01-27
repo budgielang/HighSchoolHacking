@@ -9,7 +9,7 @@
         Large = true,
         Back = "/Python/Learn",
         Paragraphs = new string[] {
-            Section.WrapHead("This lesson has a lot of sections - it's a good idea to do a section's exercises right when you read it!", "em"),
+            Section.WrapHead("This lesson has a lot of sections - it's a good idea to do a section's exercises right when you read it. Take breaks every two or three sections!", "em"),
             "<hr />",
             "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
             "This brings us to <code>if</code> statements. These check if something (a condition) is true, and only run a block of code if it is. A simple example is as follows:",
@@ -27,7 +27,7 @@
                 "    print(\"A\")",
                 "print(\"B\")",
             }),
-            Section.WrapHead("Equality"),
+            Section.WrapHead("Truthiness"),
             "The most common conditional is checking whether two things are equal. We use the double equals sign <code>==</code> for that:",
             Section.WrapCode("python", new string[]
             {
@@ -51,7 +51,6 @@
                 "if 1 != 2:",
                 "    print(\"Yar!\")"
             }),
-            Section.WrapHead("More Operations"),
             "You can actually use most of the calculator functions in <code>if</code> statements and general operations on variables. <code><</code>, <code><=</code>, <code>></code>, and <code>>=</code> all work for comparisons, and the Number and String operations we've already gone over work.",
             Section.WrapCode("python", new string[]
             {
@@ -74,8 +73,32 @@
                 "if (name == \"Bob\"):",
                 "    print(\"Variables work!\")"
             }),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        { 
+            Section.WrapList(new string[]
+            {
+                "Make a new variable equal to your name. Make an if statement to check if it's equal to your name.",
+                "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. <small><em>If you have no friends, make one up.</em></small>",
+                "Make a new variable equal to your age. Write an if statement to print a happy message if you're in the 10-19 age group.",
+                "Using the last example's variable, write an if statement to print a happy message if you're not in the 10-19 age group.",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "blue",
+        Title = "More Conditionals",
+        Paragraphs = new string[] {
             Section.WrapHead("Else"),
-            "After an <code>if</code> statement you can add an extra block of code to be evaluated only if the <code>if</code> statement didn't. This means the program will run either of your blocks of code: if the <code>if</code> statement's conditional was true, the first is run; otherwise, the second is run.",
+            "After an <code>if</code> statement you can add an extra block of code to be evaluated only if the <code>if</code> statement didn't run. This means the program will run either of your blocks of code: if the <code>if</code> statement's conditional was true, the first is run; otherwise, the second is run.",
             "The following code prints <em>First!</em>...",
             Section.WrapCode("python", new string[]
             {
@@ -118,7 +141,28 @@
                 "else:",
                 "    print(\"Finally!\")"
             }),
-            Section.WrapHead("And"),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        { 
+            Section.WrapList(new string[]
+            {
+                "Make a variable containing your age, and make a set of conditionals to check if you're in the 0-9, 10-19, or 20+ range.",
+                "World!"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "More Conditions",
+        Paragraphs = new string[] {
             "Python lets you check multiple conditions in a statement using <code>and</code>. This works just like in plain English, where you ask if one thing is true <em>and</em> another. See the following two blocks of code, which do the exact same thing:",
             Section.WrapCode("python", new string[]
             {
@@ -152,6 +196,20 @@
                 "    print(\"Math!\")"
             }),
             "The first statement was obviously false, but <em>Math!</em> still gets printed because the second one is true."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        { 
+            Section.WrapList(new string[]
+            {
+                "Hello",
+                "World!"
+            })
         }
     });
 }
