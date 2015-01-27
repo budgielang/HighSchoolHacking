@@ -1,0 +1,47 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "orange",
+        Title = "Strings",
+        Extension = "python",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "In Python, a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in Python, put whatever characters you want between two quotes. It doesn't matter if they're single ' or double \"; they just have to be the same.",
+            "That's what happened when you wrote <code>\"Hello world!\"</code> above: Python knew everything between the quotes was a String.",
+            Section.WrapCode("python", new string[] {
+                "foo = \"Hello world!\"",
+                "print(foo) # Hello World!",
+                "foo = 'Hello world!'",
+                "print(foo) # Hello World!"
+            }),
+            "<h3>Concatenating Strings</h3>",
+            "<em>concatenate [<code>kənˈkatnˌāt</code>] - to link together; unite in a series or chain.</em>",
+            "You can concatenate (combine) Strings in Python really easily. It's like attaching one string of yarn to another string of yarn, you just get one bigger string.",
+            Section.WrapCode("python", new string[] {
+                "print(\"Hello \" + \" world!\"); # Hello world!",
+            }),
+            Section.WrapCode("python", new string[] {
+                "part_one = \"Hello\"",
+                "part_two = \"world\"",
+                "combined = part_one + \" \" + part_two",
+                "print(combined + \"!\") # Hello world!"
+            })
+        }
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(true, new string[] {
+                "Store your first name, your middle name (if you have one), and your last name in variables. Make a new variable with them all together.",
+                "Print your full name in a variable and print it plus the String <code>\" likes coding!\"</code>. Print someone else's name plus the String <code>\" likes coding!\"</code>."
+            })
+        }
+    });
+}

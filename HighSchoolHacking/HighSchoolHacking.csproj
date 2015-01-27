@@ -215,8 +215,12 @@
     <Content Include="Views\Templating\Section.cshtml" />
     <Content Include="Views\Python\Index.cshtml" />
     <Content Include="Views\JavaScript\Index.cshtml" />
-    <Content Include="Views\Python\Week1.cshtml" />
-    <Content Include="Views\Python\Week2.cshtml" />
+    <Content Include="Views\Python\HelloWorld.cshtml" />
+    <Content Include="Views\Python\Variables.cshtml" />
+    <Content Include="Views\Python\Comments.cshtml" />
+    <Content Include="Views\Python\Strings.cshtml" />
+    <Content Include="Views\Python\Numbers.cshtml" />
+    <Content Include="Views\Python\Conditionals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,6 +14,12 @@ namespace HighSchoolHacking
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "Python",
+                "Python/{section}",
+                new { controller = "Python", action = "Index", section = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

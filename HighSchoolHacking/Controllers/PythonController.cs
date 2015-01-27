@@ -8,14 +8,9 @@ namespace HighSchoolHacking.Controllers
 {
     public class PythonController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string section = "Index")
         {
-            return View();
-        }
-
-        public ActionResult Week1()
-        {
-            return View();
+            return View(section);
         }
     }
 }

@@ -6,38 +6,79 @@
         Color = "green",
         Title = "Python",
         Extension = "highschoolhacking",
+        Large = true,
         Paragraphs = new string[] {
             "Python is one of the best languages to start coding with, if not the best. It's simple, easy to explain, and less nitpicky than almost every other language.",
-            "These lessons will familiarize you with basic Python syntax and the basics of coding, then guide you through a few hacking-style puzzles to find secret codes, show you how to make a basic AI chat bot, and help you generate your own Mad Libs."
-        },
-        Large = true
+        }
     });
 
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
         Color = "purple",
-        Title = "Week 1",
-        Slogans = new string[] {
-            "Hello world, variables, comments, and strings.",
-        },
+        Title = "Hello World!",
         Paragraphs = new string[] {
             "We're going to spend the first few lessons getting you used to working in Python. It's a bit different (and a lot simpler) than Java, so you want to get used to the syntax.",
-            "This lesson shows you how to actually write simple Python code, then what 'strings' are and how to work with them."
         },
-        Goto = "Week1"
+        Goto = "HelloWorld"
     });
 
     Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
     {
         Color = "blue",
-        Title = "Week 2",
-        Slogans = new string[] {
-            "Numbers, if/else, beauty.",
-        },
+        Title = "Variables",
         Paragraphs = new string[] {
-            "You've got the very basics of Python. We delve a little deeper into the language here and look into how we can manipulate our variables.",
-            "This lesson introduces how Python deals with numbers, and how to run different pieces of code depending on your program. It also goes over Python's recommended ways of coding, to make it easier for you."
+            "In code, a 'variable' stores value. Variables are called by their name, which is how you can set the value, get the value, and change the value.",
         },
-        Goto = "Week2"
+        Goto = "Variables"
     });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "green",
+        Title = "Comments",
+        Paragraphs = new string[] {
+            "For the rest of the lessons, we're going to be using a feature called 'comments' in code. Comments do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
+        },
+        Goto = "Comments"
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "orange",
+        Title = "Strings",
+        Paragraphs = new string[] {
+            "In Python, a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in Python, put whatever characters you want between two quotes. It doesn't matter if they're single ' or double \"; they just have to be the same.",
+        },
+        Goto = "Strings"
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "red",
+        Title = "Numbers",
+        Paragraphs = new string[] {
+            "Numbers in Python are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+        },
+        Goto = "Numbers"
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "purple",
+        Title = "Conditionals",
+        Paragraphs = new string[] {
+            "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
+        },
+        Goto = "Conditionals"
+    });
+
+    //Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    //{
+    //    Color = "blue",
+    //    Title = "Loops",
+    //    Paragraphs = new string[] {
+    //        "NOT YET LOL",
+    //    },
+    //    Goto = "Loops"
+    //});
 }

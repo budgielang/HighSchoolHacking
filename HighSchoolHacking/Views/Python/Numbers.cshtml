@@ -1,0 +1,55 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "purple",
+        Title = "Numbers",
+        Extension = "python",
+        Large = true,
+        Paragraphs = new string[] {
+            "Numbers in Python are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+            Section.WrapCode("python", "print(1 + 2) # 3"),
+            Section.WrapCode("python", "print(3 - 4) # -1"),
+            Section.WrapCode("python", "print(5 * 6) # 30"),
+            "Note that Numbers can be Integers or Floats. Integers are exact numbers (1, 2, 3, ...) while Floats are decimal point numbers (0.0, 1.17, ...). Numbers without decimal points default to Integers, which round down in division (they remove the decimal place).",
+            Section.WrapCode("python", "print(7 / 8) # 0"),
+            Section.WrapCode("python", "print(7.0 / 8.0) # 0.875"),
+            Section.WrapCode("python", "print(10 / 9) # 1"),
+            "If you combine an Integer and Float, Python will turn the product into a Float.",
+            Section.WrapCode("python", "print(11 / 12.0) # 0.91666666666666663"),
+            Section.WrapCode("python", "print(11.0 / 12) # 0.91666666666666663"),
+        }
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "blue",
+        Title = "Special Operations",
+        Paragraphs = new string[] {
+            "As you might have guessed, you can do more advanced operations. To start, you can do all of PEMDAS, though exponents are done with two askterisks ** (^ is actually a fancy operator we won't go into).",
+            Section.WrapCode("python", "print(2 ** 3) # 8"),
+            "Finding the square root of a number is (as in normal math) ** 1/2, or ** .5. The cubed root is ** 1/3, and so on.",
+            Section.WrapCode("python", new string[]
+            {
+                "print(16 ** .5) # 4.0",
+                "print(27 ** (1.0 / 3.0)) # 3.0"
+            }),
+            "Parenthesis are as you'd expect. Remember the PEMDAS ordering!",
+            Section.WrapCode("python", new string[]
+            {
+                "print((1 + 2) * 3) # 9",
+                "print(1 + (2 * 3)) # 7"
+            })
+        }
+    });
+
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "steel",
+        Title = "Examples",
+        Paragraphs = new string[] {
+            ""
+        }
+    });
+}

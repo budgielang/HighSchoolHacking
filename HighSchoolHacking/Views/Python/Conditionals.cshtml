@@ -1,0 +1,21 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    {
+        Color = "red",
+        Title = "Conditionals",
+        Extension = "python",
+        Large = true,
+        Paragraphs = new string[] {
+            "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
+            "This brings us to <code>if</code> statements. These check if something (a condition) is true, and only run a block of code if it is. The syntax is as follows:",
+            Section.WrapCode("python", new string[]
+            {
+                "if (1 + 1 == 2):",
+                "    print(\"One plus one is two!\")",
+                "# This will print out \"One plus one is two!\""
+            })
+        }
+    });
+}
