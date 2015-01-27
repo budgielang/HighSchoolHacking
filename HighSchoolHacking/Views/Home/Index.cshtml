@@ -1,7 +1,7 @@
 ﻿@using HighSchoolHacking.Models
 
 @{
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "steel",
         Title = "High School Hacking",
@@ -20,7 +20,7 @@
         }
     });
 
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "green",
         Title = "Python",
@@ -40,7 +40,7 @@
         }
     });
 
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "blue",
         Title = "JavaScript",
@@ -60,7 +60,7 @@
         }
     });
 
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "red",
         Title = "Project Euler",

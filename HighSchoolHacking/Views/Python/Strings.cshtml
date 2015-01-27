@@ -1,12 +1,13 @@
 ﻿@using HighSchoolHacking.Models
 
 @{
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "orange",
         Title = "Strings",
         Extension = "python",
         Large = true,
+        Back = "/Python/Learn",
         Paragraphs = new string[]
         {
             "In Python, a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in Python, put whatever characters you want between two quotes. It doesn't matter if they're single ' or double \"; they just have to be the same.",
@@ -17,7 +18,7 @@
                 "foo = 'Hello world!'",
                 "print(foo) # Hello World!"
             }),
-            "<h3>Concatenating Strings</h3>",
+            Section.WrapHead("Concatenating Strings"),
             "<em>concatenate [<code>kənˈkatnˌāt</code>] - to link together; unite in a series or chain.</em>",
             "You can concatenate (combine) Strings in Python really easily. It's like attaching one string of yarn to another string of yarn, you just get one bigger string.",
             Section.WrapCode("python", new string[] {
@@ -32,7 +33,7 @@
         }
     });
 
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "steel",
         Title = "Exercises",

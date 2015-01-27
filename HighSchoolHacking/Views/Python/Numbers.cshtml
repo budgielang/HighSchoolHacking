@@ -1,9 +1,9 @@
 ﻿@using HighSchoolHacking.Models
 
 @{
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "purple",
+        Color = "red",
         Title = "Numbers",
         Extension = "python",
         Large = true,
@@ -22,7 +22,7 @@
         }
     });
 
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "blue",
         Title = "Special Operations",
@@ -44,7 +44,7 @@
         }
     });
 
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "steel",
         Title = "Examples",

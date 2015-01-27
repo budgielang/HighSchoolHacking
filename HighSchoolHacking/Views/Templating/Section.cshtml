@@ -1,6 +1,6 @@
 ﻿@model HighSchoolHacking.Models.Section
 
-<section class="changer border background @Model.Color">
+<section class="changer border background @Model.Color" id="@Model.Title">
     @{
         string head = @Model.Large ? "h1" : "h2";
     }
@@ -10,9 +10,18 @@
 
         @if (!String.IsNullOrWhiteSpace(Model.Extension))
         {
-            <small class="extension">
-                .@Model.Extension
-            </small>
+            if (!String.IsNullOrWhiteSpace(Model.Back))
+            {
+                <small class="extension">
+                    <a href="@Model.Back">
+                        .@Model.Extension
+                    </a>
+                </small>
+            }
+            else
+            {
+                <small class="extension">.@Model.Extension</small>
+            }
         }
     </span>
     @Html.Raw("</" + head + ">")
@@ -38,7 +47,7 @@
                 if (!String.IsNullOrWhiteSpace(Model.Goto))
                 {
                     <h4>
-                        &gt; &gt; Go to <a href="@Model.Goto">@Model.Goto</a> &gt; &gt;
+                        &gt; &gt; Go to <a href="@Model.Goto">@Model.Goto.Trim('/')</a> &gt; &gt;
                     </h4>
                 }
 

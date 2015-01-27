@@ -1,21 +1,157 @@
 ﻿@using HighSchoolHacking.Models
 
 @{
-    Html.RenderPartial("~/Views/Templating/Section.cshtml", new Section
+    Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "red",
+        Color = "purple",
         Title = "Conditionals",
         Extension = "python",
         Large = true,
+        Back = "/Python/Learn",
         Paragraphs = new string[] {
+            Section.WrapHead("This lesson has a lot of sections - it's a good idea to do a section's exercises right when you read it!", "em"),
+            "<hr />",
             "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
-            "This brings us to <code>if</code> statements. These check if something (a condition) is true, and only run a block of code if it is. The syntax is as follows:",
+            "This brings us to <code>if</code> statements. These check if something (a condition) is true, and only run a block of code if it is. A simple example is as follows:",
             Section.WrapCode("python", new string[]
             {
-                "if (1 + 1 == 2):",
-                "    print(\"One plus one is two!\")",
-                "# This will print out \"One plus one is two!\""
-            })
+                "if True:",
+                "    print(\"Yes!\")",
+            }),
+            "Try running this code (it should print <em>Yes!</em>). Don't forget to write the colon at the end of the if statement! Python knows that <code>True</code> means things should run, and <code>False</code> means they shouldn't.",
+            "Note that there are four spaces at the beginning of the second line. You don't have to use four (you can just use one), but your code becomes really ugly and hard to read so if you only use one or two, you're an evil person. This is called indenting your code, and Python makes you do it so it knows what's inside the <code>if</code> statement. Anything indented is inside the <code>if</code> statement, and once you stop indenting, the <code>if</code> statement is done.",
+            "The following code should only print <em>B</em>, because the first print is inside an <code>if</code> statement that won't be run:",
+            Section.WrapCode("python", new string[]
+            {
+                "if false:",
+                "    print(\"A\")",
+                "print(\"B\")",
+            }),
+            Section.WrapHead("Equality"),
+            "The most common conditional is checking whether two things are equal. We use the double equals sign <code>==</code> for that:",
+            Section.WrapCode("python", new string[]
+            {
+                "if 1 == 1:",
+                "    print(\"Yeah!\")"
+            }),
+            "You can do small math inside the <code>if</code> statements.",
+            Section.WrapCode("python", new string[]
+            {
+                "if 1 + 1 == 2:",
+                "    print(\"Yup!\")"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "if 2 ** 3 == 8:",
+                "    print(\"Yep!\")"
+            }),
+            "The way we test for inequality is <code>!=</code>. The exclamation mark is like saying 'not this', so <code>!=</code> means 'not equal to'.",
+            Section.WrapCode("python", new string[]
+            {
+                "if 1 != 2:",
+                "    print(\"Yar!\")"
+            }),
+            Section.WrapHead("More Operations"),
+            "You can actually use most of the calculator functions in <code>if</code> statements and general operations on variables. <code><</code>, <code><=</code>, <code>></code>, and <code>>=</code> all work for comparisons, and the Number and String operations we've already gone over work.",
+            Section.WrapCode("python", new string[]
+            {
+                "if 9001 > 9000:",
+                "    print(\"Yippers!\")"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "if 2 * (1 + 2) == (2 * 1) + (2 * 2):",
+                "    print(\"Distributive property!\")"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "if \"Foo\" + \"bar\" == \"Foobar\":",
+                "    print(\"Strings work!\")"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "name = \"Bob!\"",
+                "if (name == \"Bob\"):",
+                "    print(\"Variables work!\")"
+            }),
+            Section.WrapHead("Else"),
+            "After an <code>if</code> statement you can add an extra block of code to be evaluated only if the <code>if</code> statement didn't. This means the program will run either of your blocks of code: if the <code>if</code> statement's conditional was true, the first is run; otherwise, the second is run.",
+            "The following code prints <em>First!</em>...",
+            Section.WrapCode("python", new string[]
+            {
+                "if True:",
+                "    print(\"First!\")",
+                "else:",
+                "    print(\"Nope.\")",
+            }),
+            "...while this code prints <em>Second!</em>.",
+            Section.WrapCode("python", new string[]
+            {
+                "if False:",
+                "    print(\"Nope.\")",
+                "else:",
+                "    print(\"Second!\")"
+            }),
+            Section.WrapHead("Elif"),
+            "You can chain <code>if</code> statements using the <code>elif</code> statement. <code>elif</code> is short for <code>else if</code> (which other languages use).",
+            "Logically, using <code>elif</code> allows you to check for multiple conditions, like a bunch of if statements. Each one is checked in order.",
+            Section.WrapCode("python", new string[]
+            {
+                "number = 1",
+                "",
+                "if number == 0:",
+                "    print(\"Nope!\")",
+                "elif number == 1:",
+                "    print(\"Elif works!\")",
+                "elif number == 2:",
+                "    print(\"Nope!\")"
+            }),
+            "After your <code>elif</code>s, you can put one last <code>else</code> to check if nothing was true.",
+            Section.WrapCode("python", new string[]
+            {
+                "number = 7",
+                "",
+                "if number == 0:",
+                "    print(\"Nope!\")",
+                "elif number == 1:",
+                "    print(\"Still nope!\")",
+                "else:",
+                "    print(\"Finally!\")"
+            }),
+            Section.WrapHead("And"),
+            "Python lets you check multiple conditions in a statement using <code>and</code>. This works just like in plain English, where you ask if one thing is true <em>and</em> another. See the following two blocks of code, which do the exact same thing:",
+            Section.WrapCode("python", new string[]
+            {
+                "if 1 + 1 == 2:",
+                "    if 2 + 2 == 4:",
+                "        print(\"Math!\")"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "if 1 + 1 == 2 and 2 + 2 == 4:",
+                "    print(\"Math!\")"
+            }),
+            "If either of the conditions are false, the inside code won't run:",
+            Section.WrapCode("python", new string[]
+            {
+                "if 1 + 1 == 2 and 2 + 2 == \"Fish\":",
+                "    print(\"Nope.\")"
+            }),
+            Section.WrapHead("Or"),
+            "You can also check if either of two (or more) conditions are true using <code>or</code>. Like <code>and</code>, this also follows plain English, where you ask if one thing is true <em>or</em> another. That means the code inside a conditional will be run if <em>either</em> of the given statements are true. The following two blocks of code do the same thing:",
+            Section.WrapCode("python", new string[]
+            {
+                "if 2 + 2 == \"Fish\":",
+                "    print(\"Math!\")",
+                "if 2 + 2 == 4:",
+                "    print(\"Math!\")"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "if 2 + 2 == \"Fish\" or 2 + 2 == 4:",
+                "    print(\"Math!\")"
+            }),
+            "The first statement was obviously false, but <em>Math!</em> still gets printed because the second one is true."
         }
     });
 }

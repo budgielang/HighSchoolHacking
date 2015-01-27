@@ -1,0 +1,74 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Hello World!",
+        Large = true,
+        Paragraphs = new string[] {
+            "We're going to spend the first few lessons getting you used to working in Python. It's a bit different (and a lot simpler) than Java, so you want to get used to the syntax.",
+        },
+        Goto = "HelloWorld"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "blue",
+        Title = "Variables",
+        Paragraphs = new string[] {
+            "In code, a 'variable' stores value. Variables are called by their name, which is how you can set the value, get the value, and change the value.",
+        },
+        Goto = "Variables"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "Comments",
+        Paragraphs = new string[] {
+            "For the rest of the lessons, we're going to be using a feature called 'comments' in code. Comments do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
+        },
+        Goto = "Comments"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "Strings",
+        Paragraphs = new string[] {
+            "In Python, a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in Python, put whatever characters you want between two quotes. It doesn't matter if they're single ' or double \"; they just have to be the same.",
+        },
+        Goto = "Strings"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "red",
+        Title = "Numbers",
+        Paragraphs = new string[] {
+            "Numbers in Python are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+        },
+        Goto = "Numbers"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Conditionals",
+        Paragraphs = new string[] {
+            "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
+        },
+        Goto = "Conditionals"
+    });
+
+    //Html.RenderPartial(Section.ViewFile, new Section
+    //{
+    //    Color = "blue",
+    //    Title = "Loops",
+    //    Paragraphs = new string[] {
+    //        "NOT YET LOL",
+    //    },
+    //    Goto = "Loops"
+    //});
+}

@@ -8,9 +8,7 @@ namespace HighSchoolHacking.Models
     public class Section
     {
         public Section()
-        {
-
-        }
+        { }
 
         /// <summary>
         /// Background color for this section, to be used as a CSS class.
@@ -18,22 +16,22 @@ namespace HighSchoolHacking.Models
         public string Color { get; set; }
 
         /// <summary>
-        /// The h2 title used as the large, primary label for the section.
+        /// The h2 text used as the large, primary label for the section.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// An optional domain extension to place next to the title, smaller.
+        /// An optional domain extension to place next to the text, smaller.
         /// </summary>
         public string Extension { get; set; }
 
         /// <summary>
-        /// Whether the section is "large" (h1 instead of h2 for the title).
+        /// Whether the section is "large" (h1 instead of h2 for the text).
         /// </summary>
         public bool Large { get; set; }
 
         /// <summary>
-        /// Any slogans that may be randomly chosen from as the h3 sub-title.
+        /// Any slogans that may be randomly chosen from as the h3 sub-text.
         /// </summary>
         public string[] Slogans { get; set; }
 
@@ -52,6 +50,34 @@ namespace HighSchoolHacking.Models
         /// An optional URI link to emphasize after Links. Typically null.
         /// </summary>
         public string Goto { get; set; }
+
+        /// <summary>
+        /// An optional URI link to have the extenion link to. Typically null.
+        /// </summary>
+        public string Back { get; set; }
+
+        /// <summary>
+        /// The location of the View file to Html.RenderPartial with a Section
+        /// as the model.
+        /// </summary>
+        public static string ViewFile = "~/Views/Templating/Section.cshtml";
+
+        /// <summary>
+        /// Creates a header element (normally h3) with the text as its title
+        /// and text content.
+        /// </summary>
+        /// <param name="text">The text to be displayed.</param>
+        /// <param name="tag">The HTML tag to be used (by default, h3).</param>
+        /// <returns>The text for an HTML head element with the text.</returns>
+        public static string WrapHead(string text, string tag = "h3")
+        {
+            return String.Join("", new string[]
+            {
+                "<" + tag + " id='" + text + "'>",
+                text,
+                "</" + tag + ">"
+            });
+        }
 
         /// <summary>
         /// HTML wrapper to print out code surrounded by pre and code tags. The
