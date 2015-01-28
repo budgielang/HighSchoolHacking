@@ -64,6 +64,10 @@ h1 small,
 h2 small {
     display: inline-block;
     font-size: .56em;
+
+    a {
+        border-bottom: 1px solid rgba(210, 210, 210, .21);
+    }
 }
 
 

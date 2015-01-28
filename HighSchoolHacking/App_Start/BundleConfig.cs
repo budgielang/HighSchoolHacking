@@ -19,10 +19,13 @@ namespace HighSchoolHacking
             bundles.Add(new ScriptBundle("~/bundles/sliding").Include(
                         "~/Scripts/sliding.ts"));
 
+            bundles.Add(new StyleBundle("~/Content/prism").Include(
+                "~/Content/prism.css"
+            ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/positioning.scss",
-                "~/Content/styling.scss",
-                "~/Content/prism.css"
+                "~/Content/styling.scss"
             ));
         }
     }

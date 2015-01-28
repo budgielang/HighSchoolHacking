@@ -85,7 +85,7 @@
             Section.WrapList(new string[]
             {
                 "Make a new variable equal to your name. Make an if statement to check if it's equal to your name.",
-                "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. <small><em>If you have no friends, make one up.</em></small>",
+                "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. If you have no friends, make one up.",
                 "Make a new variable equal to your age. Write an if statement to print a happy message if you're in the 10-19 age group.",
                 "Using the last example's variable, write an if statement to print a happy message if you're not in the 10-19 age group.",
             })
@@ -117,7 +117,7 @@
             }),
             Section.WrapHead("Elif"),
             "You can chain <code>if</code> statements using the <code>elif</code> statement. <code>elif</code> is short for <code>else if</code> (which other languages use).",
-            "Logically, using <code>elif</code> allows you to check for multiple conditions, like a bunch of if statements. Each one is checked in order.",
+            "Using <code>elif</code>s allows you to check for multiple conditions, like a bunch of if statements. Each one is checked in order, and as soon as one matches, the rest are ignored.",
             Section.WrapCode("python", new string[]
             {
                 "number = 1",
@@ -129,7 +129,7 @@
                 "elif number == 2:",
                 "    print(\"Nope!\")"
             }),
-            "After your <code>elif</code>s, you can put one last <code>else</code> to check if nothing was true.",
+            "After your <code>elif</code>(s), you can put one last <code>else</code> to check if nothing was true.",
             Section.WrapCode("python", new string[]
             {
                 "number = 7",
@@ -153,7 +153,7 @@
             Section.WrapList(new string[]
             {
                 "Make a variable containing your age, and make a set of conditionals to check if you're in the 0-9, 10-19, or 20+ range.",
-                "World!"
+                "Pick the names of three of your friends (real or imaginary as needed). Make a variable containing \"Barack Obama\", and make a set of conditionals to check if any of those names match that variable. Print out an unhappy message if none of the names match."
             })
         }
     });
@@ -207,8 +207,8 @@
         { 
             Section.WrapList(new string[]
             {
-                "Hello",
-                "World!"
+                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight isn't above 700, printing out either \"Neither!\" or \"Both!\".",
+                "Like before, pick the names of three of your friends (real or imaginary as needed). Make a variable containing \"Barack Obama\", and use only one <code>if</code> statement to check if any of those names match that variable. Print out an unhappy message if none of the names match."
             })
         }
     });
