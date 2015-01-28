@@ -7,13 +7,16 @@
         Title = "Comments",
         Extension = "python",
         Large = true,
-        Paragraphs = new string[] {
+        Paragraphs = new string[] 
+        {
             "For the rest of the lessons, we're going to be using a feature called 'comments' in code. Comments do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
-            Section.WrapCode("python", new string[] {
+            Section.WrapCode("python", new string[]
+            {
                 "foo = \"Hello world!\"",
                 "print(foo) # If all goes well, this should output 'Hello World!'"
             }),
-            Section.WrapCode("python", new string[] {
+            Section.WrapCode("python", new string[]
+            {
                 "foo = \"Hello world!\"",
                 "print(fooo) # NameError: name 'fooo' is not defined"
             }),

@@ -41,7 +41,7 @@ h1 {
 }
 
 h2 {
-    font-size: 3.5em;
+    font-size: 2.8em;
     cursor: pointer;
 }
 
@@ -167,6 +167,46 @@ footer {
         a {
             color: #e7e7e7;
         }
+    }
+}
+
+/* Goto links */
+
+a.goto {
+    display: block;
+    margin: 7px 0;
+    padding: 14px 0;
+    border: 1px solid rgba(210, 210, 210, .63) !important;
+    color: rgba(245, 245, 245, .91);
+    text-align: center;
+    text-decoration: none !important;
+    text-shadow: none;
+    opacity: .91;
+    -moz-transition: 117ms border, 117ms color, 117ms opacity;
+    -o-transition: 117ms border, 117ms color, 117ms opacity;
+    -webkit-transition: 117ms border, 117ms color, 117ms opacity;
+    transition: 117ms border, 117ms color, 117ms opacity;
+
+    h4 {
+        display: inline;
+    }
+
+    .goto-arrows {
+        opacity: .49;
+        -moz-transition: 117ms opacity;
+        -o-transition: 117ms opacity;
+        -webkit-transition: 117ms opacity;
+        transition: 117ms opacity;
+    }
+}
+
+a.goto:hover {
+    color: white;
+    border: 1px solid white !important;
+    opacity: 1;
+
+    .goto-arrows {
+        opacity: .84;
     }
 }
 

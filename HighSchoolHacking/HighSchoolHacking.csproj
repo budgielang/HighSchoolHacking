@@ -255,6 +255,7 @@
     <Content Include="Views\Python\Conditionals.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Python\Learn.cshtml" />
+    <Content Include="Views\Python\WhileLoops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

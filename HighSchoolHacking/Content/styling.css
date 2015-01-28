@@ -32,7 +32,7 @@ h1 {
   font-size: 4.2em; }
 
 h2 {
-  font-size: 3.5em;
+  font-size: 2.8em;
   cursor: pointer; }
 
 h3 {
@@ -120,6 +120,37 @@ footer p {
   color: #dddddd; }
   footer p a {
     color: #e7e7e7; }
+
+/* Goto links */
+a.goto {
+  display: block;
+  margin: 7px 0;
+  padding: 14px 0;
+  border: 1px solid rgba(210, 210, 210, 0.63) !important;
+  color: rgba(245, 245, 245, 0.91);
+  text-align: center;
+  text-decoration: none !important;
+  text-shadow: none;
+  opacity: 0.91;
+  -moz-transition: 117ms border, 117ms color, 117ms opacity;
+  -o-transition: 117ms border, 117ms color, 117ms opacity;
+  -webkit-transition: 117ms border, 117ms color, 117ms opacity;
+  transition: 117ms border, 117ms color, 117ms opacity; }
+  a.goto h4 {
+    display: inline; }
+  a.goto .goto-arrows {
+    opacity: 0.49;
+    -moz-transition: 117ms opacity;
+    -o-transition: 117ms opacity;
+    -webkit-transition: 117ms opacity;
+    transition: 117ms opacity; }
+
+a.goto:hover {
+  color: white;
+  border: 1px solid white !important;
+  opacity: 1; }
+  a.goto:hover .goto-arrows {
+    opacity: 0.84; }
 
 /* Colors */
 .red {

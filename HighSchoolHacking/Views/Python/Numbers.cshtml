@@ -7,7 +7,9 @@
         Title = "Numbers",
         Extension = "python",
         Large = true,
-        Paragraphs = new string[] {
+        Back = "/Python/Learn",
+        Paragraphs = new string[] 
+        {
             "Numbers in Python are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
             Section.WrapCode("python", "print(1 + 2) # 3"),
             Section.WrapCode("python", "print(3 - 4) # -1"),
@@ -24,9 +26,10 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "blue",
+        Color = "purple",
         Title = "Special Operations",
-        Paragraphs = new string[] {
+        Paragraphs = new string[] 
+        {
             "As you might have guessed, you can do more advanced operations. To start, you can do all of PEMDAS, though exponents are done with two askterisks ** (^ is actually a fancy operator we won't go into).",
             Section.WrapCode("python", "print(2 ** 3) # 8"),
             "Finding the square root of a number is (as in normal math) ** 1/2, or ** .5. The cubed root is ** 1/3, and so on.",
@@ -48,8 +51,14 @@
     {
         Color = "steel",
         Title = "Examples",
-        Paragraphs = new string[] {
-            ""
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your age. Print it.",
+                "Make a new variable equal to double the age variable. Print it too.",
+                "Make a third variable equal to the square root of a third of your age, <em>not</em> rounded. Print it."
+            })
         }
     });
 }

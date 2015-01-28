@@ -55,44 +55,6 @@ section:nth-of-type(2n + 1) h2 span {
     overflow: hidden;
 }
 
-/* Goto links */
-
-a.goto {
-    display: block;
-    margin: 7px 0;
-    padding: 7px 0;
-    border: 1px solid rgba(210, 210, 210, .63) !important;
-    color: rgba(245, 245, 245, .91);
-    text-align: center;
-    text-decoration: none !important;
-    -moz-transition: 117ms border, 117ms color;
-    -o-transition: 117ms border, 117ms color;
-    -webkit-transition: 117ms border, 117ms color;
-    transition: 117ms border, 117ms color;
-
-    h4 {
-        display: inline;
-    }
-
-    .goto-arrows {
-        text-shadow: none;
-        opacity: .49;
-        -moz-transition: 117ms opacity;
-        -o-transition: 117ms opacity;
-        -webkit-transition: 117ms opacity;
-        transition: 117ms opacity;
-    }
-}
-
-a.goto:hover {
-    color: white;
-    border: 1px solid white !important;
-
-    .goto-arrows {
-        opacity: .84;
-    }
-}
-
 footer {
     p {
         float: left;

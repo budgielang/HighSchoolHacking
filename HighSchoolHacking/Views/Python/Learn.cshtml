@@ -8,8 +8,10 @@
         Large = true,
         Extension = "python",
         Back = "/Python",
-        Paragraphs = new string[] {
-            "We're going to spend the first few lessons getting you used to working in Python. If you're used to Java or other languages, it's a bit different (and a lot simpler) so you'll want to get used to the syntax. If this is your first time coding, buckle up. You're in for a great ride.",
+        Paragraphs = new string[
+            ] {
+            "We're going to spend the first few lessons getting you used to working in Python. If you're used to Java or other languages, it's a bit different (and a lot simpler) so you'll want to get used to the syntax. If this is your first time coding, you're in for a great ride.",
+            "Go through these lessons in order."
         },
         Goto = "HelloWorld"
     });
@@ -18,7 +20,8 @@
     {
         Color = "blue",
         Title = "Variables",
-        Paragraphs = new string[] {
+        Paragraphs = new string[] 
+        {
             "In code, a 'variable' stores value. Variables are called by their name, which is how you can set the value, get the value, and change the value.",
         },
         Goto = "Variables"
@@ -28,7 +31,8 @@
     {
         Color = "green",
         Title = "Comments",
-        Paragraphs = new string[] {
+        Paragraphs = new string[]
+        {
             "For the rest of the lessons, we're going to be using a feature called 'comments' in code. Comments do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
         },
         Goto = "Comments"
@@ -38,8 +42,9 @@
     {
         Color = "orange",
         Title = "Strings",
-        Paragraphs = new string[] {
-            "In Python, a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in Python, put whatever characters you want between two quotes. It doesn't matter if they're single ' or double \"; they just have to be the same.",
+        Paragraphs = new string[]
+        {
+            "In Python, a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in Python, put whatever characters you want between two quotes. It doesn't matter if they're single apostrophes <code>'</code> or double apostrophes <code>\"</code>; they just have to be the same.",
         },
         Goto = "Strings"
     });
@@ -48,7 +53,8 @@
     {
         Color = "red",
         Title = "Numbers",
-        Paragraphs = new string[] {
+        Paragraphs = new string[] 
+        {
             "Numbers in Python are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
         },
         Goto = "Numbers"
@@ -58,7 +64,8 @@
     {
         Color = "purple",
         Title = "Conditionals",
-        Paragraphs = new string[] {
+        Paragraphs = new string[]
+        {
             "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
         },
         Goto = "Conditionals"
@@ -67,10 +74,11 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "blue",
-        Title = "Loops",
-        Paragraphs = new string[] {
-            "Loops allow you to ",
+        Title = "While Loops",
+        Paragraphs = new string[]
+        {
+            "Loops are a convenient way for you to automate a block of code to run multiple times. Whenever you have to do something over and over again, a loop is a much better way than copy & pasting code repeatedly.",
         },
-        Goto = "Loops"
+        Goto = "While Loops"
     });
 }
