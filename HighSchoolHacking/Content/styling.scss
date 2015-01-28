@@ -17,6 +17,9 @@ a {
     text-decoration: none;
     border-bottom: 1px solid rgba(240,240,255,.84);
     text-shadow: 1px 1px 7px black;
+    -moz-transition: text-shadow 117ms, color 175ms, border-bottom 280ms;
+    -o-transition: text-shadow 117ms, color 175ms, border-bottom 280ms;
+    -webkit-transition: text-shadow 117ms, color 175ms, border-bottom 280ms;
     transition: text-shadow 117ms, color 175ms, border-bottom 280ms;
 }
 
@@ -102,6 +105,9 @@ body:not(.noShadow) section {
 
 section img {
     box-shadow: 0 0 14px black;
+    -moz-transition: 350ms border-radius ease-in-out;
+    -o-transition: 350ms border-radius ease-in-out;
+    -webkit-transition: 350ms border-radius ease-in-out;
     transition: 350ms border-radius ease-in-out;
 }
 
@@ -117,6 +123,9 @@ article {
     font-size: 1.33em;
     line-height: 140%;
     overflow-y: hidden;
+    -moz-transition: 350ms height;
+    -o-transition: 350ms height;
+    -webkit-transition: 350ms height;
     transition: 350ms height;
 
     p {

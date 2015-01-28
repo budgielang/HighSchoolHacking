@@ -180,7 +180,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\positioning.css">
+      <DependentUpon>positioning.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\positioning.min.css">
+      <DependentUpon>positioning.css</DependentUpon>
+    </Content>
     <Content Include="Content\prism.css" />
+    <Content Include="Content\styling.css">
+      <DependentUpon>styling.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styling.min.css">
+      <DependentUpon>styling.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -195,6 +207,12 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Content\styling.css.map">
+      <DependentUpon>styling.css</DependentUpon>
+    </Content>
+    <Content Include="Content\positioning.css.map">
+      <DependentUpon>positioning.css</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -65,6 +65,9 @@ a.goto {
     color: rgba(245, 245, 245, .91);
     text-align: center;
     text-decoration: none !important;
+    -moz-transition: 117ms border, 117ms color;
+    -o-transition: 117ms border, 117ms color;
+    -webkit-transition: 117ms border, 117ms color;
     transition: 117ms border, 117ms color;
 
     h4 {
@@ -74,6 +77,9 @@ a.goto {
     .goto-arrows {
         text-shadow: none;
         opacity: .49;
+        -moz-transition: 117ms opacity;
+        -o-transition: 117ms opacity;
+        -webkit-transition: 117ms opacity;
         transition: 117ms opacity;
     }
 }

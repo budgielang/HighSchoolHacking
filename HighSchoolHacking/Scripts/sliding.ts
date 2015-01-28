@@ -119,6 +119,6 @@
 
     reset();
 })({
-        "hoverHeight": 49,
-        "transitionSpeed": 117
-    });
+    "hoverHeight": 49,
+    "transitionSpeed": 117
+});
