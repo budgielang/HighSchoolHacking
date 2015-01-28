@@ -46,9 +46,19 @@
 
                 if (!String.IsNullOrWhiteSpace(Model.Goto))
                 {
-                    <h4>
-                        &gt; &gt; Go to <a href="@Model.Goto">@Model.Goto.Trim('/')</a> &gt; &gt;
-                    </h4>
+                    <a class="goto" href="@Model.Goto">
+                        <h4>
+                            <span class= "goto-arrows">
+                                &gt; &gt;
+                            </span>
+
+                            Go to @Model.Goto.Trim('/')
+
+                            <span class="goto-arrows">
+                                &gt; &gt;
+                            </span>
+                        </h4>
+                    </a>
                 }
 
                 if (Model.Links != null && Model.Links.Count > 0)

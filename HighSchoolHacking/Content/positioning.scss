@@ -27,13 +27,13 @@ article:after {
     clear: both;
 }
 
+section:first-of-type h1 {
+    text-align: center;
+}
+
 section img {
     margin-top: 14px;
     margin-bottom: 14px;
-}
-
-section:first-of-type h1 {
-    text-align: center;
 }
 
 section:nth-of-type(2n) img {
@@ -53,6 +53,38 @@ section:nth-of-type(2n + 1) h2 span {
 .paragraphs {
     margin-bottom: .35em;
     overflow: hidden;
+}
+
+/* Goto links */
+
+a.goto {
+    display: block;
+    margin: 7px 0;
+    padding: 7px 0;
+    border: 1px solid rgba(210, 210, 210, .63) !important;
+    color: rgba(245, 245, 245, .91);
+    text-align: center;
+    text-decoration: none !important;
+    transition: 117ms border, 117ms color;
+
+    h4 {
+        display: inline;
+    }
+
+    .goto-arrows {
+        text-shadow: none;
+        opacity: .49;
+        transition: 117ms opacity;
+    }
+}
+
+a.goto:hover {
+    color: white;
+    border: 1px solid white !important;
+
+    .goto-arrows {
+        opacity: .84;
+    }
 }
 
 footer {
