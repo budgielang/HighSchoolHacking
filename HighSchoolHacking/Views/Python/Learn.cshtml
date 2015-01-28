@@ -81,4 +81,48 @@
         },
         Goto = "While Loops"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "Lists",
+        Paragraphs = new string[]
+        {
+            "A List in Python is just like a list in real life; it stores some number of objects. <strong>To be completed!</strong>",
+        },
+        //Goto = "Lists"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "For Loops",
+        Paragraphs = new string[]
+        {
+            "For loops are another way to repeat tasks. They make it a lot easier to loop using Strings and Lists. <strong>To be completed!</strong>",
+        },
+        //Goto = "For Loops"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "red",
+        Title = "Functions",
+        Paragraphs = new string[]
+        {
+            "<strong>To be completed!</strong>",
+        },
+        //Goto = "Functions"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Input",
+        Paragraphs = new string[]
+        {
+            "<strong>To be completed!</strong>",
+        },
+        //Goto = "Input"
+    });
 }

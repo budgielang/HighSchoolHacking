@@ -68,14 +68,72 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "steel",
-        Title = "Examples",
+        Title = "Exercises",
         Paragraphs = new string[] { 
             Section.WrapList(new string[] {
                 "Write a loop to print all numbers less than 14.",
-                "Write a loop to print all numbers between 7 and 14.",
-                "Write a loop to print all odd numbers between 7 and 14.",
+                "Write a loop to print all numbers less than 14, starting with 7.",
+                "Write a loop to print all odd numbers less than 14, starting with 7.",
                 "Write a loop to print all squares (1, 4, 9, 16, ...) less than 350. <br /> <em>Hint: this is exactly one symbol different than the loop that doubles i!</em>",
                 "Write a loop to print all even squares less than 350."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] { 
+            Section.WrapList(new string[] {
+                "Write a loop to print all numbers less than 14." + Section.WrapCode("python", new string[] {
+                    "i = 0",
+                    "while i < 14:",
+                    "    print(i)",
+                    "    i = i + 1"
+                }),
+                "Write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode("python", new string[] {
+                    "i = 7",
+                    "while i < 14:",
+                    "    print(i)",
+                    "    i = i + 1"
+                }),
+                "Write a loop to print all odd numbers less than 14, starting with 7." + Section.WrapCode("python", new string[] {
+                    "i = 7",
+                    "while i < 14:",
+                    "    print(i)",
+                    "    i = i + 2"
+                }),
+                "Write a loop to print all squares (1, 4, 9, 16, ...) less than 350." + Section.WrapCode("python", new string[] {
+                    "i = 1",
+                    "square = 1",
+                    "while square < 350:",
+                    "    square = i * i",
+                    "    print(i)",
+                    "    i = i + 1"
+                }),
+                "Write a loop to print all even squares less than 350." + Section.WrapCode("python", new string[] {
+                    "i = 1",
+                    "square = 1",
+                    "while square < 350:",
+                    "    square = i * i",
+                    "    print(i)",
+                    "    i = i + 2"
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "Breaks",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "<strong>To be completed!</strong>"
             })
         }
     });

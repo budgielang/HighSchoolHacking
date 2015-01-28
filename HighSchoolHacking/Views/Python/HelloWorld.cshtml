@@ -30,4 +30,20 @@
             })
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Instead of printing <em>Hello World</em>, print out your full name." + Section.WrapCode("python", new string[]
+                {
+                    "print(\"Joshua Kevin Goldberg\")"
+                })
+            })
+        }
+    });
 }

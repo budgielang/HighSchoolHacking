@@ -4,6 +4,10 @@ section {
     clear: both;
 }
 
+section[contracted] article {
+    height: 0;
+}
+
 article,
 h1 span,
 h2 span,
@@ -53,6 +57,10 @@ section:nth-of-type(2n + 1) h2 span {
 .paragraphs {
     margin-bottom: .35em;
     overflow: hidden;
+
+    li pre {
+        margin-bottom: 28px;
+    }
 }
 
 footer {

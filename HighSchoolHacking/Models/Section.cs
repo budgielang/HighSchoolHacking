@@ -31,6 +31,11 @@ namespace HighSchoolHacking.Models
         public bool Large { get; set; }
 
         /// <summary>
+        /// Whether the section is initially contracted.
+        /// </summary>
+        public bool Contracted { get; set; }
+
+        /// <summary>
         /// Any slogans that may be randomly chosen from as the h3 sub-text.
         /// </summary>
         public string[] Slogans { get; set; }

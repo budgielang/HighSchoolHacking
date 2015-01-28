@@ -25,15 +25,21 @@
     var initializeSection = function (section) {
         var header = section.children[0], article = section.children[1];
 
-        article.setAttribute("heightOld", article.clientHeight);
-        article.style.height = article.clientHeight + "px";
-
-        // setTimeout(function () {
-        // article.style.height = "0px";
-        // }, settings.transitionSpeed);
         header.onclick = headClickOn;
         header.onmouseover = headMouseOver;
         header.onmouseout = headMouseOut;
+
+        article.style.height = "auto";
+        article.setAttribute("heightOld", article.clientHeight);
+
+        if (section.getAttribute("contracted")) {
+            article.removeAttribute("contracted");
+            article.style.height = "0";
+            header.setAttribute("clicked", "off");
+            return;
+        }
+
+        article.style.height = article.clientHeight + "px";
 
         header.click();
     };

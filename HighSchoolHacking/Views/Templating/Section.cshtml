@@ -1,6 +1,6 @@
 ﻿@model HighSchoolHacking.Models.Section
 
-<section class="changer border background @Model.Color" id="@Model.Title">
+<section class="changer border background @Model.Color" id="@Model.Title" contracted="@Model.Contracted">
     @{
         string head = @Model.Large ? "h1" : "h2";
     }
@@ -48,7 +48,7 @@
                 {
                     <a class="goto" href="@Model.Goto.Replace(" ", "")">
                         <h4>
-                            <span class= "goto-arrows">
+                            <span class="goto-arrows">
                                 &gt; &gt;
                             </span>
 

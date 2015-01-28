@@ -22,7 +22,7 @@
             })
         }
     });
-    
+
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "steel",
@@ -32,6 +32,29 @@
             Section.WrapList(true, new string[] {
                 "Instead of storing <em>Hello world</em>, store your full name and print it.",
                 "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(true, new string[] {
+                "Instead of storing <em>Hello world</em>, store your full name and print it." + Section.WrapCode("python", new string[] {
+                    "name = \"Josh Goldberg\"",
+                    "print(name)"
+                }),
+                "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?" + Section.WrapCode("python", new string[] {
+                    "name = \"Josh Goldberg\" # Ok",
+                    "my_name = \"Josh Goldberg\" # Ok",
+                    "name1 = \"Josh Goldberg\" # Ok",
+                    "1name = \"Josh Goldberg\" # Nope! You can't start with a number.",
+                    "name<! = \"Josh Goldberg\" # Nope! You can't use symbols (- is ok, but <, =, >, !, and + are not).",
+                }),
             })
         }
     });

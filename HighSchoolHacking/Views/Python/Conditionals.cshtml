@@ -95,8 +95,44 @@
             {
                 "Make a new variable equal to your name. Make an if statement to check if it's equal to your name.",
                 "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. If you have no friends, make one up.",
-                "Make a new variable equal to your age. Write an if statement to print a happy message if you're in the 10-19 age group.",
-                "Using the last example's variable, write an if statement to print a happy message if you're not in the 10-19 age group.",
+                "Make a new variable equal to your age. Write an if statement to print a happy message if you're above the age of seven.",
+                "Use the <a href=\"http://en.wikipedia.org/wiki/Associative_property\">associative property</a> in an if statement."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a new variable equal to your name. Make an if statement to check if it's equal to your name." + Section.WrapCode("python", new string[]
+                {
+                    "name = \"Josh\"",
+                    "if name == \"Josh\":",
+                    "    print(name)"
+                }),
+                "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. If you have no friends, make one up." + Section.WrapCode("python", new string[]
+                {
+                    "name = \"Doodlebob\"",
+                    "if name == \"Josh\":",
+                    "    print(name)"
+                }),
+                "Make a new variable equal to your age. Write an if statement to print a happy message if you're above the age of seven." + Section.WrapCode("python", new string[]
+                {
+                    "age = \"Josh\"",
+                    "if age > seven:",
+                    "    print(name)"
+                }),
+                "Use the <a href=\"http://en.wikipedia.org/wiki/Associative_property\">associative property</a> in an if statement." + Section.WrapCode("python", new string[]
+                {
+                    "if (2 + 3) + 4 == 2 + (3 + 4):",
+                    "    print(\"Associative property!\")"
+                })
             })
         }
     });
@@ -162,8 +198,39 @@
         {
             Section.WrapList(new string[]
             {
-                "Make a variable containing your age, and make a set of conditionals to check if you're in the 0-9, 10-19, or 20+ range.",
-                "Pick the names of three of your friends (real or imaginary as needed). Make a variable containing \"Barack Obama\", and make a set of conditionals to check if any of those names match that variable. Print out an unhappy message if none of the names match."
+                "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\".",
+                "Make a variable containing your age, and make a set of conditionals to print different things if you're in the 0 - 9, 10 - 19, or 20+ ranges."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\"." + Section.WrapCode("python", new string[]
+                {
+                    "song = \"Never Gonna Give You Up\"",
+                    "if song == \"Never Gonna Give You Up\":",
+                    "    print(\"Yup!\")",
+                    "else:",
+                    "    print(\"Nope.\")"
+                }),
+                "Make a variable containing your age, and make a set of conditionals to print different things if you're in the 0 - 9, 10 - 19, or 20+ ranges." + Section.WrapCode("python", new string[]
+                {
+                    "age = 21",
+                    "if age < 10:",
+                    "    print(\"Less than ten!\")",
+                    "elif age < 20:",
+                    "    print(\"Less than twenty!\")",
+                    "else:",
+                    "    print(\"Old!\")",
+                })
             })
         }
     });
@@ -218,8 +285,36 @@
         {
             Section.WrapList(new string[]
             {
-                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight isn't above 700, printing out either \"Neither!\" or \"Both!\".",
-                "Like before, pick the names of three of your friends (real or imaginary as needed). Make a variable containing \"Barack Obama\", and use only one <code>if</code> statement to check if any of those names match that variable. Print out an unhappy message if none of the names match."
+                "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"",
+                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Neither!\" or \"Both!\"."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"" + Section.WrapCode("python", new string[]
+                {
+                    "song = \"Never Gonna Give You Up\"",
+                    "if song != \"Never Gonna Give You Up\" or song == \"Never Gonna Give You Up\":",
+                    "    print(\"Yes!\")",
+                }),
+                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Both!\" or \"One or two were wrong!\"." + Section.WrapCode("python", new string[]
+                {
+                    "age = 21",
+                    "weight = 182",
+                    "if age > 10 and weight < 700:",
+                    "    print(\"Both!\")",
+                    "else:",
+                    "    print(\"One or two were wrong!\")"
+                })
             })
         }
     });
