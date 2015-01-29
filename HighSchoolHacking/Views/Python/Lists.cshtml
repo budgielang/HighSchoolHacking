@@ -1,0 +1,17 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "Lists",
+        Extension = "python",
+        Large = true,
+        Back = "/Python/Learn",
+        Paragraphs = new string[]
+        {
+            "A List in Python is just like a list in real life; it stores some number of objects. They can store any number of elements and can be modified at will, so they're very convenient.",
+            
+        }
+    });
+}

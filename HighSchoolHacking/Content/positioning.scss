@@ -86,6 +86,10 @@ footer {
 /* Medium displays */
 
 @media screen and (max-width: 700px), (max-aspect-ratio: 1/1) {
+    #GitHubLink {
+        display: none;
+    }
+
     img {
         width: 210px;
         height: 210px;
