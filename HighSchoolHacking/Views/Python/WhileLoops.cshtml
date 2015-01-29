@@ -27,7 +27,7 @@
             "Note that loops use indenting and conditions the same way conditionals do. The same rules apply about indenting: if you don't use a reasonable number of spaces, your code is bad and should feel bad.",
         }
     });
-    
+
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "green",
@@ -69,7 +69,7 @@
     {
         Color = "steel",
         Title = "Exercises",
-        Paragraphs = new string[] { 
+        Paragraphs = new string[] {
             Section.WrapList(new string[] {
                 "Write a loop to print all numbers less than 14.",
                 "Write a loop to print all numbers less than 14, starting with 7.",
@@ -85,7 +85,7 @@
         Color = "brown",
         Title = "Solutions",
         Contracted = true,
-        Paragraphs = new string[] { 
+        Paragraphs = new string[] {
             Section.WrapList(new string[] {
                 "Write a loop to print all numbers less than 14." + Section.WrapCode("python", new string[] {
                     "i = 0",
@@ -128,12 +128,91 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "orange",
-        Title = "Breaks",
+        Title = "Manual Controls",
         Paragraphs = new string[]
         {
-            Section.WrapList(new string[]
+            "If you really want, you can manually change how a loop works a little bit. You can almost always find a way to do loops without the following two commands, but they tend to make it easier.",
+            Section.WrapHead("Break"),
+            "Calling a <code>break</code> command forces a loop to stop and exit. It's used if you want to stop a loop from the inside, or want multiple conditions that could stop it from continuing. The following two blocks of code do the exact same thing:",
+            Section.WrapCode("python", new string[]
             {
-                "<strong>To be completed!</strong>"
+                "i = 0",
+                "while i < 10:",
+                "    print(i)"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "i = 0",
+                "while True:",
+                "    if i == 10:",
+                "        break",
+                "    print(i)"
+            }),
+            "As you can see, <code>break</code> statements don't always make your code more elegant, but sometimes they can help.",
+            Section.WrapHead("Continue"),
+            "Calling a <code>continue</code> command forces a loop to skip to the next iteration of what it's doing. It's useful if you want to sometimes only do part of a block of code, though <code>if</code> statements can do that too.",
+            Section.WrapCode("python", new string[]
+            {
+                "i = 0",
+                "while i < 10:",
+                "    if i < 3 or i > 7:",
+                "        print(i)"
+            }),Section.WrapCode("python", new string[]
+            {
+                "i = 0",
+                "while i < 10:",
+                "    if i >= 3 or i <= 7:",
+                "        continue",
+                "    print(i)"
+            }),
+            "As with using <code>break</code>, using <code>continue</code> is just a different way of doing things. It's up to you to use them correctly."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[] {
+            Section.WrapList(new string[] {
+                "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14.",
+                "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14, starting with 7.",
+                "Write a loop to print all odd numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] {
+            Section.WrapList(new string[] {
+                "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14." + Section.WrapCode("python", new string[] {
+                    "i = 0",
+                    "while True:",
+                    "    print(i)",
+                    "    i = i + 1",
+                    "    if i >= 14:",
+                    "        break"
+                }),
+                "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode("python", new string[] {
+                    "i = 7",
+                    "while True:",
+                    "    print(i)",
+                    "    i = i + 1",
+                    "    if i >= 14:",
+                    "        break"
+                }),
+                "Write a loop to print all odd numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement." + Section.WrapCode("python", new string[] {
+                    "i = 0",
+                    "while i < 14:",
+                    "    if i <= 7:",
+                    "        continue",
+                    "    print(i)",
+                    "    i = i + 2"
+                }),
             })
         }
     });
