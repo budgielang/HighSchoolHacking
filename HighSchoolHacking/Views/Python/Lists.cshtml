@@ -126,6 +126,13 @@
             {
                 "fruits = [\"apple\", \"banana\", \"cherry\"]",
                 "fruit = fruits[9001] # IndexError: list index out of range"
+            }),
+            "Like with the append property, Strings mimic Lists in that they can also have specific elements accessed. Again, a String is similar to a List of characters, so you can access members the same way as a List. You'll just get a String of length 1.",
+            Section.WrapCode("python", new string[]
+            {
+                "fruit = \"apple\"",
+                "letter = fruit[0]",
+                "print(letter) # \"a\"",
             })
         }
     });
@@ -174,14 +181,110 @@
         Title = "Loops & Lists",
         Paragraphs = new string[]
         {
-            "When you have a list, you're oftentimes going to want to do something with all members of it. We've already learned how to use loops to do operations multiple times, so we can extend the loop concept to iterate over a List:",
+            "When you have a list, you're oftentimes going to want to do something with all members of it. We've already learned how to use loops to do operations multiple times, so we can extend the loop concept to iterate over a List.",
+            "In order to do this, we use <code>len</code>. This is another function like <code>print</code>, but instead of printing what it's given to the screen, it gets the length of the object. So, if you give it a List of three elements, it returns 3.",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+                "print(len(fruits)) # 3"
+            }),
+            "We then use <code>len</code> to write loops over Lists that iterate for each element in the List:",
             Section.WrapCode("python", new string[]
             {
                 "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
                 "i = 0",
-                "while i < fruts.length:",
+                "",
+                "while i < len(fruits):",
                 "    print(fruits[i])",
                 "    i = i + 1"
+            }),
+            "Remember that len(fruits) gives a Number equal to the number of elements in fruits. This loop therefore brings i from 0 to however many elements there are in fruits.",
+            "Loops can be used to copy elements from a List to somewhere else. This block of code adds all the members in a List to a String and prints the resut:",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+                "output = \"Fruits are: \"",
+                "i = 0",
+                "",
+                "while i < len(fruits):",
+                "    output = output + \" \" + fruits[i]",
+                "    i = i + 1",
+                "",
+                "print(output) # \"Fruits are: Apple Banana Cherry\""
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a List containing seven numbers. Print each number using a loop.",
+                "Make a List containing seven numbers. Use a loop to add those numbers to a String, and print the String.",
+                "Modify the previous question's code to add every other name.",
+                "Make a variable containing your name. Copy each character from that String into a List, and print the List."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a List containing seven numbers. Print each number using a loop." + Section.WrapCode("python", new string[]
+                {
+                    "numbers = [0, 1, 2, 3, 4, 5, 6]",
+                    "i = 0",
+                    "",
+                    "while i < len(numbers):",
+                    "    print(i)",
+                    "    i = i + 1",
+                }),
+                "Make a List containing seven numbers. Use a loop to add those numbers to a String, and print the String." + Section.WrapCode("python", new string[]
+                {
+                    "numbers = [0, 1, 2, 3, 4, 5, 6]",
+                    "i = 0",
+                    "output = \"Numbers: \"",
+                    "",
+                    "while i < len(numbers):",
+                    "    output = output + i",
+                    "    i = i + 1",
+                    "",
+                    "print(output) # Numbers: 0 1 2 3 4 5 6 7"
+                }),
+                "Modify the previous question's code to add every other number." + Section.WrapCode("python", new string[]
+                {
+                    "numbers = [0, 1, 2, 3, 4, 5, 6]",
+                    "i = 0",
+                    "output = \"\"",
+                    "",
+                    "while i < len(numbers):",
+                    "    output = output + i",
+                    "    i = i + 2",
+                    "",
+                    "print(output) # Numbers: 0 2 4 6"
+                }),
+                "Make a variable containing your name. Copy each character from that String into a List, and print the List." + Section.WrapCode("python", new string[]
+                {
+                    "name = \"Josh\"",
+                    "i = 0",
+                    "letters = []",
+                    "",
+                    "while i < name.length:",
+                    "    letters.append(name[i])",
+                    "    i = i + 1",
+                    "",
+                    "print(letters) # [\"J\" \"o\" \"s\" \"h\"]"
+                }),
             })
         }
     });
