@@ -10,8 +10,179 @@
         Back = "/Python/Learn",
         Paragraphs = new string[]
         {
-            "A List in Python is just like a list in real life; it stores some number of objects. They can store any number of elements and can be modified at will, so they're very convenient.",
-            
+            "A List in Python is just like a list in real life; it stores some number of objects. They can hold any number of elements and can be modified at will, so they're very convenient.",
+            "You define a list like this:",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+            }),
+            "Python then knows that your fruit variable is a List containing three items: \"Apple\", \"Banana\", and \"Cherry\". It also knows that the list has a length of 3 (for three items).",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+                "print(fruits) # ['a', 'b', 'c']",
+                "print(fruits.length) # 3"
+            }),
+            "That last line is how you access a \"property\" of something in Python. We won't go deep into that, but know that every List has a length property. Strings also happen to have this property (you can really think of a String as a List of characters!).",
+            Section.WrapCode("python", new string[]
+            {
+                "[\"Apple\", \"Banana\", \"Cherry\"].length # 3",
+                "\"Dragonberry\".length # 11"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "Adding to Lists",
+        Paragraphs = new string[]
+        {
+            "Some object properties are actually something called a \"Function\". We go over those in a few lessons, but in general all you need to know is that they take in some variable(s) the same way as <code>print</code>, and then do something with it.",
+            "Lists all have an \"append\" function that adds a value to the end of the list. It's actually pretty uncomplicated:",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = []",
+                "print(fruits) # []",
+                "print(fruits.length) # 0",
+                "",
+                "fruits.append(\"apple\")",
+                "print(fruits) # [\"apple\"]",
+                "print(fruits.length) # 1"
+            }),
+            "In coding, you'll often be asked to make a list of Numbers, such as all numbers in a range, or all squares up to a point. You can do that nicely with a while loop: the following code generates a list of all numbers less than 10, starting with 0.",
+            Section.WrapCode("python", new string[]
+            {
+                "numbers = []",
+                "i = 0",
+                "while i < 10:",
+                "    numbers.append(i)",
+                "    i = i + 1",
+                "print(numbers) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make and print a list containing all numbers between 10 and 20.",
+                "Make and print a list containing all odd numbers between 10 and 20."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make and print a list containing all numbers between 10 and 20." + Section.WrapCode("python", new string[]
+                {
+                    "numbers = []",
+                    "i = 10",
+                    "while i < 20:",
+                    "    numbers.append(i)",
+                    "    i = i + 1"
+                }),
+                "Make and print a list containing all odd numbers between 10 and 20." + Section.WrapCode("python", new string[]
+                {
+                    "numbers = []",
+                    "i = 11",
+                    "while i < 20:",
+                    "    numbers.append(i)",
+                    "    i = i + 2"
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "red",
+        Title = "Members of a List",
+        Paragraphs = new string[]
+        {
+            "Once you've created a list, you can access specific members of it. Lists know which element is at each \"index\" (location), starting with 0. Yes, the first element is at index 0, the second at index 1, and so on. For example:",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"apple\", \"banana\", \"cherry\"]",
+                "first = fruits[0]",
+                "print(first) # \"apple\"",
+                "print(fruits[1]) # \"banana\""
+            }),
+            "You can think of index as the distance from that spot in the List from the beginning. The first element is 0 away (from itself), the second is 1 away, and so on.",
+            "Lists will complain if you try to access the element at an index that doesn't exist. If your length is 3, for example, the third element is at index [2], so trying to get [3] is like trying to get the fourth element.",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"apple\", \"banana\", \"cherry\"]",
+                "fruit = fruits[9001] # IndexError: list index out of range"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a List containing the names of three of your friends. Print the second name.",
+                "Try to print the seventh name in that list. Does it work?",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a List containing the names of three of your friends. Print the second name." + Section.WrapCode("python", new string[]
+                {
+                    "names = [\"Mariah\", \"Brandon\", \"Dylan\"]",
+                    "print(names[1]) # \"Brandon\""
+                }),
+                "Try to print the seventh name in that list. Does it work?" + Section.WrapCode("python", new string[]
+                {
+                    "names = [\"Mariah\", \"Brandon\", \"Dylan\"]",
+                    "print(names[7]) # IndexError: list index out of range",
+                    "# It didn't work!"
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Loops & Lists",
+        Paragraphs = new string[]
+        {
+            "When you have a list, you're oftentimes going to want to do something with all members of it. We've already learned how to use loops to do operations multiple times, so we can extend the loop concept to iterate over a List:",
+            Section.WrapCode("python", new string[]
+            {
+                "fruits = [\"Apple\", \"Banana\", \"Cherry\"]",
+                "i = 0",
+                "while i < fruts.length:",
+                "    print(fruits[i])",
+                "    i = i + 1"
+            })
         }
     });
 }

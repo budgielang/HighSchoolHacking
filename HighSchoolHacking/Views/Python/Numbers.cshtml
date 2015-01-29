@@ -92,4 +92,20 @@
             })
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "blue",
+        Title = "Numbers and Strings",
+        Paragraphs = new string[] 
+        { 
+            "You can add a Numbers and Strings to get a new String. Python will treat the Number as a String, so it's no different than adding two Strings together.",
+            "We won't quiz you on it here, just keep it in mind so you're not confused when we use it later.",
+            Section.WrapCode("python", new string[]
+            {
+                "age = 21",
+                "print(\"My age is \" + age + \"!\") # \"My age is 21!\""
+})
+        }
+    });
 }
