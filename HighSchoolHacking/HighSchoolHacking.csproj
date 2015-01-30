@@ -243,7 +243,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Footer.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Templating\Section.cshtml" />
     <Content Include="Views\Python\Index.cshtml" />
     <Content Include="Views\JavaScript\Index.cshtml" />
@@ -258,6 +258,7 @@
     <Content Include="Views\Python\WhileLoops.cshtml" />
     <Content Include="Views\Python\Lists.cshtml" />
     <Content Include="Views\GitHubLink.cshtml" />
+    <Content Include="Views\Python\ForLoops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

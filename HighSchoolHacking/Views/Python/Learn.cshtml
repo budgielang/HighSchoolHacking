@@ -99,14 +99,25 @@
         Title = "For Loops",
         Paragraphs = new string[]
         {
-            "For loops are another way to repeat tasks. They make it a lot easier to loop using Strings and Lists. <strong>To be completed!</strong>",
+            "For loops are another way to repeat tasks. They're especially nice because they make it a lot easier to loop over Strings and Lists, or over specific ranges of numbers.",
         },
-        //Goto = "For Loops"
+        Goto = "For Loops"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = "red",
+        Title = "Dictionaries",
+        Paragraphs = new string[]
+        {
+            "<strong>To be completed!</strong>",
+        },
+        //Goto = "Dictionaries"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
         Title = "Functions",
         Paragraphs = new string[]
         {
@@ -117,7 +128,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "purple",
+        Color = "blue",
         Title = "Input",
         Paragraphs = new string[]
         {

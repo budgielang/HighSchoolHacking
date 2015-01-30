@@ -1,0 +1,238 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "For Loops",
+        Extension = "python",
+        Large = true,
+        Back = "/Python/Learn",
+        Paragraphs = new string[]
+        {
+            "By now you should be moderately used to using <code>while</code> loops to iterate over Lists and Strings. The <code>for</code> loop is like a fancier, shortened version of the <code>while</code> loop made specifically to iterate over a group of things.",
+            "Every <code>for</code> loop in Python iterates over some object, which for us will often be a String or List. The syntax is very simple:",
+            Section.WrapCode("python", new string[]
+            {
+                "sports = [\"Basketball\", \"Football\", \"Soccer\"]",
+                "for sport in sports:",
+                "    print(sport)"
+            }),
+            "The loop goes over every element in the sports List. In each iteration of the loop, the new variable sport will be equal to a different member, in order. That <code>for</code> does basically the same thing as this <code>while</code> loop:",
+            Section.WrapCode("python", new string[]
+            {
+                "sports = [\"Basketball\", \"Football\", \"Soccer\"]",
+                "i = 0",
+                "while i < len(sports):",
+                "    print(sports[i])"
+            }),
+            "The only real difference is that the <code>while</code> loop uses a count variable i, and is a little uglier. When you're iterating over a String or List (or, in later lessons, a Dictionary), it's almost always easier (and cleaner) to use a <code>for</code> loop."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your name. Using a <code>for</code> loop, copy all characters from it into a List. Print that list.",
+                "Make a List of Strings. Use a <code>for</code> loop to add each of those Strings to a new List. Print that List.",
+                //"Make a List of Strings. Use a <code>for</code> within a <code>for</code> loop to add each character from each of those Strings to a new List. Print that List.",
+            })
+
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your name. Using a <code>for</code> loop, copy all characters from it into a List. Print that list." + Section.WrapCode("python", new string[]
+                {
+                    "name = \"Josh\"",
+                    "letters = []",
+                    "",
+                    "for letter in name:",
+                    "    letters.append(letter)",
+                    "",
+                    "print(letters) # [\"J\", \"o\", \"s\", \"h\"]"
+                }),
+                "Make a List of Strings. Use a <code>for</code> loop to add each of those Strings to a new List. Print that List." + Section.WrapCode("python", new string[]
+                {
+                    "sports = [\"Basketball\", \"Football\", \"Soccer\"]",
+                    "copies = []",
+                    "",
+                    "for sport in sports:",
+                    "    copies.append(sports)",
+                    "",
+                    "print(copies) # [\"Basketball\", \"Football\", \"Soccer\"]"
+                }),
+                //"Make a List of Strings. Use a <code>for</code> within a <code>for</code> loop to add each character from each of those Strings to a new List. Print that List." + Section.WrapCode("python", new string[]
+                //{
+                //    "sports = [\"Basketball\", \"Football\", \"Soccer\"]",
+                //    "letters = []",
+                //    "",
+                //    "for sport in sports:",
+                //    "    for letter in sport:",
+                //    "        letters.append(letter)",
+                //    "",
+                //    "print(letters) # [\"B\", \"a\", \"s\", \"k\", \"e\", \"t\", \"b\", \"a\", ...]"
+                //}),
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "red",
+        Title = "Ranged Loops",
+        Paragraphs = new string[]
+        {
+            "Python is a nice language and gives us the <code>range</code> to allow <code>for</code> loops to iterate over a range of Numbers. <code>range</code> takes in a Number and returns a List containing all Numbers less than that, starting with 0.",
+            "The following three code blocks all print Numbers less than 10:",
+            Section.WrapCode("python", new string[]
+            {
+                "i = 0",
+                "while i < 10:",
+                "    print(i)",
+                "    i = i + 1"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "for i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:",
+                "    print(i)"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "for i in range(10):",
+                "    print(i)"
+            }),
+            "That last one was easy!",
+            Section.WrapHead("Different Range Usage"),
+            "<code>range</code> can take in up to three parameters, depending on how you want to use it. The above usage was with one argument, the <em>maximum</em> number to go to.",
+            "When you give <code>range</code> two arguments, it uses the first number as a <em>minimum</em>, and the second as a <em>maximum</em>. The following two loops do the same thing:",
+            Section.WrapCode("python", new string[]
+            {
+                "numbers = []",
+                "i = 5",
+                "while i < 10:",
+                "    numbers.append(i)",
+                "    i = i + 1",
+                "print(numbers) # [5, 6, 7, 8, 9]"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "numbers = []",
+                "for i in range(5, 10):",
+                "    numbers.append(i)",
+                "print(numbers) # [5, 6, 7, 8, 9]"
+            }),
+            "You can also give a third argument to <code>range</code> to decide how much i increases each loop. Normally i increases by 1, but you can have it increase by different amounts. The following two loops do the same thing:",
+            Section.WrapCode("python", new string[]
+            {
+                "numbers = []",
+                "i = 5",
+                "while i < 10:",
+                "    numbers.append(i)",
+                "    i = i + 2",
+                "print(numbers) # [5, 6, 7, 8, 9]"
+            }),
+            Section.WrapCode("python", new string[]
+            {
+                "numbers = []",
+                "for i in range(5, 10, 2):",
+                "    numbers.append(i)",
+                "print(numbers) # [5, 7, 9]"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Print all numbers in the 0 to 20 range using a <code>for</code> loop.",
+                "Print all numbers in the 10 to 20 range using a <code>for</code> loop.",
+                "Print all even numbers in the 10 to 20 range using a <code>for</code> loop.",
+                "Print the first 10 squares (1, 4, 9, ...) using a <code>for</code> loop."
+            })
+
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Print all numbers in the 0 to 20 range using a <code>for</code> loop." + Section.WrapCode("python", new string[]
+                {
+                    "for i in range(20):",
+                    "    print(i)"
+                }),
+                "Print all numbers in the 10 to 20 range using a <code>for</code> loop." + Section.WrapCode("python", new string[]
+                {
+                    "for i in range(10, 20):",
+                    "    print(i)"
+                }),
+                "Print all even numbers in the 10 to 20 range using a <code>for</code> loop." + Section.WrapCode("python", new string[]
+                {
+                    "for i in range(10, 20, 2):",
+                    "    print(i)"
+                }),
+                "Print the first 10 squares (1, 4, 9, ...) using a <code>for</code> loop." + Section.WrapCode("python", new string[]
+                {
+                    "for i in range(10):",
+                    "    print(i * i)"
+                })
+            })
+
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Loops Within Loops",
+        Paragraphs = new string[]
+        {
+            "There's nothing in Python to stop you from putting a loop within a loop (within a loop, within...). It can get tricky to understand, but using double or triple loops can be really useful for code.",
+            "Lets start with a quick set of loops that print each String within a List three times. You should be very solid on how this block of code works before moving on!",
+            Section.WrapCode("python", new string[]
+            {
+                "sports = [\"Basketball\", \"Football\", \"Soccer\"]",
+                "for sport in sports:",
+                "    for i in range(3):",
+                "        print(sport)"
+            }),
+            "The first time the outer loop runs, sport will be equal to \"Basketball\". It then runs the inner loop and prints sport three times (because of <code>range(3)</code>). After the inner loop finishes running, the outer loop continues to its next iteration and sets sports to \"Football\". That is printed three times by the inner loop, after which sport becomes \"Soccer\", which is also printed three times.",
+            "Try to figure out how many times the following block will print (\"Lana!\"):",
+            Section.WrapCode("python", new string[]
+            {
+                "for i in range(10):",
+                "    for i in range(7):",
+                "        print(\"Lana!\")"
+            }),
+            "We know the inner loop prints 7 times, and the outer loop repeats that 10 times, so 7 x 10 = 70 times."
+        }
+    });
+}
+
+<!-- print out each string three times, print out each letter in string, print out each letter three times -->
+<!-- modify the first l w l example to print for string length -->
