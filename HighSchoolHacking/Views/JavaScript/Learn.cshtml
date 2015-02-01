@@ -1,0 +1,25 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFileLearn, new LearnInfo
+    {
+        Language = "JavaScript",
+        ArrayName = "Array",
+        ArrayNamePlural = "Arrays",
+        DictionaryName = "Object",
+        DictionaryNamePlural = "Objects",
+        Header = new Section
+        {
+            Color = "blue",
+            Title = "Learn",
+            Large = true,
+            Extension = "javascript",
+            Back = "/JavaScript",
+            Paragraphs = new string[] {
+                "We're going to spend the first few lessons getting you used to working in Javascript. JavaScript syntax is very similar to C++ and Java, but a little bit simpler. If this is your first time coding, you're in for a great ride.",
+                "Go through these lessons in order."
+            },
+            Goto = "HelloWorld"
+        }
+    });
+}

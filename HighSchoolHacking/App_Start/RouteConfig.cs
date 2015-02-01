@@ -16,13 +16,31 @@ namespace HighSchoolHacking
             routes.MapRoute(
                 "Python",
                 "Python/{section}",
-                new { controller = "Python", action = "Index", section = "Index" }
+                new { 
+                    controller = "Python", 
+                    action = "Index", 
+                    section = "Index" 
+                }
+            );
+
+            routes.MapRoute(
+                "JavaScript",
+                "JavaScript/{section}",
+                new { 
+                    controller = "JavaScript", 
+                    action = "Index", 
+                    section = "Index"
+                }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { 
+                    controller = "Home",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
             );
         }
     }

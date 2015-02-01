@@ -172,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LearnInfo.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -259,6 +260,8 @@
     <Content Include="Views\Python\Lists.cshtml" />
     <Content Include="Views\GitHubLink.cshtml" />
     <Content Include="Views\Python\ForLoops.cshtml" />
+    <Content Include="Views\JavaScript\Learn.cshtml" />
+    <Content Include="Views\Shared\Pages\Learn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

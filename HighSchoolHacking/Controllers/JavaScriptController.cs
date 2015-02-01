@@ -8,9 +8,9 @@ namespace HighSchoolHacking.Controllers
 {
     public class JavaScriptController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string section = "Index")
         {
-            return View();
+            return View(section);
         }
     }
 }

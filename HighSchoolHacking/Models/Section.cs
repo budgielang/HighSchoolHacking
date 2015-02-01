@@ -68,6 +68,37 @@ namespace HighSchoolHacking.Models
         public static string ViewFile = "~/Views/Templating/Section.cshtml";
 
         /// <summary>
+        /// The location of the View file to Html.RenderPartial the contents of
+        /// a Learn page after the first, large section.
+        /// </summary>
+        public static string ViewFileLearn = "~/Views/Shared/Pages/Learn.cshtml";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string[] Colors = new string[] 
+        {
+            "red", "orange", "green", "blue", "purple"
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Dictionary<string, int> ColorIndices = Colors.ToDictionary(
+            color => color,
+            color => Array.IndexOf(Colors, color)
+        );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static string GetColorAt(int index) {
+            return Colors[index % Colors.Length];
+        }
+
+        /// <summary>
         /// Creates a header element (normally h3) with the text as its title
         /// and text content.
         /// </summary>
