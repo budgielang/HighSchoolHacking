@@ -1,51 +1,12 @@
 ﻿@using HighSchoolHacking.Models
+@using HighSchoolHacking.Models.Pages
 
 @{
-    Html.RenderPartial(Section.ViewFile, new Section
+    Html.RenderPartial(Section.GetSharedView("HelloWorld"), new HelloWorld
     {
         Color = "purple",
-        Title = "Hello World",
-        Extension = "python",
-        Large = true,
-        Back = "/Python/Learn",
-        Paragraphs = new string[]
-        {
-            "We're going to spend the first few lessons getting you used to working in Python. It's a bit different (and a lot simpler) than Java, so you want to get used to the syntax.",
-            "Start by going to <a href='http://repl.it/languages/python'>repl.it/languages/python</a>. This is a 'shell' where you can enter Python on the left, hit the play button (or Ctrl + Enter) to make it run, and view output on the right.",
-            "To start, enter the following code on the left side of the screen:",
-            Section.WrapCode("python", "print(\"Hello world!\")"),
-            "You should see a <em>Hello world!</em> appear on the right side of the screen. If you did, great! If not, remember to play the code using the button or shortcut.",
-            "If you already know how to code, just skim the lessons after this one to learn the syntax.",
-        }
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = "steel",
-        Title = "Exercises",
-        Paragraphs = new string[]
-        {
-            Section.WrapList(new string[]
-            {
-                "Instead of printing <em>Hello World</em>, print out your full name."
-            })
-        }
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = "brown",
-        Title = "Solutions",
-        Contracted = true,
-        Paragraphs = new string[]
-        {
-            Section.WrapList(new string[]
-            {
-                "Instead of printing <em>Hello World</em>, print out your full name." + Section.WrapCode("python", new string[]
-                {
-                    "print(\"Joshua Kevin Goldberg\")"
-                })
-            })
-        }
+        Language = "Python",
+        LanguageDescription = "a bit different (and a lot simpler) than Java, so you want to get used to the syntax",
+        PrintFunction = "print"
     });
 }

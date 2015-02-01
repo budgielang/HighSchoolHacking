@@ -68,17 +68,16 @@ namespace HighSchoolHacking.Models
         public static string ViewFile = "~/Views/Templating/Section.cshtml";
 
         /// <summary>
-        /// The location of the View file to Html.RenderPartial the contents of
-        /// a Learn page after the first, large section.
+        /// The directory where View files for generic pages are stored.
         /// </summary>
-        public static string ViewFileLearn = "~/Views/Shared/Pages/Learn.cshtml";
+        public static string ViewFileShare = "~/Views/Shared/Pages/";
 
         /// <summary>
         /// 
         /// </summary>
         public static string[] Colors = new string[] 
         {
-            "red", "orange", "green", "blue", "purple"
+            "purple", "blue", "green", "orange", "red"
         };
 
         /// <summary>
@@ -89,12 +88,19 @@ namespace HighSchoolHacking.Models
             color => Array.IndexOf(Colors, color)
         );
 
+
+        public static string GetSharedView(string name)
+        {
+            return Section.ViewFileShare + name + ".cshtml";
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public static string GetColorAt(int index) {
+        public static string GetColorAt(int index)
+        {
             return Colors[index % Colors.Length];
         }
 

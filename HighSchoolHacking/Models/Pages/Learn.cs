@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HighSchoolHacking.Models
 {
-    public class LearnInfo
+    public class Learn
     {
-        public LearnInfo()
+        public Learn()
         { }
 
         public string Language { get; set; }

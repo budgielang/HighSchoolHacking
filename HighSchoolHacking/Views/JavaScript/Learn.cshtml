@@ -1,7 +1,8 @@
 ﻿@using HighSchoolHacking.Models
+@using HighSchoolHacking.Models.Pages
 
 @{
-    Html.RenderPartial(Section.ViewFileLearn, new LearnInfo
+    Html.RenderPartial(Section.GetSharedView("Learn"), new Learn
     {
         Language = "JavaScript",
         ArrayName = "Array",
