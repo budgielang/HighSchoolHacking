@@ -4,7 +4,7 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "purple",
+        Color = Section.GetNextColor(Model.Color, 6),
         Title = "Conditionals",
         Extension = Model.NameLower,
         Large = true,

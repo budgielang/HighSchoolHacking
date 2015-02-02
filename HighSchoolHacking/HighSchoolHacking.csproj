@@ -249,28 +249,18 @@
     <Content Include="Views\Templating\Section.cshtml" />
     <Content Include="Views\Python\Index.cshtml" />
     <Content Include="Views\JavaScript\Index.cshtml" />
-    <Content Include="Views\Python\HelloWorld.cshtml" />
-    <Content Include="Views\Python\Variables.cshtml" />
-    <Content Include="Views\Python\Comments.cshtml" />
-    <Content Include="Views\Python\Strings.cshtml" />
-    <Content Include="Views\Python\Numbers.cshtml" />
-    <Content Include="Views\Python\Conditionals.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
-    <Content Include="Views\Python\Learn.cshtml" />
-    <Content Include="Views\Python\WhileLoops.cshtml" />
     <Content Include="Views\Python\Lists.cshtml" />
     <Content Include="Views\GitHubLink.cshtml" />
     <Content Include="Views\Python\ForLoops.cshtml" />
-    <Content Include="Views\JavaScript\Learn.cshtml" />
     <Content Include="Views\Shared\Pages\Learn.cshtml" />
-    <Content Include="Views\JavaScript\HelloWorld.cshtml" />
     <Content Include="Views\Shared\Pages\HelloWorld.cshtml" />
     <Content Include="Views\Shared\Pages\Variables.cshtml" />
-    <Content Include="Views\JavaScript\Variables.cshtml" />
     <Content Include="Views\Shared\Pages\Comments.cshtml" />
     <Content Include="Views\Shared\Pages\Strings.cshtml" />
     <Content Include="Views\Shared\Pages\Numbers.cshtml" />
     <Content Include="Views\Shared\Pages\Conditionals.cshtml" />
+    <Content Include="Views\Shared\Pages\WhileLoops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

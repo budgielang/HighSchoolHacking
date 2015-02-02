@@ -1,0 +1,244 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "While Loops",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name +"/Learn",
+        Paragraphs = new string[] {
+            "Loops are a convenient way for you to automate a block of code to run multiple times. Whenever you have to do something over and over again, a loop is a much better way than copy & pasting code repeatedly.",
+            "For many people, loops are the first part of programming they get stuck on. Please make sure you're solid on all the examples here, since the later ones are a lot more complex than previous ones.",
+            Section.WrapHead("How they work"),
+            "The easiest way to do a loop in " + Model.Name + "is a <code>while</code> loop. A <code>while</code> loop continuously runs a block of code \"while\" some condition is true (yes, these are the same conditions from <code>if</code>/<code>elif</code>/<code>else</code> statements).",
+            "When running your code, " + Model.Name + "will first check if the loop's condition is true. If it is, it'll run the code, then go back to check the condition again (and repeat forever until the condition is false). If at any point the condition is false, it stops.",
+            "The following piece of code will run forever, so don't run it!",
+            Section.WrapCode(Model.NameLower, new string[] {
+                "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"LOL\")" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "This one will do absolutely nothing so it's ok to run:",
+            Section.WrapCode(Model.NameLower, new string[] {
+                "while" + Model.ConditionalLeft + Model.BooleanFalse + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Nope.\")" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "Note that loops use indenting and conditions the same way conditionals do. The same rules apply about indenting: if you don't use a reasonable number of spaces, your code is bad and should feel bad.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "Typical Usage",
+        Paragraphs = new string[] {
+            "Loops are used for a whole bunch of stuff in programming, especially to automate tasks. Suppose you wanted to print all numbers from 0 to 9:",
+            Section.WrapCode(Model.NameLower, new string[] {
+                Model.PrintFunction + "(0)" + Model.Semicolon,
+                Model.PrintFunction + "(1)" + Model.Semicolon,
+                Model.PrintFunction + "(2)" + Model.Semicolon,
+                Model.PrintFunction + "(3)" + Model.Semicolon,
+                Model.PrintFunction + "(4)" + Model.Semicolon,
+                Model.PrintFunction + "(5)" + Model.Semicolon,
+                Model.PrintFunction + "(6)" + Model.Semicolon,
+                Model.PrintFunction + "(7)" + Model.Semicolon,
+                Model.PrintFunction + "(8)" + Model.Semicolon,
+                Model.PrintFunction + "(9)" + Model.Semicolon
+            }),
+            "That's a lot of code. Don't do it that way.",
+            "Instead, you can make a variable equal to 0, and each time the loop runs, increase it by 1. The loop can then decide that if the variable is greater than a certain amount, it should stop. This is how people do loops in almost every programming language, and it's really easy once you get used to it.",
+            Section.WrapCode(Model.NameLower, new string[] {
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "count < 10" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "<em>(we typically use the variable name i for loops; it's a <a href=\"http://stackoverflow.com/questions/4137785/why-are-variables-i-and-j-used-for-counters\">long story</a>)</em>",
+            "Those two chunks of code output the same thing. A lot of people understand it as the variable i being different every time the loop runs: it's 0 the first time, then 1, then 2, and so on. Once i becomes 10, it's no longer less than 10, so the conditional will return false and the code will stop.",
+            "You can do more advanced bits of logic here too. This loop doubles i each time, so it prints out numbers twice as big as the previous. 2, 4, 8, 16, 32, etc.",
+            Section.WrapCode(Model.NameLower, new string[] {
+                Model.VariableDeclare + "i = 2" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "i < 350" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    i = i * 2" + Model.Semicolon,
+                Model.ConditionalEnd
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[] {
+            Section.WrapList(new string[] {
+                "Write a loop to print all numbers less than 14.",
+                "Write a loop to print all numbers less than 14, starting with 7.",
+                "Write a loop to print all odd numbers less than 14, starting with 7.",
+                "Write a loop to print all squares (1, 4, 9, 16, ...) less than 350. <br /> <em>Hint: this is exactly one symbol different than the loop that doubles i!</em>",
+                "Write a loop to print all even squares less than 350."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] {
+            Section.WrapList(new string[] {
+                "Write a loop to print all numbers less than 14." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 7" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a loop to print all odd numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 7" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 2" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a loop to print all squares (1, 4, 9, 16, ...) less than 350." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 1" + Model.Semicolon,
+                    Model.VariableDeclare + "square = 1" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "square < 350" + Model.ConditionalRight,
+                    "    square = i * i" + Model.Semicolon,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a loop to print all even squares less than 350." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 1" + Model.Semicolon,
+                    Model.VariableDeclare + "square = 1" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "square < 350" + Model.ConditionalRight,
+                    "    square = i * i" + Model.Semicolon,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 2" + Model.Semicolon,
+                    Model.ConditionalEnd
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "Manual Controls",
+        Paragraphs = new string[]
+        {
+            "If you really want, you can manually change how a loop works a little bit. You can almost always find a way to do loops without the following two commands, but they tend to make it easier.",
+            Section.WrapHead("Break"),
+            "Calling a <code>break</code> command forces a loop to stop and exit. It's used if you want to stop a loop from the inside, or want multiple conditions that could stop it from continuing. The following two blocks of code do the exact same thing:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
+                "    if" + Model.ConditionalLeft + "i >= 10" + Model.ConditionalRight,
+                "        break" + Model.Semicolon,
+                Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "As you can see, <code>break</code> statements don't always make your code more elegant, but sometimes they can help.",
+            Section.WrapHead("Continue"),
+            "Calling a <code>continue</code> command forces a loop to skip to the next iteration of what it's doing. It's useful if you want to sometimes only do part of a block of code, though <code>if</code> statements can do that too.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
+                "    if" + Model.ConditionalLeft + "i < 3 " + Model.Or + " i > 7" + Model.ConditionalRight,
+                "        " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                Model.ConditionalEnd
+            }),Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
+                "    if" + Model.ConditionalLeft + "i >= 3 " + Model.Or + " i <= 7" + Model.ConditionalRight,
+                "        continue" + Model.Semicolon,
+                Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "As with using <code>break</code>, using <code>continue</code> is just a different way of doing things. It's up to you to use them correctly."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[] {
+            Section.WrapList(new string[] {
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14.",
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14, starting with 7.",
+                "Write a loop to print all odd numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] {
+            Section.WrapList(new string[] {
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "True" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
+                    "        break" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                    Model.ConditionalEnd
+                }),
+                "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 7" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "True" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
+                    "        break" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                    Model.ConditionalEnd
+                }),
+                "Write a loop to print all odd numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
+                    "    if" + Model.ConditionalLeft + "i <= 7" + Model.ConditionalRight,
+                    "        continue" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 2" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+            })
+        }
+    });
+}
