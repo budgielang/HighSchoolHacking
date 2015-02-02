@@ -172,8 +172,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Pages\HelloWorld.cs" />
-    <Compile Include="Models\Pages\Learn.cs" />
+    <Compile Include="Models\Languages.cs" />
+    <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Section.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -265,6 +265,12 @@
     <Content Include="Views\Shared\Pages\Learn.cshtml" />
     <Content Include="Views\JavaScript\HelloWorld.cshtml" />
     <Content Include="Views\Shared\Pages\HelloWorld.cshtml" />
+    <Content Include="Views\Shared\Pages\Variables.cshtml" />
+    <Content Include="Views\JavaScript\Variables.cshtml" />
+    <Content Include="Views\Shared\Pages\Comments.cshtml" />
+    <Content Include="Views\Shared\Pages\Strings.cshtml" />
+    <Content Include="Views\Shared\Pages\Numbers.cshtml" />
+    <Content Include="Views\Shared\Pages\Conditionals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

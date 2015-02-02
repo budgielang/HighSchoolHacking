@@ -1,0 +1,112 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "Numbers",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "Numbers in " + Model.Name + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(1 + 2)" + Model.Semicolon + " " + Model.Commentor + " 3"),
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(3 - 4)" + Model.Semicolon + " " + Model.Commentor + " -1"),
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(5 * 6)" + Model.Semicolon + " " + Model.Commentor + " 30"),
+            "Note that Numbers can be Integers or Floats. Integers are exact numbers (1, 2, 3, ...) while Floats are decimal point numbers (0.0, 1.17, ...). Numbers without decimal points default to Integers, which round down in division (they remove the decimal place).",
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(7 / 8)" + Model.Semicolon + " " + Model.Commentor + " 0"),
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(7.0 / 8.0)" + Model.Semicolon + " " + Model.Commentor + " 0.875"),
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(10 / 9)" + Model.Semicolon + " " + Model.Commentor + " 1"),
+            "If you combine an Integer and Float, " + Model.Name + " will turn the product into a Float.",
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(11 / 12.0)" + Model.Semicolon + " " + Model.Commentor + " 0.91666666666666663"),
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(11.0 / 12)" + Model.Semicolon + " " + Model.Commentor + " 0.91666666666666663"),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Special Operations",
+        Paragraphs = new string[]
+        {
+            "As you might have guessed, you can do more advanced operations. To start, you can do all of PEMDAS, though exponents are done with two askterisks ** (^ is actually a fancy operator we won't go into).",
+            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(2 ** 3)" + Model.Semicolon + " " + Model.Commentor + " 8"),
+            "Finding the square root of a number is (as in normal math) ** 1/2, or ** .5. The cubed root is ** 1/3, and so on.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.PrintFunction + "(16 ** .5)" + Model.Semicolon + " " + Model.Commentor + " 4.0",
+                Model.PrintFunction + "(27 ** (1.0 / 3.0))" + Model.Semicolon + " " + Model.Commentor + " 3.0"
+            }),
+            "Parenthesis are as you'd expect. Remember the PEMDAS ordering!",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.PrintFunction + "((1 + 2) * 3)" + Model.Semicolon + " " + Model.Commentor + " 9", 
+                Model.PrintFunction + "(1 + (2 * 3))" + Model.Semicolon + " " + Model.Commentor + " 7"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Examples",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your age. Print it.",
+                "Make a new variable equal to double the age variable. Print it too.",
+                "Make a third variable equal to the square root of a third of your age, <em>not</em> rounded. Print it."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your age. Print it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
+                    Model.PrintFunction + "(age)" + Model.Semicolon
+                }),
+                "Make a new variable equal to double the age variable. Print it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
+                    Model.VariableDeclare + "double = age * 2" + Model.Semicolon,
+                    Model.PrintFunction + "(double)" + Model.Semicolon
+                }),
+                "Make a third variable equal to the square root of double your age, <em>not</em> rounded. Print it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
+                    Model.VariableDeclare + "double = age * 2" + Model.Semicolon,
+                    Model.VariableDeclare + "weird = double ** .5" + Model.Semicolon,
+                    Model.PrintFunction + "(weird)" + Model.Semicolon
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "blue",
+        Title = "Numbers and Strings",
+        Paragraphs = new string[]
+        {
+            "You can add a Numbers and Strings to get a new String. " + Model.Name + " will treat the Number as a String, so it's no different than adding two Strings together.",
+            "We won't quiz you on it here, just keep it in mind so you're not confused when we use it later.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "age = 21" + Model.Semicolon,
+                Model.PrintFunction + "(\"My age is \" + age + \"!\")" + Model.Semicolon + " " + Model.Commentor + " \"My age is 21!\""
+})
+        }
+    });
+}

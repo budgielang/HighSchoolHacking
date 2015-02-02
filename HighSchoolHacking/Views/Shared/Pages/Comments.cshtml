@@ -1,0 +1,27 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 3),
+        Title = "Comments",
+        Extension = Model.NameLower,
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "For the rest of the lessons, we're going to be using a feature called 'comments' in code. Comments do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "foo = \"Hello world!\"",
+                Model.PrintFunction + "(foo) " + Model.Commentor + " If all goes well, this should output 'Hello World!'"
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "foo = \"Hello world!\"",
+                Model.PrintFunction + "(fooo) " + Model.Commentor + " " + Model.UndefinedError + " 'fooo' is not defined"
+            }),
+            "You put comments with a <code>" + Model.Commentor + "</code> before them. We'll expect you to do this around complicated blocks of code, since in later lessons it can be hard to understand your code without you commenting it."
+        }
+    });
+}

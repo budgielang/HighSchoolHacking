@@ -1,0 +1,63 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 2),
+        Title = "Variables",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "In code, a 'variable' stores value. Variables are called by their name, which is how you can set the value, get the value, and change the value.",
+            "For example, in the code below we're manipulating the 'foo' variable and printing it.",
+            Section.WrapCode(Model.NameLower, new string[] {
+                Model.VariableDeclare + "foo = \"Hello world!\"",
+                "print(foo)"
+            }),
+            "Be really careful when writing variable names! Can you spot the problem in the following code example? You might think it's obvious, but when you write code, variable name typos are ridiculously common.",
+            Section.WrapCode(Model.NameLower, new string[] {
+                Model.VariableDeclare + "foo = \"Hello world!\"",
+                "print(fooo)"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(true, new string[] {
+                "Instead of storing <em>Hello world</em>, store your full name and print it.",
+                "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(true, new string[] {
+                "Instead of storing <em>Hello world</em>, store your full name and print it." + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "name = \"Josh Goldberg\"",
+                    Model.VariableDeclare + "print(name)"
+                }),
+                "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?" + Section.WrapCode(Model.NameLower, new string[] {
+                    Model.VariableDeclare + "name = \"Josh Goldberg\"",
+                    Model.VariableDeclare + "my_name = \"Josh Goldberg\"",
+                    Model.VariableDeclare + "name1 = \"Josh Goldberg\"",
+                    Model.VariableDeclare + "1name = \"Josh Goldberg\"",
+                    Model.VariableDeclare + "name<! = \"Josh Goldberg\""
+                }) + "The last two won't work, since you can't start variable names with numbers, and you can't use symbols (<code>-</code> and <code>_</code> are ok , but <code><</code>, <code>=</code>, <code>></code>, <code>!</code>, and <code>+</code> are not)."
+            })
+        }
+    });
+}

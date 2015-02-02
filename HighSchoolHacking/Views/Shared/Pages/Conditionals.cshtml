@@ -1,0 +1,339 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "purple",
+        Title = "Conditionals",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            Section.WrapHead("This lesson has a lot of sections - it's a good idea to do a section's exercises right when you read it. Take breaks every two or three sections!", "em"),
+            "<hr />",
+            "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
+            "This brings us to <code>if</code> statements. These check if something (a condition) is true, and only run a block of code if it is. A simple example is as follows:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Yes!\")",
+                Model.ConditionalEnd
+            }),
+            "Try running this code (it should print <em>Yes!</em>). Don't forget to write the colon at the end of the if statement! " + Model.Name + " knows that <code>True</code> means things should run, and <code>False</code> means they shouldn't.",
+            "Note that there are four spaces at the beginning of the second line. You don't have to use four (you can just use one), but your code becomes really ugly and hard to read so if you only use one or two, you're an evil person. This is called indenting your code, and " + Model.Name + " makes you do it so it knows what's inside the <code>if</code> statement. Anything indented is inside the <code>if</code> statement, and once you stop indenting, the <code>if</code> statement is done.",
+            "The following code should only print <em>B</em>, because the first print is inside an <code>if</code> statement that won't be run:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + Model.BooleanFalse + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"A\")",
+                Model.ConditionalEnd,
+                Model.PrintFunction + "(\"B\")",
+            }),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "blue",
+        Title = "Truthiness",
+        Paragraphs = new string[]
+        {
+            "The most common conditional is checking whether two things are equal. We use the double equals sign <code>==</code> for that:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "1 == 1" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Yeah!\")",
+                Model.ConditionalEnd
+            }),
+            "You can do small math inside the <code>if</code> statements.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "1 + 1 == 2" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Yup!\")",
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "2 ** 3 == 8" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Yep!\")",
+                Model.ConditionalEnd
+            }),
+            "The way we test for inequality is <code>!=</code>. The exclamation mark is like saying 'not this', so <code>!=</code> means 'not equal to'.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "1 != 2" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Yar!\")",
+                Model.ConditionalEnd
+            }),
+            "You can actually use most of the calculator functions in <code>if</code> statements and general operations on variables. <code><</code>, <code><=</code>, <code>></code>, and <code>>=</code> all work for comparisons, and the Number and String operations we've already gone over work.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "9001 > 9000" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Yippers!\")",
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "2 * (1 + 2) == (2 * 1) + (2 * 2)" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Distributive property!\")",
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "\"Foo\" + \"bar\" == \"Foobar\"" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Strings work!\")",
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "name = \"Bob!\"" + Model.Semicolon,
+                "if" + Model.ConditionalLeft + "name == \"Bob\"" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Variables work!\")",
+                Model.ConditionalEnd
+            }),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a new variable equal to your name. Make an if statement to check if it's equal to your name.",
+                "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. If you have no friends, make one up.",
+                "Make a new variable equal to your age. Write an if statement to print a happy message if you're above the age of seven.",
+                "Use the <a href=\"http://en.wikipedia.org/wiki/Associative_property\">associative property</a> in an if statement."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a new variable equal to your name. Make an if statement to check if it's equal to your name." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "name = \"Josh\"" + Model.Semicolon,
+                    "if" + Model.ConditionalLeft + "name == \"Josh\"" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Yup!\")",
+                    Model.ConditionalEnd
+                }),
+                "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. If you have no friends, make one up." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "name = \"Doodlebob\"" + Model.Semicolon,
+                    "if" + Model.ConditionalLeft + "name == 7" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Yup!\")",
+                    Model.ConditionalEnd
+                }),
+                "Make a new variable equal to your age. Write an if statement to print a happy message if you're above the age of seven." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = \"Josh\"" + Model.Semicolon,
+                    "if" + Model.ConditionalLeft + "age > seven" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(name)",
+                    Model.ConditionalEnd
+                }),
+                "Use the <a href=\"http://en.wikipedia.org/wiki/Associative_property\">associative property</a> in an if statement." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "if" + Model.ConditionalLeft + "(2 + 3) + 4 == 2 + (3 + 4)" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Associative property!\")",
+                    Model.ConditionalEnd
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "More Conditionals",
+        Paragraphs = new string[]
+        {
+            Section.WrapHead("Else"),
+            "After an <code>if</code> statement you can add an extra block of code to be evaluated only if the <code>if</code> statement didn't run. This means the program will run either of your blocks of code: if the <code>if</code> statement's conditional was true, the first is run; otherwise, the second is run.",
+            "The following code prints <em>First!</em>...",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + "True" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"First!\")",
+                Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
+                "    " + Model.PrintFunction + "(\"Nope.\")",
+                Model.ConditionalEnd
+            }),
+            "...while this code prints <em>Second!</em>.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if" + Model.ConditionalLeft + Model.BooleanFalse + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Nope.\")",
+                Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
+                "    " + Model.PrintFunction + "(\"Second!\")",
+                Model.ConditionalEnd
+            }),
+            Section.WrapHead("Elif"),
+            "You can chain <code>if</code> statements using the <code>elif</code> statement. <code>elif</code> is short for <code>else if</code> (which other languages use).",
+            "Using <code>elif</code>s allows you to check for multiple conditions, like a bunch of if statements. Each one is checked in order, and as soon as one matches, the rest are ignored.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "number = 1" + Model.Semicolon,
+                "",
+                "if" + Model.ConditionalLeft + "number == 0" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Nope!\")" + Model.Semicolon,
+                "elif" + Model.ConditionalLeft + "number == 1" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Elif works!\")" + Model.Semicolon,
+                "elif" + Model.ConditionalLeft + "number == 2" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(\"Nope!\")" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "After your <code>elif</code>(s), you can put one last <code>else</code> to check if nothing was true.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "number = 7",
+                "",
+                "if number == 0:",
+                "    " + Model.PrintFunction + "(\"Nope!\")",
+                "elif number == 1:",
+                "    " + Model.PrintFunction + "(\"Still nope!\")",
+                "else:",
+                "    " + Model.PrintFunction + "(\"Finally!\")"
+            }),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\".",
+                "Make a variable containing your age, and make a set of conditionals to print different things if you're in the 0 - 9, 10 - 19, or 20+ ranges."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\"." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "song = \"Never Gonna Give You Up\"",
+                    "if song == \"Never Gonna Give You Up\":",
+                    "    " + Model.PrintFunction + "(\"Yup!\")",
+                    "else:",
+                    "    " + Model.PrintFunction + "(\"Nope.\")"
+                }),
+                "Make a variable containing your age, and make a set of conditionals to print different things if you're in the 0 - 9, 10 - 19, or 20+ ranges." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = 21",
+                    "if age < 10:",
+                    "    " + Model.PrintFunction + "(\"Less than ten!\")",
+                    "elif age < 20:",
+                    "    " + Model.PrintFunction + "(\"Less than twenty!\")",
+                    "else:",
+                    "    " + Model.PrintFunction + "(\"Old!\")",
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "More Conditions",
+        Paragraphs = new string[]
+        {
+            Model.Name + " lets you check multiple conditions in a statement using <code>and</code>. This works just like in plain English, where you ask if one thing is true <em>and</em> another. See the following two blocks of code, which do the exact same thing:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if 1 + 1 == 2:",
+                "    if 2 + 2 == 4:",
+                "        print(\"Math!\")"
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if 1 + 1 == 2 and 2 + 2 == 4:",
+                "    " + Model.PrintFunction + "(\"Math!\")"
+            }),
+            "If either of the conditions are false, the inside code won't run:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if 1 + 1 == 2 and 2 + 2 == \"Fish\":",
+                "    " + Model.PrintFunction + "(\"Nope.\")"
+            }),
+            Section.WrapHead("Or"),
+            "You can also check if either of two (or more) conditions are true using <code>or</code>. Like <code>and</code>, this also follows plain English, where you ask if one thing is true <em>or</em> another. That means the code inside a conditional will be run if <em>either</em> of the given statements are true. The following two blocks of code do the same thing:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if 2 + 2 == \"Fish\":",
+                "    " + Model.PrintFunction + "(\"Math!\")",
+                "if 2 + 2 == 4:",
+                "    " + Model.PrintFunction + "(\"Math!\")"
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "if 2 + 2 == \"Fish\" or 2 + 2 == 4:",
+                "    " + Model.PrintFunction + "(\"Math!\")"
+            }),
+            "The first statement was obviously false, but <em>Math!</em> still gets printed because the second one is true."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"",
+                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Neither!\" or \"Both!\"."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"" + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "song = \"Never Gonna Give You Up\"",
+                    "if song != \"Never Gonna Give You Up\" or song == \"Never Gonna Give You Up\":",
+                    "    " + Model.PrintFunction + "(\"Yes!\")",
+                }),
+                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Both!\" or \"One or two were wrong!\"." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = 21",
+                    Model.VariableDeclare + "weight = 182",
+                    "if age > 10 and weight < 700:",
+                    "    " + Model.PrintFunction + "(\"Both!\")",
+                    "else:",
+                    "    " + Model.PrintFunction + "(\"One or two were wrong!\")"
+                })
+            })
+        }
+    });
+}

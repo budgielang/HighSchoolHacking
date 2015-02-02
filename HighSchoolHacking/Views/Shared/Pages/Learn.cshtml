@@ -1,11 +1,22 @@
 ﻿@using HighSchoolHacking.Models
-@using HighSchoolHacking.Models.Pages
-@model Learn
+@model Language
 
 @{
-    int colorIndex = Section.ColorIndices[Model.Header.Color];
-    
-    Html.RenderPartial(Section.ViewFile, Model.Header);
+    int colorIndex = Section.ColorIndices[Model.Color];
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Learn",
+        Large = true,
+        Extension = Model.NameLower,
+        Back = "/Python",
+        Paragraphs = new string[] {
+                "We're going to spend the first few lessons getting you used to working in Python. " + Model.Description + ". If this is your first time coding, you're in for a great ride.",
+                "Go through these lessons in order."
+            },
+        Goto = "HelloWorld"
+    });
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
@@ -35,7 +46,7 @@
         Title = "Strings",
         Paragraphs = new string[]
         {
-            "In " + Model.Language + ", a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in " + Model.Language + ", put whatever characters you want between two quotes. It doesn't matter if they're single apostrophes <code>'</code> or double apostrophes <code>\"</code>; they just have to be the same.",
+            "In " + Model.Name + ", a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in " + Model.Name + ", put whatever characters you want between two quotes. It doesn't matter if they're single apostrophes <code>'</code> or double apostrophes <code>\"</code>; they just have to be the same.",
         },
         Goto = "Strings"
     });
@@ -46,7 +57,7 @@
         Title = "Numbers",
         Paragraphs = new string[]
         {
-            "Numbers in " + Model.Language + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+            "Numbers in " + Model.Name + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
         },
         Goto = "Numbers"
     });
@@ -79,7 +90,7 @@
         Title = Model.ArrayNamePlural,
         Paragraphs = new string[]
         {
-            "An " + Model.ArrayName + " in " + Model.Language + " is like a list in real life; it stores some number of objects. They can hold any number of elements and can be modified at will, so they're very convenient.",
+            "An " + Model.ArrayName + " in " + Model.Name + " is like a list in real life; it stores some number of objects. They can hold any number of elements and can be modified at will, so they're very convenient.",
         },
         Goto = Model.ArrayNamePlural
     });

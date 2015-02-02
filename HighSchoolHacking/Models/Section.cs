@@ -88,7 +88,6 @@ namespace HighSchoolHacking.Models
             color => Array.IndexOf(Colors, color)
         );
 
-
         public static string GetSharedView(string name)
         {
             return Section.ViewFileShare + name + ".cshtml";
@@ -102,6 +101,12 @@ namespace HighSchoolHacking.Models
         public static string GetColorAt(int index)
         {
             return Colors[index % Colors.Length];
+        }
+
+
+        public static string GetNextColor(string color, int increase = 0)
+        {
+            return GetColorAt(ColorIndices[color] + increase);
         }
 
         /// <summary>
@@ -162,9 +167,19 @@ namespace HighSchoolHacking.Models
             return String.Join("", new string[] 
             {
                 "<pre><code class=\"language-" + language + "\">",
-                 HttpUtility.HtmlEncode(String.Join(Environment.NewLine, code)),
+                 HttpUtility.HtmlEncode(Section.CombineCodeLines(code)),
                 "</code></pre>"
             });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static string CombineCodeLines(string[] code)
+        {
+            return String.Join(Environment.NewLine, code.Where(line => line != null));
         }
 
         /// <summary>

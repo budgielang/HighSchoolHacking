@@ -17,4 +17,15 @@
             "After introducing you to the basics of JavaScript and how it's different from Python or Java, these lessons will show you how to tinker with recipe ingredient names, cheat at Cookie Clicker, and make images on Tumblr and other sites look demonic."
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "Learn the Language",
+        Paragraphs = new string[] 
+        {
+            "These lessons will familiarize you with basic JavaScript syntax and the basics of coding, then <strong>to be continued...</strong>"
+        },
+        Goto = "/JavaScript/Learn"
+    });
 }
