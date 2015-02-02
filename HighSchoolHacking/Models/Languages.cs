@@ -40,7 +40,10 @@ namespace HighSchoolHacking.Models
             ArrayNamePlural = "Lists",
             DictionaryName = "Dictionary",
             DictionaryNamePlural = "Dictionaries",
+            LengthName = "len",
+            LengthIsProperty = false,
             PrintFunction = "print",
+            AppendFunction = "append",
             VariableDeclare = "",
             UndefinedError = "NameError: name "
         };
@@ -67,7 +70,10 @@ namespace HighSchoolHacking.Models
             ArrayNamePlural = "Arrays",
             DictionaryName = "Object",
             DictionaryNamePlural = "Objects",
+            LengthName = "length",
+            LengthIsProperty = true,
             PrintFunction = "console.log",
+            AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:"
         };

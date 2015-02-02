@@ -50,10 +50,29 @@ namespace HighSchoolHacking.Models
 
         public string DictionaryNamePlural { get; set; }
 
+        public string LengthName { get; set; }
+
+        public bool LengthIsProperty { get; set; }
+
         public string VariableDeclare { get; set; }
 
         public string PrintFunction { get; set; }
 
+        public string AppendFunction { get; set; }
+
         public string UndefinedError { get; set; }
+
+
+        public string UseLength(string variable)
+        {
+            if (this.LengthIsProperty)
+            {
+                return variable + "." + this.LengthName;
+            }
+            else
+            {
+                return this.LengthName + "(" + variable + ")";
+            }
+        }
     }
 }

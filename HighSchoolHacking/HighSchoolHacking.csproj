@@ -261,6 +261,7 @@
     <Content Include="Views\Shared\Pages\Numbers.cshtml" />
     <Content Include="Views\Shared\Pages\Conditionals.cshtml" />
     <Content Include="Views\Shared\Pages\WhileLoops.cshtml" />
+    <Content Include="Views\Shared\Pages\Lists.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
