@@ -12,6 +12,8 @@ namespace HighSchoolHacking.Models
 
         public static string[] Names = new string[] { "Python", "JavaScript" };
 
+        public static HashSet<string> CustomPages = new HashSet<string> { "ForLoops" };
+
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
         {
             { "Python", Python },
@@ -78,9 +80,14 @@ namespace HighSchoolHacking.Models
             UndefinedError = "Uncaught ReferenceError:",
         };
 
-        public static string GetSharedPage(string section)
+        public static string GetSharedPage(string lesson)
         {
-            return SharedViewStart + section + ".cshtml";
+            return SharedViewStart + lesson + ".cshtml";
+        }
+
+        public static string GetSectionPage(string section, string lesson)
+        {
+            return "~/Views/" + section + "/" + lesson + ".cshtml";
         }
     }
 }

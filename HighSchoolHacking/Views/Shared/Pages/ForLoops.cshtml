@@ -1,0 +1,28 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = Model.ArrayNamePlural,
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            Model.ArrayNamePlural + " in " + Model.Name + " are just like lists in real life; they each store some number of objects. They can hold any number of elements and can be modified at will, so they're very convenient.",
+            "You define one like this:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = [\"Apple\", \"Banana\", \"Cherry\"]" + Model.Semicolon,
+            }),
+            Model.Name + " then knows that your fruit " + Model.ArrayName + " contains three Strings: \"Apple\", \"Banana\", and \"Cherry\".",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = [\"Apple\", \"Banana\", \"Cherry\"]" + Model.Semicolon,
+                Model.PrintFunction + "(fruits)" + Model.Semicolon + " " + Model.Commentor + " ['a', 'b', 'c']"
+            }),
+        }
+    });
+}

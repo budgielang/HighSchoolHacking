@@ -3,7 +3,7 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "orange",
+        Color = Section.GetNextColor(Model.Color, 8),
         Title = "For Loops",
         Extension = "python",
         Large = true,
@@ -24,7 +24,8 @@
                 "sports = [\"Basketball\", \"Football\", \"Soccer\"]",
                 "i = 0",
                 "while i < len(sports):",
-                "    print(sports[i])"
+                "    print(sports[i])",
+                "    i += 1"
             }),
             "The only real difference is that the <code>while</code> loop uses a count variable i, and is a little uglier. When you're iterating over a String or List (or, in later lessons, a Dictionary), it's almost always easier (and cleaner) to use a <code>for</code> loop."
         }

@@ -16,6 +16,11 @@ namespace HighSchoolHacking.Controllers
                 return View("~/Views/JavaScript/Index.cshtml");
             }
 
+            if (Languages.CustomPages.Contains(section))
+            {
+                return View(Languages.GetSectionPage("JavaScript", section), Languages.JavaScript);
+            }
+
             return View(Languages.GetSharedPage(section), HighSchoolHacking.Models.Languages.JavaScript);
         }
     }

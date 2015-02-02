@@ -16,6 +16,11 @@ namespace HighSchoolHacking.Controllers
                 return View("~/Views/Python/Index.cshtml");
             }
 
+            if (Languages.CustomPages.Contains(section))
+            {
+                return View(Languages.GetSectionPage("Python", section), Languages.JavaScript);
+            }
+
             return View(Languages.GetSharedPage(section), HighSchoolHacking.Models.Languages.Python);
         }
     }
