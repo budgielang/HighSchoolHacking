@@ -36,6 +36,12 @@ namespace HighSchoolHacking.Models
 
         public string BooleanFalse { get; set; }
 
+        public string Elif { get; set; }
+
+        public string And { get; set; }
+
+        public string Or { get; set; }
+
         public string ArrayName { get; set; }
 
         public string ArrayNamePlural { get; set; }
