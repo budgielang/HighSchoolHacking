@@ -36,7 +36,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "blue",
+        Color = Section.GetNextColor(Model.Color, 7),
         Title = "Truthiness",
         Paragraphs = new string[]
         {
@@ -154,7 +154,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "green",
+        Color = Section.GetNextColor(Model.Color, 8),
         Title = "More Conditionals",
         Paragraphs = new string[]
         {
@@ -258,7 +258,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "orange",
+        Color = Section.GetNextColor(Model.Color, 9),
         Title = "More Conditions",
         Paragraphs = new string[]
         {

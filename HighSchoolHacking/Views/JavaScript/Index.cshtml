@@ -3,7 +3,7 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "blue",
+        Color = Languages.JavaScript.Color,
         Title = "JavaScript",
         Large = true,
         Extension = "highschoolhacking",
@@ -20,7 +20,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "green",
+        Color = Section.GetNextColor(Languages.JavaScript.Color),
         Title = "Learn the Language",
         Paragraphs = new string[] 
         {

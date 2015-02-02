@@ -45,7 +45,7 @@ namespace HighSchoolHacking.Models
             PrintFunction = "print",
             AppendFunction = "append",
             VariableDeclare = "",
-            UndefinedError = "NameError: name "
+            UndefinedError = "NameError: name ",
         };
 
         public static Language JavaScript = new Language
@@ -75,7 +75,7 @@ namespace HighSchoolHacking.Models
             PrintFunction = "console.log",
             AppendFunction = "push",
             VariableDeclare = "var ",
-            UndefinedError = "Uncaught ReferenceError:"
+            UndefinedError = "Uncaught ReferenceError:",
         };
 
         public static string GetSharedPage(string section)

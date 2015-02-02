@@ -3,7 +3,7 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "green",
+        Color = Languages.Python.Color,
         Title = "Python",
         Extension = "highschoolhacking",
         Large = true,
@@ -17,7 +17,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "purple",
+        Color = Section.GetNextColor(Languages.Python.Color),
         Title = "Learn the Language",
         Paragraphs = new string[] 
         {

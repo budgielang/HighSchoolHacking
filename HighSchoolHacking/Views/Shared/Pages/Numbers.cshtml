@@ -27,7 +27,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "purple",
+        Color = Section.GetNextColor(Model.Color, 6),
         Title = "Special Operations",
         Paragraphs = new string[]
         {
@@ -96,7 +96,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "blue",
+        Color = Section.GetNextColor(Model.Color, 7),
         Title = "Numbers and Strings",
         Paragraphs = new string[]
         {
