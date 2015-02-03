@@ -102,9 +102,9 @@ footer {
     }
 
 
-    .extension {
+    /*.extension {
         display: none;
-    }
+    }*/
 
     footer p {
         margin: 7px 3px;
@@ -118,6 +118,10 @@ footer {
 
 @media screen and (max-width: 490px) {
     img {
+        display: none;
+    }
+
+    .goto-arrows {
         display: none;
     }
 }

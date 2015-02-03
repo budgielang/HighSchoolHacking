@@ -11,15 +11,18 @@
                 return;
             }
 
-            var sections = document.querySelectorAll("section:not(:first-of-type)"), i;
-
-            for (i = 0; i < sections.length; i += 1) {
-                initializeSection(sections[i]);
-            }
-            ;
-
             initializeEmails();
+
+            window.onresize = initializeSections;
         };
+    };
+
+    var initializeSections = function () {
+        var sections = document.querySelectorAll("section:not(:first-of-type)"), i;
+
+        for (i = 0; i < sections.length; i += 1) {
+            initializeSection(sections[i]);
+        }
     };
 
     var initializeSection = function (section) {

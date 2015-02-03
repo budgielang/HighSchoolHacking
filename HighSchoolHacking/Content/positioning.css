@@ -71,9 +71,9 @@ footer p:last-of-type {
   .paragraphs {
     overflow: visible; }
 
-  .extension {
-    display: none; }
-
+  /*.extension {
+        display: none;
+    }*/
   footer p {
     margin: 7px 3px;
     float: none;
@@ -83,6 +83,9 @@ footer p:last-of-type {
 /* Small displays */
 @media screen and (max-width: 490px) {
   img {
+    display: none; }
+
+  .goto-arrows {
     display: none; }
  }
 
