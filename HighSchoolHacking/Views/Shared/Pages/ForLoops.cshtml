@@ -113,4 +113,91 @@
             })
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = "For/In Loops",
+        Paragraphs = new string[]
+        {
+            Model.Name + " also provides <code>for</code>/<code>in</code> loops, which automate looping over objects. Python only allows you to use this type of loop (more info <a href=\"/Python/ForLoops\">here</a>), so if you've used Python it's the same thing.",
+            "Instead of having the three statements from above, these loops only need some object to loop over: typically a String, " + Model.ArrayName + ", or (in later lessons) " + Model.DictionaryName + ".",
+            "The following three code blocks all do the same thing:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "colors = [\"red\", \"blue\", \"green\"]" + Model.Semicolon,
+                "",
+                "for" + Model.ConditionalLeft + Model.VariableDeclare + "color in colors" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(color)" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "colors = [\"red\", \"blue\", \"green\"]" + Model.Semicolon,
+                "",
+                "for" + Model.ConditionalLeft + Model.VariableDeclare + "i = 0; i < " + Model.UseLength("colors") + "; i = i + 1" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(colors[i])" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "colors = [\"red\", \"blue\", \"green\"]" + Model.Semicolon,
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "",
+                "while" + Model.ConditionalLeft + "i < " + Model.UseLength("colors") + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(colors[i])" + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "The <code>for</code>/<code>in</code> loop works by setting the designated variable to be each of the members of the object in order. The first time it's the first element (<code>[0]</code>), the second time the second element (<code>[1]</code>), and so on. Other languages call it <code>foreach</code>, which is frankly a better way of phrasing it: \"for each <em>*thing*</em> in <em>*this*</em>, do ...\""
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your name. Using a <code>for</code>/<code>in</code> loop, copy all characters from it into a new " + Model.ArrayName + ". Print that " + Model.ArrayName + ".",
+                "Make a new " + Model.ArrayName + " of Strings. Use a <code>for</code>/<code>in</code> loop to add each element to a String. Print that String."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a variable equal to your name. Using a <code>for</code>/<code>in</code> loop, copy all characters from it into a new " + Model.ArrayName + ". Print that " + Model.ArrayName + "." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "name = \"Josh\"" + Model.Semicolon,
+                    Model.VariableDeclare + "letters = []" + Model.Semicolon,
+                    "",
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "letter in letters" + Model.ConditionalRight,
+                    "    letters." + Model.AppendFunction + "(letter)" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    "",
+                    Model.PrintFunction + "(letters)" + Model.Semicolon + " " + Model.Commentor + " [\"J\", \"o\", \"s\", \"h\"]"
+                }),
+                "Make a new " + Model.ArrayName + " of Strings. Use a <code>for</code>/<code>in</code> loop to add each element to a String. Print that String." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "sports = [\"Basketball\", \"Football\", \"Soccer\"]" + Model.Semicolon,
+                    Model.VariableDeclare + "output = \"Sports are:\"" + Model.Semicolon,
+                    "",
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "sport in sports" + Model.ConditionalRight,
+                    "    output = output + sport" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    "",
+                    Model.PrintFunction + "(output)" + Model.Semicolon + " " + Model.Commentor + " \"Sports are: Basketball Football Soccer\""
+                })
+            })
+        }
+    });
 }
