@@ -28,13 +28,13 @@
             Section.WrapCode("php", new string[]
             {
                 "<tag>",
-                "    ...children...",
+                "    (children)",
                 "</tag>"
             }),
             "You can see how this page is structured in the Elements tab. There should be an <code>html</code> element at or near the top, labeled <code>&lt;html class=\"</code> and then a bunch of meaningless words. HTML elements can have attributes, and the <code>&lt;html&gt;</code> element has a class attribute (we don't care what that does).",
             "Inside the <code>&lt;html&gt;</code> tag should be <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. Inside <code>&lt;body&gt;</code> should be a bunch of stuff, which is what you actually see on the page. If you expand the <code>&lt;div class=\"container body-content\"&gt;</code> you'll see a <code>&lt;section&gt;</code> element for each of the sections on the page. Cool.",
             Section.WrapHead("Changing elements"),
-            "Inside the first <code>&lt;section&gt;</code> element, there should be an <code>&lt;h1&gt;</code> element and inside that, a <code>&lt;span&gt;</code> with \"Developer Tools\" inside it. To recap, the full path is:",
+            "Inside the first <code>&lt;section&gt;</code> element, there should be an <code>&lt;h1&gt;</code> element and inside that, a <code>&lt;span&gt;</code> with the text \"Developer Tools\" inside it. To recap, the full path is:",
             "<code>html > body > div > section > h1 > span</code>",
             "Double-click on the text of the <code>&lt;h1&gt;</code> (\"Developer Tools\") in the inspector (developer tools). It should become a box with a blue background where you can type in: type \"Nope\" and hit Enter. In the page itself, you should see the top header say \"Nope\". That means exactly what you think, you just used developer tools to change what the page says!",
             "Unfortunately this change is only on your computer, and goes away if you refresh the page.",
