@@ -16,7 +16,7 @@ namespace HighSchoolHacking.Controllers
                 return View("~/Views/Python/Index.cshtml");
             }
 
-            if (Languages.CustomPages.Contains(section))
+            if (Languages.Python.CustomPages.Contains(section))
             {
                 return View(Languages.GetSectionPage("Python", section), Languages.JavaScript);
             }

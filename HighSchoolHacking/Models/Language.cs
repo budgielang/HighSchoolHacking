@@ -62,6 +62,8 @@ namespace HighSchoolHacking.Models
 
         public string UndefinedError { get; set; }
 
+        public HashSet<string> CustomPages { get; set; }
+
 
         public string UseLength(string variable)
         {

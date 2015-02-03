@@ -16,7 +16,7 @@ namespace HighSchoolHacking.Controllers
                 return View("~/Views/JavaScript/Index.cshtml");
             }
 
-            if (Languages.CustomPages.Contains(section))
+            if (Languages.JavaScript.CustomPages.Contains(section))
             {
                 return View(Languages.GetSectionPage("JavaScript", section), Languages.JavaScript);
             }

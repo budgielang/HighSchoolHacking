@@ -4,25 +4,113 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 8),
-        Title = Model.ArrayNamePlural,
+        Color = Section.GetNextColor(Model.Color, 9),
+        Title = "For Loops",
         Extension = Model.NameLower,
         Large = true,
         Back = "/" + Model.Name + "/Learn",
         Paragraphs = new string[]
         {
-            Model.ArrayNamePlural + " in " + Model.Name + " are just like lists in real life; they each store some number of objects. They can hold any number of elements and can be modified at will, so they're very convenient.",
-            "You define one like this:",
+            "By now you should be moderately used to using <code>while</code> loops to iterate over " + Model.ArrayNamePlural + " and Strings. The <code>for</code> loop is like a fancier, longer version of the <code>while</code> loop that makes it easier to iterate over things.",
+            "The syntax is a little dense:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "fruits = [\"Apple\", \"Banana\", \"Cherry\"]" + Model.Semicolon,
+                Model.VariableDeclare + "sports = [\"Basketball\", \"Football\", \"Soccer\"]" + Model.Semicolon,
+                "for" + Model.ConditionalLeft + Model.VariableDeclare + "i = 0; i < " + Model.UseLength("sports") + "; i = i + 1" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                Model.ConditionalEnd
             }),
-            Model.Name + " then knows that your fruit " + Model.ArrayName + " contains three Strings: \"Apple\", \"Banana\", and \"Cherry\".",
+            "The top of the <code>for</code> loop has three sections.",
+            Section.WrapList(true, new string[]
+            {
+                "The first is run before the loop starts, so you'll almost always want to declare a variable here. This loop declares i to be equal to 0.",
+                "The second is a conditional to be checked before each iteration of the loop. Like with <code>while</code> loops, as soon as it evaluates to false, the loop stops.",
+                "The third is code to be evaluated after each iteration of the loop. This loop increases i, so each time the loop runs, i is 1 bigger."
+            }),
+            "The above <code>for</code> loop works the same as this <code>while</code> loop:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "fruits = [\"Apple\", \"Banana\", \"Cherry\"]" + Model.Semicolon,
-                Model.PrintFunction + "(fruits)" + Model.Semicolon + " " + Model.Commentor + " ['a', 'b', 'c']"
+                Model.VariableDeclare + "sports = [\"Basketball\", \"Football\", \"Soccer\"]" + Model.Semicolon,
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "i < " + Model.UseLength("sports") + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
+                Model.ConditionalEnd
             }),
+            "In short, the first part of a <code>for</code> loop's declaration is run before the loop, the second before each iteration (to check if it should continue), and the third after each iteration.",
+            "Because <code>for</code> loops work so similarly to <code>while</code> loops, pretty much every single chunk of code that uses a <code>while</code> loop could also be written using a <code>for</code> loop (and vice versa!)."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a <code>for</code> loop to print all numbers less than 14.",
+                "Write a <code>for</code> loop to print all numbers less than 14, starting with 7.",
+                "Write a <code>for</code> loop to print all odd numbers less than 14, starting with 7.",
+                "Create a new " + Model.ArrayName + ", then write a <code>for</code> loop that copies all numbers less than 14 into that " + Model.ArrayName + ". Print the Array.",
+                "Create a blank String, then write a <code>for</code> loop that copies all numbers from the previous example into it. Print the String."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a <code>for</code> loop to print all numbers less than 14." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "i = 0; i < 14; i = i + 1" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a <code>for</code> loop to print all numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "i = 7; i < 14; i = i + 1" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a <code>for</code> loop to print all odd numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "i = 7; i < 14; i = i + 2" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Create a new " + Model.ArrayName + ", then write a <code>for</code> loop that copies all numbers less than 14 into that " + Model.ArrayName + "." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "numbers = []" + Model.Semicolon,
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "i = 0; i < 14; i = i + 1"  + Model.ConditionalRight,
+                    "    numbers." + Model.AppendFunction + "(i)" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    Model.PrintFunction + "(numbers)" + Model.Semicolon
+                }),
+                "Create a blank String, then write a <code>for</code> loop that copies all numbers from the previous example into it. Print the String." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "numbers = []" + Model.Semicolon,
+                    Model.VariableDeclare + "output = \"\"" + Model.Semicolon,
+                    Model.VariableDeclare + "i" + Model.Semicolon,
+                    "",
+                    "for" + Model.ConditionalLeft + "i = 0; i < 14; i = i + 1"  + Model.ConditionalRight,
+                    "    numbers." + Model.AppendFunction + "(i)" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    "",
+                    "for" + Model.ConditionalLeft + "i = 0; i < " + Model.UseLength("numbers") + "; i = i + 1"  + Model.ConditionalRight,
+                    "    output = output + i" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    "",
+                    Model.PrintFunction + "(output)" + Model.Semicolon
+                })
+            })
         }
     });
 }
