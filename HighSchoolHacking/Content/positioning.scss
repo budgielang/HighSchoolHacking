@@ -1,4 +1,8 @@
-﻿/* General/section positioning */
+﻿body {
+    overflow-x: hidden;
+}
+
+/* General/section positioning */
 
 section {
     clear: both;
@@ -38,6 +42,10 @@ section:first-of-type h1 {
 section img {
     margin-top: 14px;
     margin-bottom: 14px;
+}
+
+section .image-link {
+    float: right;
 }
 
 section:nth-of-type(2n) img {

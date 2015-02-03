@@ -263,6 +263,7 @@
     <Content Include="Views\Shared\Pages\Lists.cshtml" />
     <Content Include="Views\Shared\Pages\Arrays.cshtml" />
     <Content Include="Views\Shared\Pages\ForLoops.cshtml" />
+    <Content Include="Views\JavaScript\DeveloperTools.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

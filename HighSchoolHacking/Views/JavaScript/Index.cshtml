@@ -28,4 +28,15 @@
         },
         Goto = "/JavaScript/Learn"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.JavaScript.Color, 2),
+        Title = "Developer Tools",
+        Paragraphs = new string[] 
+        {
+            "Modern web browsers have something call <a href=\"https://developer.chrome.com/devtools\">Development Tools</a> which let you run JavaScript and mess with web pages. They're really powerful, so we're going to teach you how to use them.",
+        },
+        Goto = "/JavaScript/Developer Tools"
+    });
 }
