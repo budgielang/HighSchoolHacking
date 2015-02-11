@@ -54,12 +54,12 @@
                 "    " + Model.PrintFunction + "(\"Yup!\")",
                 Model.ConditionalEnd
             }),
-            Section.WrapCode(Model.NameLower, new string[]
-            {
-                "if" + Model.ConditionalLeft + "2 ** 3 == 8" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Yep!\")",
-                Model.ConditionalEnd
-            }),
+            //Section.WrapCode(Model.NameLower, new string[]
+            //{
+            //    "if" + Model.ConditionalLeft + "2 ** 3 == 8" + Model.ConditionalRight,
+            //    "    " + Model.PrintFunction + "(\"Yep!\")",
+            //    Model.ConditionalEnd
+            //}),
             "The way we test for inequality is <code>!=</code>. The exclamation mark is like saying 'not this', so <code>!=</code> means 'not equal to'.",
             Section.WrapCode(Model.NameLower, new string[]
             {
@@ -163,7 +163,7 @@
             "The following code prints <em>First!</em>...",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + "True" + Model.ConditionalRight,
+                "if" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
                 "    " + Model.PrintFunction + "(\"First!\")",
                 Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
                 "    " + Model.PrintFunction + "(\"Nope.\")",

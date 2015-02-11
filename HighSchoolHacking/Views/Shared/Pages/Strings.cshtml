@@ -16,9 +16,9 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "foo = \"Hello world!\"",
-                Model.PrintFunction + "(foo) # Hello World!",
+                Model.PrintFunction + "(foo) " + Model.Commentor + " Hello World!",
                 Model.VariableDeclare + "foo = 'Hello world!'",
-                Model.PrintFunction + "(foo) # Hello World!"
+                Model.PrintFunction + "(foo) " + Model.Commentor + " Hello World!"
             }),
             Section.WrapHead("Concatenating Strings"),
             "<em>concatenate [<code>kənˈkatnˌāt</code>] - to link together; unite in a series or chain.</em>",
@@ -32,7 +32,7 @@
                 Model.VariableDeclare + "part_one = \"Hello\"",
                 Model.VariableDeclare + "part_two = \"world\"",
                 Model.VariableDeclare + "combined = part_one + \" \" + part_two",
-                Model.PrintFunction + "(combined + \"!\") # Hello world!"
+                Model.PrintFunction + "(combined + \"!\") " + Model.Commentor + " Hello world!"
             })
         }
     });

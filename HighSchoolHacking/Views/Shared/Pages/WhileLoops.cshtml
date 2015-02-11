@@ -150,6 +150,7 @@
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
                 "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
             Section.WrapCode(Model.NameLower, new string[]
@@ -172,6 +173,7 @@
                 "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
                 "    if" + Model.ConditionalLeft + "i < 3 " + Model.Or + " i > 7" + Model.ConditionalRight,
                 "        " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                 Model.ConditionalEnd
             }),Section.WrapCode(Model.NameLower, new string[]
@@ -181,6 +183,7 @@
                 "    if" + Model.ConditionalLeft + "i >= 3 " + Model.Or + " i <= 7" + Model.ConditionalRight,
                 "        continue" + Model.Semicolon,
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                "    i = i + 1" + Model.Semicolon,
                 "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
                 Model.ConditionalEnd
             }),

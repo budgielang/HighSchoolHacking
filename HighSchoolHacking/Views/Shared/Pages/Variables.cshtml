@@ -15,12 +15,12 @@
             "For example, in the code below we're manipulating the 'foo' variable and printing it.",
             Section.WrapCode(Model.NameLower, new string[] {
                 Model.VariableDeclare + "foo = \"Hello world!\"",
-                "print(foo)"
+                Model.PrintFunction + "(foo)" + Model.Semicolon
             }),
             "Be really careful when writing variable names! Can you spot the problem in the following code example? You might think it's obvious, but when you write code, variable name typos are ridiculously common.",
             Section.WrapCode(Model.NameLower, new string[] {
                 Model.VariableDeclare + "foo = \"Hello world!\"",
-                "print(fooo)"
+                Model.PrintFunction + "(fooo)" + Model.Semicolon
             })
         }
     });
@@ -48,7 +48,7 @@
             Section.WrapList(true, new string[] {
                 "Instead of storing <em>Hello world</em>, store your full name and print it." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "name = \"Josh Goldberg\"",
-                    Model.VariableDeclare + "print(name)"
+                    Model.VariableDeclare + Model.PrintFunction + "(name)" + Model.Semicolon
                 }),
                 "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?" + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "name = \"Josh Goldberg\"",
