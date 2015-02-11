@@ -164,9 +164,35 @@ footer {
         font-size: 1.05em;
         text-align: justify;
         color: #dddddd;
+    }
+
+    #credits {
+        padding: 28px 0 14px 0;
+        clear: both;
+        text-align: center;
 
         a {
             color: #e7e7e7;
+            border-bottom: 0;
+        }
+
+        img {
+            opacity: .49;
+            -moz-transition: 350ms all;
+            -o-transition: 350ms all;
+            -webkit-transition: 350ms all;
+            transition: 350ms all;
+        }
+
+        /* http://stackoverflow.com/questions/609273/convert-an-image-to-grayscale-in-html-css */
+        img:not(:hover) {
+            filter: gray; /* IE6-9 */
+            filter: grayscale(1); /* Firefox 35+ */
+            -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+        }
+
+        img:hover {
+            opacity: .7;
         }
     }
 }
