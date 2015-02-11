@@ -197,7 +197,7 @@
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "",
                 "while" + Model.ConditionalLeft + "i < " + Model.UseLength("fruits") + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(fruits[i])",
+                "    " + Model.PrintFunction + "(fruits[i])" + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
