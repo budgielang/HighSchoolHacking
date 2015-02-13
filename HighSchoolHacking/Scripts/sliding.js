@@ -4,9 +4,7 @@
  * @remarks Because of the differences between Node, NodeList, Element, and
  * HTMLElement, this is still using regular JavaScript. More research required.
  */
-console.log("yeah");
 (function (settings) {
-    console.log("Boom");
     var reset = function () {
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
@@ -20,11 +18,9 @@ console.log("yeah");
     };
 
     var initializeSections = function () {
-        console.log("Resetting");
         var sections = document.querySelectorAll("section:not(:first-of-type)"),
             i;
 
-        console.log("Sections", sections);
         for (i = 0; i < sections.length; i += 1) {
             initializeSection(sections[i]);
         }
@@ -34,7 +30,6 @@ console.log("yeah");
         var header = section.children[0],
             article = section.children[1];
 
-        console.log("oh", header);
         header.onclick = headClickOn;
         header.onmouseover = headMouseOver;
         header.onmouseout = headMouseOut;
@@ -82,7 +77,6 @@ console.log("yeah");
         var section = getParentOfTag(event.target, "section"),
             header = section.children[0],
             article = section.children[1];
-        console.log("on", header);
 
         header.setAttribute("clicked", "on");
 
@@ -94,7 +88,6 @@ console.log("yeah");
         var section = getParentOfTag(event.target, "section"),
             header = section.children[0],
             article = section.children[1];
-        console.log("off", header);
 
         header.setAttribute("clicked", "off");
 
