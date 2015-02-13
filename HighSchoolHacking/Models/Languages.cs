@@ -42,6 +42,7 @@ namespace HighSchoolHacking.Models
             DictionaryNamePlural = "Dictionaries",
             LengthName = "len",
             LengthIsProperty = false,
+            NativeExponents = true,
             PrintFunction = "print",
             AppendFunction = "append",
             VariableDeclare = "",

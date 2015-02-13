@@ -25,28 +25,31 @@
         }
     });
 
-    //Html.RenderPartial(Section.ViewFile, new Section
-    //{
-    //    Color = Section.GetNextColor(Model.Color, 6),
-    //    Title = "Special Operations",
-    //    Paragraphs = new string[]
-    //    {
-    //        "As you might have guessed, you can do more advanced operations. To start, you can do all of PEMDAS, though exponents are done with two askterisks ** (^ is actually a fancy operator we won't go into).",
-    //        Section.WrapCode(Model.NameLower, Model.PrintFunction + "(2 ** 3)" + Model.Semicolon + " " + Model.Commentor + " 8"),
-    //        "Finding the square root of a number is (as in normal math) ** 1/2, or ** .5. The cubed root is ** 1/3, and so on.",
-    //        Section.WrapCode(Model.NameLower, new string[]
-    //        {
-    //            Model.PrintFunction + "(16 ** .5)" + Model.Semicolon + " " + Model.Commentor + " 4.0",
-    //            Model.PrintFunction + "(27 ** (1.0 / 3.0))" + Model.Semicolon + " " + Model.Commentor + " 3.0"
-    //        }),
-    //        "Parenthesis are as you'd expect. Remember the PEMDAS ordering!",
-    //        Section.WrapCode(Model.NameLower, new string[]
-    //        {
-    //            Model.PrintFunction + "((1 + 2) * 3)" + Model.Semicolon + " " + Model.Commentor + " 9", 
-    //            Model.PrintFunction + "(1 + (2 * 3))" + Model.Semicolon + " " + Model.Commentor + " 7"
-    //        })
-    //    }
-    //});
+    if (Model.NativeExponents)
+    {
+        Html.RenderPartial(Section.ViewFile, new Section
+        {
+            Color = Section.GetNextColor(Model.Color, 6),
+            Title = "Special Operations",
+            Paragraphs = new string[]
+            {
+                "As you might have guessed, you can do more advanced operations. To start, you can do all of PEMDAS, though exponents are done with two askterisks ** (^ is actually a fancy operator we won't go into).",
+                Section.WrapCode(Model.NameLower, Model.PrintFunction + "(2 ** 3)" + Model.Semicolon + " " + Model.Commentor + " 8"),
+                "Finding the square root of a number is (as in normal math) ** 1/2, or ** .5. The cubed root is ** 1/3, and so on.",
+                Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.PrintFunction + "(16 ** .5)" + Model.Semicolon + " " + Model.Commentor + " 4.0",
+                    Model.PrintFunction + "(27 ** (1.0 / 3.0))" + Model.Semicolon + " " + Model.Commentor + " 3.0"
+                }),
+                "Parenthesis are as you'd expect. Remember the PEMDAS ordering!",
+                Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.PrintFunction + "((1 + 2) * 3)" + Model.Semicolon + " " + Model.Commentor + " 9",
+                    Model.PrintFunction + "(1 + (2 * 3))" + Model.Semicolon + " " + Model.Commentor + " 7"
+                })
+            }
+        });
+    }
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
@@ -58,7 +61,9 @@
             {
                 "Make a variable equal to your age. Print it.",
                 "Make a new variable equal to double the age variable. Print it too.",
-                "Make a third variable equal to the square root of a third of your age, <em>not</em> rounded. Print it."
+                Model.NativeExponents
+                    ? "Make a third variable equal to the square root of a third of your age, <em>not</em> rounded. Print it."
+                    : "Make a third variable equal to your age squared, divided by two. Print it."
             })
         }
     });
@@ -96,7 +101,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 7),
+        Color = Section.GetNextColor(Model.Color, Model.NativeExponents ? 7 : 6),
         Title = "Numbers and Strings",
         Paragraphs = new string[]
         {
@@ -106,7 +111,7 @@
             {
                 Model.VariableDeclare + "age = 21" + Model.Semicolon,
                 Model.PrintFunction + "(\"My age is \" + age + \"!\")" + Model.Semicolon + " " + Model.Commentor + " \"My age is 21!\""
-})
+            })
         }
     });
 }

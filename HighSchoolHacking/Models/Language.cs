@@ -54,6 +54,8 @@ namespace HighSchoolHacking.Models
 
         public bool LengthIsProperty { get; set; }
 
+        public bool NativeExponents { get; set; }
+
         public string VariableDeclare { get; set; }
 
         public string PrintFunction { get; set; }

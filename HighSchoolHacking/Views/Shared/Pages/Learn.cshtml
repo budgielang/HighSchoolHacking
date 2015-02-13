@@ -112,9 +112,9 @@
         Title = Model.DictionaryNamePlural,
         Paragraphs = new string[]
         {
-            "<strong>To be completed!</strong>",
+            Model.DictionaryNamePlural + " let you store any number of objects kind of like how " + Model.ArrayNamePlural + " do, but keyed by Strings intsead of Numbers. This is super useful for all sorts of stuff, and ends up being the answer to a lot of programming interview questions."
         },
-        //Goto = Model.DictionaryNamePlural
+        Goto = Model.DictionaryNamePlural
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
