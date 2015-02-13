@@ -32,7 +32,8 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " 7"
-            })
+            }),
+            "A good way of thinking about " + Model.DictionaryNamePlural + " is that they store a bunch of key-value pairs. If you ask them for a key, you get the corresponding value. "
         }
     });
 
@@ -124,7 +125,7 @@
         Title = "Exercises",
         Paragraphs = new string[] 
         {
-            "Do the same examples as before, but start the " + Model.DictionaryNamePlural + " off blank, and add values to them individually."
+            "Do the same examples as before, but start the " + Model.DictionaryNamePlural + " off empty, and add values to them individually."
         }
     });
 
@@ -152,9 +153,33 @@
                     "couples[\"Alex\"] = \"Devin\"",
                     "couples[\"Sophia\"] = \"Noah\"",
                     "couples[\"Emma\"] = \"Liam\"",
-                    "couples[\"Devin\"] = \"Alex\""
+                    "couples[\"Devin\"] = \"Alex\"" 
                 })
             })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Looping through " + Model.DictionaryNamePlural,
+        Paragraphs = new string[]
+        { 
+            "Just like with " + Model.ArrayNamePlural + ", you can loop through " + Model.DictionaryNamePlural + " with <code>for</code> loops. The syntax is practically identical. The following block of code prints out everything in the " + Model.DictionaryName + ".",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = {",
+                "    \"apple\": 7,",
+                "    \"banana\": 14,",
+                "    \"cherry\": 21",
+                "}" + Model.Semicolon,
+                "",
+                "for" + Model.ConditionalLeft + Model.VariableDeclare + "key in fruits" + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(key + \" has \" + fruits[key])" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "When looping through a " + Model.DictionaryNamePlural + ", the <code>key</code> variable is set to each of the keys. One time it will be \"apple\", another \"banana\", and another \"cherry\".",
+            "<strong><em>To be continued!</em></strong>"
         }
     });
 }

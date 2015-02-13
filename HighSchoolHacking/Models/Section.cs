@@ -21,6 +21,11 @@ namespace HighSchoolHacking.Models
         public string Title { get; set; }
 
         /// <summary>
+        /// An optional URI for an image to display.
+        /// </summary>
+        public string Image { get; set; }
+
+        /// <summary>
         /// An optional domain extension to place next to the text, smaller.
         /// </summary>
         public string Extension { get; set; }
