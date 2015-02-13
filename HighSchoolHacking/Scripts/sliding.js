@@ -1,10 +1,12 @@
 ﻿/**
-*
-*
-* @remarks Because of the differences between Node, NodeList, Element, and
-* HTMLElement, this is still using regular JavaScript. More research required.
-*/
+ * 
+ * 
+ * @remarks Because of the differences between Node, NodeList, Element, and
+ * HTMLElement, this is still using regular JavaScript. More research required.
+ */
+console.log("yeah");
 (function (settings) {
+    console.log("Boom");
     var reset = function () {
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
@@ -18,16 +20,21 @@
     };
 
     var initializeSections = function () {
-        var sections = document.querySelectorAll("section:not(:first-of-type)"), i;
+        console.log("Resetting");
+        var sections = document.querySelectorAll("section:not(:first-of-type)"),
+            i;
 
+        console.log("Sections", sections);
         for (i = 0; i < sections.length; i += 1) {
             initializeSection(sections[i]);
         }
     };
 
     var initializeSection = function (section) {
-        var header = section.children[0], article = section.children[1];
+        var header = section.children[0],
+            article = section.children[1];
 
+        console.log("oh", header);
         header.onclick = headClickOn;
         header.onmouseover = headMouseOver;
         header.onmouseout = headMouseOut;
@@ -48,7 +55,9 @@
     };
 
     var headMouseOver = function (event) {
-        var section = getParentOfTag(event.target, "section"), header = section.children[0], article = section.children[1];
+        var section = getParentOfTag(event.target, "section"),
+            header = section.children[0],
+            article = section.children[1];
 
         header.setAttribute("hovering", "on");
 
@@ -58,7 +67,9 @@
     };
 
     var headMouseOut = function (event) {
-        var section = getParentOfTag(event.target, "section"), header = section.children[0], article = section.children[1];
+        var section = getParentOfTag(event.target, "section"),
+            header = section.children[0],
+            article = section.children[1];
 
         header.setAttribute("hovering", "off");
 
@@ -68,7 +79,10 @@
     };
 
     var headClickOn = function (event) {
-        var section = getParentOfTag(event.target, "section"), header = section.children[0], article = section.children[1];
+        var section = getParentOfTag(event.target, "section"),
+            header = section.children[0],
+            article = section.children[1];
+        console.log("on", header);
 
         header.setAttribute("clicked", "on");
 
@@ -77,7 +91,10 @@
     };
 
     var headClickOff = function (event) {
-        var section = getParentOfTag(event.target, "section"), header = section.children[0], article = section.children[1];
+        var section = getParentOfTag(event.target, "section"),
+            header = section.children[0],
+            article = section.children[1];
+        console.log("off", header);
 
         header.setAttribute("clicked", "off");
 
@@ -103,7 +120,8 @@
     };
 
     var initializeEmails = function () {
-        var elements = document.querySelectorAll(".email"), element, email, i;
+        var elements = document.querySelectorAll(".email"),
+            element, email, i;
 
         for (i = 0; i < elements.length; i += 1) {
             element = elements[i];
@@ -114,9 +132,9 @@
         }
     };
 
+
     reset();
 })({
     "hoverHeight": 49,
     "transitionSpeed": 117
 });
-//# sourceMappingURL=sliding.js.map
