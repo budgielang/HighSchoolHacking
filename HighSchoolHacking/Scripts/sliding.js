@@ -7,13 +7,19 @@
 (function (settings) {
     var reset = function () {
         document.onreadystatechange = function () {
-            if (document.readyState !== "complete") {
+            if (
+                document.readyState !== "interactive"
+                && document.readyState !== "complete"
+            ) {
                 return;
             }
+
+            document.onreadystatechange = undefined;
 
             initializeEmails();
 
             window.onresize = initializeSections;
+            initializeSections();
         };
     };
 
