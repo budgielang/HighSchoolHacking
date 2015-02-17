@@ -56,6 +56,8 @@ namespace HighSchoolHacking.Models
 
         public bool LengthIsProperty { get; set; }
 
+        public bool DirectArrayLoops { get; set; }
+
         public bool NativeExponents { get; set; }
 
         public string VariableDeclare { get; set; }
@@ -78,6 +80,32 @@ namespace HighSchoolHacking.Models
             else
             {
                 return this.LengthName + "(" + variable + ")";
+            }
+        }
+
+        public string StartLengthLoop(string keyIterator, string keyValue, string container, string before = "")
+        {
+            if (this.DirectArrayLoops)
+            {
+                return String.Join("", new string[]
+                {
+                    before + "for" + this.ConditionalLeft + this.VariableDeclare,
+                    before + keyValue + " in " + container,
+                    before + this.ConditionalRight
+                });
+            }
+            else
+            {
+                return String.Join("", new string[]
+                {
+                    before + "for" + this.ConditionalLeft + this.VariableDeclare,
+                    before + keyIterator + " = 0; ",
+                    before + keyIterator + " < " + this.UseLength(container) + "; ",
+                    before + keyIterator + " = " + keyIterator + " + 1",
+                    before + this.ConditionalRight,
+                    before + "\n",
+                    before + "    " + keyValue + " = " + container + "[" + keyIterator + "]" + this.Semicolon
+                });
             }
         }
     }

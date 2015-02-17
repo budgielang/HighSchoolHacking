@@ -43,6 +43,7 @@ namespace HighSchoolHacking.Models
             LengthName = "len",
             LengthIsProperty = false,
             NativeExponents = true,
+            DirectArrayLoops = true,
             PrintFunction = "print",
             AppendFunction = "append",
             VariableDeclare = "",
