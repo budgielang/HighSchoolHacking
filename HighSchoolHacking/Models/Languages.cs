@@ -80,7 +80,7 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
-            CustomPages = new HashSet<string> { "DeveloperTools" }
+            CustomPages = new HashSet<string> { "DeveloperTools", "NameTypos" }
         };
 
         public static string GetSharedPage(string lesson)

@@ -1,0 +1,142 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "Name Typos",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "Have you ever tried to remember a famous person's name and gotten it a little bit wrong? Fred instead of Ted, Moe instead of Joe, etc.? We're going to spoof Google results to make them get names wrong on purpose.",
+            "In the <a href=\"/JavaScript/DeveloperTools\">Developer Tools</a> tutorial, you learned how to manually go into a webpage and change the text of HTML elements. You can also do this using the <code>document</code> Object in JavaScript, which lets you interact with HTML elements in your code.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Basic Queries",
+        Paragraphs = new string[]
+        {
+            "We're going to want to find HTML elements of a certain type within a page. This could be getting all paragraphs, all bold text, or more complex queries like all bold text inside paragraphs. We do this using \"CSS Selectors\" that \"select\" specific elements within a page.",
+            "The first selector you can use is <code>*</code>. In programming, asterisks typically mean \"everything\", so in this case it means \"find everything.\" To call a selector like <code>*</code>, you use:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "document.querySelectorAll(\"*\")"
+            }),
+            "<code>document.querySelectorAll</code> takes in a String representing a Query, and returns an Array-like structure containing all the matching elements in the page. We say it's an Array-like structure because it works just like an Array, but is slightly different (the actual differences are technical and everybody hates them).",
+            "Because the result is like an Array, you can loop through it. Try running the following code in this page:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var elements = document.querySelectorAll(\"*\")",
+                "for (var i = 0; i < elements.length; i = i + 1) {",
+                "    console.log(elements[i]);",
+                "}"
+            }),
+            "Yup, that's a lot of elements. Notice how when you roll your mouse over the element in the console, it shows you where it is in the page? Super useful.",
+            "To be a little more specific, you can filter on the type of element. A few good element types are:",
+            Section.WrapList(false, new string[]
+            {
+                "<strong><code>&lt;strong&gt;</code></strong> - bold text",
+                "<strong><code>&lt;em&gt;</code></strong> - italic text",
+                "<strong><code>&lt;h1&gt;</code></strong> - really big headers",
+                "<strong><code>&lt;h2&gt;</code></strong> - big headers",
+                "<strong><code>&lt;h3&gt;</code></strong> - medium headers",
+                "<strong><code>&lt;h4&gt;</code></strong> - small headers",
+                "<strong><code>&lt;p&gt;</code></strong> - paragraphs",
+            }),
+            "There are a bunch of other types too. Different websites tend to use them differently, too, so you'll just have to look through a page's elements to see how it does things.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 15),
+        Title = "Advanced Queries",
+        Paragraphs = new string[]
+        { 
+            "Within a query String, you can put multiple queries separated by spaces to look for elements within other elements. For example, <code>\"h1 span\"</code> looks for all <code>&lt;span&gt;</code> elements that are within an <code>&lt;h1&gt;</code> element.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "document.querySelectorAll(\"h1 span\");",
+            }),
+            "That query selector brings you the text inside the main header for this page. You can think of a query with multiple parts as going from the outside in: first select all <code>&lt;h1&gt;</code> elements, then within them search for all <code>&lt;span&gt;</code> elements.",
+            "You can also query on element attributes, such as class. When you go through elements in the Elements or Console tabs, you can see elements that have these attributes. You can filter elements that contain a certain class by adding period and that class to the element query, so to get all <code>&lt;section&gt;</code> elements with the \"" + Section.GetNextColor(Model.Color, 15) + "\" class, you would use \"section." + Section.GetNextColor(Model.Color, 15) + "\":",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "document.querySelectorAll(\"section\"); // all sections",
+                "",
+                "document.querySelectorAll(\"section p\"); // all paragraphs in any section",
+                "",
+                "document.querySelectorAll(\"section." + Section.GetNextColor(Model.Color, 15) + "\"); // just " + Section.GetNextColor(Model.Color, 15) + " sections",
+                "",
+                "document.querySelectorAll(\"section." + Section.GetNextColor(Model.Color, 15) + " p\"); // all paragraphs within " + Section.GetNextColor(Model.Color, 15) + " sections",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 16),
+        Title = "Spoofing Text",
+        Paragraphs = new string[]
+        { 
+            "When you have an element, you can get or set its text in JavaScript via its <code>innerText</code> property. You manually did this in the Development Tools lesson, so lets do it again in code:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var element = document.querySelectorAll(\"h1 span\")[0];",
+                "element.innerText = \"Nope!\";"
+            }),
+            "The <code>&lt;h1&gt;</code>s in this site all contain <code>&lt;span&gt;</code> elements with the actual text (long story).",
+            "You could also change all sub-headings in the page, which are <code>&lt;h2&gt;</code>s:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var elements = document.querySelectorAll(\"h2 span\");",
+                "for (var i = 0; i < elements.length; i = i + 1) {",
+                "    elements[i].innerText = \"Still nope!\";",
+                "}"
+            }),
+            "You could add to the innerText, since it's a normal String:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var elements = document.querySelectorAll(\"h2 span\");",
+                "for (var i = 0; i < elements.length; i = i + 1) {",
+                "    elements[i].innerText = elements[i].innerText + \"... Yeah!\";",
+                "}"
+            }),
+            "There's a nice Function that Strings have in JavaScript called <code>replace</code>. It takes in two Strings (what to find in the String, and what to replace it with), and returns a new String with the text. You can use this to replace just parts of an element's text:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var elements = document.querySelectorAll(\"p\");",
+                "for (var i = 0; i < elements.length; i = i + 1) {",
+                "    elements[i].innerText = elements[i].innerText.replace(\"JavaScript\", \"BEST LANGUAGE EVER\");",
+                "}"
+            }),
+            "The above block of code found all paragraph (<code>&lt;p&gt;</code>) elements and for each of them, set that element's innerText to the result of replacing all instances of \"JavaScript\" with \"BEST LANGUAGE EVER\"."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Search \"Bill Gates\" in Google. Write a block of code to be run in the console that replaces all instances of \"Bill Gates\" with \"Phil Gates\" in <code>\".r\"</code> elements.",
+                "Make your code also change all <code>\".st\"</code> elements.",
+                "Make your code also change the name in any other element types it tends to appear in."
+            }),
+            Section.WrapHead("Extra Credit"),
+            Section.WrapList(new string[]
+            {
+                "Make a version of your code that works for Bing searches."
+            })
+        }
+    });
+}
