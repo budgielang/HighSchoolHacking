@@ -73,6 +73,7 @@ namespace HighSchoolHacking.Models
             DictionaryName = "Object",
             DictionaryNamePlural = "Objects",
             LengthName = "length",
+            CanConcatenateNumbers = true,
             LengthIsProperty = true,
             PrintFunction = "console.log",
             AppendFunction = "push",

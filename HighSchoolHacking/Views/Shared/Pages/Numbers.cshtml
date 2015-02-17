@@ -99,19 +99,22 @@
         }
     });
 
-    Html.RenderPartial(Section.ViewFile, new Section
+    if (Model.CanConcatenateNumbers)
     {
-        Color = Section.GetNextColor(Model.Color, Model.NativeExponents ? 7 : 6),
-        Title = "Numbers and Strings",
-        Paragraphs = new string[]
+        Html.RenderPartial(Section.ViewFile, new Section
         {
-            "You can add a Numbers and Strings to get a new String. " + Model.Name + " will treat the Number as a String, so it's no different than adding two Strings together.",
-            "We won't quiz you on it here, just keep it in mind so you're not confused when we use it later.",
-            Section.WrapCode(Model.NameLower, new string[]
+            Color = Section.GetNextColor(Model.Color, Model.NativeExponents ? 7 : 6),
+            Title = "Numbers and Strings",
+            Paragraphs = new string[]
             {
-                Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                Model.PrintFunction + "(\"My age is \" + age + \"!\")" + Model.Semicolon + " " + Model.Commentor + " \"My age is 21!\""
-            })
-        }
-    });
+                "You can add a Numbers and Strings to get a new String. " + Model.Name + " will treat the Number as a String, so it's no different than adding two Strings together.",
+                "We won't quiz you on it here, just keep it in mind so you're not confused when we use it later.",
+                Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
+                    Model.PrintFunction + "(\"My age is \" + age + \"!\")" + Model.Semicolon + " " + Model.Commentor + " \"My age is 21!\""
+                })
+            }
+        });
+    }
 }

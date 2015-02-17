@@ -52,6 +52,8 @@ namespace HighSchoolHacking.Models
 
         public string LengthName { get; set; }
 
+        public bool CanConcatenateNumbers { get; set; }
+
         public bool LengthIsProperty { get; set; }
 
         public bool NativeExponents { get; set; }
