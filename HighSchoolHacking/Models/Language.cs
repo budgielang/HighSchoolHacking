@@ -104,7 +104,7 @@ namespace HighSchoolHacking.Models
                     before + keyIterator + " = " + keyIterator + " + 1",
                     before + this.ConditionalRight,
                     before + "\n",
-                    before + "    " + keyValue + " = " + container + "[" + keyIterator + "]" + this.Semicolon
+                    before + "    " + this.VariableDeclare + keyValue + " = " + container + "[" + keyIterator + "]" + this.Semicolon
                 });
             }
         }
