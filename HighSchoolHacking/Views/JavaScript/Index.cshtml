@@ -7,6 +7,7 @@
         Title = "JavaScript",
         Large = true,
         Extension = "highschoolhacking",
+        Back = "/",
         Slogans = new string[]
         {
             "Mmhh the convenience.",
@@ -38,5 +39,16 @@
             "Modern web browsers have something call <a href=\"https://developer.chrome.com/devtools\">Development Tools</a> which let you run JavaScript and mess with web pages. They're really powerful, so we're going to teach you how to use them.",
         },
         Goto = "/JavaScript/Developer Tools"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.JavaScript.Color, 3),
+        Title = "Name Typos",
+        Paragraphs = new string[] 
+        {
+            "Have you ever tried to remember a famous person's name and gotten it a little bit wrong? Fred instead of Ted, Moe instead of Joe, etc.? We're going to spoof Google results to make them get names wrong on purpose.",
+        },
+        Goto = "/JavaScript/Name Typos"
     });
 }

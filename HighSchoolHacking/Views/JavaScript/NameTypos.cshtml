@@ -4,7 +4,7 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 13),
+        Color = Section.GetNextColor(Model.Color, 3),
         Title = "Name Typos",
         Extension = Model.NameLower,
         Large = true,
@@ -18,7 +18,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 14),
+        Color = Section.GetNextColor(Model.Color, 4),
         Title = "Basic Queries",
         Paragraphs = new string[]
         {
@@ -55,7 +55,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 15),
+        Color = Section.GetNextColor(Model.Color, 5),
         Title = "Advanced Queries",
         Paragraphs = new string[]
         { 
@@ -81,7 +81,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 16),
+        Color = Section.GetNextColor(Model.Color, 6),
         Title = "Spoofing Text",
         Paragraphs = new string[]
         { 
@@ -136,7 +136,8 @@
             Section.WrapList(new string[]
             {
                 "Come up with a few other celebrity name replacements.",
-                "Make a version of your code that works for Bing searches."
+                "Make a version of your code that works for Bing searches.",
+                "Make a version that works for Wikipedia articles."
             })
         }
     });
