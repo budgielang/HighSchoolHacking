@@ -52,6 +52,8 @@ section.right h2 span {
   overflow: hidden; }
   .paragraphs li pre {
     margin-bottom: 28px; }
+  .paragraphs ol ul {
+    padding-top: 11px; }
 
 footer p {
   float: left;

@@ -108,6 +108,8 @@ article {
     /*box-shadow: 0 0 14px rgba(175, 175, 175, .84);*/
     overflow-x: scroll;
     font-size: 0.77em; }
+  article pre.language-text {
+    padding: 14px 21px; }
 
 .paragraphs p:first-of-type {
   margin-top: 7px; }
