@@ -1,0 +1,70 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 3),
+        Title = "Simplebot",
+        Extension = "python",
+        Image = "http://upload.wikimedia.org/wikipedia/en/c/c8/Alan_Turing_photo.jpg",
+        Large = true,
+        Back = "/Python",
+        Paragraphs = new string[]
+        {
+            "One of the biggest new technologies right now is natural language, or making software understand and speak like a real person. Siri, Google Now, and Cortana are all highly developed personal assistants that try (and mostly fail) to pretend to be real people.",
+            "The idea behind this originated in 1936 by Alan Turing, generally considered the father of Computer Science. He had the idea of a Turing Test to check whether a machine is acceptably pretending to be human: if you put a machine behind a wall and it had a text-based conversation with a person, could the person tell whether it's a machine?",
+            "Science hasn't yet made a machine that can reliably pass the Turing Test. <a href=\"http://www.cleverbot.com\">Cleverbot</a> is one group's attempt to make a bot that remembers what people have said before, but if you've used it for more than ten seconds you can tell it's horrible. Instead, we're going to make a simple version of it, called Simplebot."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 4),
+        Title = "File Format",
+        Goto = "/Content/Files/Simplebot.txt",
+        Paragraphs = new string[]
+        {
+            "Your Simplebot will keep its database of questions and answers. If you ask it any known question, it'll spit back its known answer. Very simple.",
+            "That database is stored in a <code>database.txt</code> file. The file stores on each line, in order: question, answer, blank line, question answer, blank line...",
+            Section.WrapCode("text", new string[]
+            {
+                "Question 1",
+                "Answer 1",
+                "",
+                "Question 2",
+                "Answer 2",
+                "",
+                "Question 3",
+                "Answer 3",
+                "",
+            }),
+            "Using this example, if you give the program \"Question 1\", it should give you \"Answer 1\" back.",
+            "A sample database is available for download here:"
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Read the database into a Dictionary in Python. To get the answer to \"Hi\", you should be able to say <code>mydictionary[\"Hi\"]</code> and receive \"Hello.\" back.",
+                "Change your program so that when putting keys into the dictionary or retrieving values from keys, remove key whitespace and periods, and make them lowercase. For example, \"Hi\" and \"hi\" should both receive \"Hello.\" back.",
+                "Use a while loop and the <code>input(\"Prompt:\")</code> function to continuously read in input from the user and print the corresponding response in the database. This should look like a conversation, similar to what you'd see in Facebook chat or Skype or Cleverbot." + Section.WrapList(false, new string[]
+                {
+                    "Does this reliably pass the Turing Test?",
+                    "Could this ever pass the Turing Test?",
+                    "Could we change anything to make it pass?"
+                })
+            }),
+            Section.WrapHead("Extra Credit"),
+            Section.WrapList(new string[]
+            {
+                "At the end of each conversation, save your dictionary to a new dictionary.txt using <code>file = open(\"my_file.txt\", \"w\")</code> and <code>file.write(\"my line\n\")</code>."
+            })
+        }
+    });
+}

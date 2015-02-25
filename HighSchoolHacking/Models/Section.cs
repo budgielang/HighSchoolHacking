@@ -5,6 +5,9 @@ using System.Web;
 
 namespace HighSchoolHacking.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Section
     {
         public Section()
@@ -148,9 +151,11 @@ namespace HighSchoolHacking.Models
         {
             return String.Join("", new string[] 
             {
-                "<pre><code class=\"language-" + language + "\">",
+                "<pre class=\"language-" + language + "\">",
+                "<code class=\"language-" + language + "\">",
                  HttpUtility.HtmlEncode(code),
-                "</code></pre>"
+                "</code>",
+                "</pre>"
             });
         }
 
@@ -171,9 +176,11 @@ namespace HighSchoolHacking.Models
         {
             return String.Join("", new string[] 
             {
-                "<pre><code class=\"language-" + language + "\">",
+                "<pre class=\"language-" + language + "\">",
+                "<code class=\"language-" + language + "\">",
                  HttpUtility.HtmlEncode(Section.CombineCodeLines(code)),
-                "</code></pre>"
+                "</code>",
+                "</pre>"
             });
         }
 
