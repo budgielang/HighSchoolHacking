@@ -25,4 +25,15 @@
         },
         Goto = "/Python/Learn"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 2),
+        Title = "Wing IDE",
+        Paragraphs = new string[] 
+        {
+            "Wing IDE is a great Python IDE that lets you run Python code using files on your computer, and without the internet. You should get the free version to do the rest of the activities.",
+        },
+        Goto = "/Python/WingIDE"
+    });
 }

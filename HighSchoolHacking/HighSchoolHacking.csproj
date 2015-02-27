@@ -271,6 +271,7 @@
     <Content Include="Views\Shared\Pages\Objects.cshtml" />
     <Content Include="Views\JavaScript\NameTypos.cshtml" />
     <Content Include="Views\Python\Simplebot.cshtml" />
+    <Content Include="Views\Python\WingIDE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

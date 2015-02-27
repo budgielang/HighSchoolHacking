@@ -1,0 +1,29 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 3),
+        Title = "WingIDE",
+        Extension = "python",
+        Large = true,
+        Back = "/Python",
+        Goto = "http://wingware.com/downloads/wingide-101",
+        Paragraphs = new string[]
+        {
+            "Python is really good at working with files on your computer. Like, <em>really</em> good. It's a lot better than languages like C++, so a lot of the Python lessons are going to involve file I/O (input/output).",
+            "You can't do file I/O with an online editor (it doesn't have access to your files), so we're going to use a program called WingIDE. IDE stands for Integrated Developer Environment, which means it'll help you do do a lot of things like file I/O.",
+            "We use WingIDE 101, which is a free (still really good) version of WingIDE. If your computer doesn't have it installed, go to the Windows Installer link on the linked page, and install it."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 4),
+        Title = "Using WingIDE",
+        Paragraphs = new string[]
+        { 
+            "<em>to be filled out!</em>"
+        }
+    });
+}
