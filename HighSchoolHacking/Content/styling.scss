@@ -100,6 +100,10 @@ section.right h2 span:before {
 
 /* Section article elements */
 
+section.centered article {
+    text-align: center;
+}
+
 body:not(.noShadow) section {
     box-shadow: 0 0 7px black inset;
 }

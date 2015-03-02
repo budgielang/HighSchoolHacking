@@ -23,6 +23,7 @@ namespace HighSchoolHacking
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/positioning.css",
                 "~/Content/styling.css",
+                "~/Content/home.css",
                 "~/Content/prism.css"
             ));
         }

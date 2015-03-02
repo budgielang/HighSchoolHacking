@@ -6,12 +6,15 @@ using System.Web;
 namespace HighSchoolHacking.Models
 {
     /// <summary>
-    /// 
+    /// Container for a single "section" (HTML block) of display. Info on 
+    /// everything to printed in HTML is stored here, such as the color, title,
+    /// text image, goto link, and so on.
+    /// Static methods are also available for common tasks, mainly printing
+    /// lists and code
     /// </summary>
     public class Section
     {
-        public Section()
-        { }
+        public Section() { }
 
         /// <summary>
         /// Background color for this section, to be used as a CSS class.

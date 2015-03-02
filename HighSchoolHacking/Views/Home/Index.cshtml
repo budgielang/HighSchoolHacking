@@ -6,6 +6,24 @@
         Color = "steel",
         Title = "High School Hacking",
         Extension = "club",
+        Large = true
+    });
+}
+
+<section id="home">
+    <div class="vcenter">
+        <h2>
+            We'll teach you how to code.
+            <br />
+            Guaranteed.
+        </h2>
+    </div>
+</section>
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel centered",
         Large = true,
         Slogans = new string[] 
         {

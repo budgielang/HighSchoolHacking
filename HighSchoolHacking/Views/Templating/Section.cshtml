@@ -3,30 +3,34 @@
 <section class="changer border background @Model.Color" id="@Model.Title" contracted="@Model.Contracted">
     @{
         string head = @Model.Large ? "h1" : "h2";
+        string articleClass = (Model.Paragraphs == null) ? "empty" : "filled";
     }
-    @Html.Raw("<" + head + ">")
-    <span title="@Model.Title">
-        @Model.Title
 
-        @if (!String.IsNullOrWhiteSpace(Model.Extension))
-        {
-            if (!String.IsNullOrWhiteSpace(Model.Back))
+    @Html.Raw("<" + head + ">")
+    @if (!String.IsNullOrWhiteSpace(Model.Title)) { 
+        <span title="@Model.Title">
+            @Model.Title
+
+            @if (!String.IsNullOrWhiteSpace(Model.Extension))
             {
-                <small class="extension">
-                    <a href="@Model.Back">
-                        .@Model.Extension
-                    </a>
-                </small>
+                if (!String.IsNullOrWhiteSpace(Model.Back))
+                {
+                    <small class="extension">
+                        <a href="@Model.Back">
+                            .@Model.Extension
+                        </a>
+                    </small>
+                }
+                else
+                {
+                    <small class="extension">.@Model.Extension</small>
+                }
             }
-            else
-            {
-                <small class="extension">.@Model.Extension</small>
-            }
-        }
-    </span>
+        </span>
+    }
     @Html.Raw("</" + head + ">")
 
-    <article>
+    <article class="@articleClass">
         @if (Model.Slogans != null && Model.Slogans.Length > 0)
         {
             int index = new Random().Next(Model.Slogans.Length);
@@ -37,44 +41,47 @@
             <hr />
         }
 
-        <div class="paragraphs">
-            @{
-                foreach (string paragraph in Model.Paragraphs)
-                {
-                    <p>@Html.Raw(paragraph)</p>
+        @if (Model.Paragraphs != null)
+        { 
+            <div class="paragraphs">
+                @{
+                    foreach (string paragraph in Model.Paragraphs)
+                    {
+                        <p>@Html.Raw(paragraph)</p>
+                    }
+
+                    if (!String.IsNullOrWhiteSpace(Model.Goto))
+                    {
+                        <a class="goto" href="@Model.Goto.Replace(" ", "")">
+                            <h4>
+                                <span class="goto-arrows">
+                                    &gt; &gt;
+                                </span>
+
+                                Go to @Model.Goto.Trim('/')
+
+                                <span class="goto-arrows">
+                                    &gt; &gt;
+                                </span>
+                            </h4>
+                        </a>
+                    }
+
+                    if (Model.Links != null && Model.Links.Count > 0)
+                    {
+                        <hr />
+
+                        <ul class="links">
+                            @foreach (KeyValuePair<string, string> link in Model.Links)
+                            {
+                                <li>
+                                    <strong>@link.Key</strong>: @Html.ActionLink(link.Value, link.Value)
+                                </li>
+                            }
+                        </ul>
+                    }
                 }
-
-                if (!String.IsNullOrWhiteSpace(Model.Goto))
-                {
-                    <a class="goto" href="@Model.Goto.Replace(" ", "")">
-                        <h4>
-                            <span class="goto-arrows">
-                                &gt; &gt;
-                            </span>
-
-                            Go to @Model.Goto.Trim('/')
-
-                            <span class="goto-arrows">
-                                &gt; &gt;
-                            </span>
-                        </h4>
-                    </a>
-                }
-
-                if (Model.Links != null && Model.Links.Count > 0)
-                {
-                    <hr />
-
-                    <ul class="links">
-                        @foreach (KeyValuePair<string, string> link in Model.Links)
-                        {
-                            <li>
-                                <strong>@link.Key</strong>: @Html.ActionLink(link.Value, link.Value)
-                            </li>
-                        }
-                    </ul>
-                }
-            }
-        </div>
+            </div>
+        }
     </article>
 </section>

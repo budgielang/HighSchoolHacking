@@ -21,6 +21,9 @@ h1 span {
 h2 span {
   padding: 14px; }
 
+article.empty {
+  display: none; }
+
 article:after {
   clear: both; }
 

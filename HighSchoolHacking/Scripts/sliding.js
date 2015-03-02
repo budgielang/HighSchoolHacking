@@ -36,6 +36,10 @@
         var header = section.children[0],
             article = section.children[1];
 
+        if (!article) {
+            return;
+        }
+
         header.onclick = headClickOn;
         header.onmouseover = headMouseOver;
         header.onmouseout = headMouseOut;
