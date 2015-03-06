@@ -197,9 +197,9 @@
         Title = "Exercises",
         Paragraphs = new string[] {
             Section.WrapList(new string[] {
-                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14.",
-                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14, starting with 7.",
-                "Write a loop to print all odd numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement."
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to print all numbers less than 14.",
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to print all numbers less than 14, starting with 7.",
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to print all numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement.",
             })
         }
     });
@@ -213,7 +213,7 @@
             Section.WrapList(new string[] {
                 "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
-                    "while" + Model.ConditionalLeft + "True" + Model.ConditionalRight,
+                    "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
                     "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
@@ -223,7 +223,7 @@
                 }),
                 "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 7" + Model.Semicolon,
-                    "while" + Model.ConditionalLeft + "True" + Model.ConditionalRight,
+                    "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
                     "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
@@ -231,11 +231,13 @@
                     Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                     Model.ConditionalEnd
                 }),
-                "Write a loop to print all odd numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement." + Section.WrapCode(Model.NameLower, new string[] {
+                "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14, starting with 7. Start your counter at 0, and use a <code>continue</code> statement." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
-                    "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
-                    "    if" + Model.ConditionalLeft + "i <= 7" + Model.ConditionalRight,
+                    "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
+                    "    if" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
                     "        continue" + Model.Semicolon,
+                    "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
+                    "        break" + Model.Semicolon,
                     Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                     "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
                     "    i = i + 2" + Model.Semicolon,
