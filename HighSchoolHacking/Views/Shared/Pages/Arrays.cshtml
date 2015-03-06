@@ -228,8 +228,8 @@
             Section.WrapList(new string[]
             {
                 "Make a new " + Model.ArrayName + " containing seven numbers. Print each number using a loop.",
-                "Make a new " + Model.ArrayName + " containing seven numbers. Use a loop to add those numbers to a String, and print the String.",
-                "Modify the previous question's code to add every other name.",
+                "Make a new " + Model.ArrayName + " containing seven numbers. Use a loop to find the total of them, and print it.",
+                "Modify the previous question's code to add every other number.",
                 "Make a variable containing your name. Copy each character from that String into a new " + Model.ArrayName + ", and print that " + Model.ArrayName + "."
             })
         }
@@ -246,39 +246,39 @@
             {
                 "Make a new " + Model.ArrayName + " containing seven numbers. Print each number using a loop." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "numbers = [0, 1, 2, 3, 4, 5, 6]" + Model.Semicolon,
+                    Model.VariableDeclare + "numbers = [1, 2, 3, 4, 5, 6, 7]" + Model.Semicolon,
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "",
                     "while" + Model.ConditionalLeft + "i < " + Model.UseLength("numbers") + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.PrintFunction + "(numbers[i])" + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
-                "Make a new " + Model.ArrayName + " containing seven numbers. Use a loop to add those numbers to a String, and print the String." + Section.WrapCode(Model.NameLower, new string[]
+                "Make a new " + Model.ArrayName + " containing seven numbers. Use a loop to find the total of them, and print it." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "numbers = [0, 1, 2, 3, 4, 5, 6]" + Model.Semicolon,
+                    Model.VariableDeclare + "numbers = [1, 2, 3, 4, 5, 6, 7]" + Model.Semicolon,
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
-                    Model.VariableDeclare + "output = \"Numbers: \"" + Model.Semicolon,
+                    Model.VariableDeclare + "total = 0" + Model.Semicolon,
                     "",
                     "while" + Model.ConditionalLeft + "i < " + Model.UseLength("numbers") + Model.ConditionalRight,
-                    "    output = output + i" + Model.Semicolon,
+                    "    total = total + numbers[i]" + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(output)" + Model.Semicolon + " " + Model.Commentor + " Numbers: 0 1 2 3 4 5 6 7"
+                    Model.PrintFunction + "(total)" + Model.Semicolon + " " + Model.Commentor + " 28"
                 }),
                 "Modify the previous question's code to add every other number." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "numbers = [0, 1, 2, 3, 4, 5, 6]" + Model.Semicolon,
+                    Model.VariableDeclare + "numbers = [1, 2, 3, 4, 5, 6, 7]" + Model.Semicolon,
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
-                    Model.VariableDeclare + "output = \"\"" + Model.Semicolon,
+                    Model.VariableDeclare + "total = 0" + Model.Semicolon,
                     "",
                     "while" + Model.ConditionalLeft + "i < " + Model.UseLength("numbers") + Model.ConditionalRight,
-                    "    output = output + i" + Model.Semicolon,
+                    "    total = total + numbers[i]" + Model.Semicolon,
                     "    i = i + 2" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(output)" + Model.Semicolon + " " + Model.Commentor + " Numbers: 0 2 4 6"
+                    Model.PrintFunction + "(total)" + Model.Semicolon + " " + Model.Commentor + " 16"
                 }),
                 "Make a variable containing your name. Copy each character from that String into a new " + Model.ArrayName + ", and print that " + Model.ArrayName + "." + Section.WrapCode(Model.NameLower, new string[]
                 {
