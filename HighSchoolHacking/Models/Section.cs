@@ -114,7 +114,12 @@ namespace HighSchoolHacking.Models
             return Colors[index % Colors.Length];
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="increase"></param>
+        /// <returns></returns>
         public static string GetNextColor(string color, int increase = 0)
         {
             return GetColorAt(ColorIndices[color] + increase);
@@ -240,5 +245,75 @@ namespace HighSchoolHacking.Models
                 "</" + tag + ">"
             });
         }
+
+        public static string WrapImage(string img)
+        {
+            string src = System.IO.Path.Combine("/Content/Images/", img);
+            long length = new System.IO.FileInfo(HttpContext.Current.Server.MapPath(src)).Length;
+
+            return String.Join(Environment.NewLine, new string[]
+            {
+                "<a href=\"" + src + "\" target=\"_blank\">",
+                "<span class=\"imager\">",
+                "<img src=\"" + src + "\" />",
+                "Download ",
+                "<span class=\"linker\">" +  img.Trim('/') + "</span>",
+                " <span class=\"sizer\">(" + GetSizeReadable(length) + ")</a>",
+                "</span>",
+                "</a>"
+            });
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="i"></param>
+        /// <source>http://www.somacon.com/p576.php</source>
+        /// <returns></returns>
+        public static string GetSizeReadable(long i)
+        {
+            string sign = (i < 0 ? "-" : "");
+            double readable = (i < 0 ? -i : i);
+            string suffix;
+            if (i >= 0x1000000000000000) // Exabyte
+            {
+                suffix = "EB";
+                readable = (double)(i >> 50);
+            }
+            else if (i >= 0x4000000000000) // Petabyte
+            {
+                suffix = "PB";
+                readable = (double)(i >> 40);
+            }
+            else if (i >= 0x10000000000) // Terabyte
+            {
+                suffix = "TB";
+                readable = (double)(i >> 30);
+            }
+            else if (i >= 0x40000000) // Gigabyte
+            {
+                suffix = "GB";
+                readable = (double)(i >> 20);
+            }
+            else if (i >= 0x100000) // Megabyte
+            {
+                suffix = "MB";
+                readable = (double)(i >> 10);
+            }
+            else if (i >= 0x400) // Kilobyte
+            {
+                suffix = "KB";
+                readable = (double)i;
+            }
+            else
+            {
+                return i.ToString(sign + "0 B"); // Byte
+            }
+            readable = readable / 1024;
+
+            return sign + readable.ToString("0.# ") + suffix;
+        }
+
     }
 }

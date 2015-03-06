@@ -13,17 +13,35 @@
         {
             "Python is really good at working with files on your computer. Like, <em>really</em> good. It's a lot better than languages like C++, so a lot of the Python lessons are going to involve file I/O (input/output).",
             "You can't do file I/O with an online editor (it doesn't have access to your files), so we're going to use a program called WingIDE. IDE stands for Integrated Developer Environment, which means it'll help you do do a lot of things like file I/O.",
-            "We use WingIDE 101, which is a free (still really good) version of WingIDE. If your computer doesn't have it installed, go to the Windows Installer link on the linked page, and install it."
+            "We use WingIDE 101, which is a free (still really good) version of WingIDE. If your computer doesn't have it installed, go to the Installer link on the linked page (first big green button on the right), and install it."
         }
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Model.Color, 4),
-        Title = "Using WingIDE",
+        Title = "Installing WingIDE & Python",
         Paragraphs = new string[]
         { 
-            "<em>to be filled out!</em>"
+            "Run the downloaded wingware-101-xxxxxxx.exe file (the software version comes after the 101-). Keep hitting Next, and agree to the software license. It'll finish automatically.",
+            "Don't open Wing just yet, as you probably still have to install Python on your computer. Fortunately that's even easier. Go to the linked Python Downloads page, and install the latest 3.X.X version for your computer (first gold link). You'll have to keep hitting next for this one too."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "WingIDE & Files",
+        Paragraphs = new string[]
+        { 
+            "The first time you open Wing, it'll have another license to agree to. Once you accept that, you'll finally be using it! It starts off with this help page:",
+            Section.WrapImage("WingIDE/HelpWindow.png"),
+            "You can just close it using the red X (or Control + W) on the top/right of the help section (if you ever want to go back, it's Help > Tutorial in the top menu bar).",
+            Section.WrapImage("WingIDE/BlankWindow.png"),
+            "WingIDE works a lot like regular file editors (Microsoft Word, Wordpad, Notepad, Textedit, etc.) in that it lets you edit files on your computer. Create a new one by going to File > New (Control + N). You should now have a new, mostly blank document called \"untitled-1.py\":",
+            Section.WrapImage("WingIDE/BlankDocument.png"),
+            "A nice benefit of using Wing over repl.it is being able to save your file and pick it up later (again, just like in Word). Save this new file using File > Save (Control + S) to some folder you'll be able to find later, like the Desktop in Windows or Home in Mac. You can name it whatever you want; it helps to call it the name of the activity if you want to find it easily later.",
+            "If you ever want to go back to a file from WingIDE, go to File > Open (Control + O)."
         }
     });
 }

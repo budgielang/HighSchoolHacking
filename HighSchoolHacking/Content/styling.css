@@ -101,6 +101,18 @@ article {
   transition: 350ms height; }
   article p {
     text-align: justify; }
+    article p .imager {
+      font-style: italic;
+      text-align: center;
+      -moz-transition: 175ms width;
+      -o-transition: 175ms width;
+      -webkit-transition: 175ms width;
+      transition: 175ms width; }
+      article p .imager img {
+        max-width: 100%;
+        border-radius: 7px !important; }
+      article p .imager .linker {
+        border-bottom: 1px solid white; }
   article .links {
     overflow-x: hidden; }
   article pre {
@@ -159,6 +171,7 @@ a.goto {
   text-align: center;
   text-decoration: none !important;
   text-shadow: none;
+  word-break: break-all;
   opacity: 0.91;
   -moz-transition: 117ms border, 117ms color, 117ms opacity;
   -o-transition: 117ms border, 117ms color, 117ms opacity;
@@ -213,6 +226,9 @@ a.goto:hover {
 @media (max-width: 700px), (max-aspect-ratio: 1/1) {
   section img {
     border-radius: 100%; }
+
+  .imager {
+    padding-top: 14px; }
 
   section article p, footer p {
     /* font-size: 1.75em; */
