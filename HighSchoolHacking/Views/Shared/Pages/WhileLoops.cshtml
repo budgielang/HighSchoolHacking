@@ -80,7 +80,7 @@
                 "Write a loop to print all numbers less than 14.",
                 "Write a loop to print all numbers less than 14, starting with 7.",
                 "Write a loop to print all odd numbers less than 14, starting with 7.",
-                "Write a loop to print all squares (1, 4, 9, 16, ...) less than 350. <br /> <em>Hint: this is exactly one symbol different than the loop that doubles i!</em>",
+                "Write a loop to print all squares (1, 4, 9, 16, ...) less than 350.",
                 "Write a loop to print all even squares less than 350."
             })
         }
@@ -118,20 +118,20 @@
                     Model.VariableDeclare + "i = 1" + Model.Semicolon,
                     Model.VariableDeclare + "square = 1" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "square < 350" + Model.ConditionalRight,
-                    "    square = i * i" + Model.Semicolon,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.PrintFunction + "(square)" + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
+                    "    square = i * i" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 "Write a loop to print all even squares less than 350." + Section.WrapCode(Model.NameLower, new string[] {
-                    Model.VariableDeclare + "i = 1" + Model.Semicolon,
-                    Model.VariableDeclare + "square = 1" + Model.Semicolon,
+                    Model.VariableDeclare + "i = 2" + Model.Semicolon,
+                    Model.VariableDeclare + "square = i * i" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "square < 350" + Model.ConditionalRight,
-                    "    square = i * i" + Model.Semicolon,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.PrintFunction + "(square)" + Model.Semicolon,
                     "    i = i + 2" + Model.Semicolon,
+                    "    square = i * i" + Model.Semicolon,
                     Model.ConditionalEnd
-                })
+                }),
             })
         }
     });
