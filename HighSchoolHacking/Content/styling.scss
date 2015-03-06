@@ -171,6 +171,7 @@ footer {
     p {
         font-size: 1.05em;
         text-align: justify;
+        line-height: 140%;
         color: #dddddd;
     }
 
@@ -293,7 +294,7 @@ a.goto:hover {
     section article p,
     footer p {
         /* font-size: 1.75em; */
-        line-height: 140%;
+        line-height: 175%;
         text-align: left;
     }
 }

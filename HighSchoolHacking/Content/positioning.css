@@ -62,8 +62,7 @@ footer p {
   float: left;
   margin: 14px 1% 0 1%;
   padding-bottom: 14px;
-  width: 32%;
-  line-height: 140%; }
+  width: 32%; }
 footer p:first-of-type {
   margin-left: 0; }
 footer p:last-of-type {
@@ -75,9 +74,12 @@ footer p:last-of-type {
   #GitHubLink {
     display: none; }
 
+  footer {
+    padding-top: 2.1em; }
+
   img {
-    width: 210px;
-    height: 210px; }
+    max-width: 210px;
+    max-height: 210px; }
 
   .paragraphs {
     overflow: visible; }
@@ -89,6 +91,9 @@ footer p:last-of-type {
     margin: 7px 3px;
     float: none;
     width: 100%; }
+
+  footer p:not(:first-of-type) {
+    padding-top: 0.7em; }
  }
 
 /* Small displays */

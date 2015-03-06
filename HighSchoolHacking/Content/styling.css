@@ -123,6 +123,7 @@ article {
 footer p {
   font-size: 1.05em;
   text-align: justify;
+  line-height: 140%;
   color: #dddddd; }
 footer #credits {
   padding: 28px 0 14px 0;
@@ -215,7 +216,7 @@ a.goto:hover {
 
   section article p, footer p {
     /* font-size: 1.75em; */
-    line-height: 140%;
+    line-height: 175%;
     text-align: left; }
  }
 

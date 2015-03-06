@@ -50,6 +50,12 @@ namespace HighSchoolHacking.Models
 
         public string DictionaryNamePlural { get; set; }
 
+        public string FunctionDefine { get; set; }
+
+        public string FunctionRight { get; set; }
+
+        public string FunctionEnd { get; set; }
+
         public string LengthName { get; set; }
 
         public bool CanConcatenateNumbers { get; set; }

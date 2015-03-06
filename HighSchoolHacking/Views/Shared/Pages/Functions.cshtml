@@ -1,0 +1,350 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 11),
+        Title = "Functions",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "Everything you've seen in learning " + Model.Name + " thus far has been really small, no more than around 10 lines or so. You also haven't had to do very many things per block of code: not very many lines were repeated.",
+            "When you want to do the same thing over and over again, you could write the same code over and over again (copy & paste it, even), or you could use a Function. Functions take in some input, do whatever steps you want, and return the result. That means you don't have to re-write code over and over agian.",
+            "This is the general syntax for declaring a Function. You can name it whatever you want (same rules as regular variables); this example calls it \"yourFunctionName\".",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "yourFunctionName()" + Model.FunctionRight,
+                "    " + Model.Commentor + " ...do stuff in here...",
+                Model.FunctionEnd
+            }),
+            "You can do anything inside a Function that you would normally be able to do: variables, loops, printing, calling other Functions... A Function is really just a snippet of code that you can run whenever you want in the program.",
+            "Here's a short example of using a Function to " + Model.PrintFunction + " multiple times:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "printHelloWorld()" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Hello world!\")" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                Model.Commentor + " " + Model.PrintFunction + " three times...",
+                "printHelloWorld()" + Model.Semicolon,
+                "printHelloWorld()" + Model.Semicolon,
+                "printHelloWorld()" + Model.Semicolon,
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that prints your name. Use it.",
+                "Use a loop to call that Function seven times.",
+                "Write a Function that prints your name seven times. Use it.",
+                "Use a loop to call that second Function three times. How many times does your name print in total?"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that prints your name. Use it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "printName()" + Model.FunctionRight,
+                    "    " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    Model.FunctionEnd,
+                    "",
+                    "printName()" + Model.Semicolon,
+                }),
+                "Use a loop to call that Function seven times." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "printName()" + Model.FunctionRight,
+                    "    " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    Model.FunctionEnd,
+                    "",
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Write a Function that prints your name seven times. Use it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "printName()" + Model.FunctionRight,
+                    "    " + Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "    while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                    "        " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    "        i = i + 1" + Model.Semicolon,
+                    "    " + Model.ConditionalEnd,
+                    Model.FunctionEnd,
+                    "",
+                    "printName()" + Model.Semicolon
+                }),
+                "Use a loop to call that second Function three times." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "printName()" + Model.FunctionRight,
+                    "    " + Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "    while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                    "        " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    "        i = i + 1" + Model.Semicolon,
+                    "    " + Model.ConditionalEnd,
+                    Model.FunctionEnd,
+                    "",
+                    Model.Commentor + " Yes, you can use the same variable name here.",
+                    Model.Commentor + " Variables declared in the Function don't affect code outside the Function!",
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                    "    printName()" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    Model.Commentor + " Each Function call prints 7 times, and there are 3 of those, so 7 x 3 = 21.",
+                    Model.Commentor + " It's just like a double loop!"
+                }),
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Parameters & Arguments",
+        Paragraphs = new string[]
+        {
+            "Functions are allowed to take in things from the user. These are used just like variables inside the Function:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "printSum(x, y)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(x + y)" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                "printSum(3, 4)" + Model.Semicolon + " " + Model.Commentor + " 7"
+            }),
+            "Here's a really small \"greet\" Function that says hello to a person and asks them how they are:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Hello, \" + name + \"!\")" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.FunctionEnd,
+            }),
+            "Technically, the Function declares <em>parameters</em> (x and y), and the user then gives <em>arguments</em> (3 and 4) to the Function to fill them out. You can have as many parameters as you want.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "doWhatever(parameterOne, parameterTwo)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Argument given to parameterOne: \" + parameterOne)" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"Argument given to parameterTwo: \" + parameterTwo)" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                "doWhatever(\"aww\", \"yeah\")" + Model.Semicolon,
+                Model.Commentor + " Argument given to parameterOne: aww",
+                Model.Commentor + " Argument given to parameterTwo: yeah",
+            }),
+            "Just to really reinforce how Functions can save you time and energy, here's an example of using \"greet\" to make it easier. It takes almost 30 lines to greet seven people normally, but only a little over 10 with the Function.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.PrintFunction + "(\"Hello, Alejandro!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "",
+                Model.PrintFunction + "(\"Hello, Blake!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "",
+                Model.PrintFunction + "(\"Hello, Camila!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "",
+                Model.PrintFunction + "(\"Hello, Daniel!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "",
+                Model.PrintFunction + "(\"Hello, Edgar!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "",
+                Model.PrintFunction + "(\"Hello, Farrell!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "",
+                Model.PrintFunction + "(\"Hello, Gabby!\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Hello, \" + name + \"!\")" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                "greet(\"Alejandro\")" + Model.Semicolon,
+                "greet(\"Blake\")" + Model.Semicolon,
+                "greet(\"Camila\")" + Model.Semicolon,
+                "greet(\"Daniel\")" + Model.Semicolon,
+                "greet(\"Edgar\")" + Model.Semicolon,
+                "greet(\"Farrell\")" + Model.Semicolon,
+                "greet(\"Gabby\")" + Model.Semicolon,
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Hello, \" + name + \"!\")" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
+                "    " + Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                Model.VariableDeclare + "names = [\"Alejandro\", \"Blake\", \"Camila\", \"Daniel\", \"Edgar\", \"Farrell\", \"Gabby\"]" + Model.Semicolon,
+                "",
+                Model.StartLengthLoop("i", "name", "names"),
+                "    greet(name)" + Model.Semicolon,
+                Model.ConditionalEnd
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in a name and prints it. Use it.",
+                "Write a Function that takes in a name and a number of times to print it. Use it.",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in a name and prints it. Use it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
+                    "    " + Model.PrintFunction + "(name)" + Model.Semicolon,
+                    Model.FunctionEnd,
+                    "",
+                    "greet(\"Josh\")"
+                }),
+                "Write a Function that takes in a name and a number of times to print it. Use it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "greet(name, times)" + Model.FunctionRight,
+                    "    " + Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "    while" + Model.ConditionalLeft + "i < times" + Model.ConditionalRight,
+                    "        " + Model.PrintFunction + "(name)" + Model.Semicolon,
+                    "        i = i + 1" + Model.Semicolon,
+                    "    " + Model.ConditionalEnd,
+                    Model.FunctionEnd,
+                    "",
+                    "greet(\"Josh\", 7)"
+                }),
+            })
+        }
+    });
+    
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "Returning",
+        Paragraphs = new string[]
+        { 
+            "As mentioned above, Functions allow you to get some output from what they do. This is called a return value, and it's extremely important. One of the biggest uses for Functions is to take in a bunch of arguments, do something with them, and get the result.",
+            "To do this, use the <code>return</code> keyword:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "getSum(x, y)" + Model.FunctionRight,
+                "    return x + y" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                Model.VariableDeclare + "sum = getSum(3, 4) ",
+                Model.PrintFunction + "(sum)" + Model.Semicolon + " " + Model.Commentor + " " + 7
+            }),
+            "Functions can return different things based on their arguments. There's nothing against having more than one <code>return</code>:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "findMax(x, y)" + Model.FunctionRight,
+                "    if" + Model.ConditionalLeft + "x > y" + Model.ConditionalRight,
+                "        return x" + Model.Semicolon,
+                "    " + Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
+                "        return y" + Model.Semicolon,
+                "    " + Model.ConditionalEnd,
+                Model.FunctionEnd,
+                "",
+                Model.PrintFunction + "(findMax(3, 4))" + Model.Semicolon + " " + Model.Commentor + " 4"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in two numbers and returns the smaller (min). Use it.",
+                "Write a Function that takes in two numbers and returns the square of the larger. Use it.",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in two numbers and returns the smaller (min). Use it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "findMin(x, y)" + Model.FunctionRight,
+                    "    if" + Model.ConditionalLeft + "x < y" + Model.ConditionalRight,
+                    "        return x" + Model.Semicolon,
+                    "    " + Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
+                    "        return y" + Model.Semicolon,
+                    "    " + Model.ConditionalEnd,
+                    Model.FunctionEnd,
+                    "",
+                    Model.PrintFunction + "(findMin(3, 4))" + Model.Semicolon + " " + Model.Commentor + " 3"
+                }),
+                "Write a Function that takes in two numbers and returns the square of the larger. Use it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "findMaxSquare(x, y)" + Model.FunctionRight,
+                    "    if" + Model.ConditionalLeft + "x > y" + Model.ConditionalRight,
+                    "        return x * x" + Model.Semicolon,
+                    "    " + Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
+                    "        return y * y" + Model.Semicolon,
+                    "    " + Model.ConditionalEnd,
+                    Model.FunctionEnd,
+                    "",
+                    Model.PrintFunction + "(findMaxSquare(3, 4))" + Model.Semicolon + " " + Model.Commentor + " 16"
+                }),
+            })
+        }
+    });
+}

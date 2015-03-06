@@ -87,7 +87,6 @@ footer {
         margin: 14px 1% 0 1%;
         padding-bottom: 14px;
         width: 32%;
-        line-height: 140%;
     }
 
     p:first-of-type {
@@ -108,9 +107,13 @@ footer {
         display: none;
     }
 
+    footer {
+        padding-top: 2.1em;
+    }
+
     img {
-        width: 210px;
-        height: 210px;
+        max-width: 210px;
+        max-height: 210px;
     }
 
     .paragraphs {
@@ -126,6 +129,10 @@ footer {
         margin: 7px 3px;
         float: none;
         width: 100%;
+    }
+
+    footer p:not(:first-of-type) {
+        padding-top: .7em;
     }
 }
 
