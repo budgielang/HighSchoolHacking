@@ -52,7 +52,7 @@ namespace HighSchoolHacking.Models
             AppendFunction = "append",
             VariableDeclare = "",
             UndefinedError = "NameError: name ",
-            CustomPages = new HashSet<string> { "ForLoops", "WingIDE", "Simplebot", "CookieClicker" }
+            CustomPages = new HashSet<string> { "ForLoops", "WingIDE", "Simplebot" }
         };
 
         public static Language JavaScript = new Language
@@ -89,7 +89,7 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
-            CustomPages = new HashSet<string> { "DeveloperTools", "NameTypos" }
+            CustomPages = new HashSet<string> { "DeveloperTools", "NameTypos", "CookieClicker" }
         };
 
         public static string GetSharedPage(string lesson)

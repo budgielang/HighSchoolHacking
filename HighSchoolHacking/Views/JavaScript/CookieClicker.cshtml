@@ -1,0 +1,17 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 4),
+        Title = "Cookie Clicker",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "Cookie Clicker is a web game where you click a cookie to gain cookies, which you can then spend on tools to get you more cookies. It's a great game based on an ingenously dumb concept, and ripe for JavaScript to play with it. This lesson teaches you how to cheat at Cookie Clicker using Functions and <code>setTimeout</code>/<code>setInterval</code>."
+        }
+    });
+}
