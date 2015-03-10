@@ -9,9 +9,81 @@
         Extension = Model.NameLower,
         Large = true,
         Back = "/" + Model.Name + "/Learn",
+        Goto = "http://orteil.dashnet.org/cookieclicker/",
         Paragraphs = new string[]
         {
-            "Cookie Clicker is a web game where you click a cookie to gain cookies, which you can then spend on tools to get you more cookies. It's a great game based on an ingenously dumb concept, and ripe for JavaScript to play with it. This lesson teaches you how to cheat at Cookie Clicker using Functions and <code>setTimeout</code>/<code>setInterval</code>."
+            "Cookie Clicker is a web game where you click a cookie to gain cookies, which you can then spend on tools to get you more cookies. It's a great game based on an ingenously dumb concept, and ripe for JavaScript to play with it. This lesson teaches you how to cheat at Cookie Clicker using Functions and <code>setTimeout</code>/<code>setInterval</code>.",
+            "If you haven't already, read up on <a href=\"/JavaScript/Functions\">Functions</a>."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "setTimeout",
+        Paragraphs = new string[]
+        { 
+            "<em>synchronous [<code>ˈsiNGkrənəs</code>] - events occuring within the main program flow.</em>",
+            "<em>asynchronous [<code>āˈsiNGkrənəs</code>] - events occurring independently of the main program flow.</em>",
+            "JavaScript provides a Function called <code>setTimeout</code> that has a Function and a number as parameters, and tells the browser to call that Function in that number of milliseconds. This means you can write code that is <code>asynchronous</code> (events fire off randomly) rather than <code>synchronous</code> (everything happens in an exact order).",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "function sayHello() {",
+                "    console.log(\"Hello world!\");",
+                "}",
+                "",
+                "setTimeout(sayHello, 3000); // Waits 3 seconds, then \"Hello world!\""
+            }),
+            "You can have your Functions also call <code>setTimeout</code> to make something keep on getting scheduled:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "function sayHelloAgain() {",
+                "    console.log(\"Hello world!\");",
+                "    setTimeout(sayHelloAgain, 3000);",
+                "}",
+                "",
+                "setTimeout(sayHello, 3000); // Every 3 seconds: \"Hello world!\""
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var timeDelay = 1000;",
+                "",
+                "function sayHelloAgain() {",
+                "    console.log(\"Hello world!\");",
+                "    setTimeout(sayHelloAgain, timeDelay);",
+                "    timeDelay += 1000;",
+                "}",
+                "",
+                "sayHelloAgain(); // \"Hello world!\" after 1 second, then 2, then 3, ..."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 6),
+        Title = "setInterval",
+        Paragraphs = new string[]
+        {
+            "<code>setInterval</code> is almost the exact same as <code>setTimeout</code>, except it keeps on calling the given Function on an interval, rather than just once. The difference in time between calls is the given number.",
+            "The following two code blocks are the same:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "function sayHelloAgain() {",
+                "    console.log(\"Hello world!\");",
+                "    setTimeout(sayHelloAgain, 3000);",
+                "}",
+                "",
+                "setTimeout(sayHello, 3000); // Every 3 seconds: \"Hello world!\""
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "function sayHello() {",
+                "    console.log(\"Hello world!\");",
+                "}",
+                "",
+                "setInterval(sayHello, 3000); // Every 3 seconds: \"Hello world!\""
+            })
         }
     });
 }
