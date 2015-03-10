@@ -63,8 +63,9 @@ section.right h2 span {
   overflow: hidden; }
   .paragraphs li pre {
     margin-bottom: 28px; }
-  .paragraphs ol ul {
-    padding-top: 11px; }
+  .paragraphs ol ol, .paragraphs ol ul, .paragraphs ul ol, .paragraphs ul ul {
+    padding-top: 11px;
+    padding-bottom: 3px; }
 
 footer p {
   float: left;

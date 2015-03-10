@@ -93,8 +93,9 @@ section.right h2 span {
         margin-bottom: 28px;
     }
 
-    ol ul {
+    ol ol, ol ul, ul ol, ul ul {
         padding-top: 11px;
+        padding-bottom: 3px;
     }
 }
 

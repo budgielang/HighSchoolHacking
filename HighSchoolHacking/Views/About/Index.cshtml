@@ -1,0 +1,54 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "red",
+        Title = "About",
+        Extension = "highschoolhacking",
+        Back = "/",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "Despite being one of the fastest growing industries in America, among the top 10 technology career paths today, and having a median solo salary $25,000 above the median house income level, programming (along with general computer science) as a skill is rarely taught in high schools.",
+            "High School Hacking addresses the lack of appropriate material for high school students by providing free lessons in beginner programming using Python and JavaScript. The site is open source and targets to students new to programming with clear lessons on language features followed by activities for beginner and intermediate users."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "orange",
+        Title = "Get in Touch",
+        Paragraphs = new string[]
+        {
+            "As mentioned in the footer, we're always open to suggestions for improvement. We're also interested to spreading to more high schools. Email <a class=\"email\">joshuakgoldberg at outlook.com</a>!"
+        }
+    });
+    
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "green",
+        Title = "How We Work",
+        Paragraphs = new string[]
+        {
+            "This site was made mainly for weekly programming clubs. Since starting at <a href=\"http://www.northcolonie.org/shakerhighschool/srhshome.htm\">Shaker High School</a> in Fall 2014, our model has been:",
+            Section.WrapList(false, new string[]
+            {
+                "Contact CS / Technology / Math teacher(s) at a high school. School requirements:" + Section.WrapList(false, new string[]
+                {
+                    "After school program of at least 45-60 minutes.",
+                    "An available classroom after school with at least computers for attending students (>10, typically).",
+                    "One or more chaperoning teacher(s), preferably learning alongside students or already proficient in code."
+                }),
+                "Arrange for weekly after school sessions' weekdays & times, such as 2:30-3:30 Wednesdays.",
+                "Send college student volunteers to the weekly sessions. One student will lead sessions with short 2-5 minute talks at the beginning and, when needed, throughout the lesson.",
+                "For each semester, lessons will follow this general schema:" + Section.WrapList(new string[]
+                {
+                    "Introductory lessons (2-5 weeks): go through the Learn section for a language. Time varies on student abilities.",
+                    "Activities: One activity per club day. Each activity will introduce one or more new language features, and aply them to some interesting goal.",
+                    "Feedback (last lesson): One small activity (for first half of club), with discussion on club itself at end, to get student feedback on the club & site."
+                })
+            })
+        }
+    });
+}
