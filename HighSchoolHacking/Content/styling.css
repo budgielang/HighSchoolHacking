@@ -9,6 +9,12 @@ body {
   font-family: 'Georgia', 'Times New Roman';
   text-shadow: 1px 1px 7px black; }
 
+p {
+  -moz-transition: 350ms line-height;
+  -o-transition: 350ms line-height;
+  -webkit-transition: 350ms line-height;
+  transition: 350ms line-height; }
+
 a {
   color: white;
   text-decoration: none;
@@ -136,11 +142,7 @@ footer p {
   font-size: 1.05em;
   text-align: justify;
   line-height: 140%;
-  color: #dddddd;
-  -moz-transition: 350ms line-height;
-  -o-transition: 350ms line-height;
-  -webkit-transition: 350ms line-height;
-  transition: 350ms line-height; }
+  color: #dddddd; }
 footer #credits {
   padding: 28px 0 14px 0;
   clear: both;
