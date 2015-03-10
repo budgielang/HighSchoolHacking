@@ -40,23 +40,23 @@
             return;
         }
 
-        header.onclick = headClickOn;
         header.onmouseover = headMouseOver;
         header.onmouseout = headMouseOut;
+        header.setAttribute("used", "false");
 
         article.style.height = "auto";
         article.setAttribute("heightOld", article.clientHeight);
 
         if (section.getAttribute("contracted")) {
+            header.onclick = headClickOn;
+            header.setAttribute("clicked", "off");
             article.removeAttribute("contracted");
             article.style.height = "0";
-            header.setAttribute("clicked", "off");
-            return;
+        } else {
+            header.setAttribute("clicked", "on");
+            header.onclick = headClickOff;
         }
 
-        article.style.height = article.clientHeight + "px";
-
-        header.click();
     };
 
     var headMouseOver = function (event) {
@@ -89,9 +89,13 @@
             article = section.children[1];
 
         header.setAttribute("clicked", "on");
+        article.style.height = article.clientHeight + "px";
 
-        article.style.height = article.getAttribute("heightOld") + "px";
-        header.onclick = headClickOff;
+        header.onclick = undefined;
+        setTimeout(function () {
+            article.style.height = article.getAttribute("heightOld") + "px";
+            header.onclick = headClickOff;
+        }, 210);
     };
 
     var headClickOff = function (event) {
@@ -101,13 +105,22 @@
 
         header.setAttribute("clicked", "off");
 
-        if (header.getAttribute("hovering") === "on") {
+        if (header.getAttribute("used") === "false") {
+            header.onclick = undefined;
+            header.setAttribute("used", "true");
+            article.style.height = article.clientHeight + "px";
+            setTimeout(function () {
+                article.style.height = "0";
+                header.onclick = headClickOn;
+            }, 21);
+        } else if (header.getAttribute("hovering") === "on") {
             article.style.height = settings.hoverHeight + "px";
+            header.onclick = headClickOn;
         } else {
-            article.style.height = "0px";
+            article.style.height = "0";
+            header.onclick = headClickOn;
         }
 
-        header.onclick = headClickOn;
     };
 
     var getParentOfTag = function (element, tag) {
