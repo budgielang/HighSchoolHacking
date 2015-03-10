@@ -86,4 +86,60 @@
             })
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "Enter Console",
+        Paragraphs = new string[]
+        { 
+            "Developer Tools are how we're going to break Cookie Clicker. Open yours to the Console tab, and enter <code>Game</code>. What you see there is the Object referring to the game in JavaScript, complete with all the member variables and Functions used by it.",
+            "There are a lot of things there (most of which are useless to us), but the one really important Function is <code>Game.Earn(howmuch)</code>. Reading it, do you see what it does?",
+            "Fun fact: JavaScript lets you use <code>Infinity</code> as a Number. This is relevant.",
+            "<em>Bonus: can you find the Function that unlocks everything?</em>"
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "Mouse Events",
+        Paragraphs = new string[]
+        { 
+            "Faking Game.Earn is fun, but it doesn't do very much, and gets old pretty quickly. It would be better if the various features in the game were usable, like store items, auto-clickers, and actual cookie clicking.",
+            "Normal people would use a mouse or touchscreen to click HTML elements on the Cookie Clicker page to trigger those achivements. Things like touch/clicking are referred to as \"events\" in web programming, and HTML elements accessed in JavaScript let you fake them. The <code>click</code> event in particular is accessable by the <code>.click()</code> Function of elements:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var cookie = document.querySelector(\"#bigCookie\");",
+                "cookie.click();"
+            }),
+            "If your first instinct is to set a giant amount of <code>setInterval</code> calls to continuously do that, you're on the right path. A bit of optimization advice, though: keep the <code>var cookie</code> <em>outside</em> your Functions. Your code will run a lot slower if <code>document.querySelector</code> has to be called each time.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "var cookie = document.querySelector(\"#bigCookie\");",
+                "function clickCookie() {",
+                "    cookie.click();",
+                "}"
+            }),
+            "This will get you a nice start, but once you get past a few thousand cookies, it's a lot slower. Try using the same <code>.click()</code> from the auto-clicking elements, or store items."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            "Note: though your code may request very rapid intervals, the browser might slow down if you're doing too much.",
+            Section.WrapList(new string[]
+            {
+                "Write code that automatically clicks the cookie every few milliseconds.",
+                "Write code that continuously attempts to purchase in the store.",
+                "Modify your auto-clicker purchasing code to buy the most expensive available item. <em>Hint: class names!</em>",
+                "Write code that continuously attempts to obtain auto-clickers.",
+                "Modify your auto-clicker purchasing code to buy the most expensive available auto-clickers.",
+            })
+        }
+    });
 }
