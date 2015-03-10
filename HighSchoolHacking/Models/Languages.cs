@@ -47,11 +47,12 @@ namespace HighSchoolHacking.Models
             LengthIsProperty = false,
             NativeExponents = true,
             DirectArrayLoops = true,
+            FunctionsFirstClass = true,
             PrintFunction = "print",
             AppendFunction = "append",
             VariableDeclare = "",
             UndefinedError = "NameError: name ",
-            CustomPages = new HashSet<string> { "ForLoops", "WingIDE", "Simplebot" }
+            CustomPages = new HashSet<string> { "ForLoops", "WingIDE", "Simplebot", "CookieClicker" }
         };
 
         public static Language JavaScript = new Language
@@ -82,6 +83,8 @@ namespace HighSchoolHacking.Models
             LengthName = "length",
             CanConcatenateNumbers = true,
             LengthIsProperty = true,
+            FunctionsFirstClass = true,
+            FunctionsAsVariables = true,
             PrintFunction = "console.log",
             AppendFunction = "push",
             VariableDeclare = "var ",

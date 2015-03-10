@@ -66,6 +66,10 @@ namespace HighSchoolHacking.Models
 
         public bool NativeExponents { get; set; }
 
+        public bool FunctionsFirstClass { get; set; }
+
+        public bool FunctionsAsVariables { get; set; }
+
         public string VariableDeclare { get; set; }
 
         public string PrintFunction { get; set; }
