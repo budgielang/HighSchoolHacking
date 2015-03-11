@@ -66,12 +66,12 @@
         Paragraphs = new string[]
         {
             "<code>setInterval</code> is almost the exact same as <code>setTimeout</code>, except it keeps on calling the given Function on an interval, rather than just once. The difference in time between calls is the given number.",
-            "The following two code blocks are the same:",
+            "The following two code blocks are pretty much the same:",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "function sayHelloAgain() {",
-                "    console.log(\"Hello world!\");",
                 "    setTimeout(sayHelloAgain, 3000);",
+                "    console.log(\"Hello world!\");",
                 "}",
                 "",
                 "setTimeout(sayHello, 3000); // Every 3 seconds: \"Hello world!\""
@@ -83,7 +83,7 @@
                 "}",
                 "",
                 "setInterval(sayHello, 3000); // Every 3 seconds: \"Hello world!\""
-            })
+            }),
         }
     });
 
@@ -135,7 +135,7 @@
             Section.WrapList(new string[]
             {
                 "Write code that automatically clicks the cookie every few milliseconds.",
-                "Write code that continuously attempts to purchase in the store.",
+                "Write code that continuously attempts to purchase upgrades in the store.",
                 "Modify your auto-clicker purchasing code to buy the most expensive available item. <em>Hint: class names!</em>",
                 "Write code that continuously attempts to obtain auto-clickers.",
                 "Modify your auto-clicker purchasing code to buy the most expensive available auto-clickers.",
