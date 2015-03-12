@@ -246,6 +246,11 @@ namespace HighSchoolHacking.Models
             });
         }
 
+        public static string WrapQuote(string quote)
+        {
+            return "<blockquote>" + quote + "</blockquote>";
+        }
+
         public static string WrapImage(string img)
         {
             string src = System.IO.Path.Combine("/Content/Images/", img);
@@ -262,7 +267,6 @@ namespace HighSchoolHacking.Models
                 "</span>",
                 "</a>"
             });
-
         }
 
         /// <summary>
