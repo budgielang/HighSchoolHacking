@@ -66,6 +66,10 @@ namespace HighSchoolHacking.Models
 
         public bool NativeExponents { get; set; }
 
+        public bool DictionaryKeyInCheck { get; set; }
+
+        public string DictionaryKeyCheckName { get; set; }
+
         public bool FunctionsFirstClass { get; set; }
 
         public bool FunctionsAsVariables { get; set; }
@@ -79,7 +83,6 @@ namespace HighSchoolHacking.Models
         public string UndefinedError { get; set; }
 
         public HashSet<string> CustomPages { get; set; }
-
 
         public string UseLength(string variable)
         {
@@ -117,6 +120,16 @@ namespace HighSchoolHacking.Models
                     before + "    " + this.VariableDeclare + keyValue + " = " + container + "[" + keyIterator + "]" + this.Semicolon
                 });
             }
+        }
+
+        public string CheckDictionaryKey(string key, string container)
+        {
+            if (DictionaryKeyInCheck)
+            {
+                return key + DictionaryKeyCheckName + container;
+            }
+
+            return container + "." + DictionaryKeyCheckName + "(" + key + ")";
         }
     }
 }
