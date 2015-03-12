@@ -127,4 +127,15 @@
         },
         Goto = "Functions"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Recursion",
+        Paragraphs = new string[]
+        {
+            "Recursion is the practice of making a Function call itself. This is used where solving a problem requires solving smaller versions of that problem, so it's useful to have a Function be able to run itself on different inputs."
+        },
+        Goto = "Recursion"
+    });
 }

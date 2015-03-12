@@ -290,6 +290,7 @@
     <Content Include="Views\Shared\Pages\Functions.cshtml" />
     <Content Include="Views\JavaScript\CookieClicker.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Shared\Pages\Recursion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
