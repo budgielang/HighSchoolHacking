@@ -75,7 +75,7 @@
                             @foreach (KeyValuePair<string, string> link in Model.Links)
                             {
                                 <li>
-                                    <strong>@link.Key</strong>: @Html.ActionLink(link.Value, link.Value)
+                                    <strong>@link.Key</strong>: <a href="@link.Value">@link.Value</a>
                                 </li>
                             }
                         </ul>
