@@ -36,4 +36,15 @@
         },
         Goto = "/Python/WingIDE"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 3),
+        Title = "File I/O",
+        Paragraphs = new string[] 
+        {
+            "Now that you're developing in WingIDE, you can start having your code read from and write to files. File I/O is how a lot of programs store persistent data on your computer, and a lot of the lessons here will use it.",
+        },
+        Goto = "/Python/FileIO"
+    });
 }
