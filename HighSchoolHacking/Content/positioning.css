@@ -25,7 +25,8 @@ article:after {
   clear: both; }
 
 section:first-of-type h1 {
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
 
 section {
   clear: both; }
