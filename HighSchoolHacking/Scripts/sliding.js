@@ -94,6 +94,7 @@
         header.onclick = undefined;
         setTimeout(function () {
             article.style.height = article.getAttribute("heightOld") + "px";
+            article.removeAttribute("heightOld");
             header.onclick = headClickOff;
         }, 210);
     };
@@ -104,6 +105,7 @@
             article = section.children[1];
 
         header.setAttribute("clicked", "off");
+        article.setAttribute("heightOld", article.clientHeight);
 
         if (header.getAttribute("used") === "false") {
             header.onclick = undefined;
