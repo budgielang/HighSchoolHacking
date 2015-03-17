@@ -1,0 +1,37 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "Bouncing Elements",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "JavaScript and CSS can work together to let you change all sorts of information on elements in web pages. This activity will teach you how to recolor, resize, reshape, and move around elements around on a page,",
+            "If you're ever bored, there's an exhaustive list of pretty much all CSS properties <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference\">here</a>, but we'll teach you only the ones you need to know for this activity."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 6),
+        Title = "Cascading Style Sheets",
+        Paragraphs = new string[]
+        { 
+            "HTML elements on the screen are styled using something called CSS (Cascading Style Sheets). CSS controls literally everything about the element, from what color it is to how it's positioned on the page.",
+            "CSS does this via \"attributes\" such as <em>color</em> (what color an element's text is). There are a bagillion different attributes so knowing which one to use is just memorization. Most people oftentimes need to look up what attributes. For example, in making this page I couldn't remember how to make text <em>italic</em>, so I looked up <a href=\"https://www.bing.com/search?q=css+make+text+italic&PC=U316&FORM=CHROMN\" target=\"_blank\">\"CSS make text italic\"</a> and the first few results all pointed to using <em>font-style: italic</em>.",
+            Section.WrapHead("CSS & Developer Tools"),
+            "You can use Developer Tools to modify an element's CSS (also called its <em>style</em>). Once you've clicked on an element in the Elements tab, on the right side of the DevTools there should be a box that has <code>element.style</code> near the top.",
+            Section.WrapImage("DeveloperTools/ElementStyle.png"),
+            "You can easily add styles by clicking on that box and typing whatever styles you want to add to the selected element. Start by selecting this paragraph and giving it <code>color: red;</code>.",
+            Section.WrapCode("css", new string[] {
+                "color: red;"
+            }),
+            "The semicolon at the end is necessary. Your DevTools should give you autocomplete drop-down menus, which are incredibly useful (look at all those colors!)."
+        }
+    });
+}
