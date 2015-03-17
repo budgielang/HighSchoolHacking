@@ -23,7 +23,7 @@
         Paragraphs = new string[]
         { 
             "HTML elements on the screen are styled using something called CSS (Cascading Style Sheets). CSS controls literally everything about the element, from what color it is to how it's positioned on the page.",
-            "CSS does this via \"attributes\" such as <em>color</em> (what color an element's text is). There are a bagillion different attributes so knowing which one to use is just memorization. Most people oftentimes need to look up what attributes. For example, in making this page I couldn't remember how to make text <em>italic</em>, so I looked up <a href=\"https://www.bing.com/search?q=css+make+text+italic&PC=U316&FORM=CHROMN\" target=\"_blank\">\"CSS make text italic\"</a> and the first few results all pointed to using <em>font-style: italic</em>.",
+            "CSS does this via \"attributes\" such as <em>color</em> (what color an element's text is). There are a bagillion different attributes so knowing which one to use is just memorization. Most people oftentimes need to look up what attributes are called because there are so many. For example, in making this page I couldn't remember how to make text <em>italic</em>, so I looked up <a href=\"https://www.bing.com/search?q=css+make+text+italic&PC=U316&FORM=CHROMN\" target=\"_blank\">\"CSS make text italic\"</a> and the first few results all pointed to using <em>font-style: italic</em>.",
             Section.WrapHead("CSS & Developer Tools"),
             "You can use Developer Tools to modify an element's CSS (also called its <em>style</em>). Once you've clicked on an element in the Elements tab, on the right side of the DevTools there should be a box that has <code>element.style</code> near the top.",
             Section.WrapImage("DeveloperTools/ElementStyle.png"),
@@ -32,6 +32,154 @@
                 "color: red;"
             }),
             "The semicolon at the end is necessary. Your DevTools should give you autocomplete drop-down menus, which are incredibly useful (look at all those colors!)."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        { 
+            "<em>Protip: we haven't told you how to do most of these properties, look them up online!</em>",
+            Section.WrapList(new string[]
+            {
+                "Turn the header for this page chartreuse.",
+                "Make this sentence bold. <em>Hint: font-weight!</em>",
+                "Make this sentence italic.",
+                "Make this sentence bold, italic, and colored azure.",
+                "Make this sentence use Comic Sans MS as the font-family, be colored pink, and be 70% transparent."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        { 
+            Section.WrapList(new string[]
+            {
+                "Turn the header for this page chartreuse." + Section.WrapCode("css", new string[]
+                {
+                    "color: chartreuse;"
+                }),
+                "Make this sentence bold. <em>Hint: font-weight!</em>" + Section.WrapCode("css", new string[]
+                {
+                    "font-weight: bold;"
+                }),
+                "Make this sentence italic." + Section.WrapCode("css", new string[]
+                {
+                    "font-style: italic;"
+                }),
+                "Make this sentence bold, italic, and colored azure." + Section.WrapCode("css", new string[]
+                {
+                    "font-weight: bold;",
+                    "font-style: italic;",
+                    "color: azure;"
+                }),
+                "Make this sentence use Comic Sans MS as the font family, be colored pink, and be 70% transparent." + Section.WrapCode("css", new string[]
+                {
+                    "color: pink;",
+                    "font-family: \"Comic Sans MS\";",
+                    "opacity: .7"
+                }),
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "CSS via JavaScript",
+        Paragraphs = new string[]
+        { 
+            "Remember <code>document.querySelectorAll</code>? The elements you get from that have a <code>.style</code> attribute that lets you access that element's CSS styles. <code>.style</code> is used the same way you would normally use an Object:",
+            Section.WrapCode("javascript", new String[]
+            {
+                "// Turns all the paragraphs on the page pink...",
+                "var elements = document.querySelectorAll(\"p\");",
+                "for (var i = 0; i < elements.length; i = i + 1) {",
+                "    elements[i].style.color = \"pink\";",
+                "}"
+            }),
+            "The naming scheme for <code>.style</code> is unfortunately a bit different from CSS's. CSS prefers <code>word-word</code> (<code>font-weight</code>, <code>font-style</code>, etc.) while JavaScript prefers <code>wordWord</code> (<code>fontWeight</code>, <code>fontStyle</code>, etc.). The JavaScript style is something called <a href=\"http://en.wikipedia.org/wiki/CamelCase\">Camel Case</a>, which you should always try to use (don't call your variables <code>some-name</code>; <code>someName</code> is better).",
+            "Also note that attributes in CSS don't need quotes (you can have them if you want, but they're unnecessary). JavaScript uses the typical String/Number convention for CSS styles, where all Strings (e.g. \"green\", \"bold\") are in quotes and Numbers (e.g. 0, 35, 0.7) aren't."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        { 
+            "<em>Protip: we haven't told you how to do most of these properties, look them up online!</em>",
+            Section.WrapList(new string[]
+            {
+                "Turn the header for this page chartreuse using JavaScript.",
+                "Make all paragraphs bold using JavaScript. <em>Hint: font-weight!</em>",
+                "Make all paragraphs italic using JavaScript.",
+                "Make all paragraphs bold, italic, and colored azure using JavaScript.",
+                "Make all paragraphs use Comic Sans MS as the font-family, be colored pink, and be 70% transparent using JavaScript."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        { 
+            "<em>Protip: we haven't told you how to do most of these properties, look them up online!</em>",
+            Section.WrapList(new string[]
+            {
+                "Turn the header for this page chartreuse using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"h1\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    elements[i].style.color = \"chartreuse\";",
+                    "}"
+                }),
+                "Make all paragraphs bold using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"p\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    elements[i].style.fontWeight = \"bold\";",
+                    "}"
+                }),
+                "Make all paragraphs italic using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"p\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    elements[i].style.fontStyle = \"italic\";",
+                    "}"
+                }),
+                "Make all paragraphs bold, italic, and colored azure using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"p\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    element = elements[i];",
+                    "    element.style.fontWeight = \"bold\";",
+                    "    element.style.fontStyle = \"italic\";",
+                    "    element.style.color = \"chartreuse\";",
+                    "}"
+                }),
+                "Make all paragraphs use Comic Sans MS as the font-family, be colored pink, and be 70% transparent using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"p\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    element = elements[i];",
+                    "    element.style.color = \"pink\";",
+                    "    element.style.fontFamily = \"Comic Sans MS\";",
+                    "    element.style.opacity = 0.7;",
+                    "}"
+                })
+            })
         }
     });
 }
