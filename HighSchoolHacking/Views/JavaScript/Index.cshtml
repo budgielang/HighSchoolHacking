@@ -62,4 +62,15 @@
         },
         Goto = "/JavaScript/Cookie Clicker"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.JavaScript.Color, 5),
+        Title = "Bouncing Elements",
+        Paragraphs = new string[] 
+        {
+            "JavaScript and CSS can work together to let you change all sorts of information on elements in web pages. This activity will teach you how to recolor, resize, reshape, and move around elements around on a page."
+        },
+        Goto = "/JavaScript/Bouncing Elements"
+    });
 }
