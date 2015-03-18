@@ -11,7 +11,7 @@
         Back = "/" + Model.Name + "/Learn",
         Paragraphs = new string[]
         {
-            "JavaScript and CSS can work together to let you change all sorts of information on elements in web pages. This activity will teach you how to recolor, resize, reshape, and move around elements around on a page,",
+            "JavaScript and CSS can work together to let you change all sorts of information on elements in web pages. This activity will teach you how to recolor, resize, reshape, and move around elements around on a page, then finally \"bounce\" a round element around like a ball.",
             "If you're ever bored, there's an exhaustive list of pretty much all CSS properties <a href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference\">here</a>, but we'll teach you only the ones you need to know for this activity."
         }
     });
@@ -276,11 +276,68 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 8),
+        Color = Section.GetNextColor(Model.Color, 9),
         Title = "Positioning",
         Paragraphs = new string[]
         {
-            "<em><strong>Not yet written</strong>! It will involve using <code>setInterval</code> to move elements around the screen, x- and y- velocities, and checking clientWidth/Height and positions of elements.</em>"
+            "The last new feature (phew!) you need to know is <code>.getBoundingClientRect()</code>. It's a member Function of HTML elements that returns an Object with <code>.top</code>, <code>.right</code>, <code>.bottom</code>, <code>.left</code>, <code>.width</code>, and <code>.height</code> measurements for the element. The position (top, right, bottom, left) measurements are where the element is on the page relative to the browser's viewable window, and the size (width, height) of the element.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var element = document.querySelectorAll(\"p\")[0];",
+                "console.log(element.getBoundingClientRect());"
+            }),
+            "You can use this to tell if the element is partially outside of the screen. If top is negative, that means the top of the element is above the visible screen. If left is negative, the left of the element is to the left of the visible screen.",
+            "JavaScript keeps a glocal <code>innerWidth</code> variable equal to the width of the screen and an <code>innerHeight</code> equal to the height, so you can use those to check if right or bottom are too big.",
+            "The goal of this whole lesson is to make an element bounce around the screen, and the way you'll be able to do that is:",
+            Section.WrapList(new string[]
+            {
+                "Positioning the element using <code>position: fixed</code>.",
+                "Keeping track of the element's position and velocity using separate Numbers.",
+                "Continuously changing the element's position using a Function called by <code>setInterval</code>."
+            }),
+            "That's a lot to ask so we'll guide you through it. The circle below has an <code>id = \"tester\"</code> so you can use it for the activity.",
+            "<div id=\"tester\" style=\"border-radius: 100%; width: 35px; height: 35px; background: red;\"></div>",
+            "To start, you might find the following code block helpful. You don't have to use it if you don't want, but it's a good idea to look at it.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var distanceTop = 0;",
+                "var element = document.querySelectorAll(\"#tester\")[0];",
+                "",
+                "element.style.position = \"fixed\";",
+                "element.style.top = \"0px;\"",
+                "",
+                "function upkeep() {",
+                "    element.style.top = distanceTop + \"px\";",
+                "}",
+                "",
+                "setInterval(upkeep, 1000 / 60);"
+            }),
+            "The way this code works is it keeps track of the distanceTop for the element, and every 16 milliseconds sets the element's top style to be equal to it. It's 16 milliseconds because 1000 milliseconds divided by 60 frames per second = 16.666... for that nice 60 frames per second experience.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Also keep track of the distanceLeft for the element, and continuously set both the top and left styles.",
+                "Add in a vertical velocity to change the distanceTop by every upkeep.",
+                "Add in a horizontal velocity to change the distanceLeft by every upkeep.",
+                "Make upkeep use element.getBoundingClientRect() every upkeep to check if it's horizontally out of bounds, and multiply its horizontal velocity by -1 if so.",
+                "Make upkeep use element.getBoundingClientRect() every upkeep to check if it's vertically out of bounds, and multiply its vertical velocity by -1 if so."
+            }),
+            Section.WrapHead("Bonuses"),
+            Section.WrapList(new string[]
+            {
+                "Add a gravity effect to vertical velocity.",
+                "Whenever the element \"collides\" with the screen, change its background color.",
+                "Instead of using the <code>#tester</code> element, try making your code work for different elements (such as paragraphs or headers).",
+                "Instead of using <code>position: fixed</code>, try using <code>position: relative</code>. What changes? Does it still work?"
+            })
         }
     });
 }
