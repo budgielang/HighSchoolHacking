@@ -21,7 +21,7 @@
         Color = Section.GetNextColor(Model.Color, 6),
         Title = "Cascading Style Sheets",
         Paragraphs = new string[]
-        { 
+        {
             "HTML elements on the screen are styled using something called CSS (Cascading Style Sheets). CSS controls literally everything about the element, from what color it is to how it's positioned on the page.",
             "CSS does this via \"attributes\" such as <em>color</em> (what color an element's text is). There are a bagillion different attributes so knowing which one to use is just memorization. Most people oftentimes need to look up what attributes are called because there are so many. For example, in making this page I couldn't remember how to make text <em>italic</em>, so I looked up <a href=\"https://www.bing.com/search?q=css+make+text+italic&PC=U316&FORM=CHROMN\" target=\"_blank\">\"CSS make text italic\"</a> and the first few results all pointed to using <em>font-style: italic</em>.",
             Section.WrapHead("CSS & Developer Tools"),
@@ -40,15 +40,15 @@
         Color = "steel",
         Title = "Exercises",
         Paragraphs = new string[]
-        { 
-            "<em>Protip: we haven't told you how to do most of these properties, look them up online!</em>",
+        {
+            "<em>Protip: we haven't told you how to do most of these CSS properties, look them up online!</em>",
             Section.WrapList(new string[]
             {
-                "Turn the header for this page chartreuse.",
-                "Make this sentence bold. <em>Hint: font-weight!</em>",
-                "Make this sentence italic.",
-                "Make this sentence bold, italic, and colored azure.",
-                "Make this sentence use Comic Sans MS as the font-family, be colored pink, and be 70% transparent."
+                "Turn the header for this page chartreuse using the DevTools.",
+                "Make this sentence bold using the DevTools. <em>Hint: font-weight!</em>",
+                "Make this sentence italic using the DevTools.",
+                "Make this sentence bold, italic, and colored azure using the DevTools.",
+                "Make this sentence use Comic Sans MS as the font-family, be colored pink, and be 70% transparent using the DevTools."
             })
         }
     });
@@ -59,28 +59,28 @@
         Title = "Solutions",
         Contracted = true,
         Paragraphs = new string[]
-        { 
+        {
             Section.WrapList(new string[]
             {
-                "Turn the header for this page chartreuse." + Section.WrapCode("css", new string[]
+                "Turn the header for this page chartreuse using the DevTools." + Section.WrapCode("css", new string[]
                 {
                     "color: chartreuse;"
                 }),
-                "Make this sentence bold. <em>Hint: font-weight!</em>" + Section.WrapCode("css", new string[]
+                "Make this sentence bold using the DevTools. <em>Hint: font-weight!</em>" + Section.WrapCode("css", new string[]
                 {
                     "font-weight: bold;"
                 }),
-                "Make this sentence italic." + Section.WrapCode("css", new string[]
+                "Make this sentence italic using the DevTools." + Section.WrapCode("css", new string[]
                 {
                     "font-style: italic;"
                 }),
-                "Make this sentence bold, italic, and colored azure." + Section.WrapCode("css", new string[]
+                "Make this sentence bold, italic, and colored azure using the DevTools." + Section.WrapCode("css", new string[]
                 {
                     "font-weight: bold;",
                     "font-style: italic;",
                     "color: azure;"
                 }),
-                "Make this sentence use Comic Sans MS as the font family, be colored pink, and be 70% transparent." + Section.WrapCode("css", new string[]
+                "Make this sentence use Comic Sans MS as the font family, be colored pink, and be 70% transparent using the DevTools." + Section.WrapCode("css", new string[]
                 {
                     "color: pink;",
                     "font-family: \"Comic Sans MS\";",
@@ -95,7 +95,7 @@
         Color = Section.GetNextColor(Model.Color, 7),
         Title = "CSS via JavaScript",
         Paragraphs = new string[]
-        { 
+        {
             "Remember <code>document.querySelectorAll</code>? The elements you get from that have a <code>.style</code> attribute that lets you access that element's CSS styles. <code>.style</code> is used the same way you would normally use an Object:",
             Section.WrapCode("javascript", new String[]
             {
@@ -105,7 +105,7 @@
                 "    elements[i].style.color = \"pink\";",
                 "}"
             }),
-            "The naming scheme for <code>.style</code> is unfortunately a bit different from CSS's. CSS prefers <code>word-word</code> (<code>font-weight</code>, <code>font-style</code>, etc.) while JavaScript prefers <code>wordWord</code> (<code>fontWeight</code>, <code>fontStyle</code>, etc.). The JavaScript style is something called <a href=\"http://en.wikipedia.org/wiki/CamelCase\">Camel Case</a>, which you should always try to use (don't call your variables <code>some-name</code>; <code>someName</code> is better).",
+            "The naming scheme for <code>.style</code> is unfortunately a bit different from CSS's. CSS prefers <code>word-word</code> (<code>font-weight</code>, <code>font-style</code>, etc.) while JavaScript prefers <code>wordWord</code> (<code>fontWeight</code>, <code>fontStyle</code>, etc.). The JavaScript style is something called <a href=\"http://en.wikipedia.org/wiki/CamelCase\">Camel Case</a>, which you should always try to use (don't call your variables <code>some_name</code> or <code>somename</code>; <code>someName</code> is better).",
             "Also note that attributes in CSS don't need quotes (you can have them if you want, but they're unnecessary). JavaScript uses the typical String/Number convention for CSS styles, where all Strings (e.g. \"green\", \"bold\") are in quotes and Numbers (e.g. 0, 35, 0.7) aren't."
         }
     });
@@ -115,8 +115,8 @@
         Color = "steel",
         Title = "Exercises",
         Paragraphs = new string[]
-        { 
-            "<em>Protip: we haven't told you how to do most of these properties, look them up online!</em>",
+        {
+            "<em>Protip: we haven't told you how to do most of these CSS properties in JavaScript, you might have to look them up online!</em>",
             Section.WrapList(new string[]
             {
                 "Turn the header for this page chartreuse using JavaScript.",
@@ -134,8 +134,7 @@
         Title = "Solutions",
         Contracted = true,
         Paragraphs = new string[]
-        { 
-            "<em>Protip: we haven't told you how to do most of these properties, look them up online!</em>",
+        {
             Section.WrapList(new string[]
             {
                 "Turn the header for this page chartreuse using JavaScript." + Section.WrapCode("javascript", new string[]
@@ -180,6 +179,108 @@
                     "}"
                 })
             })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "Positioning",
+        Paragraphs = new string[]
+        {
+            "Hold onto your hats; this will get complicated but end up making sense.",
+            "The <code>position</code> tag determines how an element is positioned on the page: relative to the elements before it, relative to its container, relative to the page, etc.",
+            Section.WrapList(false, new string[]
+            {
+                "<code>initial</code> - Normal behavior, nothing special.",
+                "<code>absolute</code> - Relative to the page itself.",
+                "<code>fixed</code> - Relative to the surrounding browser."
+            }),
+            "Along with this, you can use the <code>top</code>, <code>right</code>, <code>bottom</code>, and <code>left</code> as measurements to specify offset. We'll be using pixel measurements, so in the format \"7px\" would mean seven pixels from the top.",
+            Section.WrapCode("css", new string[]
+            {
+                "position: fixed;",
+                "top: 7px;",
+                "left: 0; /* It's ok (actually preferred) to just write 0 instead of 0px. */"
+            }),
+            "The rest of this lesson focuses mainly on giving elements <code>position: fixed</code> with <code>top</code> and <code>left</code>.",
+            "Just to test this out, try giving this sentence's paragraph the above CSS styles. Instead of being a part of the Positioning section, it should now be on the top-left corner of the page, and not move at all when you scroll around."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make the page's main header fixed on top of the screen using the DevTools.",
+                "Make the page's main header fixed on top of the screen using JavaScript.",
+                "Make the page's main header fixed 70px below the top of the screen and 7px from the right of the screen using JavaScript. <em>Hint: in JavaScript, adding a Number to a String makes a new String!</em>",
+                "Make all paragraphs fixed to the right, bottom, and left, of the screen, colored pink, and with a white background. What does this do to their width?"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Make the page's main header fixed on top of the screen using the DevTools." + Section.WrapCode("css", new string[]
+                {
+                    "position: fixed;",
+                    "top: 0;"
+                }),
+                "Make the page's main header fixed on top of the screen using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"h1\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    element = elements[i];",
+                    "    element.style.position = \"fixed\";",
+                    "    element.style.top = 0;",
+                    "}"
+                }),
+                "Make the page's main header fixed 70px below the top of the screen and 7px from the right of the screen using JavaScript." + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"h1\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    element = elements[i];",
+                    "    element.style.position = \"fixed\";",
+                    "    element.style.top = \"70px\";",
+                    "    element.style.right = \"7px\";",
+                    "}"
+                }),
+                "Make all paragraphs fixed to the right, bottom, and left, of the screen, colored pink, and with a white background. What does this do to their width?" + Section.WrapCode("javascript", new string[]
+                {
+                    "var elements = document.querySelectorAll(\"p\");",
+                    "for (var i = 0; i < elements.length; i = i + 1) {",
+                    "    element = elements[i];",
+                    "    element.style.position = \"fixed\";",
+                    "    element.style.right = 0;",
+                    "    element.style.bottom = 0;",
+                    "    element.style.left = 0;",
+                    "    element.style.color = \"pink\";",
+                    "    element.style.background = \"white\"; /* Alternately, you could use backgroundColor. */",
+                    "}"
+                }) + "A bunch of them are stretched all the way horizontally."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "Positioning",
+        Paragraphs = new string[]
+        {
+            "<em><strong>Not yet written</strong>! It will involve using <code>setInterval</code> to move elements around the screen, x- and y- velocities, and checking clientWidth/Height and positions of elements.</em>"
         }
     });
 }
