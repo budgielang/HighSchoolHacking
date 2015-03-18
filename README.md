@@ -5,7 +5,7 @@ High School Hacking is a program for high schoolers (and other newcomers) to get
 The http://www.highschoolhacking.club website is hosted on Azure, auto-pulling from the main/master GitHub repo/branch. The entire repo is just the Visual Studio 2013 ASP.NET solution, along with the general Git/GitHub info.
 
 ### Teaching
-If you'd like to use the site to teach, please go ahead! The typical structure is to spend the first few sessions teaching the language (depending on the students' proficiency, this may vary in time), then one session per activity. We typically go for ~60  sessions, with ~5 minutes of presentation before an activity.
+If you'd like to use the site to teach, please go ahead! The typical structure is to spend the first few sessions teaching the language (depending on the students' proficiency, this may vary in time), then one session per activity. We typically go for ~60 minute sessions, with ~5 minutes of presentation before an activity.
 
 
 It's also a good idea to [email Josh](mailto:joshuakgoldberg@outlook.com) so we can coordinate lessons and customize site if need be.
