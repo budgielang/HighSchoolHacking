@@ -196,6 +196,7 @@
     <Content Include="Content\Images\WingIDE\BlankDocument.png" />
     <Content Include="Content\Images\WingIDE\BlankWindow.png" />
     <Content Include="Content\Images\WingIDE\HelpWindow.png" />
+    <Content Include="Content\Images\WingIDE\RunningCode.png" />
     <Content Include="Content\positioning.css">
       <DependentUpon>positioning.scss</DependentUpon>
     </Content>

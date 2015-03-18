@@ -44,4 +44,16 @@
             "If you ever want to go back to a file from WingIDE, go to File > Open (Control + O)."
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 6),
+        Title = "Running Files",
+        Paragraphs = new string[]
+        {
+            "WingIDE uses the Python already intsalled on your computer to run code. To run the currently viewed code file, click the green play button at the top of the screen (Control + Alt + V).",
+            Section.WrapImage("WingIDE/RunningCode.png"),
+            "That's all there is to it, for now. The next activity will go into doing File I/O, but that's Python in general - WingIDE is just one way to do it."
+        }
+    });
 }
