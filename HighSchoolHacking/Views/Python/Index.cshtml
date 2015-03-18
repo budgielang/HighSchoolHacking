@@ -47,4 +47,15 @@
         },
         Goto = "/Python/FileIO"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 4),
+        Title = "Simplebot",
+        Paragraphs = new string[] 
+        {
+            "One of the biggest new technologies right now is natural language, or making software understand and speak like a real person. We're going to make a program that pretends to hold a conversation with you and seems intelligent, but in reality is just parroting back preset phrases."
+        },
+        Goto = "/Python/Simplebot"
+    });
 }

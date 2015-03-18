@@ -3,7 +3,7 @@
 @{
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 3),
+        Color = Section.GetNextColor(Languages.Python.Color, 4),
         Title = "Simplebot",
         Extension = "python",
         Image = "http://upload.wikimedia.org/wikipedia/en/c/c8/Alan_Turing_photo.jpg",
@@ -11,7 +11,7 @@
         Back = "/Python",
         Paragraphs = new string[]
         {
-            "One of the biggest new technologies right now is natural language, or making software understand and speak like a real person. Siri, Google Now, and Cortana are all highly developed personal assistants that try (and mostly fail) to pretend to be real people.",
+            "One of the biggest new technologies right now is natural language, or making software understand and speak like a real person. We're going to make a program that pretends to hold a conversation with you and seems intelligent, but in reality is just parroting back preset phrases. Siri, Google Now, and Cortana are all highly developed personal assistants that try (and mostly fail) to pretend to be real people.",
             "The idea behind this originated in 1936 by Alan Turing, generally considered the father of Computer Science. He had the idea of a Turing Test to check whether a machine is acceptably pretending to be human: if you put a machine behind a wall and it had a text-based conversation with a person, could the person tell whether it's a machine?",
             "Science hasn't yet made a machine that can reliably pass the Turing Test. <a href=\"http://www.cleverbot.com\">Cleverbot</a> is one group's attempt to make a bot that remembers what people have said before, but if you've used it for more than ten seconds you can tell it's horrible. Instead, we're going to make a simple version of it, called Simplebot."
         }
@@ -19,7 +19,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = Section.GetNextColor(Model.Color, 4),
+        Color = Section.GetNextColor(Languages.Python.Color, 5),
         Title = "File Format",
         Goto = "/Content/Files/Simplebot.txt",
         Paragraphs = new string[]
