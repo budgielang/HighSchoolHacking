@@ -1,6 +1,6 @@
 ﻿@model HighSchoolHacking.Models.Section
 
-<section class="changer border background @Model.Color" id="@Model.Title" contracted="@Model.Contracted">
+<section class="changer border background @Model.Color" id="@Model.Title.Replace(" ", "")" contracted="@Model.Contracted">
     @{
         string head = @Model.Large ? "h1" : "h2";
         string articleClass = (Model.Paragraphs == null) ? "empty" : "filled";
