@@ -27,7 +27,7 @@
                 "my_file = open(\"stuff.txt\", \"r\")"
             }),
             "If the file doesn't exist, you'll get an error saying <code>No such file or directory</code>. Otherwise, the <code>my_file</code> variable is now pointing to your file (if you type it into the shell and hit enter, it'll show you a small bit of info on it).",
-            "Getting the contents of the file is done using the <code>.read()</code> member Function of the file object. It returns a String containing the entire contents of the file (we'll go into other methods later).",
+            "Getting the contents of the file is done using the <code>.read()</code> member Function of the file object. It returns a String containing the first line of the file (we'll go into other methods later). The next time you call <code>.read()</code>, it'll take in the second line, and so on.",
             Section.WrapCode("python", new string[]
             {
                 "my_file.read()"
