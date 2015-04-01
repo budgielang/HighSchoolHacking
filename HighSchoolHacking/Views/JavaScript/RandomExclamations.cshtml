@@ -66,4 +66,82 @@
             })
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] 
+        { 
+            Section.WrapList(new string[]
+            {
+                "Write code to generate a random Number between 0 and 3, inclusive (can be 0, 1, 2, or 3)." + Section.WrapCode("javascript", new string[]
+                {
+                    "Math.floor(Math.random() * 4);"
+                }),
+                "Write code to generate a random even Number between 0 and 14, inclusive." + Section.WrapCode("javascript", new string[]
+                {
+                    "Math.floor(Math.random() * 8) * 2;"
+                }),
+                "Write code to generate a random odd Number between 1 and 7, inclusive." + Section.WrapCode("javascript", new string[]
+                {
+                    "Math.floor(Math.random() * 4) + 1;"
+                }),
+                "Create a Function that takes in two Numbers, and generates a random Number between them, inclusive." + Section.WrapCode("javascript", new string[]
+                {
+                    "function randomInt(min, max) {",
+                    "    return Math.floor(Math.random() * (max + 1 - min)) + min;",
+                    "}"
+                }),
+                "Create an Array of Strings, and write code that generates a random Number up to the length of the Array." + Section.WrapCode("javascript", new string[]
+                {
+                    "var words = [\"Apple\", \"Banana\", \"Cherry\"];",
+                    "var index = Math.floor(Math.random() * words.length);"
+                }),
+                "Write code to <code>console.log</code> a random member of that Array." + Section.WrapCode("javascript", new string[]
+                {
+                    "var words = [\"Apple\", \"Banana\", \"Cherry\"];",
+                    "var word = words[Math.floor(Math.random() * words.length)];",
+                    "console.log(word);"
+                }),
+                "Use <code>setInterval</code> to <code>console.log</code> a random member of that Array every second or so." + Section.WrapCode("javascript", new string[]
+                {
+                    "var words = [\"Apple\", \"Banana\", \"Cherry\"];",
+                    "",
+                    "function logWord() {",
+                    "    var word = words[Math.floor(Math.random() * words.length)];",
+                    "    console.log(word);",
+                    "}",
+                    "",
+                    "setInterval(logWord, 1000);"
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "Why the rest of this isn't done",
+        Paragraphs = new string[]
+        {
+            "Sorry Shaker folks, I haven't been able to get work done on HighSchoolHacking.club because I've been too busy cramming bug fixes into www.fullscreenpokemon.com. When you're done with the stuff below, you should totally play it.",
+            "The following is a quick list of what would have been nicely formatted. Still do it though:",
+            "<em style=\"float:right;\">-Josh</em>",
+            Section.WrapList(true, new string[]
+            {
+                "Add a new HTML Element to the page using ... " + Section.WrapCode("javascript", new string[]
+                {
+                    "var element = document.createElement(\"div\");",
+                    "document.body.appendChild(element);"
+                }) + "That creates a new HTML element and adds it to your page. The element is the same as what you'd get with <code>document.querySelectorAll()</code> (and <code>document.querySelector()</code>).",
+                "Change that element's style to be <code>position: fixed</code> (like in the <a href=\"/JavaScript/BouncingElements\">Bouncing Elements</a> activity), and random values for its <code>left</code> and <code>top</code>.",
+                "Make an Array of Strings to store random exclamations (whatever random phrases you want to throw in there), and give the element a random one of those phrases.",
+                "Make a Function that does all this, and have that Function get called by <code>setInterval</code> every couple seconds or so.",
+                "Also randomize at least three other style attributes, such as <code>color</code>, <code>backgroundColor</code>, <code>fontSize</code>, <code>fontFamily</code>, etc."
+            }),
+            "When you're done, your code should be creating a new element that gets placed at a random position on the page, with a random expression inside it."
+        }
+    });
 }
