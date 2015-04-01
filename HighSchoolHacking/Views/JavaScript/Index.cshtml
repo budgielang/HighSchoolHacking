@@ -73,4 +73,15 @@
         },
         Goto = "/JavaScript/Bouncing Elements"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.JavaScript.Color, 6),
+        Title = "Random Exclamations",
+        Paragraphs = new string[] 
+        {
+            "Building off the Bouncing Elements exercise, JavaScript can also add elements to a page and mess around with them. This lesson explores random number generation and how you can use it to spice up your pages."
+        },
+        Goto = "/JavaScript/Random Exclamations"
+    });
 }
