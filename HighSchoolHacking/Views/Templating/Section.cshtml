@@ -35,6 +35,11 @@
     @Html.Raw("</" + head + ">")
 
     <article class="@articleClass">
+        @if (!String.IsNullOrWhiteSpace(Model.Image))
+        {
+            <img src="~/Content/Images/@Model.Image" class="floater" />
+        }
+
         @if (Model.Slogans != null && Model.Slogans.Length > 0)
         {
             int index = new Random().Next(Model.Slogans.Length);
