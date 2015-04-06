@@ -27,11 +27,12 @@
                 "my_file = open(\"stuff.txt\", \"r\")"
             }),
             "If the file doesn't exist, you'll get an error saying <code>No such file or directory</code>. Otherwise, the <code>my_file</code> variable is now pointing to your file (if you type it into the shell and hit enter, it'll show you a small bit of info on it).",
-            "Getting the contents of the file is done using the <code>.read()</code> member Function of the file object. It returns a String containing the first line of the file (we'll go into other methods later). The next time you call <code>.read()</code>, it'll take in the second line, and so on.",
+            "Getting contents from the file is often done using the <code>.read()</code> member Function of the file object (we'll go into other methods later).",
             Section.WrapCode("python", new string[]
             {
                 "my_file.read()"
             }),
+            "It returns a String containing the first <em>unread</em> line of the file. That means the first time you call <code>.read()</code> it returns the first line of the file, the second time it returns the second line, and so on. Once it gets to the end of the file, it returns a blank string (\"\").",
             "When you're done with your file, make sure to close it:",
             Section.WrapCode("python", new string[]
             {
@@ -40,7 +41,7 @@
             "In order to read from a file, it has to be open. Therefore, you have to call <code>read()</code> <em>before</em> you close the file. You can do whatever you want with the String it returns since that String no longer has anything to do with the file.",
             Section.WrapCode("python", new string[]
             {
-                "my_file - open(\"stuff.txt\", \"r\")",
+                "my_file = open(\"stuff.txt\", \"r\")",
                 "stuff = my_file.read()",
                 "my_file.close()",
                 "",
@@ -50,6 +51,27 @@
             Section.WrapCode("text", new string[]
             {
                 "Hello world!"
+            }),
+            "Getting all the lines in the file requires you to use a loop:",
+            Section.WrapCode("python", new string[]
+            {
+                "my_file = open(\"stuff.txt\", \"r\")",
+                "lines = []",
+                "while True:",
+                "    line = my_file.read()",
+                "    if line == \"\":",
+                "        break",
+                "    lines.append(line)",
+                "",
+                "# [\"Hello world!\", \"How are you?\", \"Doing well!\"]",
+                "print(lines)"
+            }),
+            "<em>Contents of stuff.txt:</em>",
+            Section.WrapCode("text", new string[]
+            {
+                "Hello world!",
+                "How are you?",
+                "Doing well!"
             }),
             Section.WrapHead("Lines"),
             "Alternately, you can loop through each line in the file. The way Python lets you do this is really nifty: you loop through it just like in a <code>for</code> loop!",
@@ -95,7 +117,78 @@
             {
                 "Good night, sweet prince."
             }),
-            "Writing to the file replaces what's already there, so instead of \"w\" you can put \"a\" to append.",            
+            "If the file doesn't already exist, that's ok! \"w\" creates the file if it isn't already there.",
+            "If you want to add what what's already in a file, use \"a\" to append instead of \"w\" to write.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[] 
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a text file using WingIDE that contains just your name. Save it to the folder you're running your Python files from.",
+                "Read that file into Python using <code>open</code> and <code>.read()</code>. Print the result, which should be your name.",
+                "Add a couple other names to the file, each on their own line. Read and print them all in Python using a loop.",
+                "Write your name to a new file using <code>.write()</code>.",
+                "Add another name to that file using <code>.write()</code> and \"a\" to append.",
+                "Copy all the names from the first file to a new file using \"a\" to append."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] 
+        {
+            Section.WrapList(new string[]
+            {
+                "Make a text file using WingIDE that contains just your name (you can open it the same way as your <code>.py</code> files). Save it to the folder you're running your Python files from.",
+                "Read that file into Python using <code>open</code> and <code>.read()</code>. Print the result, which should be your name." + Section.WrapCode("python", new string[]
+                {
+                    "my_file = open(\"stuff.txt\", \"r\")",
+                    "stuff = my_file.read()",
+                    "my_file.close()",
+                    "",
+                    "print(stuff) # \"Hello world!\""
+                }),
+                "Add a couple other names to the file, each on their own line. Read and print them all in Python using a loop." + Section.WrapCode("python", new string[]
+                {
+                    "my_file - open(\"stuff.txt\", \"r\")",
+                    "for line in my_file:",
+                    "    print(line)",
+                    "my_file.close()"
+                }),
+                "Write your name to a new file using <code>.write()</code>." + Section.WrapCode("python", new string[]
+                {
+                    "my_file = open(\"stuff.txt\", \"w\")",
+                    "my_file.write(\"Josh Goldberg\")",
+                    "my_file.close()",
+                }),
+                "Add another name to that file using <code>.write()</code> and \"a\" to append." + Section.WrapCode("python", new string[]
+                {
+                    "my_file = open(\"stuff.txt\", \"a\")",
+                    "my_file.write(\"Bob Saget\")",
+                    "my_file.close()",
+                }),
+                "Copy all the names from the first file to a new file using \"a\" to append." + Section.WrapCode("python", new string[]
+                {
+                    "source = open(\"stuff.txt\", \"r\")",
+                    "output = open(\"output.txt\", \"a\")",
+                    "",
+                    "for line in source:",
+                    "    output.write(line)",
+                    "",
+                    "source.close()",
+                    "output.close()"
+                }),
+            })
         }
     });
 }
