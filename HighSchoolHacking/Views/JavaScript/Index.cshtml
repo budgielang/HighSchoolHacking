@@ -84,4 +84,16 @@
         },
         Goto = "/JavaScript/Random Exclamations"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.JavaScript.Color, 7),
+        Title = "Chrome Extensions",
+        Paragraphs = new string[] 
+        {
+            "Chrome extensions are bits of code that run inside Google Chrome and interact with the web pages you visit. They're written mostly in JavaScript which means we can apply everything else learned thus far into making some cool extensions.",
+            "We make one here that replaces words with other words, like in the Name Typos activity, and you could also make extensions to do the Cookie Clicker, Bouncing Elements, and Random Exclamations examples."
+        },
+        Goto = "/JavaScript/Chrome Extensions"
+    });
 }
