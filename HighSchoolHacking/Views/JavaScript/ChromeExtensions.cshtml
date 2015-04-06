@@ -1,0 +1,18 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "Chrome Extensions",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name,
+        Paragraphs = new string[]
+        {
+            "oh boy"
+        }
+    });
+
+}

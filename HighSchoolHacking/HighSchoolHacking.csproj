@@ -297,6 +297,7 @@
     <Content Include="Views\JavaScript\BouncingElements.cshtml" />
     <Content Include="Views\JavaScript\RandomExclamations.cshtml" />
     <Content Include="Views\Python\Dictionaries.cshtml" />
+    <Content Include="Views\JavaScript\ChromeExtensions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
