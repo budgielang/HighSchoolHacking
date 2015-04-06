@@ -48,13 +48,15 @@ namespace HighSchoolHacking.Models
             NativeExponents = true,
             DictionaryKeyInCheck = true,
             DictionaryKeyCheckName = " in ",
+            DictionaryIterator = ".items()",
+            DictionaryIterateAsPair = true,
             DirectArrayLoops = true,
             FunctionsFirstClass = true,
             PrintFunction = "print",
             AppendFunction = "append",
             VariableDeclare = "",
             UndefinedError = "NameError: name ",
-            CustomPages = new HashSet<string> { "ForLoops", "WingIDE", "FileIO", "Simplebot" }
+            CustomPages = new HashSet<string> { "ForLoops", "Dictionaries", "WingIDE", "FileIO", "Simplebot" }
         };
 
         public static Language JavaScript = new Language

@@ -165,7 +165,13 @@
         Title = "Looping through " + Model.DictionaryNamePlural,
         Paragraphs = new string[]
         {
-            "Just like with " + Model.ArrayNamePlural + ", you can loop through " + Model.DictionaryNamePlural + " with <code>for</code> loops. The syntax is practically identical. The following block of code prints out everything in the " + Model.DictionaryName + ".",
+            "Just like with " + Model.ArrayNamePlural + ", you can loop through " + Model.DictionaryNamePlural + " with <code>for</code> loops. The syntax is pretty similar, just with two changes: ",
+            Section.WrapList(new string[]
+            {
+                "Your loop keeps track of both the keys and values being looped through, not just the key.",
+                "The Dictionary has a <code>.items()</code> member Function that allows the loop to work."
+            }),
+            "The following block of code prints out everything in the " + Model.DictionaryName + ".",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
@@ -174,10 +180,11 @@
                 "    \"cherry\": 21",
                 "}" + Model.Semicolon,
                 "",
-                "for" + Model.ConditionalLeft + Model.VariableDeclare + "key in fruits" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(key + \" has \" + fruits[key])" + Model.Semicolon,
+                "for" + Model.ConditionalLeft + Model.VariableDeclare + "key,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
+                "    " + Model.PrintFunction + "(key + \" has \" + str(fruits[key]))" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
+            "<em>If you haven't seen <code>str()</code> before, that turns a Number into a String so you can add them together.</em>",
             "When looping through a " + Model.DictionaryNamePlural + ", the <code>key</code> variable is set to each of the keys. One time it will be \"apple\", another \"banana\", and another \"cherry\".",
             "This can get really complicated with loops. Read through the following block of code carefully: for each String in the " + Model.ArrayName + ", it records in the " + Model.DictionaryName + " the length of the String.",
             Section.WrapCode(Model.NameLower, new string[]
@@ -226,8 +233,8 @@
                     "    \"green\": 4,",
                     "}" + Model.Semicolon,
                     "",
-                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "fruit in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(fruit + \" has \" + fruits[fruit])" + Model.Semicolon,
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "fruit,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(fruit + \" has \" + str(value))" + Model.Semicolon,
                     Model.ConditionalEnd
                 }) + Section.WrapCode(Model.NameLower, new string[]
                 {
@@ -240,8 +247,8 @@
                     "    \"Devin\": \"Alex\",",
                     "}" + Model.Semicolon,
                     "",
-                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "couple in couples" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(couple + \" has \" + couples[couple])" + Model.Semicolon,
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "couple,value in couples" + Model.DictionaryIterator + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(couple + \" has \" + value)" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 "Create a new " + Model.ArrayName + " of your three favorite fruits, with a new empty " + Model.DictionaryName + ". Use a <code>for</code> loop to copy each fruit from the " + Model.ArrayName + " to the " + Model.DictionaryName + ", keyed to the length of the fruit's name. Print each of the pairs." + Section.WrapCode(Model.NameLower, new string[]
@@ -253,8 +260,8 @@
                     "    likes[fruit] = " + Model.UseLength("fruit") + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "like in likes" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(like + \" has \" + likes[like])" + Model.Semicolon,
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "like,length in likes" + Model.DictionaryIterator + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(like + \" has \" + length)" + Model.Semicolon,
                     Model.ConditionalEnd
                 })
             })

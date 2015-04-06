@@ -70,6 +70,10 @@ namespace HighSchoolHacking.Models
 
         public string DictionaryKeyCheckName { get; set; }
 
+        public string DictionaryIterator { get; set; }
+
+        public bool DictionaryIterateAsPair { get; set; }
+
         public bool FunctionsFirstClass { get; set; }
 
         public bool FunctionsAsVariables { get; set; }
