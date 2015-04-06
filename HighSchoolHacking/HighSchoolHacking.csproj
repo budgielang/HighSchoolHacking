@@ -234,6 +234,7 @@
     <Content Include="Content\home.css.map">
       <DependentUpon>home.css</DependentUpon>
     </Content>
+    <Content Include="Content\Files\Extensions\SampleChromeExtension.zip" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

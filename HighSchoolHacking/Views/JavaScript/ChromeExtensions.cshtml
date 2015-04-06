@@ -9,9 +9,64 @@
         Extension = Model.NameLower,
         Large = true,
         Back = "/" + Model.Name,
+        Goto = "https://developer.chrome.com/extensions",
         Paragraphs = new string[]
         {
-            "oh boy"
+            "Chrome extensions are bits of code that run inside Google Chrome and interact with the web pages you visit. They're written mostly in JavaScript which means we can apply everything else learned thus far into making some cool extensions.",
+            "We make one here that replaces words with other words, like in the Name Typos activity, and you could also make extensions to do the Cookie Clicker, Bouncing Elements, and Random Exclamations examples.",
+            "A strong word of warning: Chrome extensions have a lot of complicated parts that we <em>won't</em> go into. This happens a lot with programming, especially when you're making webpages, apps, or larger programs. If you're interested in learning more, you can always go to the Google Developer site."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "How Chrome Extensions Work",
+        Goto = "/Content/Files/Extensions/SampleChromeExtension.zip",
+        Paragraphs = new string[]
+        {
+            "The simple extensions we'll be making have the following files:",
+            Section.WrapList(false, new string[]
+            {
+                "A <strong>manifest file</strong> <em>(.json)</em>",
+                "A <strong>JavaScript file</strong> <em>(.js)</em>"
+            }),
+            Section.WrapHead("The Manifest"),
+            "The manifest file is what tells Chrome which files are used for what. It has a lot of settings, some of which we'll go into.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "{",
+                "    \"name\": \"Best Extension Ever!\",",
+                "    \"description\": \"A sample extension that does almost nothing.\",",
+                "    \"version\": \"1.0\",",
+                "    \"manifest_version\": 2,",
+                "    \"permissions\": [",
+                "        \"<all_urls>\"",
+                "    ],",
+                "    \"background\": {",
+                "        \"scripts\": [",
+                "            \"background.js\"",
+                "        ]",
+                "    }",
+                "}"
+            }),
+            Section.WrapList(false, new string[]
+            {
+                "<em>name</em> - Whatever you want to call your extension.",
+                "<em>description</em> - A short description of your extension.",
+                "<em>version</em> - The extension version. Start with 1.0, and increase that to 1.1, 1.2, etc. as you add features.",
+                "<em>manifest_version</em> - What style of manifest you're using (just put 2).",
+                "<em>permissions</em> - An Array of Strings describing your app is allowed to do. This one is given access to all URLs (all websites).",
+                "<em>background</em> - The stuff the app will run in the background of pages it's given permission to (for this one, all URLs). In this case, it says the <em>background.js</em> script is to be run on all web pages."
+            }),
+            "There are a lot of other settings you can have in there, but we won't go into them.",
+            Section.WrapHead("The JavaScript File"),
+            "If you remember using <code>.py</code> files in WingIDE, this is the same thing. Your JavaScript <code>.js</code> file's code is run as soon as the webpage starts to load.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "console.log(\"Hello world!\");"
+            }),
+            "Yup, that's the whole file. We'll make more complicated scripts later."
         }
     });
 

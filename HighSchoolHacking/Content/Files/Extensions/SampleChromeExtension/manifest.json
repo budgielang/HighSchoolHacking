@@ -1,0 +1,14 @@
+{
+    "name": "Best Extension Ever!",
+    "description": "A sample extension that does almost nothing.",
+    "version": "1.0",
+    "manifest_version": 2,
+    "permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    }
+}
