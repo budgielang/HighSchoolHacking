@@ -18,7 +18,7 @@ namespace HighSchoolHacking.Controllers
 
             if (Languages.Python.CustomPages.Contains(section))
             {
-                return View(Languages.GetSectionPage("Python", section), Languages.JavaScript);
+                return View(Languages.GetSectionPage("Python", section), Languages.Python);
             }
 
             return View(Languages.GetSharedPage(section), HighSchoolHacking.Models.Languages.Python);
