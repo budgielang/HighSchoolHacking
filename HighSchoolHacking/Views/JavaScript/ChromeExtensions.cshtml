@@ -130,6 +130,58 @@
                 "        console.log(child);",
                 "    }",
                 "}"
+            }),
+            Section.WrapHead("String Text Replacement"),
+            "Unfortunately, there's one more small problem, with replacing text in Strings. The native JavaScript <code>.replace()</code> only replaces the first thing it sees, instead of all the times it could in a String.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var string = \"aaa\";",
+                "console.log(string.replace(\"a\", \"z\")); // \"zaa\""
+            }),
+            "There are a few different ways to fix for this. A very short, elegant approach is to use native JavaScript <code>.split()</code> and <code>.join()</code> Functions:",
+            Section.WrapList(false, new string[]
+            {
+                "String's <code>.split()</code> \"splits\" the String into an Array of Strings. It takes one argument, which is a String to split across (all instances of the given String dissapear)." + Section.WrapCode("javascript", new string[]
+                {
+                    "console.log(\"hello world\".split(\" \")); // [\"hello\", \"world\"]",
+                    "console.log(\"aaa\".split(\"a\")); // [\"\", \"\", \"\", \"\"]"
+                }),
+                "Array's <code>.join()</code> \"joins\" an Array back into a single String. It takes one argument, which is a String to put between all members of the Array when joining." + Section.WrapCode("javascript", new string[]
+                {
+                    "console.log([\"hello\", \"world\"].join(\", \")); // \"hello, world\"",
+                    "console.log([\"\", \"\", \"\", \"\"].join(\"z\")); // \"zzz\""
+                })
+            }),
+            "Putting the two together, we get a small one-line fix:",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var string = \"Every time the word 'the' is said, the replacement should be used there instead.\";",
+                "var replaced = string.split(\"the\").join(\"NOPE\");",
+                "console.log(replaced); // \"Every time NOPE word 'NOPE' is said, NOPE replacement should be used NOPEre instead.\""
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write and test a Function that takes in three Strings as arguments and returns a modified version of the first argument, where all instances of the second argument have been replaced with the third.",
+                "Use this Function in your extension to replace all instances of the word \"JavaScript\" with \"BEST LANGUAGE EVER\" on every page.",
+                "Create an Object storing at least half a dozen replacements. For example, using the previous replacement (which you don't have to), <code>[\"JavaScript\"]</code> would <code>=</code> <code>\"BEST LANGUAGE EVER\"</code>.",
+                "Make your extension use that Object on every page."
+            }),
+            Section.WrapHead("Bonus"),
+            Section.WrapList(new string[]
+            {
+                "Make your extension do the same replacements that the <a href=\"/JavaScript/NameTypos\">Name Typos</a> activity did.",
+                "Make a new extension that does the <a href=\"/JavaScript/RandomExclamations\">Random Exclamations</a> activity on all pages.",
+                "Make a new extension that automatically runs the <a href=\"/JavaScript/CookieClicker\">Cookie Clicker</a> script on the <a href=\"orteil.dashnet.org/cookieclicker/\">Cookie Clicker</a> site. <em>Hint: change the \"content_scripts\" part of the manifest!</em>",
+                "Make a new extension that does the <a href=\"/JavaScript/BouncingElements\">Bouncing Elements</a> activity on Wikipedia articles, bouncing the main picture around if it exists.",
             })
         }
     });
