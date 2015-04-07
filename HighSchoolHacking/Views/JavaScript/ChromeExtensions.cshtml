@@ -107,7 +107,30 @@
         Paragraphs = new string[]
         {
             "<a href=\"https://chrome.google.com/webstore/detail/cloud-to-butt-plus/apmlngnhgbnjpajelfkmabhkfapgnoai\">Cloud to Butt Plus</a> is a good example of a Chrome extension. In short, it replaces the text \"the cloud\" with \"my butt\", as well as \"cloud\" with \"butt\". You've already learned how to change the <code>.innerText</code> property of elements, so this is something we can definitely do automatically in an extension.",
-            ""
+            Section.WrapHead("Text Nodes"),
+            "There's a small catch with changing elements' text, in that you can't just change get the <code>.innerText</code> of every element. If an element has children elements (like a <code>&lt;section&gt;</code> containing <code>&lt;articles&gt;</code>s), they'll get turned into plain text. That's a problem.",
+            "Instead, you have to only change <em>text node</em>s. These are special elements that have no children and only contain text (in reality, they're the <em>only</em> nodes that can contain text; any other element type that wants to contain text has one of these as a child).",
+            "Unfortunately you can't select only text nodes using <code>document.querySelectorAll</code>. The least complicated way to select text nodes is to select all elements and loop through each of each of their children, checking if each child is a text node.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var elements = document.querySelectorAll(\"*\"),",
+                "    element, children, child;",
+                "",
+                "for (var i = 0; i < elements.length; i += 1) {",
+                "    element = elements[i];",
+                "    children = element.childNodes;",
+                "    ",
+                "    for (j = 0; j < children.length; j += 1) {",
+                "        child = children[j];",
+                "        ",
+                "        if (child.nodeName != \"#text\") {",
+                "            continue;",
+                "        }",
+                "        ",
+                "        console.log(child);",
+                "    }",
+                "}"
+            })
         }
     });
 }
