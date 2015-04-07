@@ -58,4 +58,16 @@
         },
         Goto = "/Python/Simplebot"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 5),
+        Title = "Word Spam",
+        Paragraphs = new string[] 
+        {
+            "Security is a big part of coding. Hacking and hackers are everywhere on the internet, so it's very important people and organizations keep their data secure.",
+            "This exercise teaches you how to make a random number guessing game, then through the process of encoding a small message inside a very large text file, and reading similar text files to find encoded messages."
+        },
+        Goto = "/Python/WordSpam"
+    });
 }

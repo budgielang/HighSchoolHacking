@@ -56,7 +56,7 @@ namespace HighSchoolHacking.Models
             AppendFunction = "append",
             VariableDeclare = "",
             UndefinedError = "NameError: name ",
-            CustomPages = new HashSet<string> { "ForLoops", "Dictionaries", "WingIDE", "FileIO", "Simplebot" }
+            CustomPages = new HashSet<string> { "ForLoops", "Dictionaries", "WingIDE", "FileIO", "Simplebot", "WordSpam" }
         };
 
         public static Language JavaScript = new Language

@@ -1,0 +1,59 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 5),
+        Title = "Word Spam",
+        Extension = "python",
+        Large = true,
+        Back = "/Python",
+        Paragraphs = new string[]
+        {
+            "Security is a big part of coding. Hacking and hackers are everywhere on the internet, so it's very important people and organizations keep their data secure.",
+            "This exercise teaches you how to make a random number guessing game, then through the process of encoding a small message inside a very large text file, and reading similar text files to find encoded messages."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 6),
+        Title = "Randomization",
+        Paragraphs = new string[] 
+        {
+            "First, lets learn about how to make random numbers. Python comes with a <em>library</em> called <code>random</code>. A library is a set of tools that you can opt into that add features to the language. To use random, we have to <em>import</em> it:",
+            Section.WrapCode("python", new string[]
+            {
+                "import random"
+            }),
+            "This means you now have access to an object called <code>random</code>. It has a <code>.random()</code> Function that returns a number between 0 and 1, at random.",
+            Section.WrapCode("python", new string[]
+            {
+                "import random",
+                "",
+                "print(random.random()); # 0.22834192538721...",
+                "print(random.random()); # 0.92835109283528...",
+                "print(random.random()); # 0.57238572107582...",
+                "print(random.random()); # 0.87917253987238...",
+                "print(random.random()); # 0.29837198273859...",
+                "print(random.random()); # 0.42983075123758...",
+            }),
+            Section.WrapHead("Random Integers"),
+            "In your code, you'll probably want to generate actual integers, not fancy decimals. You can do this using fancy multiplication and rounding logic given by the <code>math</code> library. Among other things, it has the <code>floor()</code> Function, which takes in a number and returns it rounded down to the nearest Integer.",
+            Section.WrapCode("python", new string[]
+            {
+                "import random",
+                "import math",
+                "",
+                "print(math.floor(3.14)); # 3"
+            }),
+            "We'll explain in more detail later, but here's how you generate either 0 or 1 with 50% probability for each:",
+            Section.WrapCode("python", new string[]
+            {
+                "number = math.floor(random.random() * 2); # Either 0 or 1"
+            }),
+            "This works: <code>random.random() * 2</code> turns the random number between 0 and 1 into a random number between 0 and 2 (<code>0 * 2 = 0</code>; <code>.5 * 2 = 1</code>; <code>.999... * 2 = 1.999...</code>), which is then rounded down.",
+            "The same logic applies to generating a random number in any range. Multiplying the random by 7, for example, means you would get a number from 0 to 6, because <code>.999 * 7 = 6.999</code>, which rounds down to 6."
+        }
+    });
+}
