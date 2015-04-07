@@ -40,14 +40,16 @@
                 "    \"description\": \"A sample extension that does almost nothing.\",",
                 "    \"version\": \"1.0\",",
                 "    \"manifest_version\": 2,",
-                "    \"permissions\": [",
-                "        \"<all_urls>\"",
-                "    ],",
-                "    \"background\": {",
-                "        \"scripts\": [",
-                "            \"background.js\"",
-                "        ]",
-                "    }",
+                "    \"content_scripts\": [",
+                "        {",
+                "            \"matches\": [",
+                "                \"<all_urls>\"",
+                "            ],",
+                "            \"js\": [",
+                "                \"extension.js\"",
+                "            ]",
+                "        }",
+                "    ]",
                 "}"
             }),
             Section.WrapList(false, new string[]
@@ -56,8 +58,7 @@
                 "<em>description</em> - A short description of your extension.",
                 "<em>version</em> - The extension version. Start with 1.0, and increase that to 1.1, 1.2, etc. as you add features.",
                 "<em>manifest_version</em> - What style of manifest you're using (just put 2).",
-                "<em>permissions</em> - An Array of Strings describing your app is allowed to do. This one is given access to all URLs (all websites).",
-                "<em>background</em> - The stuff the app will run in the background of pages it's given permission to (for this one, all URLs). In this case, it says the <em>background.js</em> script is to be run on all web pages."
+                "<em>content_scripts</em> - The stuff the app will run in the background of pages it's given permission to (for this one, all URLs). In this case, it says the <em>extension.js</em> script is to be run on all web pages."
             }),
             "There are a lot of other settings you can have in there, but we won't go into them.",
             Section.WrapHead("The JavaScript File"),
@@ -70,4 +71,43 @@
         }
     });
 
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 9),
+        Title = "Getting Started",
+        Paragraphs = new string[]
+        {
+            "In Chrome, go to <strong>chrome://extensions</strong>. This your Chrome's hub for managing your extensions.",
+            "Enable the <em>Developer mode</em> checkbox in the top-right corner of the page. You'll be making your own extensions, so that makes you a developer. Whoo!",
+            Section.WrapImage("ChromeExtensions/ChromeExtensionsPage.png"),
+            "To add your own extension to your Chrome, click the <em>Load unpacked extension...</em> button in the top center. Don't worry about the second field; just point the first one to the folder containing your extension files (most importantly, manifest.json).",
+            "If you're using the .zip linked above, make sure to extract them first!",
+            Section.WrapImage("ChromeExtensions/ChromeLoadExtensions.png"),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Get Chrome to recognize the sample app.",
+                "Open your console on this page, then refresh. Make sure the \"Hello world!\" message is displayed, so the sample extension is working."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = "Text Replacement",
+        Paragraphs = new string[]
+        {
+            "<a href=\"https://chrome.google.com/webstore/detail/cloud-to-butt-plus/apmlngnhgbnjpajelfkmabhkfapgnoai\">Cloud to Butt Plus</a> is a good example of a Chrome extension. In short, it replaces the text \"the cloud\" with \"my butt\", as well as \"cloud\" with \"butt\". You've already learned how to change the <code>.innerText</code> property of elements, so this is something we can definitely do automatically in an extension.",
+            ""
+        }
+    });
 }

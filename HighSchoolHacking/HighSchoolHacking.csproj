@@ -190,6 +190,7 @@
     <Content Include="Content\home.min.css">
       <DependentUpon>home.css</DependentUpon>
     </Content>
+    <Content Include="Content\Images\ChromeExtensionsPage\ChromeExtensionsPage.png" />
     <Content Include="Content\Images\DeveloperTools\ElementStyle.png" />
     <Content Include="Content\Images\Front Background.jpg" />
     <Content Include="Content\Images\Microsoft Small.png" />
