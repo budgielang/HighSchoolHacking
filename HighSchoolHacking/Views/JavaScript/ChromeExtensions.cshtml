@@ -1,0 +1,188 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "Chrome Extensions",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name,
+        Goto = "https://developer.chrome.com/extensions",
+        Paragraphs = new string[]
+        {
+            "Chrome extensions are bits of code that run inside Google Chrome and interact with the web pages you visit. They're written mostly in JavaScript which means we can apply everything else learned thus far into making some cool extensions.",
+            "We make one here that replaces words with other words, like in the Name Typos activity, and you could also make extensions to do the Cookie Clicker, Bouncing Elements, and Random Exclamations examples.",
+            "A strong word of warning: Chrome extensions have a lot of complicated parts that we <em>won't</em> go into. This happens a lot with programming, especially when you're making webpages, apps, or larger programs. If you're interested in learning more, you can always go to the Google Developer site."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "How Chrome Extensions Work",
+        Goto = "/Content/Files/Extensions/SampleChromeExtension.zip",
+        Paragraphs = new string[]
+        {
+            "The simple extensions we'll be making have the following files:",
+            Section.WrapList(false, new string[]
+            {
+                "A <strong>manifest file</strong> <em>(.json)</em>",
+                "A <strong>JavaScript file</strong> <em>(.js)</em>"
+            }),
+            Section.WrapHead("The Manifest"),
+            "The manifest file is what tells Chrome which files are used for what. It has a lot of settings, some of which we'll go into.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "{",
+                "    \"name\": \"Best Extension Ever!\",",
+                "    \"description\": \"A sample extension that does almost nothing.\",",
+                "    \"version\": \"1.0\",",
+                "    \"manifest_version\": 2,",
+                "    \"content_scripts\": [",
+                "        {",
+                "            \"matches\": [",
+                "                \"<all_urls>\"",
+                "            ],",
+                "            \"js\": [",
+                "                \"extension.js\"",
+                "            ]",
+                "        }",
+                "    ]",
+                "}"
+            }),
+            Section.WrapList(false, new string[]
+            {
+                "<em>name</em> - Whatever you want to call your extension.",
+                "<em>description</em> - A short description of your extension.",
+                "<em>version</em> - The extension version. Start with 1.0, and increase that to 1.1, 1.2, etc. as you add features.",
+                "<em>manifest_version</em> - What style of manifest you're using (just put 2).",
+                "<em>content_scripts</em> - The stuff the app will run in the background of pages it's given permission to (for this one, all URLs). In this case, it says the <em>extension.js</em> script is to be run on all web pages."
+            }),
+            "There are a lot of other settings you can have in there, but we won't go into them.",
+            Section.WrapHead("The JavaScript File"),
+            "If you remember using <code>.py</code> files in WingIDE, this is the same thing. Your JavaScript <code>.js</code> file's code is run as soon as the webpage starts to load.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "console.log(\"Hello world!\");"
+            }),
+            "Yup, that's the whole file. We'll make more complicated scripts later."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 9),
+        Title = "Getting Started",
+        Paragraphs = new string[]
+        {
+            "In Chrome, go to <strong>chrome://extensions</strong>. This your Chrome's hub for managing your extensions.",
+            "Enable the <em>Developer mode</em> checkbox in the top-right corner of the page. You'll be making your own extensions, so that makes you a developer. Whoo!",
+            Section.WrapImage("ChromeExtensions/ChromeExtensionsPage.png"),
+            "To add your own extension to your Chrome, click the <em>Load unpacked extension...</em> button in the top center. Don't worry about the second field; just point the first one to the folder containing your extension files (most importantly, manifest.json).",
+            "If you're using the .zip linked above, make sure to extract them first!",
+            Section.WrapImage("ChromeExtensions/ChromeLoadExtensions.png"),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Get Chrome to recognize the sample app.",
+                "Open your console on this page, then refresh. Make sure the \"Hello world!\" message is displayed, so the sample extension is working."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = "Text Replacement",
+        Paragraphs = new string[]
+        {
+            "<a href=\"https://chrome.google.com/webstore/detail/cloud-to-butt-plus/apmlngnhgbnjpajelfkmabhkfapgnoai\">Cloud to Butt Plus</a> is a good example of a Chrome extension. In short, it replaces the text \"the cloud\" with \"my butt\", as well as \"cloud\" with \"butt\". You've already learned how to change the <code>.innerText</code> property of elements, so this is something we can definitely do automatically in an extension.",
+            Section.WrapHead("Text Nodes"),
+            "There's a small catch with changing elements' text, in that you can't just change get the <code>.innerText</code> of every element. If an element has children elements (like a <code>&lt;section&gt;</code> containing <code>&lt;articles&gt;</code>s), they'll get turned into plain text. That's a problem.",
+            "Instead, you have to only change <em>text node</em>s. These are special elements that have no children and only contain text (in reality, they're the <em>only</em> nodes that can contain text; any other element type that wants to contain text has one of these as a child).",
+            "Unfortunately you can't select only text nodes using <code>document.querySelectorAll</code>. The least complicated way to select text nodes is to select all elements and loop through each of each of their children, checking if each child is a text node.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var elements = document.querySelectorAll(\"*\"),",
+                "    element, children, child;",
+                "",
+                "for (var i = 0; i < elements.length; i += 1) {",
+                "    element = elements[i];",
+                "    children = element.childNodes;",
+                "    ",
+                "    for (j = 0; j < children.length; j += 1) {",
+                "        child = children[j];",
+                "        ",
+                "        if (child.nodeName != \"#text\") {",
+                "            continue;",
+                "        }",
+                "        ",
+                "        console.log(child);",
+                "    }",
+                "}"
+            }),
+            Section.WrapHead("String Text Replacement"),
+            "Unfortunately, there's one more small problem, with replacing text in Strings. The native JavaScript <code>.replace()</code> only replaces the first thing it sees, instead of all the times it could in a String.",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var string = \"aaa\";",
+                "console.log(string.replace(\"a\", \"z\")); // \"zaa\""
+            }),
+            "There are a few different ways to fix for this. A very short, elegant approach is to use native JavaScript <code>.split()</code> and <code>.join()</code> Functions:",
+            Section.WrapList(false, new string[]
+            {
+                "String's <code>.split()</code> \"splits\" the String into an Array of Strings. It takes one argument, which is a String to split across (all instances of the given String dissapear)." + Section.WrapCode("javascript", new string[]
+                {
+                    "console.log(\"hello world\".split(\" \")); // [\"hello\", \"world\"]",
+                    "console.log(\"aaa\".split(\"a\")); // [\"\", \"\", \"\", \"\"]"
+                }),
+                "Array's <code>.join()</code> \"joins\" an Array back into a single String. It takes one argument, which is a String to put between all members of the Array when joining." + Section.WrapCode("javascript", new string[]
+                {
+                    "console.log([\"hello\", \"world\"].join(\", \")); // \"hello, world\"",
+                    "console.log([\"\", \"\", \"\", \"\"].join(\"z\")); // \"zzz\""
+                })
+            }),
+            "Putting the two together, we get a small one-line fix:",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var string = \"Every time the word 'the' is said, the replacement should be used there instead.\";",
+                "var replaced = string.split(\"the\").join(\"NOPE\");",
+                "console.log(replaced); // \"Every time NOPE word 'NOPE' is said, NOPE replacement should be used NOPEre instead.\""
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write and test a Function that takes in three Strings as arguments and returns a modified version of the first argument, where all instances of the second argument have been replaced with the third.",
+                "Use this Function in your extension to replace all instances of the word \"JavaScript\" with \"BEST LANGUAGE EVER\" on every page.",
+                "Create an Object storing at least half a dozen replacements. For example, using the previous replacement (which you don't have to), <code>[\"JavaScript\"]</code> would <code>=</code> <code>\"BEST LANGUAGE EVER\"</code>.",
+                "Make your extension use that Object on every page."
+            }),
+            Section.WrapHead("Bonus"),
+            Section.WrapList(new string[]
+            {
+                "Make your extension do the same replacements that the <a href=\"/JavaScript/NameTypos\">Name Typos</a> activity did.",
+                "Make a new extension that does the <a href=\"/JavaScript/RandomExclamations\">Random Exclamations</a> activity on all pages.",
+                "Make a new extension that automatically runs the <a href=\"/JavaScript/CookieClicker\">Cookie Clicker</a> script on the <a href=\"orteil.dashnet.org/cookieclicker/\">Cookie Clicker</a> site. <em>Hint: change the \"content_scripts\" part of the manifest!</em>",
+                "Make a new extension that does the <a href=\"/JavaScript/BouncingElements\">Bouncing Elements</a> activity on Wikipedia articles, bouncing the main picture around if it exists.",
+            })
+        }
+    });
+}
