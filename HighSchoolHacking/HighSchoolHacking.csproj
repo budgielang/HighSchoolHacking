@@ -190,6 +190,8 @@
     <Content Include="Content\home.min.css">
       <DependentUpon>home.css</DependentUpon>
     </Content>
+    <Content Include="Content\Images\ChromeExtensions\ChromeExtensionsPage.png" />
+    <Content Include="Content\Images\ChromeExtensions\ChromeLoadExtensions.png" />
     <Content Include="Content\Images\DeveloperTools\ElementStyle.png" />
     <Content Include="Content\Images\Front Background.jpg" />
     <Content Include="Content\Images\Microsoft Small.png" />
@@ -235,6 +237,8 @@
       <DependentUpon>home.css</DependentUpon>
     </Content>
     <Content Include="Content\Files\Extensions\SampleChromeExtension.zip" />
+    <Content Include="Content\Images\ChromeExtensions\ChromeExtensionsPage.psd" />
+    <Content Include="Content\Images\ChromeExtensions\ChromeLoadExtensions.psd" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
