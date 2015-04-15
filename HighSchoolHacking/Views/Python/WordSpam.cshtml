@@ -79,9 +79,8 @@
                 "Make a Function that returns a random number between 0 and 3, inclusive.",
                 "Make a Function that takes in a Number and returns a random Number between 0 and it, inclusive.",
                 "Make a Function that takes in two Numbers and returns a random Number between the two, inclusive.",
-                "Create a List and add a random amount of <code>7</code>s to it, between 5 and 15, inclusive.",
+                "Create a List and add a random amount of <code>7</code>s to it, between 5 and 15, inclusive.<br /><em>Hint: you can use <code>int(7.0) to convert 7.0 to 7</code></em>",
                 "Modify that code to have each Number in the List be a random Number no bigger than its index (so the first slot is <=0, the second is <=1, the third <=2, and so on).",
-                "Shuffle and then print the list from the previous example three times. What numbers are most common? Why?"
             })
         }
     });
@@ -90,6 +89,7 @@
     {
         Color = "brown",
         Title = "Solutions",
+        Contracted = true,
         Paragraphs = new string[] 
         { 
             Section.WrapList(new string[]
@@ -126,11 +126,33 @@
                 }),
                 "Create a List and add a random amount of <code>7</code>s to it, between 5 and 15, inclusive." + Section.WrapCode("python", new string[]
                 {
+                    "import random",
+                    "import math",
+                    "",
+                    "def generateRandom(min, max):",
+                    "    return math.floor(random.random() * (max - min + 1)) + min",
+                    "",
+                    "numbers = []",
+                    "for x in range(int(generateRandom(5, 15))):",
+                    "    numbers.append(7)",
+                    "   ",
+                    "print(numbers)"
                     
                 }),
-                "Create a List of a random size between 5 and 15, inclusive, and fill it with random Numbers.",
-                "Modify that code to have each Number in the List be a random Number no bigger than its index (so the first slot is <=0, the second is <=1, the third <=2, and so on).",
-                "Shuffle and then print the list from the previous example three times. What numbers are most common? Why?"
+                "Modify that code to have each Number in the List be a random Number no bigger than its index (so the first slot is <=0, the second is <=1, the third <=2, and so on)." + Section.WrapCode("python", new string[]
+                {
+                    "import random",
+                    "import math",
+                    "",
+                    "def generateRandom(min, max):",
+                    "    return math.floor(random.random() * (max - min + 1)) + min",
+                    "",
+                    "numbers = []",
+                    "for x in range(int(generateRandom(5, 15))):",
+                    "    numbers.append(int(generateRandom(0, x)))",
+                    "   ",
+                    "print(numbers)"
+                }),
             })
         }
     });
@@ -138,16 +160,43 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Languages.Python.Color, 7),
-        Title = "Word Spam",
+        Title = "Encoding",
         Paragraphs = new string[] 
         {
             "Now that you know how to generate random Numbers and shuffle Lists, we can do the point of the activity, which is to encode a small message inside a very large text file and read similar text files to find encoded messages.",
-            Section.WrapHead("Encoding"),
             "Encoding is the act of taking some data and turning it into a different form. This oftentimes (but not always) means turning it into a form other people won't be able to read. If you've ever heard NCIS use the phrase \"securely encoded,\" that's what they mean.",
             "The algorithm we're taking is as follows:",
             Section.WrapList(new string[]
             {
-                
+                "Create a List of unique words you want to put in the message.",
+                "For each String in that list, add X copies of it to the list, where..." + Section.WrapList(false, new string[]
+                {
+                    "X = 7 times its index plus two (so the first one is added 14 times, the second 21 times, the third 28, and so on)."
+                }),
+                "Given a List of random words from the dictionary, add N of these words Y times each, where..." + Section.WrapList(false, new string[]
+                {
+                    "N = a random number between 3 and 7, inclusive, times the number of words in your message",
+                    "Y = a random number between 1 and 6, inclusive (different every time)"
+                }),
+                "Shuffle the List."
+            }),
+            "At the end of the algorithm, you'll have a shuffled list of what appears to be completely random words, but we know they're not all random! The most common words are the ones in your message, and are in order of where they appear in your message."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Do parts 1 and 2 of the algorithm.",
+                "Write code to read the linked ospd.txt (Official Scrabble Player's Dictionary, minus vulgarities) into a List of Strings, where each String is a different word.",
+                "Use that List to do part 3 of the algorithm",
+                "Do part 4 of the algorithm",
+                "Write the resultant List to a file, such that each String in the List is on its own line."
             })
         }
     });
