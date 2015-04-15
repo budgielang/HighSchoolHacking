@@ -194,10 +194,20 @@
             {
                 "Do parts 1 and 2 of the algorithm.",
                 "Write code to read the linked ospd.txt (Official Scrabble Player's Dictionary, minus vulgarities) into a List of Strings, where each String is a different word.",
-                "Use that List to do part 3 of the algorithm",
-                "Do part 4 of the algorithm",
+                "Use that List to do part 3 of the algorithm.",
+                "Do part 4 of the algorithm.",
                 "Write the resultant List to a file, such that each String in the List is on its own line."
             })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Python.Color, 8),
+        Title = "Decoding",
+        Paragraphs = new string[] 
+        {
+            "<em>in progress!</em>"
         }
     });
 }
