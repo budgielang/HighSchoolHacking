@@ -110,7 +110,7 @@
             Section.WrapHead("Text Nodes"),
             "There's a small catch with changing elements' text, in that you can't just change get the <code>.innerText</code> of every element. If an element has children elements (like a <code>&lt;section&gt;</code> containing <code>&lt;articles&gt;</code>s), they'll get turned into plain text. That's a problem.",
             "Instead, you have to only change <em>text node</em>s. These are special elements that have no children and only contain text (in reality, they're the <em>only</em> nodes that can contain text; any other element type that wants to contain text has one of these as a child).",
-            "Unfortunately you can't select only text nodes using <code>document.querySelectorAll</code>. The least complicated way to select text nodes is to select all elements and loop through each of each of their children, checking if each child is a text node.",
+            "Unfortunately you can't select only text nodes using <code>document.querySelectorAll</code>. The least complicated way to select text nodes is to select all elements and loop through each of their children, checking if each child is a text node.",
             Section.WrapCode("javascript", new string[]
             {
                 "var elements = document.querySelectorAll(\"*\"),",
