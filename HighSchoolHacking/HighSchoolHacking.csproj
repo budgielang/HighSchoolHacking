@@ -305,7 +305,7 @@
     <Content Include="Views\Python\Dictionaries.cshtml" />
     <Content Include="Views\JavaScript\ChromeExtensions.cshtml" />
     <Content Include="Views\Python\WordSpam.cshtml" />
-    <Content Include="Views\Templating\Switcher.cshtml" />
+    <Content Include="Views\Templating\Switchers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

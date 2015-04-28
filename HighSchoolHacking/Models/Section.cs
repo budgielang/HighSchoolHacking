@@ -87,7 +87,7 @@ namespace HighSchoolHacking.Models
         /// The location o fthe View file to Html.RenderPartial a bottom list 
         /// of other available pages.
         /// </summary>
-        public static string SwitcherFile = "~/VIews/Templating/Switcher.cshtml";
+        public static string SwitcherFile = "~/Views/Templating/Switchers.cshtml";
 
         /// <summary>
         /// 

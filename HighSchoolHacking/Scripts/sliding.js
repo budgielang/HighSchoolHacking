@@ -168,14 +168,14 @@
         if (languager) {
             languager.onchange = function () {
                 option = languager.options[languager.selectedIndex];
-                window.location = "/" + option.innerText + "/" + lesson;
+                window.location = "/" + option.innerText.split(" ").join("") + "/" + lesson;
             };
         }
 
         if (lessoner) {
             lessoner.onchange = function () {
                 option = lessoner.options[lessoner.selectedIndex];
-                window.location = "/" + language + "/" + option.innerText;
+                window.location = "/" + language + "/" + option.innerText.split(" ").join("");
             };
         }
     }

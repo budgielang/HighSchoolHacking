@@ -88,6 +88,8 @@ namespace HighSchoolHacking.Models
 
         public HashSet<string> CustomPages { get; set; }
 
+        public Dictionary<string, string> PageAliases { get; set; }
+
         public string UseLength(string variable)
         {
             if (this.LengthIsProperty)
