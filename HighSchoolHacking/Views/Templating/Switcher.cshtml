@@ -1,8 +1,8 @@
 ﻿<!--   KeyValuePair<Language, Page> -->
 @model KeyValuePair<string, string>
 
-<div id="switcher">
-    <div id="switcher-page" class="switcher-col">
+<div id="switchers" language="@Model.Key" lesson="@Model.Value">
+    <div id="switcher-language" class="switcher-col">
         <h5>View this page for...</h5>
         <select>
             @foreach (string language in HighSchoolHacking.Models.Languages.LanguagesByName.Keys)
@@ -19,7 +19,7 @@
         </select>
 
     </div>
-    <div id="switcher-page" class="switcher-col">
+    <div id="switcher-lesson" class="switcher-col">
         <h5>Jump to lesson on...</h5>
         <select>
             @foreach (string page in HighSchoolHacking.Models.Languages.LessonPages)

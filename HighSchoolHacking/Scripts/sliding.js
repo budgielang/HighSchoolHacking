@@ -20,6 +20,8 @@
 
             window.onresize = initializeSections;
             initializeSections();
+
+            initializeSwitchers();
         };
     };
 
@@ -149,6 +151,34 @@
             element.setAttribute("href", "mailto:" + email);
         }
     };
+
+    var initializeSwitchers = function () {
+        var container = document.querySelector("#switchers"),
+            languager = document.querySelector("#switcher-language select"),
+            lessoner = document.querySelector("#switcher-lesson select"),
+            language, lesson, option;
+
+        if (!container) {
+            return;
+        }
+
+        language = container.getAttribute("language");
+        lesson = container.getAttribute("lesson");
+
+        if (languager) {
+            languager.onchange = function () {
+                option = languager.options[languager.selectedIndex];
+                window.location = "/" + option.innerText + "/" + lesson;
+            };
+        }
+
+        if (lessoner) {
+            lessoner.onchange = function () {
+                option = lessoner.options[lessoner.selectedIndex];
+                window.location = "/" + language + "/" + option.innerText;
+            };
+        }
+    }
 
 
     reset();
