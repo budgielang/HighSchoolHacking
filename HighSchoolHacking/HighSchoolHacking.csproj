@@ -24,7 +24,7 @@
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>015fb059</NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/f9c9f2f7-b0c2-4a3e-b11c-03b347775ec8/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/HighSchoolHacking</ApplicationInsightsResourceId>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
