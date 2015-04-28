@@ -1,0 +1,47 @@
+﻿@using HighSchoolHacking.Models;
+
+<!--   KeyValuePair<Language, Page> -->
+@model KeyValuePair<string, string>
+
+<div id="switchers" language="@Model.Key" lesson="@Model.Value">
+    <div id="switcher-language" class="switcher-col">
+        <h5>View this page for...</h5>
+        <select>
+            @foreach (string name in HighSchoolHacking.Models.Languages.LanguagesByName.Keys)
+            {
+                if (name == Model.Key)
+                {
+                    <option selected="selected">@name</option>
+                }
+                else
+                {
+                    <option>@name</option>
+                }
+            }
+        </select>
+    </div>
+    <div id="switcher-lesson" class="switcher-col">
+        <h5>Jump to lesson on...</h5>
+        <select>
+            @{
+                Language language = Languages.LanguagesByName[Model.Key];
+                
+                foreach (string page in HighSchoolHacking.Models.Languages.LessonPages)
+                {
+                    string pageName = language.PageAliases.ContainsKey(page)
+                        ? language.PageAliases[page] : page;
+
+                    if (pageName == Model.Value)
+                    {
+                        <option selected="selected">@pageName</option>
+                    }
+                    else
+                    {
+                        <option>@pageName</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+    <hr />
+</div>

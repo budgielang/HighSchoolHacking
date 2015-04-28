@@ -139,6 +139,20 @@ article {
   border-bottom: 1px solid white;
   padding-top: 0.49em; }
 
+#switchers {
+  font-size: 1.4em;
+  text-align: center; }
+  #switchers select {
+    font-size: 1em;
+    text-align: left; }
+  #switchers h5 {
+    margin: 21px 0 7px 0;
+    text-shadow: none;
+    font-style: italic;
+    font-weight: normal; }
+  #switchers hr {
+    margin: 35px 28px 14px 28px; }
+
 footer p {
   font-size: 1.05em;
   text-align: justify;

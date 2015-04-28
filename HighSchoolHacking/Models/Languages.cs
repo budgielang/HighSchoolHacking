@@ -10,14 +10,6 @@ namespace HighSchoolHacking.Models
     {
         public static string SharedViewStart = "~/Views/Shared/Pages/";
 
-        public static string[] Names = new string[] { "Python", "JavaScript" };
-
-        public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
-        {
-            { "Python", Python },
-            { "JavaScript", JavaScript }
-        };
-
         public static Language Python = new Language
         {
             Name = "Python",
@@ -56,7 +48,11 @@ namespace HighSchoolHacking.Models
             AppendFunction = "append",
             VariableDeclare = "",
             UndefinedError = "NameError: name ",
-            CustomPages = new HashSet<string> { "ForLoops", "Dictionaries", "WingIDE", "FileIO", "Simplebot", "WordSpam" }
+            CustomPages = new HashSet<string> { "ForLoops", "Dictionaries", "WingIDE", "FileIO", "Simplebot", "WordSpam" },
+            PageAliases = new Dictionary<string, string>
+            {
+                { "Arrays", "Lists" }
+            }
         };
 
         public static Language JavaScript = new Language
@@ -95,8 +91,20 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
-            CustomPages = new HashSet<string> { "DeveloperTools", "NameTypos", "CookieClicker", "BouncingElements", "RandomExclamations", "ChromeExtensions" }
+            CustomPages = new HashSet<string> { "DeveloperTools", "NameTypos", "CookieClicker", "BouncingElements", "RandomExclamations", "ChromeExtensions" },
+            PageAliases = new Dictionary<string, string>
+            {
+                { "Dictionaries", "Objects" }
+            }
         };
+
+        public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
+        {
+            { "Python", Python },
+            { "JavaScript", JavaScript }
+        };
+
+        public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };
 
         public static string GetSharedPage(string lesson)
         {
