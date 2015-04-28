@@ -104,7 +104,7 @@ namespace HighSchoolHacking.Models
             { "JavaScript", JavaScript }
         };
 
-        public static string[] LessonPages = { "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };
+        public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };
 
         public static string GetSharedPage(string lesson)
         {
