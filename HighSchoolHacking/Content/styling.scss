@@ -193,6 +193,27 @@ article {
     }
 }
 
+#switcher {
+    font-size: 1.4em;
+    text-align: center;
+
+    select {
+        font-size: 1em;
+        text-align: left;
+    }
+
+    h5 {
+        margin: 21px 0 7px 0;
+        text-shadow: none;
+        font-style: italic;
+        font-weight: normal;
+    }
+
+    hr {
+        margin: 35px 28px 14px 28px;
+    }
+}
+
 footer {
     p {
         font-size: 1.05em;

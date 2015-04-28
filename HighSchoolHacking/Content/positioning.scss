@@ -123,6 +123,17 @@ footer {
     }
 }
 
+/* Large displays */
+
+@media screen and (min-width: 700px), (min-aspect-ratio: 1/1) {
+
+    #switcher .switcher-col {
+        width: 50%;
+        margin-bottom: 28px;
+        float: left;
+    }
+}
+
 
 /* Medium displays */
 

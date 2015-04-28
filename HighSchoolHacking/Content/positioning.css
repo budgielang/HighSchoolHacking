@@ -82,6 +82,14 @@ footer p:last-of-type {
   float: right;
   margin-right: 0; }
 
+/* Large displays */
+@media screen and (min-width: 700px), (min-aspect-ratio: 1/1) {
+  #switcher .switcher-col {
+    width: 50%;
+    margin-bottom: 28px;
+    float: left; }
+ }
+
 /* Medium displays */
 @media screen and (max-width: 700px), (max-aspect-ratio: 1/1) {
   #GitHubLink {

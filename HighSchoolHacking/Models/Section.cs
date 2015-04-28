@@ -84,6 +84,12 @@ namespace HighSchoolHacking.Models
         public static string ViewFileShare = "~/Views/Shared/Pages/";
 
         /// <summary>
+        /// The location o fthe View file to Html.RenderPartial a bottom list 
+        /// of other available pages.
+        /// </summary>
+        public static string SwitcherFile = "~/VIews/Templating/Switcher.cshtml";
+
+        /// <summary>
         /// 
         /// </summary>
         public static string[] Colors = new string[] 

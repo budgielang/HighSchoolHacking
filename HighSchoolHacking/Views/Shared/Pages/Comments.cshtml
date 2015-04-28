@@ -25,4 +25,6 @@
             "You put comments with a <code>" + Model.Commentor + "</code> before them. We'll expect you to do this around complicated blocks of code, since in later lessons it can be hard to understand your code without you commenting it."
         }
     });
+
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Comments"));
 }
