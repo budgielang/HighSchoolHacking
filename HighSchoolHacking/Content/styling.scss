@@ -86,15 +86,16 @@ h2 small {
 section:not(.expanded) {
     h2 span:before {
         float: right;
-        margin-top: 14px;
         height: 0;
-        font-size: 49%;
+        font-size: 84%;
         font-weight: bold;
         content: "+";
         opacity: .35;
     }
 
     h2:not([clicked=off]) span:before {
+        margin-top: 14px;
+        font-size: 49%;
         content: "-";
     }
 }
