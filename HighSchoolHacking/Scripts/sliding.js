@@ -168,7 +168,7 @@
         if (languager) {
             languager.onchange = function () {
                 option = languager.options[languager.selectedIndex];
-                window.location = "/" + option.innerText.split(" ").join("") + "/" + lesson;
+                window.location = "/" + option.innerText + "/" + lesson.split(" ").join("");
             };
         }
 
