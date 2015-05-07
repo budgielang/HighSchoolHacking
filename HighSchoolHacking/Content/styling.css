@@ -151,6 +151,7 @@ article {
     font-style: italic;
     font-weight: normal; }
   #switchers hr {
+    border-color: #777;
     margin: 35px 28px 14px 28px; }
 
 footer p {
