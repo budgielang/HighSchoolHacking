@@ -1,0 +1,87 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "Classes",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "When you're creating objects in programming, you'll oftentimes want to create a lot of the same thing, or variations of a similar thing. For example, you might have a bunch of Objects that each represent a different person:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "josh = {",
+                "    \"name\": \"Josh\",",
+                "    \"age\": \"21\"",
+                "}" + Model.Semicolon,
+                Model.VariableDeclare + "mariah = {",
+                "    \"name\": \"Mariah\",",
+                "    \"age\": \"22\"",
+                "}" + Model.Semicolon
+            }),
+            "Up till now, if you wanted to define Functions that interact with one of the person Objects, you would have them take a person in as a parameter:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "greetPerson(person)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Hello, \" + person.name + \"!\")" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                "greetPerson(Josh)" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\""
+            }),
+            "This is all fine and good for small projects, but what about when you have dozens of types of Objects, each of which has dozens of operations that can be done to it? If you keep going in this matter, you'll end up declaring having to declare hundreds of functions of Functions globally. This becomes very hard to maintain, and if two globally defined Functions have the same name, you'll have no way of declaring which one you want to use.",
+            Section.WrapHead("Enter Classes"),
+            "Most programming languages therefore give us a way to declare a <strong>Class</strong>, which is a statement about a particular type of Object, mainly that it's guaranteed certain member variables, and that there are some Functions it is guaranteed to have as members.",
+            "Here's a simple Person class in " + Model.Name + ":",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.ClassStart + "Person" + Model.ConditionalContinueRight,
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction(Model.ClassConstructor, new string[] { "name", "age" }),
+                "        " + Model.ClassThis + ".name = name" + Model.Semicolon,
+                "        " + Model.ClassThis + ".age = age" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                Model.ClassEnd
+            }),
+            "The <code>" + Model.ClassConstructor + "</code> Function is what we call a <em>constructor</em>, which is a Function that's run to create an instance of the class.",
+            "We use it like this:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
+                Model.VariableDeclare + "mariah = new Person(\"Mariah\", 22)" + Model.Semicolon
+            }),
+            "The <code>" + Model.ClassThis + "</code> refers to the new Person instance that's being created, so all this constructor is doing is taking the given name and age, and assigning them to the Person.",
+            "Because the constructor sets the name and age of the Person, you're guaranteed that all Person instances have a name and age. Try making one without - what happens?"
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Member Functions",
+        Paragraphs = new string[]
+        {
+            "The problem from above on having a bagillion globally defined Functions can be solved by declaring <em>member Functions</em> of your Person class:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.ClassStart + "Person" + Model.ConditionalContinueRight,
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction(Model.ClassConstructor, new string[] { "name", "age" }),
+                "        " + Model.ClassThis + ".name = name" + Model.Semicolon,
+                "        " + Model.ClassThis + ".age = age" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                "",
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction("greet"),
+                "        " + Model.PrintFunction + "(\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\")" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                Model.ClassEnd,
+                "",
+                Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
+                "josh.greet()" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\""
+            }),
+            "Note that member functions also have to use the <code>" + Model.ClassThis + "</code> to refer to the instance calling the Function.",
+            "Every single instance of a Person in your code will be able to call its <code>.greet</code> Function, which is a powerful addon."
+        }
+    });
+}
