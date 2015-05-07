@@ -80,8 +80,30 @@
                 Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
                 "josh.greet()" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\""
             }),
-            "Note that member functions also have to use the <code>" + Model.ClassThis + "</code> to refer to the instance calling the Function.",
-            "Every single instance of a Person in your code will be able to call its <code>.greet</code> Function, which is a powerful addon."
+            "Note that member Functions also have to use the <code>" + Model.ClassThis + "</code> to refer to the instance calling the Function.",
+            "Every single instance of a Person in your code will be able to call its <code>.greet</code> Function, which is a powerful addon.",
+            "Otherwise, member Functions work the exact same way regular Functions do, except that they have a <code>" + Model.ClassThis + "</code> variable pointing to the instance. They can do parameters and return values just lke before.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.ClassStart + "Person" + Model.ConditionalContinueRight,
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction(Model.ClassConstructor, new string[] { "name", "age" }),
+                "        " + Model.ClassThis + ".name = name" + Model.Semicolon,
+                "        " + Model.ClassThis + ".age = age" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                "",
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction("greet"),
+                "        " + Model.PrintFunction + "(\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\")" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                "",
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction("isAboveAge", new string[] { "threshold" }),
+                "        return" + Model.ClassThis + ".age > threshold" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                Model.ClassEnd,
+                "",
+                Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
+                "josh.greet()" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\"",
+                Model.PrintFunction + "(josh.isAboveAge(35))" + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse
+            })
         }
     });
 }
