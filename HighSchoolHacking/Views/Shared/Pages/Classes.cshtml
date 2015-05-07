@@ -49,8 +49,8 @@
             "We use it like this:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
-                Model.VariableDeclare + "mariah = new Person(\"Mariah\", 22)" + Model.Semicolon
+                Model.VariableDeclare + "josh = Person(\"Josh\", 21)" + Model.Semicolon,
+                Model.VariableDeclare + "mariah = Person(\"Mariah\", 22)" + Model.Semicolon
             }),
             "The <code>" + Model.ClassThis + "</code> refers to the new Person instance that's being created, so all this constructor is doing is taking the given name and age, and assigning them to the Person.",
             "Because the constructor sets the name and age of the Person, you're guaranteed that all Person instances have a name and age. Try making one without - what happens?"
@@ -117,10 +117,62 @@
             {
                 "Create a few instances of the Person class.",
                 "Extend the Person class to also take in weight, favorite color, favorite food, and hair color.",
-                "Write member Functions to set age, name, weight, favorite color, favorite food, and hair color.",
+                "Write member Functions for age, name, weight, favorite color, favorite food, and hair color that take in a new value and set the member variable to it.",
                 "Nintendo has copyrighted Pokemon, but they're a great example of using classes, so we're instead make a Programon class. It should have a name (String), health maximum, current health amount (both Numbers), and up to two types (a " + Model.ArrayName + " of Strings).",
                 "Create a Programove class that stores a name, damage amount, and type.",
                 "Modify the Programon class to also store a " + Model.ArrayName + " of Programoves.",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 15),
+        Title = "Static Members",
+        Paragraphs = new string[]
+        {
+            "Classes themselves are allowed to have member variables. These are called <em>static</em>, referring to them generally remaining the same (as oppposed to <em>dynamic</em>). They're stored as members of the class itself, so you can access them via the class <em>or</em> instances of the class:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.ClassStart + "Person" + Model.ConditionalContinueRight,
+                "    species = \"Human\"",
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction(Model.ClassConstructor, new string[] { "name", "age" }),
+                "        " + Model.ClassThis + ".name = name" + Model.Semicolon,
+                "        " + Model.ClassThis + ".age = age" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                Model.ClassEnd,
+                "",
+                Model.PrintFunction + "(Person.species)" + Model.Semicolon + " " + Model.Commentor + " \"human\"",
+                "",
+                Model.VariableDeclare + "josh = Person(\"Josh\", 21)" + Model.Semicolon,
+                Model.PrintFunction + "(josh.species)" + Model.Semicolon + " " + Model.Commentor + " \"human\"",
+            }),
+            "If you want to set a different species for a Person instance, that's fine: it'll create a new member variable for that instance only.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "josh.species = \"alien\"" + Model.Semicolon,
+                Model.PrintFunction + "(josh.species)" + Model.Semicolon + " " + Model.Commentor + " \"alien\"",
+                Model.PrintFunction + "(Person.species)" + Model.Semicolon + " " + Model.Commentor + " \"human\"",
+                "",
+                "Person.species = \"homo sapien sapien\"" + Model.Semicolon,
+                Model.PrintFunction + "(josh.species)" + Model.Semicolon + " " + Model.Commentor + " \"alien\"",
+                Model.PrintFunction + "(Person.species)" + Model.Semicolon + " " + Model.Commentor + " \"homo sapien sapien\"",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            "We're going to take this Programon idea and run with it.",
+            Section.WrapList(new string[]
+            {
+                "Create a new " + Model.DictionaryName + " as a static member variable of the Progratype class named \"strengths\". It should key <code>\"fire\"</code> to <code>[\"grass\"]</code>, <code>\"grass\"</code> to <code>[\"water\"]</code>, and <code>\"water\"</code> to <code>[\"fire\"]</code> (you can add more if you want).",
+                "Also add in \"weaknesses\" as the reverse of strengths.",
+                "Create a regular member Function of the Progratype class that takes in a Programon and determines how much damage it would do to it. For each type of the other Programon, the Progratype's damage is doubled if it's strong against that type, or halved if it's weak against that type."
             })
         }
     });
