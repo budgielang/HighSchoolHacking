@@ -11,10 +11,37 @@
         Back = "/" + Model.Name + "/Learn",
         Paragraphs = new string[]
         {
-            "When you're creating objects in programming, you'll oftentimes want to create a lot of the same thing, or variations of a similar thing. For example, you might have a bunch of objects that each represent a different person, or a different color:",
+            "When you're creating objects in programming, you'll oftentimes want to create a lot of the same thing, or variations of a similar thing. For example, you might have a bunch of Objects that each represent a different person:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                
+                Model.VariableDeclare + "josh = {",
+                "    \"name\": \"Josh\",",
+                "    \"age\": \"21\"",
+                "}" + Model.Semicolon,
+                Model.VariableDeclare + "mariah = {",
+                "    \"name\": \"Mariah\",",
+                "    \"age\": \"22\"",
+                "}" + Model.Semicolon
+            }),
+            "Up till now, if you wanted to define Functions that interact with one of the person Objects, you would have them take a person in as a parameter:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "greetPerson(person)" + Model.FunctionRight,
+                "    " + Model.PrintFunction + "(\"Hello, \" + person.name + \"!\")" + Model.Semicolon,
+                Model.FunctionEnd,
+                "",
+                "greetPerson(Josh)" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\""
+            }),
+            "This is all fine and good for small projects, but what about when you have dozens of types of Objects, each of which has dozens of operations that can be done to it? If you keep going in this matter, you'll end up declaring having to declare hundreds of functions of Functions globally. This becomes very hard to maintain, and if two globally defined Functions have the same name, you'll have no way of declaring which one you want to use.",
+            Section.WrapHead("Enter Classes"),
+            "Most programming languages therefore give us a way to declare a <strong>Class</strong>, which is a statement about a particular type of Object, mainly that it's guaranteed certain member variables, and that there are some Functions it is guaranteed to have as members.",
+            "Here's a simple Person class:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.ClassStart + "Person" + Model.ConditionalContinueRight,
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction(new string[] { "name", "age" }),
+                "        " + Model.ClassThis + ".name = name" + Model.Semicolon,
+                "        " + Model.ClassThis + ".age = age" + Model.Semicolon
             })
         }
     });

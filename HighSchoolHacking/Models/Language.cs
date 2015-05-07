@@ -56,6 +56,21 @@ namespace HighSchoolHacking.Models
 
         public string FunctionEnd { get; set; }
 
+        public string ClassStart { get; set; }
+
+        /// <summary>
+        /// The name of the constructor Function for a class. If null, the class
+        /// name will be used instead.
+        /// </summary>
+        public string ClassConstructor { get; set; }
+
+        /// <summary>
+        /// Whether class member Functions take in their "this" as an argment.
+        /// </summary>
+        public Boolean ClassFunctionsTakeThis { get; set; }
+
+        public string ClassThis { get; set; }
+
         public string LengthName { get; set; }
 
         public bool CanConcatenateNumbers { get; set; }
@@ -89,6 +104,18 @@ namespace HighSchoolHacking.Models
         public HashSet<string> CustomPages { get; set; }
 
         public Dictionary<string, string> PageAliases { get; set; }
+
+        public string ClassMemberFunction(string[] arguments = null)
+        {
+            string output = this.ClassConstructor + "(";
+
+            if (this.ClassFunctionsTakeThis)
+            {
+                output += this.ClassThis;
+            }
+
+            return output + ")" + this.FunctionRight;
+        }
 
         public string UseLength(string variable)
         {
