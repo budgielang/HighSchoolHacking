@@ -80,8 +80,48 @@
                 Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
                 "josh.greet()" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\""
             }),
-            "Note that member functions also have to use the <code>" + Model.ClassThis + "</code> to refer to the instance calling the Function.",
-            "Every single instance of a Person in your code will be able to call its <code>.greet</code> Function, which is a powerful addon."
+            "Note that member Functions also have to use the <code>" + Model.ClassThis + "</code> to refer to the instance calling the Function.",
+            "Every single instance of a Person in your code will be able to call its <code>.greet</code> Function, which is a powerful addon.",
+            "Otherwise, member Functions work the exact same way regular Functions do, except that they have a <code>" + Model.ClassThis + "</code> variable pointing to the instance. They can do parameters and return values just lke before.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.ClassStart + "Person" + Model.ConditionalContinueRight,
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction(Model.ClassConstructor, new string[] { "name", "age" }),
+                "        " + Model.ClassThis + ".name = name" + Model.Semicolon,
+                "        " + Model.ClassThis + ".age = age" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                "",
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction("greet"),
+                "        " + Model.PrintFunction + "(\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\")" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                "",
+                "    " + Model.FunctionDefine + Model.ClassMemberFunction("isAboveAge", new string[] { "threshold" }),
+                "        return" + Model.ClassThis + ".age > threshold" + Model.Semicolon,
+                Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
+                Model.ClassEnd,
+                "",
+                Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
+                "josh.greet()" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\"",
+                Model.PrintFunction + "(josh.isAboveAge(35))" + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a few instances of the Person class.",
+                "Extend the Person class to also take in weight, favorite color, favorite food, and hair color.",
+                "Write member Functions to set age, name, weight, favorite color, favorite food, and hair color.",
+                "Nintendo has copyrighted Pokemon, but they're a great example of using classes, so we're instead make a Programon class. It should have a name (String), health maximum, current health amount (both Numbers), and up to two types (a " + Model.ArrayName + " of Strings).",
+                "Create a Programove class that stores a name, damage amount, and type.",
+                "Modify the Programon class to also store a " + Model.ArrayName + " of Programoves.",
+            })
         }
     });
 }
