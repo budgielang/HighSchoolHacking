@@ -306,6 +306,7 @@
     <Content Include="Views\JavaScript\ChromeExtensions.cshtml" />
     <Content Include="Views\Python\WordSpam.cshtml" />
     <Content Include="Views\Templating\Switchers.cshtml" />
+    <Content Include="Views\Shared\Pages\Classes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

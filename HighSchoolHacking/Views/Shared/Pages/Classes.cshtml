@@ -1,0 +1,21 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "Classes",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "When you're creating objects in programming, you'll oftentimes want to create a lot of the same thing, or variations of a similar thing. For example, you might have a bunch of objects that each represent a different person, or a different color:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                
+            })
+        }
+    });
+}
