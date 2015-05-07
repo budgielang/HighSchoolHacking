@@ -84,6 +84,8 @@ namespace HighSchoolHacking.Models
             FunctionDefine = "function ",
             FunctionRight = " {",
             FunctionEnd = "}",
+            ClassEnd = "}",
+            ClassThis = "this",
             LengthName = "length",
             CanConcatenateNumbers = true,
             LengthIsProperty = true,

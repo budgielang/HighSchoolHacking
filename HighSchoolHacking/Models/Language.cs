@@ -58,6 +58,8 @@ namespace HighSchoolHacking.Models
 
         public string ClassStart { get; set; }
 
+        public string ClassEnd { get; set; }
+
         /// <summary>
         /// The name of the constructor Function for a class. If null, the class
         /// name will be used instead.
@@ -105,13 +107,29 @@ namespace HighSchoolHacking.Models
 
         public Dictionary<string, string> PageAliases { get; set; }
 
-        public string ClassMemberFunction(string[] arguments = null)
+        public string ClassMemberFunction(string name, string[] arguments = null)
         {
-            string output = this.ClassConstructor + "(";
+            string output = name + "(";
+            int i;
 
             if (this.ClassFunctionsTakeThis)
             {
                 output += this.ClassThis;
+            }
+
+            if (arguments != null)
+            {
+                if (arguments.Length > 0)
+                {
+                    output += ", ";
+                }
+
+                for (i = 0; i < arguments.Length - 1; i += 1)
+                {
+                    output += arguments[i] + ", ";
+                }
+
+                output += arguments[i];
             }
 
             return output + ")" + this.FunctionRight;
