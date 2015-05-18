@@ -117,7 +117,7 @@ namespace HighSchoolHacking.Models
             BooleanTrue = "true",
             BooleanFalse = "false",
             Semicolon = "",
-            Commentor = "//",
+            Commentor = "  BTW",
             Elif = "else if",
             Equals = "ITZ",
             And = "&&",
@@ -139,7 +139,7 @@ namespace HighSchoolHacking.Models
             PrintFunction = "VISIBLE",
             AppendFunction = "push",
             VariableDeclare = "I HAS A ",
-            UndefinedError = "Uncaught ReferenceError:",
+            UndefinedError = "MachineError: Reference to undefined variable:",
             CustomPages = new HashSet<string> { },
             PageAliases = new Dictionary<string, string> { }
         };
