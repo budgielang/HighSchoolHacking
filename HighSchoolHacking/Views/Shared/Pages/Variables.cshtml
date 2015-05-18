@@ -14,13 +14,13 @@
             "In code, a 'variable' stores value. Variables are called by their name, which is how you can set the value, get the value, and change the value.",
             "For example, in the code below we're manipulating the 'foo' variable and printing it.",
             Section.WrapCode(Model.NameLower, new string[] {
-                Model.VariableDeclare + "foo = \"Hello world!\"",
-                Model.PrintFunction + "(foo)" + Model.Semicolon
+                Model.VariableDeclare + "foo " + Model.Equals + " \"Hello world!\"",
+                Model.CallFunction(Model.PrintFunction, "foo") + Model.Semicolon
             }),
             "Be really careful when writing variable names! Can you spot the problem in the following code example? You might think it's obvious, but when you write code, variable name typos are ridiculously common.",
             Section.WrapCode(Model.NameLower, new string[] {
-                Model.VariableDeclare + "foo = \"Hello world!\"",
-                Model.PrintFunction + "(fooo)" + Model.Semicolon
+                Model.VariableDeclare + "foo " + Model.Equals + " \"Hello world!\"",
+                Model.CallFunction(Model.PrintFunction, "fooo") + Model.Semicolon
             })
         }
     });
@@ -51,11 +51,11 @@
                     Model.VariableDeclare + Model.PrintFunction + "(name)" + Model.Semicolon
                 }),
                 "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?" + Section.WrapCode(Model.NameLower, new string[] {
-                    Model.VariableDeclare + "name = \"Josh Goldberg\"",
-                    Model.VariableDeclare + "my_name = \"Josh Goldberg\"",
-                    Model.VariableDeclare + "name1 = \"Josh Goldberg\"",
-                    Model.VariableDeclare + "1name = \"Josh Goldberg\"",
-                    Model.VariableDeclare + "name<! = \"Josh Goldberg\""
+                    Model.VariableDeclare + "name " + Model.Equals + " \"Josh Goldberg\"",
+                    Model.VariableDeclare + "my_name " + Model.Equals + " \"Josh Goldberg\"",
+                    Model.VariableDeclare + "name1 " + Model.Equals + " \"Josh Goldberg\"",
+                    Model.VariableDeclare + "1name " + Model.Equals + " \"Josh Goldberg\"",
+                    Model.VariableDeclare + "name<! " + Model.Equals + " \"Josh Goldberg\""
                 }) + "The last two won't work, since you can't start variable names with numbers, and you can't use symbols (<code>-</code> and <code>_</code> are ok , but <code><</code>, <code>=</code>, <code>></code>, <code>!</code>, and <code>+</code> are not)."
             })
         }

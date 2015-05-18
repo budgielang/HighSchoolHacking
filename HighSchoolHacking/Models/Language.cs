@@ -40,6 +40,8 @@ namespace HighSchoolHacking.Models
 
         public string Elif { get; set; }
 
+        public string Equals { get; set; }
+
         public string And { get; set; }
 
         public string Or { get; set; }

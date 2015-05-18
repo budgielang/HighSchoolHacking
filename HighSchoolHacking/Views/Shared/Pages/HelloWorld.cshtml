@@ -14,7 +14,10 @@
             "We're going to spend the first few lessons getting you used to working in " + Model.Name + ".",
             "Start by going to <a href='http://repl.it/languages/" + Model.NameLower + "'>repl.it/languages/" + Model.NameLower + "</a>. This is a 'shell' where you can enter " + Model.Name + " on the left, hit the play button (or Ctrl + Enter) to make it run, and view output on the right.",
             "Enter the following code on the left side of the screen:",
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(\"Hello world!\")" + Model.Semicolon),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon
+            }),
             "You should see a <em>Hello world!</em> appear on the right side of the screen. If you did, great! If not, remember to play the code using the button or shortcut.",
             "If you already know how to code, just skim the lessons after this one to learn the syntax.",
         }
@@ -50,5 +53,6 @@
         }
     });
 
-    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Hello World"));
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>
+    (Model.Name, "Hello World"));
 }
