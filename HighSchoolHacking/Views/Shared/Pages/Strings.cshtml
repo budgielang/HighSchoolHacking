@@ -15,24 +15,22 @@
             "That's what happened when you wrote <code>\"Hello world!\"</code> in the Hello World lesson: " + Model.Name + " knew everything between the quotes was a String.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "foo = \"Hello world!\"",
-                Model.PrintFunction + "(foo) " + Model.Commentor + " Hello World!",
-                Model.VariableDeclare + "foo = 'Hello world!'",
-                Model.PrintFunction + "(foo) " + Model.Commentor + " Hello World!"
+                Model.VariableDeclare + "foo " + Model.Equals + " \"Hello world!\"",
+                Model.CallFunction(Model.PrintFunction, "foo") + " " + Model.Commentor + " Hello World!",
             }),
             Section.WrapHead("Concatenating Strings"),
             "<em>concatenate [<code>kənˈkatnˌāt</code>] - to link together; unite in a series or chain.</em>",
-            "You can concatenate (combine) Strings in " + Model.Name + " really easily. It's like attaching one string of yarn to another string of yarn, you just get one bigger string.",
+            "You can concatenate (combine) Strings in " + Model.Name + " really easily using the " + Model.StringConcatenationStart + "... " + Model.StringConcatenationBetween + " ..." + Model.StringConcatenationEnd + " operator. It's like attaching one string of yarn to another string of yarn, you just get one bigger string.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.PrintFunction + "(\"Hello \" + \" world!\")" + Model.Semicolon + " " + Model.Commentor + " Hello world!",
+                Model.CallFunction(Model.PrintFunction, Model.ConcatenateStrings("\"Hello \"", "\"world!\"")) + Model.Semicolon + " " + Model.Commentor + " Hello world!",
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "part_one = \"Hello\"",
-                Model.VariableDeclare + "part_two = \"world\"",
-                Model.VariableDeclare + "combined = part_one + \" \" + part_two",
-                Model.PrintFunction + "(combined + \"!\") " + Model.Commentor + " Hello world!"
+                Model.VariableDeclare + "part_one " + Model.Equals + " \"Hello\"" + Model.Semicolon,
+                Model.VariableDeclare + "part_two " + Model.Equals + " \"world\"" + Model.Semicolon,
+                Model.VariableDeclare + "combined " + Model.Equals + " " + Model.ConcatenateStrings("part_one", "\" \"", "part_two") + Model.Semicolon + " " + Model.Commentor + " \"Hello world\"",
+                Model.CallFunction(Model.PrintFunction, Model.ConcatenateStrings("combined", "\"!\"")) + Model.Semicolon + " " + Model.Commentor + " \"Hello world!\""
             })
         }
     });
@@ -62,18 +60,18 @@
             {
                 "Store your first name, your middle name (if you have one), and your last name in variables. Make a new variable with them all together and print it." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "nameFirst = \"Joshua\"" + Model.Semicolon,
-                    Model.VariableDeclare + "nameMiddle = \"Kevin\"" + Model.Semicolon,
-                    Model.VariableDeclare + "nameLast = \"Goldberg\"" + Model.Semicolon,
-                    Model.VariableDeclare + "nameFull = nameFirst + nameMiddle + nameLast" + Model.Semicolon,
+                    Model.VariableDeclare + "nameFirst " + Model.Equals + " \"Joshua\"" + Model.Semicolon,
+                    Model.VariableDeclare + "nameMiddle " + Model.Equals + " \"Kevin\"" + Model.Semicolon,
+                    Model.VariableDeclare + "nameLast " + Model.Equals + " \"Goldberg\"" + Model.Semicolon,
+                    Model.VariableDeclare + "nameFull " + Model.Equals + " nameFirst + nameMiddle + nameLast" + Model.Semicolon,
                     Model.PrintFunction + "(nameFull)" +  Model.Semicolon + " " + Model.Commentor + " \"Joshua Kevin Goldberg\""
                 }),
                 "Store your full name in a variable and print it plus the String <code>\" likes coding!\"</code>. Print someone else's name plus the String <code>\" likes coding!\"</code>." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "nameMine = \"Joshua Kevin Goldberg\"",
+                    Model.VariableDeclare + "nameMine " + Model.Equals + " \"Joshua Kevin Goldberg\"",
                     Model.PrintFunction + "(nameMine + \" likes coding!\") " + Model.Commentor + " \"Joshua Kevin Goldberg likes coding!\"",
                     "",
-                    Model.VariableDeclare + "nameOther = \"Brandon Christopher McLear\"",
+                    Model.VariableDeclare + "nameOther " + Model.Equals + "\"Brandon Christopher McLear\"",
                     Model.PrintFunction + "(nameOther + \" likes coding!\") " + Model.Commentor + " \"Brandon Christopher McLear likes coding!\""
                 }),
             })

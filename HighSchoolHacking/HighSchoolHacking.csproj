@@ -169,6 +169,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JavaScriptController.cs" />
+    <Compile Include="Controllers\LOLCODEController.cs" />
     <Compile Include="Controllers\PythonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -306,6 +307,7 @@
     <Content Include="Views\JavaScript\ChromeExtensions.cshtml" />
     <Content Include="Views\Python\WordSpam.cshtml" />
     <Content Include="Views\Templating\Switchers.cshtml" />
+    <Content Include="Views\LOLCODE\index.cshtml" />
     <Content Include="Views\Shared\Pages\Classes.cshtml" />
   </ItemGroup>
   <ItemGroup>
