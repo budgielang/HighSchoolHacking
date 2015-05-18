@@ -25,7 +25,7 @@
             "You can concatenate (combine) Strings in " + Model.Name + " really easily. It's like attaching one string of yarn to another string of yarn, you just get one bigger string.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.PrintFunction + "(\"Hello \" + \" world!\"); # Hello world!",
+                Model.PrintFunction + "(\"Hello \" + \" world!\")" + Model.Semicolon + " " + Model.Commentor + " Hello world!",
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
