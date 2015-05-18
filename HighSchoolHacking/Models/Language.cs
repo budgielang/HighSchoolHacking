@@ -16,7 +16,9 @@ namespace HighSchoolHacking.Models
 
         public string Color { get; set; }
 
-        public string Description { get; set; }
+        public string ParenthesisLeft { get; set; }
+
+        public string ParenthesisRight { get; set; }
 
         public string Commentor { get; set; }
 
@@ -89,6 +91,26 @@ namespace HighSchoolHacking.Models
         public HashSet<string> CustomPages { get; set; }
 
         public Dictionary<string, string> PageAliases { get; set; }
+
+        public string CallFunction(string name, params string[] args)
+        {
+            string output = name + this.ParenthesisLeft;
+            int i;
+
+            if (args != null && args.Length > 0)
+            {
+                for (i = 0; i < args.Length - 1; i += 1)
+                {
+                    output += args[i] + ", ";
+                }
+
+                output += args[args.Length - 1];
+            }
+
+            output += this.ParenthesisRight;
+
+            return output;
+        }
 
         public string UseLength(string variable)
         {

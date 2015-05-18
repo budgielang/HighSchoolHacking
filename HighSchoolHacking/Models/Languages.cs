@@ -15,7 +15,8 @@ namespace HighSchoolHacking.Models
             Name = "Python",
             NameLower = "python",
             Color = "green",
-            Description = "a bit different (and a lot simpler) than Java, so you want to get used to the syntax",
+            ParenthesisLeft = "(",
+            ParenthesisRight = ")",
             Semicolon = "",
             Commentor = "#",
             ConditionalLeft = " ",
@@ -60,7 +61,8 @@ namespace HighSchoolHacking.Models
             Name = "JavaScript",
             NameLower = "javascript",
             Color = "blue",
-            Description = "a bit simpler than Java or C++ but a little trickier than Python, so you want to get used to the syntax",
+            ParenthesisLeft = "(",
+            ParenthesisRight = ")",
             ConditionalLeft = " (",
             ConditionalRight = ") {",
             ConditionalContinueLeft = "} ",
@@ -98,10 +100,52 @@ namespace HighSchoolHacking.Models
             }
         };
 
+        public static Language LOLCODE = new Language
+        {
+            Name = "LOLCODE",
+            NameLower = "lolcode",
+            Color = "red",
+            ParenthesisLeft = " ",
+            ParenthesisRight = " ",
+            ConditionalLeft = " (",
+            ConditionalRight = ") {",
+            ConditionalContinueLeft = "} ",
+            ConditionalContinueRight = " { ",
+            ConditionalEnd = "}",
+            BooleanTrue = "true",
+            BooleanFalse = "false",
+            Semicolon = ";",
+            Commentor = "//",
+            Elif = "else if",
+            And = "&&",
+            Or = "||",
+            ArrayName = "Array",
+            ArrayNamePlural = "Arrays",
+            DictionaryName = "Object",
+            DictionaryNamePlural = "Objects",
+            FunctionDefine = "function ",
+            FunctionRight = " {",
+            FunctionEnd = "}",
+            LengthName = "length",
+            CanConcatenateNumbers = true,
+            LengthIsProperty = true,
+            DictionaryKeyInCheck = false,
+            DictionaryKeyCheckName = "hasOwnProperty",
+            FunctionsFirstClass = true,
+            FunctionsAsVariables = true,
+            PrintFunction = "VISIBLE ",
+            AppendFunction = "push",
+            VariableDeclare = "var ",
+            UndefinedError = "Uncaught ReferenceError:",
+            CustomPages = new HashSet<string> { },
+            PageAliases = new Dictionary<string, string> { }
+        };
+
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
         {
             { "Python", Python },
-            { "JavaScript", JavaScript }
+            { "JavaScript", JavaScript },
+            { "LOLCODE", LOLCODE }
         };
 
         public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };

@@ -26,9 +26,21 @@ namespace HighSchoolHacking
             routes.MapRoute(
                 "JavaScript",
                 "JavaScript/{section}",
-                new { 
-                    controller = "JavaScript", 
-                    action = "Index", 
+                new
+                {
+                    controller = "JavaScript",
+                    action = "Index",
+                    section = "Index"
+                }
+            );
+
+            routes.MapRoute(
+                "LOLCODE",
+                "LOLCODE/{section}",
+                new
+                {
+                    controller = "LOLCODE",
+                    action = "Index",
                     section = "Index"
                 }
             );
