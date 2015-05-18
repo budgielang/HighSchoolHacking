@@ -5,6 +5,8 @@ using System.Web;
 
 namespace HighSchoolHacking.Models
 {
+    public delegate string MathComputer(string left, string operation, string right);
+
     public class Language
     {
         public Language()
@@ -42,6 +44,14 @@ namespace HighSchoolHacking.Models
 
         public string Equals { get; set; }
 
+        public bool StringAnyApostrophes { get; set; }
+
+        public string StringConcatenationStart { get; set; }
+
+        public string StringConcatenationBetween { get; set; }
+
+        public string StringConcatenationEnd { get; set; }
+
         public string And { get; set; }
 
         public string Or { get; set; }
@@ -61,6 +71,8 @@ namespace HighSchoolHacking.Models
         public string FunctionEnd { get; set; }
 
         public string LengthName { get; set; }
+
+        public bool StrictIntegers { get; set; }
 
         public bool CanConcatenateNumbers { get; set; }
 
@@ -90,6 +102,8 @@ namespace HighSchoolHacking.Models
 
         public string UndefinedError { get; set; }
 
+        public MathComputer FancyNumberMath { get; set; }
+
         public HashSet<string> CustomPages { get; set; }
 
         public Dictionary<string, string> PageAliases { get; set; }
@@ -112,6 +126,36 @@ namespace HighSchoolHacking.Models
             output += this.ParenthesisRight;
 
             return output;
+        }
+
+        public string ConcatenateStrings(params string[] args)
+        {
+            string output = this.StringConcatenationStart;
+            int i;
+
+            if (args != null && args.Length > 0)
+            {
+                for (i = 0; i < args.Length - 1; i += 1)
+                {
+                    output += args[i] + " " + this.StringConcatenationBetween + " ";
+                }
+
+                output += args[args.Length - 1];
+            }
+
+            output += this.StringConcatenationEnd;
+
+            return output;
+        }
+
+        public string ComputeMath(string left, string operation, string right)
+        {
+            if (this.FancyNumberMath != null)
+            {
+                return this.FancyNumberMath(left, operation, right);
+            }
+
+            return left + " " + operation + " " + right;
         }
 
         public string UseLength(string variable)

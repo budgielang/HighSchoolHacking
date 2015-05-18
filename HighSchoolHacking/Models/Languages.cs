@@ -30,6 +30,8 @@ namespace HighSchoolHacking.Models
             Equals = "=",
             And = "and",
             Or = "or",
+            StringAnyApostrophes = true,
+            StringConcatenationBetween = "+",
             ArrayName = "List",
             ArrayNamePlural = "Lists",
             DictionaryName = "Dictionary",
@@ -39,7 +41,7 @@ namespace HighSchoolHacking.Models
             FunctionEnd = null,
             LengthName = "len",
             LengthIsProperty = false,
-            NativeExponents = true,
+            NativeExponents = false,
             DictionaryKeyInCheck = true,
             DictionaryKeyCheckName = " in ",
             DictionaryIterator = ".items()",
@@ -77,6 +79,8 @@ namespace HighSchoolHacking.Models
             Equals = "=",
             And = "&&",
             Or = "||",
+            StringAnyApostrophes = true,
+            StringConcatenationBetween = "+",
             ArrayName = "Array",
             ArrayNamePlural = "Arrays",
             DictionaryName = "Object",
@@ -85,6 +89,7 @@ namespace HighSchoolHacking.Models
             FunctionRight = " {",
             FunctionEnd = "}",
             LengthName = "length",
+            StrictIntegers = false,
             CanConcatenateNumbers = true,
             LengthIsProperty = true,
             DictionaryKeyInCheck = false,
@@ -122,6 +127,10 @@ namespace HighSchoolHacking.Models
             Equals = "ITZ",
             And = "&&",
             Or = "||",
+            StringAnyApostrophes = false,
+            StringConcatenationStart = "SMOOSH ",
+            StringConcatenationBetween = "AN",
+            StringConcatenationEnd = " MKAY",
             ArrayName = "Array",
             ArrayNamePlural = "Arrays",
             DictionaryName = "Object",
@@ -130,6 +139,7 @@ namespace HighSchoolHacking.Models
             FunctionRight = " {",
             FunctionEnd = "}",
             LengthName = "length",
+            StrictIntegers = true,
             CanConcatenateNumbers = true,
             LengthIsProperty = true,
             DictionaryKeyInCheck = false,
@@ -140,6 +150,36 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "I HAS A ",
             UndefinedError = "MachineError: Reference to undefined variable:",
+            FancyNumberMath = (string left, string operation, string right) => {
+                string before = "";
+
+                switch (operation)
+                {
+                    case "+":
+                        before = "SUM";
+                        break;
+                    case "-":
+                        before = "DIFF";
+                        break;
+                    case "*":
+                        before = "PRODUKT";
+                        break;
+                    case "/":
+                        before = "QUOSHUNT";
+                        break;
+                    case "%":
+                        before = "MOD";
+                        break;
+                    case ">":
+                        before = "BIGGR";
+                        break;
+                    case "<":
+                        before = "SMALLR";
+                        break;
+                }
+
+                return before + " OF " + left + " AN " + right;
+            },
             CustomPages = new HashSet<string> { },
             PageAliases = new Dictionary<string, string> { }
         };

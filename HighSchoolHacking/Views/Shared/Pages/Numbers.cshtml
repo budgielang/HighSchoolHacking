@@ -2,6 +2,28 @@
 @model Language
 
 @{
+    string[] initialParagraphs = new string[]
+    {
+        "Numbers in " + Model.Name + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+        Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("1", "+", "2")) + Model.Semicolon + " " + Model.Commentor + " 3"),
+        Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("3", "-", "4")) + Model.Semicolon + " " + Model.Commentor + " -1"),
+        Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("5", "*", "6")) + Model.Semicolon + " " + Model.Commentor + " 30")
+    };
+
+    if (Model.StrictIntegers)
+    {
+        initialParagraphs = initialParagraphs.Concat(new string[]
+        {
+            "Note that Numbers can be Integers or Floats. Integers are exact numbers (1, 2, 3, ...) while Floats are decimal point numbers (0.0, 1.17, ...). Numbers without decimal points default to Integers, which round down in division (they remove the decimal place).",
+            Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("7", "/", "8")) + Model.Semicolon + " " + Model.Commentor + " 0"),
+            Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("7.0", "/", "8.0")) + Model.Semicolon + " " + Model.Commentor + " 0.875"),
+            Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("10", "/", "9")) + Model.Semicolon + " " + Model.Commentor + " 1"),
+            "If you combine an Integer and Float, " + Model.Name + " will turn the product into a Float.",
+            Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("11", "/", "12.0")) + Model.Semicolon + " " + Model.Commentor + " 0.91666666666666663"),
+            Section.WrapCode(Model.NameLower, Model.CallFunction(Model.PrintFunction, Model.ComputeMath("11.0", "/", "12")) + Model.Semicolon + " " + Model.Commentor + " 0.91666666666666663")
+        }).ToArray();
+    }
+
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Model.Color, 5),
@@ -9,20 +31,7 @@
         Extension = Model.NameLower,
         Large = true,
         Back = "/" + Model.Name + "/Learn",
-        Paragraphs = new string[]
-        {
-            "Numbers in " + Model.Name + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(1 + 2)" + Model.Semicolon + " " + Model.Commentor + " 3"),
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(3 - 4)" + Model.Semicolon + " " + Model.Commentor + " -1"),
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(5 * 6)" + Model.Semicolon + " " + Model.Commentor + " 30"),
-            "Note that Numbers can be Integers or Floats. Integers are exact numbers (1, 2, 3, ...) while Floats are decimal point numbers (0.0, 1.17, ...). Numbers without decimal points default to Integers, which round down in division (they remove the decimal place).",
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(7 / 8)" + Model.Semicolon + " " + Model.Commentor + " 0"),
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(7.0 / 8.0)" + Model.Semicolon + " " + Model.Commentor + " 0.875"),
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(10 / 9)" + Model.Semicolon + " " + Model.Commentor + " 1"),
-            "If you combine an Integer and Float, " + Model.Name + " will turn the product into a Float.",
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(11 / 12.0)" + Model.Semicolon + " " + Model.Commentor + " 0.91666666666666663"),
-            Section.WrapCode(Model.NameLower, Model.PrintFunction + "(11.0 / 12)" + Model.Semicolon + " " + Model.Commentor + " 0.91666666666666663"),
-        }
+        Paragraphs = initialParagraphs
     });
 
     if (Model.NativeExponents)
@@ -79,22 +88,30 @@
             {
                 "Make a variable equal to your age. Print it." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    Model.PrintFunction + "(age)" + Model.Semicolon
+                    Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
+                    Model.CallFunction(Model.PrintFunction, "age") + Model.Semicolon
                 }),
                 "Make a new variable equal to double the age variable. Print it." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    Model.VariableDeclare + "double = age * 2" + Model.Semicolon,
-                    Model.PrintFunction + "(double)" + Model.Semicolon
+                    Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
+                    Model.VariableDeclare + "doubled " + Model.Equals + " " + Model.ComputeMath("age", "*", "2") + Model.Semicolon,
+                    Model.CallFunction(Model.PrintFunction, "doubled") + Model.Semicolon
                 }),
-                "Make a third variable equal to the square root of double your age, <em>not</em> rounded. Print it." + Section.WrapCode(Model.NameLower, new string[]
-                {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    Model.VariableDeclare + "double = age * 2" + Model.Semicolon,
-                    Model.VariableDeclare + "weird = double ** .5" + Model.Semicolon,
-                    Model.PrintFunction + "(weird)" + Model.Semicolon
-                })
+                Model.NativeExponents
+                    ? "Make a third variable equal to the square root of double your age, <em>not</em> rounded. Print it." + Section.WrapCode(Model.NameLower, new string[]
+                        {
+                            Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
+                            Model.VariableDeclare + "doubled " + Model.Equals + " " + Model.ComputeMath("age", "*", "2") + Model.Semicolon,
+                            Model.VariableDeclare + "weird " + Model.Equals + " doubled ** 0.5" + Model.Semicolon,
+                            Model.CallFunction(Model.PrintFunction, "weird") + Model.Semicolon
+                        })
+                    : "Make a third variable equal to your age squared, divided by two. Print it." + Section.WrapCode(Model.NameLower, new string[]
+                        {
+                            Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
+                            Model.VariableDeclare + "doubled " + Model.Equals + " " + Model.ComputeMath("age", "*", "age") + Model.Semicolon,
+                            Model.VariableDeclare + "weird " + Model.Equals + " double / 2" + Model.Semicolon,
+                            Model.CallFunction(Model.PrintFunction, "weird") + Model.Semicolon
+                        })
             })
         }
     });
@@ -111,8 +128,8 @@
                 "We won't quiz you on it here, just keep it in mind so you're not confused when we use it later.",
                 Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    Model.PrintFunction + "(\"My age is \" + age + \"!\")" + Model.Semicolon + " " + Model.Commentor + " \"My age is 21!\""
+                    Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
+                    Model.CallFunction(Model.PrintFunction, Model.ConcatenateStrings("\"My age is \"", "age", "\"!\"")) + Model.Semicolon + " " + Model.Commentor + " \"My age is 21!\"",
                 })
             }
         });
