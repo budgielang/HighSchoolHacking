@@ -19,6 +19,7 @@ namespace HighSchoolHacking.Models
             ParenthesisRight = ")",
             Semicolon = "",
             Commentor = "#",
+            If = "if",
             ConditionalLeft = " ",
             ConditionalRight = ":",
             ConditionalContinueLeft = "",
@@ -79,6 +80,7 @@ namespace HighSchoolHacking.Models
             BooleanFalse = "false",
             Semicolon = ";",
             Commentor = "//",
+            If = "if",
             Elif = "else if",
             Equals = "=",
             And = "&&",
@@ -120,16 +122,20 @@ namespace HighSchoolHacking.Models
             Color = "red",
             ParenthesisLeft = " ",
             ParenthesisRight = " ",
-            ConditionalLeft = " (",
-            ConditionalRight = ") {",
+            ConditionalAfter = true,
+            ConditionalLeft = "",
+            ConditionalRight = "",
             ConditionalContinueLeft = "} ",
             ConditionalContinueRight = " { ",
-            ConditionalEnd = "}",
-            BooleanTrue = "true",
-            BooleanFalse = "false",
+            BooleanTrue = "WIN",
+            BooleanFalse = "FAIL",
             Semicolon = "",
             Commentor = "  BTW",
+            If = ", O RLY?",
             Elif = "else if",
+            WhenTrue = "YA RLY, ",
+            WhenFalse = "NO WAI, ",
+            EndIf = "OIC",
             Equals = "ITZ",
             And = "&&",
             Or = "||",
@@ -162,29 +168,41 @@ namespace HighSchoolHacking.Models
                 switch (operation)
                 {
                     case "+":
-                        before = "SUM";
+                        before = "SUM OF";
                         break;
                     case "-":
-                        before = "DIFF";
+                        before = "DIFF OF";
                         break;
                     case "*":
-                        before = "PRODUKT";
+                        before = "PRODUKT OF";
                         break;
                     case "/":
-                        before = "QUOSHUNT";
+                        before = "QUOSHUNT OF";
                         break;
                     case "%":
-                        before = "MOD";
+                        before = "MOD OF";
                         break;
                     case ">":
-                        before = "BIGGR";
+                        before = "BIGGR OF";
                         break;
                     case "<":
-                        before = "SMALLR";
+                        before = "SMALLR OF";
+                        break;
+                    case "<=":
+                        before = "BOTH SAEM " + left + " AN BIGGR OF";
+                        break;
+                    case ">=":
+                        before = "BOTH SAEM " + left + " AN SMALLR OF";
+                        break;
+                    case "==":
+                        before = "BOTH SAEM";
+                        break;
+                    case "!=":
+                        before = "DIFFRINT";
                         break;
                 }
 
-                return before + " OF " + left + " AN " + right;
+                return before + " " + left + " AN " + right;
             },
             CustomPages = new HashSet<string> { },
             PageAliases = new Dictionary<string, string> { }

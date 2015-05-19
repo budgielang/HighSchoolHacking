@@ -17,19 +17,22 @@
             "This brings us to <code>if</code> statements. These check if something (a condition) is true, and only run a block of code if it is. A simple example is as follows:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Yes!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.BooleanTrue),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yes!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
             }),
             "Try running this code (it should print <em>Yes!</em>). Don't forget to write the <code>" + Model.ConditionalRight + "</code> at the end of the if statement! " + Model.Name + " knows that <code>True</code> means things should run, and <code>False</code> means they shouldn't.",
             "Note that there are four spaces at the beginning of the second line. You don't have to use four (you can just use one), but your code becomes really ugly and hard to read so if you only use one or two, you're an evil person. This is called indenting your code, and " + Model.Name + " makes you do it so it knows what's inside the <code>if</code> statement. Anything indented is inside the <code>if</code> statement, and once you stop indenting, the <code>if</code> statement is done.",
             "The following code should only print <em>B</em>, because the first print is inside an <code>if</code> statement that won't be run:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + Model.BooleanFalse + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"A\")",
+                Model.MakeConditional(Model.If, Model.BooleanFalse),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"A\"") + Model.Semicolon,
                 Model.ConditionalEnd,
-                Model.PrintFunction + "(\"B\")",
+                Model.EndIf,
+                "",
+                Model.CallFunction(Model.PrintFunction, "\"B\"") + Model.Semicolon
             }),
         }
     });
@@ -40,58 +43,70 @@
         Title = "Truthiness",
         Paragraphs = new string[]
         {
-            "The most common conditional is checking whether two things are equal. We use the double equals sign <code>==</code> for that:",
+            "The most common conditional is checking whether two things are equal. You can check it like so: <code>" + Model.ComputeMath("a", "==", "b") + "</code>",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + "1 == 1" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Yeah!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath("1", "==", "1")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yeah!\""),
+                Model.ConditionalEnd,
+                Model.EndIf,
             }),
             "You can do small math inside the <code>if</code> statements.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + "1 + 1 == 2" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Yup!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath(Model.ComputeMath("1", "+", "1"), "==", "2")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yup!\""),
+                Model.ConditionalEnd,
+                Model.EndIf,
             }),
-            //Section.WrapCode(Model.NameLower, new string[]
-            //{
-            //    "if" + Model.ConditionalLeft + "2 ** 3 == 8" + Model.ConditionalRight,
-            //    "    " + Model.PrintFunction + "(\"Yep!\")",
-            //    Model.ConditionalEnd
-            //}),
-            "The way we test for inequality is <code>!=</code>. The exclamation mark is like saying 'not this', so <code>!=</code> means 'not equal to'.",
+            "The way we test for inequality is <code>" + Model.ComputeMath("a", "!=", "b") + "</code>. "
+            + (Model.FancyNumberMath == null
+                ? "The exclamation mark is like saying 'not this', so <code>!=</code> means 'not equal to'."
+                : ""
+                ),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + "1 != 2" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Yar!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath("1", "!=", "2")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yar!\""),
+                Model.ConditionalEnd,
+                Model.EndIf,
             }),
-            "You can actually use most of the calculator functions in <code>if</code> statements and general operations on variables. <code><</code>, <code><=</code>, <code>></code>, and <code>>=</code> all work for comparisons, and the Number and String operations we've already gone over work.",
-            Section.WrapCode(Model.NameLower, new string[]
+            "You can actually use most of the calculator functions in <code>if</code> statements and general operations on variables, as well as all the Number and String operations we've already gone over.",
+            Section.WrapList(false, new string[]
             {
-                "if" + Model.ConditionalLeft + "9001 > 9000" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Yippers!\")",
-                Model.ConditionalEnd
-            }),
-            Section.WrapCode(Model.NameLower, new string[]
-            {
-                "if" + Model.ConditionalLeft + "2 * (1 + 2) == (2 * 1) + (2 * 2)" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Distributive property!\")",
-                Model.ConditionalEnd
+                "Less than: <code>" + Model.ComputeMath("a", "<", "b") + "</code>",
+                "Less than or equal to: <code>" + Model.ComputeMath("a", "<=", "b") + "</code>",
+                "Greater than: <code>" + Model.ComputeMath("a", ">", "b") + "</code>",
+                "Greater than or equal to: <code>" + Model.ComputeMath("a", ">=", "b") + "</code>"
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + "\"Foo\" + \"bar\" == \"Foobar\"" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Strings work!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath("9001", ">", "2")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yippers!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf,
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "name = \"Bob\"" + Model.Semicolon,
-                "if" + Model.ConditionalLeft + "name == \"Bob\"" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Variables work!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath(Model.ComputeMath("2", "*", Model.ComputeMath("1", "+", "2")), "==", Model.ComputeMath(Model.ComputeMath("2", "*", "1"), "+", Model.ComputeMath("2", "*", "2")))),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Distributive Property!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.MakeConditional(Model.If, Model.ComputeMath(Model.ConcatenateStrings("\"foo\"", "\"bar\""), "==", "\"foobar\"")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Strings work!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "name " + Model.Equals + " \"Bob\"" + Model.Semicolon,
+                Model.MakeConditional(Model.If, Model.ComputeMath("name", "==", "\"Bob\"")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Variables work!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
             }),
         }
     });
@@ -123,30 +138,34 @@
             {
                 "Make a new variable equal to your name. Make an if statement to check if it's equal to your name." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "name = \"Josh\"" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "name == \"Josh\"" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Yup!\")",
-                    Model.ConditionalEnd
+                Model.VariableDeclare + "name " + Model.Equals + " \"Josh\"" + Model.Semicolon,
+                Model.MakeConditional(Model.If, Model.ComputeMath("name", "==", "\"Josh\"")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"My name works!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
                 }),
                 "Make a new variable equal to a friend's name. Make an if statement to check if it's equal to your name. If you have no friends, make one up." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "name = \"Doodlebob\"" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "name == \"Josh\"" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Yup!\")",
-                    Model.ConditionalEnd
+                Model.VariableDeclare + "name " + Model.Equals + " \"Josh\"" + Model.Semicolon,
+                Model.MakeConditional(Model.If, Model.ComputeMath("name", "==", "\"Doodlebob\"")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"This shouldn't print...\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
                 }),
                 "Make a new variable equal to your age. Write an if statement to print a happy message if you're above the age of seven." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "age > seven" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(name)",
-                    Model.ConditionalEnd
+                Model.VariableDeclare + "name " + Model.Equals + " 21" + Model.Semicolon,
+                Model.MakeConditional(Model.If, Model.ComputeMath("name", ">", "7")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"I'm a big kid now!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
                 }),
                 "Use the <a href=\"http://en.wikipedia.org/wiki/Associative_property\">associative property</a> in an if statement." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    "if" + Model.ConditionalLeft + "(2 + 3) + 4 == 2 + (3 + 4)" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Associative property!\")",
-                    Model.ConditionalEnd
+                    Model.MakeConditional(Model.If, Model.ComputeMath(Model.ComputeMath(Model.ComputeMath("2", "+", "3"), "+", "4"), "==", Model.ComputeMath("2", "+", Model.ComputeMath("3", "+", "4")))),
+                    "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Associative property!\"") + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    Model.EndIf
                 })
             })
         }
