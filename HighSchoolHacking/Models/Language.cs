@@ -26,6 +26,8 @@ namespace HighSchoolHacking.Models
 
         public string Semicolon { get; set; }
 
+        public bool ConditionalAfter { get; set; }
+
         public string ConditionalLeft { get; set; }
 
         public string ConditionalRight { get; set; }
@@ -40,9 +42,19 @@ namespace HighSchoolHacking.Models
 
         public string BooleanFalse { get; set; }
 
+        public string If { get; set; }
+
+        public string Else { get; set; }
+
         public string Elif { get; set; }
 
         public string Equals { get; set; }
+
+        public string WhenTrue { get; set; }
+
+        public string WhenFalse { get; set; }
+
+        public string EndIf { get; set; }
 
         public bool StringAnyApostrophes { get; set; }
 
@@ -124,6 +136,35 @@ namespace HighSchoolHacking.Models
         public HashSet<string> CustomPages { get; set; }
 
         public Dictionary<string, string> PageAliases { get; set; }
+
+        public string MakeConditional(string operation, string value)
+        {
+            bool isAfter = this.ConditionalAfter && operation != this.Elif;
+            string output = "";
+
+            if (!isAfter)
+            {
+                output += operation;
+            }
+
+            output += this.ConditionalLeft + value;
+
+            if (isAfter)
+            {
+                output += operation;
+            }
+
+            output += this.ConditionalRight;
+
+            return output;
+        }
+
+        public string MakeElse()
+        {
+            string output = this.ConditionalContinueLeft + this.Else + this.ConditionalContinueRight;
+
+            return output.Length > 0 ? output : null;
+        }
 
         public string CallFunction(string name, params string[] args)
         {
