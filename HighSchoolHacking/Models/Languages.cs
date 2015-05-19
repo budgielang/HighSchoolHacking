@@ -213,8 +213,7 @@ namespace HighSchoolHacking.Models
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
         {
             { "Python", Python },
-            { "JavaScript", JavaScript },
-            { "LOLCODE", LOLCODE }
+            { "JavaScript", JavaScript }
         };
 
         public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };
