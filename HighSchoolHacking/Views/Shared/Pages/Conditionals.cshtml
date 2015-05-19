@@ -182,48 +182,52 @@
             "The following code prints <em>First!</em>...",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"First!\")",
-                Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                "    " + Model.PrintFunction + "(\"Nope.\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.BooleanTrue),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"First!\"") + Model.Semicolon,
+                Model.MakeElse(),
+                "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
             }),
             "...while this code prints <em>Second!</em>.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "if" + Model.ConditionalLeft + Model.BooleanFalse + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Nope.\")",
-                Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                "    " + Model.PrintFunction + "(\"Second!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.BooleanTrue),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
+                Model.MakeElse(),
+                "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"Second!\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
             }),
             Section.WrapHead(Model.Elif),
-            "You can chain <code>if</code> statements using <code>" + Model.Elif + "</code>. " + (Model.Elif == "elif" ? "<code>elif</code> is short for <code>else if</code> (which other languages use)." : "It works as you'd expect, meaning you're putting an <code>if</code> statement inside an <code>else</code> statement."),
+            "You can chain <code>if</code> statements using <code>" + Model.Elif + "</code>. " + (Model.Elif == "elif" ? "<code>elif</code> is short for <code>else if</code> (which other languages use)." : "It works just like saying \"else if\", meaning you're putting an <code>if</code> statement inside an <code>else</code> statement."),
             "Using <code>" + Model.Elif + "</code> allows you to check for multiple conditions, like a bunch of <code>if</code> statements. Each one is checked in order, and as soon as one matches, the rest are ignored.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "number = 1" + Model.Semicolon,
+                Model.VariableDeclare + "number " + Model.Equals + " 1" + Model.Semicolon,
                 "",
-                "if" + Model.ConditionalLeft + "number == 0" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Nope!\")" + Model.Semicolon,
-                Model.ConditionalContinueLeft + Model.Elif + Model.ConditionalLeft + "number == 1" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Using " + Model.Elif + " works!\")" + Model.Semicolon,
-                Model.ConditionalContinueLeft + Model.Elif + Model.ConditionalLeft + "number == 2" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Nope!\")" + Model.Semicolon,
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath("number", "==", "0")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
+                Model.MakeConditional(Model.Elif, Model.ComputeMath("number", "==", "1")),
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Second!\"") + Model.Semicolon,
+                Model.MakeConditional(Model.Elif, Model.ComputeMath("number", "==", "2")),
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
             }),
-            "After your <code>elif</code>(s), you can put one last <code>else</code> to check if nothing was true.",
+            "After your <code>" + Model.Elif.Trim() + "</code>(s), you can put one last <code>" + (String.IsNullOrWhiteSpace(Model.Else) ? Model.WhenFalse : Model.Else) + "</code> to check if nothing was true.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.VariableDeclare + "number = 7",
+                Model.VariableDeclare + "number " + Model.Equals + " 7" + Model.Semicolon,
                 "",
-                "if" + Model.ConditionalLeft + "number == 0" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Nope!\")",
-                Model.ConditionalContinueLeft + Model.Elif + Model.ConditionalLeft + "number == 1" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Still nope!\")",
-                Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                "    " + Model.PrintFunction + "(\"Finally!\")",
-                Model.ConditionalEnd
+                Model.MakeConditional(Model.If, Model.ComputeMath("number", "==", "0")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
+                Model.MakeConditional(Model.Elif, Model.ComputeMath("number", "==", "1")),
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Still nope.\"") + Model.Semicolon,
+                Model.MakeElse(),
+                "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"Finally, nope.\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
             })
         }
     });
@@ -236,7 +240,7 @@
         {
             Section.WrapList(new string[]
             {
-                "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\".",
+                "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\" (either \"Yup!\" or \"Nope.\").",
                 "Make a variable containing your age, and make a set of conditionals to print different things if you're in the 0 - 9, 10 - 19, or 20+ ranges."
             })
         }
@@ -253,120 +257,127 @@
             {
                 "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\"." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "song = \"Never Gonna Give You Up\"" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "song == \"Never Gonna Give You Up\"" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Yup!\")" + Model.Semicolon,
-                    Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                    "    " + Model.PrintFunction + "(\"Nope.\")" + Model.Semicolon,
-                    Model.ConditionalEnd
+                    Model.VariableDeclare + "song " + Model.Equals + "\"Never Gonna Give You Up\"" + Model.Semicolon,
+                    Model.MakeConditional(Model.If, Model.ComputeMath("song", "==", "\"Never Gonna Give You Up\"")),
+                    "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yup!\"") + Model.Semicolon,
+                    Model.MakeElse(),
+                    "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    Model.EndIf
                 }),
                 "Make a variable containing your age, and make a set of conditionals to print different things if you're in the 0 - 9, 10 - 19, or 20+ ranges." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "age < 10" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Less than ten!\")" + Model.Semicolon,
-                    Model.ConditionalContinueLeft + Model.Elif + Model.ConditionalLeft + "age < 20" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Less than twenty!\")" + Model.Semicolon,
-                    Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                    "    " + Model.PrintFunction + "(\"Old!\")",
-                    Model.ConditionalEnd
+                Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
+                "",
+                Model.MakeConditional(Model.If, Model.ComputeMath("number", "<=", "9")),
+                "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Less than ten.\"") + Model.Semicolon,
+                Model.MakeConditional(Model.Elif, Model.ComputeMath("number", "<=", "19")),
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Less than twenty.\"") + Model.Semicolon,
+                Model.MakeElse(),
+                "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"20 and up.\"") + Model.Semicolon,
+                Model.ConditionalEnd,
+                Model.EndIf
                 })
             })
         }
     });
 
-    Html.RenderPartial(Section.ViewFile, new Section
+    if (!String.IsNullOrWhiteSpace(Model.And))
     {
-        Color = Section.GetNextColor(Model.Color, 9),
-        Title = "More Conditions",
-        Paragraphs = new string[]
+        Html.RenderPartial(Section.ViewFile, new Section
         {
-            Model.Name + " lets you check multiple conditions in a statement using <code>" + Model.And + "</code>. This works like \"and\" in plain English, where you ask if one thing is true <em>and</em> another. See the following two blocks of code, which do the exact same thing:",
-            Section.WrapCode(Model.NameLower, new string[]
+            Color = Section.GetNextColor(Model.Color, 9),
+            Title = "More Conditions",
+            Paragraphs = new string[]
             {
-                "if" + Model.ConditionalLeft + "1 + 1 == 2" + Model.ConditionalRight,
-                "    if" + Model.ConditionalLeft + "2 + 2 == 4" + Model.ConditionalRight,
-                "        " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
-                Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
-                Model.ConditionalEnd
-            }),
-            Section.WrapCode(Model.NameLower, new string[]
-            {
-                "if" + Model.ConditionalLeft + "1 + 1 == 2 " + Model.And + " 2 + 2 == 4" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
-                Model.ConditionalEnd
-            }),
-            "If either of the conditions are false, the inside code won't run:",
-            Section.WrapCode(Model.NameLower, new string[]
-            {
-                "if" + Model.ConditionalLeft + "1 + 1 == 2 " + Model.And + " 2 + 2 == \"Fish\"" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Nope.\")" + Model.Semicolon,
-                Model.ConditionalEnd
-            }),
-            Section.WrapHead("Or"),
-            "You can also check if either of two (or more) conditions are true using <code>" + Model.Or + "</code>. Like <code>and</code>, this also follows plain English, where you ask if one thing is true <em>or</em> another. That means the code inside a conditional will be run if <em>either</em> of the given statements are true. The following two blocks of code do the same thing:",
-            Section.WrapCode(Model.NameLower, new string[]
-            {
-                "if" + Model.ConditionalLeft + "2 + 2 == \"Fish\"" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
-                Model.ConditionalEnd,
-                "if" + Model.ConditionalLeft + "2 + 2 == 4" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
-                Model.ConditionalEnd
-            }),
-            Section.WrapCode(Model.NameLower, new string[]
-            {
-                "if" + Model.ConditionalLeft + "2 + 2 == \"Fish\" " + Model.Or + " 2 + 2 == 4" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
-                Model.ConditionalEnd
-            }),
-            "The first statement was obviously false, but <em>Math!</em> still gets printed because the second one is true."
-        }
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = "steel",
-        Title = "Exercises",
-        Paragraphs = new string[]
-        {
-            Section.WrapList(new string[]
-            {
-                "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"",
-                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Neither!\" or \"Both!\"."
-            })
-        }
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = "brown",
-        Title = "Solutions",
-        Contracted = true,
-        Paragraphs = new string[]
-        {
-            Section.WrapList(new string[]
-            {
-                "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"" + Section.WrapCode(Model.NameLower, new string[]
+                Model.Name + " lets you check multiple conditions in a statement using <code>" + Model.And + "</code>. This works like \"and\" in plain English, where you ask if one thing is true <em>and</em> another. See the following two blocks of code, which do the exact same thing:",
+                Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "song = \"Never Gonna Give You Up\"" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "song == \"Never Gonna Give You Up\" " + Model.Or + " song != \"Never Gonna Give You Up\"" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Yes!\")" + Model.Semicolon,
+                    "if" + Model.ConditionalLeft + "1 + 1 == 2" + Model.ConditionalRight,
+                    "    if" + Model.ConditionalLeft + "2 + 2 == 4" + Model.ConditionalRight,
+                    "        " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                     Model.ConditionalEnd
                 }),
-                "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Both!\" or \"One or two were wrong!\"." + Section.WrapCode(Model.NameLower, new string[]
+                Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "age = 21" + Model.Semicolon,
-                    Model.VariableDeclare + "weight = 182" + Model.Semicolon,
-                    "if" + Model.ConditionalLeft + "age > 10 " + Model.And + " weight < 700" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Both!\")" + Model.Semicolon,
-                    Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                    "    " + Model.PrintFunction + "(\"One or two were wrong!\")" + Model.Semicolon,
+                    "if" + Model.ConditionalLeft + "1 + 1 == 2 " + Model.And + " 2 + 2 == 4" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
                     Model.ConditionalEnd
+                }),
+                "If either of the conditions are false, the inside code won't run:",
+                Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "if" + Model.ConditionalLeft + "1 + 1 == 2 " + Model.And + " 2 + 2 == \"Fish\"" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Nope.\")" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                Section.WrapHead("Or"),
+                "You can also check if either of two (or more) conditions are true using <code>" + Model.Or + "</code>. Like <code>and</code>, this also follows plain English, where you ask if one thing is true <em>or</em> another. That means the code inside a conditional will be run if <em>either</em> of the given statements are true. The following two blocks of code do the same thing:",
+                Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "if" + Model.ConditionalLeft + "2 + 2 == \"Fish\"" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    "if" + Model.ConditionalLeft + "2 + 2 == 4" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "if" + Model.ConditionalLeft + "2 + 2 == \"Fish\" " + Model.Or + " 2 + 2 == 4" + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "The first statement was obviously false, but <em>Math!</em> still gets printed because the second one is true."
+            }
+        });
+
+        Html.RenderPartial(Section.ViewFile, new Section
+        {
+            Color = "steel",
+            Title = "Exercises",
+            Paragraphs = new string[]
+            {
+                Section.WrapList(new string[]
+                {
+                    "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"",
+                    "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Neither!\" or \"Both!\"."
                 })
-            })
-        }
-    });
+            }
+        });
+
+        Html.RenderPartial(Section.ViewFile, new Section
+        {
+            Color = "brown",
+            Title = "Solutions",
+            Contracted = true,
+            Paragraphs = new string[]
+            {
+                Section.WrapList(new string[]
+                {
+                    "Write one <code>if</code> statement to print a happy message if your favorite song <em>is</em> \"Never Gonna Give You Up\" or <em>is not</em> \"Never Gonna Give You Up\"" + Section.WrapCode(Model.NameLower, new string[]
+                    {
+                        Model.VariableDeclare + "song = \"Never Gonna Give You Up\"" + Model.Semicolon,
+                        "if" + Model.ConditionalLeft + "song == \"Never Gonna Give You Up\" " + Model.Or + " song != \"Never Gonna Give You Up\"" + Model.ConditionalRight,
+                        "    " + Model.PrintFunction + "(\"Yes!\")" + Model.Semicolon,
+                        Model.ConditionalEnd
+                    }),
+                    "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Both!\" or \"One or two were wrong!\"." + Section.WrapCode(Model.NameLower, new string[]
+                    {
+                        Model.VariableDeclare + "age = 21" + Model.Semicolon,
+                        Model.VariableDeclare + "weight = 182" + Model.Semicolon,
+                        "if" + Model.ConditionalLeft + "age > 10 " + Model.And + " weight < 700" + Model.ConditionalRight,
+                        "    " + Model.PrintFunction + "(\"Both!\")" + Model.Semicolon,
+                        Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
+                        "    " + Model.PrintFunction + "(\"One or two were wrong!\")" + Model.Semicolon,
+                        Model.ConditionalEnd
+                    })
+                })
+            }
+        });
+
+    }
 
     Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Conditionals"));
 }
