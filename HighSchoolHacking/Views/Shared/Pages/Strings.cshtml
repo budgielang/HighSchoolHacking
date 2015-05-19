@@ -63,16 +63,17 @@
                     Model.VariableDeclare + "nameFirst " + Model.Equals + " \"Joshua\"" + Model.Semicolon,
                     Model.VariableDeclare + "nameMiddle " + Model.Equals + " \"Kevin\"" + Model.Semicolon,
                     Model.VariableDeclare + "nameLast " + Model.Equals + " \"Goldberg\"" + Model.Semicolon,
-                    Model.VariableDeclare + "nameFull " + Model.Equals + " nameFirst + nameMiddle + nameLast" + Model.Semicolon,
-                    Model.PrintFunction + "(nameFull)" +  Model.Semicolon + " " + Model.Commentor + " \"Joshua Kevin Goldberg\""
+                    Model.VariableDeclare + "nameFull " + Model.Equals + " " + Model.ConcatenateStrings("nameFirst", " ", "nameMiddle", " ", "nameLast") + Model.Semicolon,
+                    Model.CallFunction(Model.PrintFunction, "nameFull") + Model.Semicolon + " " + Model.Commentor + " \"Joshua Kevin Goldberg\""
                 }),
                 "Store your full name in a variable and print it plus the String <code>\" likes coding!\"</code>. Print someone else's name plus the String <code>\" likes coding!\"</code>." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "nameMine " + Model.Equals + " \"Joshua Kevin Goldberg\"",
-                    Model.PrintFunction + "(nameMine + \" likes coding!\") " + Model.Commentor + " \"Joshua Kevin Goldberg likes coding!\"",
+                    Model.CallFunction(Model.PrintFunction, Model.ConcatenateStrings("nameMine", "\" likes coding!\"")) + " " + Model.Commentor + " \"Joshua Kevin Goldberg likes coding!\"",
                     "",
-                    Model.VariableDeclare + "nameOther " + Model.Equals + "\"Brandon Christopher McLear\"",
-                    Model.PrintFunction + "(nameOther + \" likes coding!\") " + Model.Commentor + " \"Brandon Christopher McLear likes coding!\""
+                    Model.VariableDeclare + "nameOther " + Model.Equals + " \"Brandon Christopher McLear\"",
+                    Model.CallFunction(Model.PrintFunction, Model.ConcatenateStrings("nameOther", "\" likes coding!\"")) + " " + Model.Commentor + " \"Brandon Christopher McLear likes coding!\"",
+                    
                 }),
             })
         }
