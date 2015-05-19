@@ -1,5 +1,9 @@
 ﻿@using HighSchoolHacking.Models;
 
+@if (!Languages.LanguagesByName.ContainsKey(Model.Key)) {
+    return;
+}
+
 <!--   KeyValuePair<Language, Page> -->
 @model KeyValuePair<string, string>
 
