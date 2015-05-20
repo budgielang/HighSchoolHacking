@@ -83,7 +83,7 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "red",
+        Color = "steel",
         Title = "Project Euler",
         Slogans = new string[] 
         {
@@ -95,5 +95,26 @@
             "Fortunately, Project Euler is a site that has a lot of more advanced puzzles similar to ours. You can do them in whatever language you want, and they get progressively harder."    
         },
         Goto = "https://www.projecteuler.net"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "red",
+        Title = "LOLCODE",
+        Slogans = new string[] 
+        {
+            "Worst. Language. Ever."
+        },
+        Paragraphs = new string[] 
+        { 
+            "LOLCODE is a programming language made to look like the old internet cat memes. It's horrendous and weird, but interesting to look at.",
+            "If you're bored and don't feel like doing anything with your time, take a look.",
+        },
+        Goto = "/LOLCODE/Learn",
+        Links = new Dictionary<string, string>
+        {
+            { "LOLCODE Online", "http://repl.it/languages/lolcode" },
+            { "Homepage", "http://lolcode.org/" }
+        }
     });
 }
