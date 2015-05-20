@@ -164,7 +164,8 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "I HAS A ",
             UndefinedError = "MachineError: Reference to undefined variable:",
-            FancyNumberMath = (string left, string operation, string right) => {
+            FancyNumberMath = (string left, string operation, string right) =>
+            {
                 string before = "";
 
                 switch (operation)

@@ -13,7 +13,7 @@ namespace HighSchoolHacking.Controllers
         {
             if (String.IsNullOrWhiteSpace(section) || section == "Index")
             {
-                return View("~/Views/LOLCODE/Index.cshtml");
+                return View("~/Views/LOLCODE/Learn.cshtml", Languages.LOLCODE);
             }
 
             if (Languages.LOLCODE.CustomPages.Contains(section))

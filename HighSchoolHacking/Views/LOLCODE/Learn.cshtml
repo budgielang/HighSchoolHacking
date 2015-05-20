@@ -7,15 +7,15 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetColorAt(colorIndex += 1),
-        Title = "Learn",
+        Title = "LOLCODE",
         Large = true,
-        Extension = Model.NameLower,
-        Back = "/" + Model.Name,
+        Extension = "highschoolhacking",
+        Back = "/",
         Paragraphs = new string[] {
             "LOLCODE is one of the weirdest, most unusual languages ever written. It's an <em>esoteric</em> language, which means someone wrote it more to be clever or funny than to actually do anything.",
             "It can't do nearly as much as normal languages, but it has interesting syntax, so we'll go into it for a bit."
         },
-        Goto = "HelloWorld"
+        Goto = "/LOLCODE/HelloWorld"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
@@ -26,7 +26,7 @@
         {
             "LOLCODE keeps variables in a similar manner to JavaScript and Python, in that they're loosely typed (you don't have to declare what type they are).",
         },
-        Goto = "Variables"
+        Goto = "/LOLCODE/Variables"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
@@ -37,7 +37,7 @@
         {
             "Comments in LOLCODE also work similarly to what you've seen before. They do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
         },
-        Goto = "Comments"
+        Goto = "/LOLCODE/Comments"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
@@ -52,7 +52,7 @@
                 : "They have to be double apostrophes <code>\"</code>, not single apostrophes <code>'</code>."
                 )
         },
-        Goto = "Strings"
+        Goto = "/LOLCODE/Strings"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
@@ -63,7 +63,7 @@
         {
             "Numbers in " + Model.Name + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
         },
-        Goto = "Numbers"
+        Goto = "/LOLCODE/Numbers"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
@@ -74,6 +74,6 @@
         {
             "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
         },
-        Goto = "Conditionals"
+        Goto = "/LOLCODE/Conditionals"
     });
 }
