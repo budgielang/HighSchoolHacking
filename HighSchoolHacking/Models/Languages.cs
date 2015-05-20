@@ -82,6 +82,7 @@ namespace HighSchoolHacking.Models
             Semicolon = ";",
             Commentor = "//",
             If = "if",
+            Else = "else",
             Elif = "else if",
             Equals = "=",
             And = "&&",
@@ -164,7 +165,8 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "I HAS A ",
             UndefinedError = "MachineError: Reference to undefined variable:",
-            FancyNumberMath = (string left, string operation, string right) => {
+            FancyNumberMath = (string left, string operation, string right) =>
+            {
                 string before = "";
 
                 switch (operation)
@@ -206,7 +208,7 @@ namespace HighSchoolHacking.Models
 
                 return before + " " + left + " AN " + right;
             },
-            CustomPages = new HashSet<string> { },
+            CustomPages = new HashSet<string> { "Learn" },
             PageAliases = new Dictionary<string, string> { }
         };
 

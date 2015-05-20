@@ -102,14 +102,14 @@
                         {
                             Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
                             Model.VariableDeclare + "doubled " + Model.Equals + " " + Model.ComputeMath("age", "*", "2") + Model.Semicolon,
-                            Model.VariableDeclare + "weird " + Model.Equals + " doubled ** 0.5" + Model.Semicolon,
+                            Model.VariableDeclare + "weird " + Model.Equals + " " + Model.ComputeMath("doubled", "**", "0.5") + Model.Semicolon,
                             Model.CallFunction(Model.PrintFunction, "weird") + Model.Semicolon
                         })
                     : "Make a third variable equal to your age squared, divided by two. Print it." + Section.WrapCode(Model.NameLower, new string[]
                         {
                             Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
                             Model.VariableDeclare + "doubled " + Model.Equals + " " + Model.ComputeMath("age", "*", "age") + Model.Semicolon,
-                            Model.VariableDeclare + "weird " + Model.Equals + " double / 2" + Model.Semicolon,
+                            Model.VariableDeclare + "weird " + Model.Equals + " " + Model.ComputeMath("doubled", "/", "2") + Model.Semicolon,
                             Model.CallFunction(Model.PrintFunction, "weird") + Model.Semicolon
                         })
             })

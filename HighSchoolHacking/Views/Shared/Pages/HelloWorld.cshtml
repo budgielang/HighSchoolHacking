@@ -47,7 +47,7 @@
             {
                 "Instead of printing <em>Hello World</em>, print out your full name." + Section.WrapCode("python", new string[]
                 {
-                    Model.PrintFunction + "(\"Joshua Kevin Goldberg\")" + Model.Semicolon
+                    Model.CallFunction(Model.PrintFunction, "\"Joshua Kevin Goldberg\"") + Model.Semicolon
                 })
             })
         }

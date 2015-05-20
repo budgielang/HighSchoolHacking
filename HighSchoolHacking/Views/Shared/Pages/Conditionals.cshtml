@@ -22,8 +22,8 @@
                 Model.ConditionalEnd,
                 Model.EndIf
             }),
-            "Try running this code (it should print <em>Yes!</em>). Don't forget to write the <code>" + Model.ConditionalRight + "</code> at the end of the if statement! " + Model.Name + " knows that <code>True</code> means things should run, and <code>False</code> means they shouldn't.",
-            "Note that there are four spaces at the beginning of the second line. You don't have to use four (you can just use one), but your code becomes really ugly and hard to read so if you only use one or two, you're an evil person. This is called indenting your code, and " + Model.Name + " makes you do it so it knows what's inside the <code>if</code> statement. Anything indented is inside the <code>if</code> statement, and once you stop indenting, the <code>if</code> statement is done.",
+            Model.Name + " knows that <code>" + Model.BooleanTrue + "</code> is true (in conditionals, things should run), and <code>" + Model.BooleanFalse + "</code> is false (they shouldn't). Try running this code (it should print <em>Yes!</em>). Don't forget to write the <code>" + (String.IsNullOrWhiteSpace(Model.ConditionalRight) ? Model.If : Model.ConditionalRight) + "</code> at the end of the if statement!",
+            "Note that there are four spaces at the beginning of the second line. You don't have to use four (you can just use one), but your code becomes really ugly and hard to read so if you only use one or two, you're an evil person. This is called indenting your code, and you really should do it. Languages like Python even force you to, though most don't.",
             "The following code should only print <em>B</em>, because the first print is inside an <code>if</code> statement that won't be run:",
             Section.WrapCode(Model.NameLower, new string[]
             {
@@ -177,7 +177,7 @@
         Title = "More Conditionals",
         Paragraphs = new string[]
         {
-            Section.WrapHead("Else"),
+            Section.WrapHead(String.IsNullOrWhiteSpace(Model.Else) ? Model.WhenFalse : Model.Else),
             "After an <code>if</code> statement you can add an extra block of code to be evaluated only if the <code>if</code> statement didn't run. This means the program will run either of your blocks of code: if the <code>if</code> statement's conditional was true, the first is run; otherwise, the second is run.",
             "The following code prints <em>First!</em>...",
             Section.WrapCode(Model.NameLower, new string[]
@@ -257,7 +257,7 @@
             {
                 "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\"." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "song " + Model.Equals + "\"Never Gonna Give You Up\"" + Model.Semicolon,
+                    Model.VariableDeclare + "song " + Model.Equals + " \"Never Gonna Give You Up\"" + Model.Semicolon,
                     Model.MakeConditional(Model.If, Model.ComputeMath("song", "==", "\"Never Gonna Give You Up\"")),
                     "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yup!\"") + Model.Semicolon,
                     Model.MakeElse(),
@@ -269,9 +269,9 @@
                 {
                 Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
                 "",
-                Model.MakeConditional(Model.If, Model.ComputeMath("number", "<=", "9")),
+                Model.MakeConditional(Model.If, Model.ComputeMath("age", "<=", "9")),
                 "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Less than ten.\"") + Model.Semicolon,
-                Model.MakeConditional(Model.Elif, Model.ComputeMath("number", "<=", "19")),
+                Model.MakeConditional(Model.Elif, Model.ComputeMath("age", "<=", "19")),
                 "    " + Model.CallFunction(Model.PrintFunction, "\"Less than twenty.\"") + Model.Semicolon,
                 Model.MakeElse(),
                 "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"20 and up.\"") + Model.Semicolon,
