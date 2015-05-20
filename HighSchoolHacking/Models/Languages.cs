@@ -117,6 +117,55 @@ namespace HighSchoolHacking.Models
             }
         };
 
+        public static Language CSharp = new Language
+        {
+            Name = "C#",
+            NameLower = "csharp",
+            Color = "purple",
+            ParenthesisLeft = "(",
+            ParenthesisRight = ")",
+            ConditionalLeft = " (",
+            ConditionalRight = ") {",
+            ConditionalContinueLeft = "} ",
+            ConditionalContinueRight = " { ",
+            ConditionalEnd = "}",
+            BooleanTrue = "true",
+            BooleanFalse = "false",
+            Semicolon = ";",
+            Commentor = "//",
+            If = "if",
+            Else = "else",
+            Elif = "else if",
+            Equals = "=",
+            And = "&&",
+            Or = "||",
+            StringAnyApostrophes = true,
+            StringConcatenationBetween = "+",
+            ArrayName = "Array",
+            ArrayNamePlural = "Arrays",
+            DictionaryName = "Dictionary",
+            DictionaryNamePlural = "Dictionaries",
+            FunctionDefine = "function ",
+            FunctionRight = " {",
+            FunctionEnd = "}",
+            ClassEnd = "}",
+            ClassThis = "this",
+            LengthName = "Length",
+            StrictIntegers = false,
+            CanConcatenateNumbers = true,
+            LengthIsProperty = true,
+            DictionaryKeyInCheck = false,
+            DictionaryKeyCheckName = "Contains",
+            FunctionsFirstClass = true,
+            FunctionsAsVariables = true,
+            PrintFunction = "System.Console",
+            AppendFunction = "push",
+            VariableDeclare = "var ",
+            UndefinedError = "Uncaught ReferenceError:",
+            CustomPages = new HashSet<string> { },
+            PageAliases = new Dictionary<string, string> { }
+        };
+
         public static Language LOLCODE = new Language
         {
             Name = "LOLCODE",

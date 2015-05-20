@@ -167,6 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CSharpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JavaScriptController.cs" />
     <Compile Include="Controllers\LOLCODEController.cs" />
@@ -309,6 +310,7 @@
     <Content Include="Views\Templating\Switchers.cshtml" />
     <Content Include="Views\Shared\Pages\Classes.cshtml" />
     <Content Include="Views\LOLCODE\Learn.cshtml" />
+    <Content Include="Views\CSharp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
