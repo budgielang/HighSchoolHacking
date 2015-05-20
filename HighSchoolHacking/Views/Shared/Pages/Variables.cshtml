@@ -47,8 +47,8 @@
         {
             Section.WrapList(true, new string[] {
                 "Instead of storing <em>Hello world</em>, store your full name and print it." + Section.WrapCode(Model.NameLower, new string[] {
-                    Model.VariableDeclare + "name = \"Josh Goldberg\"",
-                    Model.VariableDeclare + Model.PrintFunction + "(name)" + Model.Semicolon
+                    Model.VariableDeclare + "name " + Model.Equals + " \"Josh Goldberg\"",
+                    Model.CallFunction(Model.PrintFunction, "name") + Model.Semicolon
                 }),
                 "Try a few different variable names other than foo. Try some weird ones too: can you find a few things that make a name invalid?" + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "name " + Model.Equals + " \"Josh Goldberg\"",
