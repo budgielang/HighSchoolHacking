@@ -82,6 +82,7 @@ namespace HighSchoolHacking.Models
             Semicolon = ";",
             Commentor = "//",
             If = "if",
+            Else = "else",
             Elif = "else if",
             Equals = "=",
             And = "&&",
