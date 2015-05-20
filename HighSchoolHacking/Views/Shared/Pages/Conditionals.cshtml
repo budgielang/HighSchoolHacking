@@ -257,7 +257,7 @@
             {
                 "Make a variable containing the name of your favorite song, and print whether that song's title is equal to \"Never Gonna Give You Up\"." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    Model.VariableDeclare + "song " + Model.Equals + "\"Never Gonna Give You Up\"" + Model.Semicolon,
+                    Model.VariableDeclare + "song " + Model.Equals + " \"Never Gonna Give You Up\"" + Model.Semicolon,
                     Model.MakeConditional(Model.If, Model.ComputeMath("song", "==", "\"Never Gonna Give You Up\"")),
                     "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Yup!\"") + Model.Semicolon,
                     Model.MakeElse(),
@@ -269,9 +269,9 @@
                 {
                 Model.VariableDeclare + "age " + Model.Equals + " 21" + Model.Semicolon,
                 "",
-                Model.MakeConditional(Model.If, Model.ComputeMath("number", "<=", "9")),
+                Model.MakeConditional(Model.If, Model.ComputeMath("age", "<=", "9")),
                 "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Less than ten.\"") + Model.Semicolon,
-                Model.MakeConditional(Model.Elif, Model.ComputeMath("number", "<=", "19")),
+                Model.MakeConditional(Model.Elif, Model.ComputeMath("age", "<=", "19")),
                 "    " + Model.CallFunction(Model.PrintFunction, "\"Less than twenty.\"") + Model.Semicolon,
                 Model.MakeElse(),
                 "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"20 and up.\"") + Model.Semicolon,
