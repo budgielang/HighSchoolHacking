@@ -158,11 +158,15 @@ namespace HighSchoolHacking.Models
             DictionaryKeyCheckName = "Contains",
             FunctionsFirstClass = true,
             FunctionsAsVariables = true,
-            PrintFunction = "System.Console",
+            PrintFunction = "System.Console.WriteLine",
             AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
-            CustomPages = new HashSet<string> { },
+            CustomPages = new HashSet<string> { 
+                "Variables", "Comments", "Strings", "Numbers", "Conditionals",
+                "WhileLoops", "Arrays", "ForLoops", "Dictionaries", "Functions",
+                "Recursion", "LINQ", "Delegates", "Async"
+            },
             PageAliases = new Dictionary<string, string> { }
         };
 

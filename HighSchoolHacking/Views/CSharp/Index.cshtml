@@ -1,0 +1,67 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Languages.CSharp.Color,
+        Title = "C#",
+        Large = true,
+        Extension = "highschoolhacking",
+        Back = "/",
+        Slogans = new string[]
+        {
+            "Like Java, but way better. Way, way, way better.",
+        },
+        Paragraphs = new string[]
+        {
+            "C# is an extremely powerul language made by Microsoft that runs on the .NET platform, which is an open source software framework also by Microsoft.",
+            "C# isn't a scripting language like the other languages on this site (its code is compiled <em>then</em> run like C++ or Java, rather than evaluated line-by-line like in Python or JavaScript). It has a ton of amazing language features that make it a superb programming language."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.CSharp.Color, 1),
+        Title = "Learn the Language",
+        Paragraphs = new string[]
+        {
+            "These lessons will familiarize you with basic CSharp syntax and the basics of coding. If you've never coded before, this is where the magic happens - you'll learn how to do use all the basic tools to make programs. If you have coded in other languages, skim through these lessons to get used to CSharp."
+        },
+        Goto = "/CSharp/Learn"
+    });
+
+    <!--
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.CSharp.Color, 2),
+        Title = "LINQ",
+        Paragraphs = new string[]
+        {
+            "."
+        },
+        Goto = "/CSharp/LINQ"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.CSharp.Color, 3),
+        Title = "Delegates",
+        Paragraphs = new string[]
+        {
+            "."
+        },
+        Goto = "/CSharp/Delegates"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.CSharp.Color, 4),
+        Title = "Async / Await",
+        Paragraphs = new string[]
+        {
+            "."
+        },
+        Goto = "/CSharp/Async"
+    });
+    -->
+}
