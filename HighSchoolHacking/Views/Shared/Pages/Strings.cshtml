@@ -43,7 +43,7 @@
         {
             Section.WrapList(true, new string[]
             {
-                "Store your first name, your middle name (if you have one), and your last name in variables. Make a new variable with them all together and print it.",
+                "Store your first name, your middle name (if you have one), and your last name in variables. Make a new variable with them all together with spaces in-between, and print it.",
                 "Print your full name in a variable and print it plus the String <code>\" likes coding!\"</code>. Print someone else's name plus the String <code>\" likes coding!\"</code>."
             })
         }
@@ -58,12 +58,12 @@
         {
             Section.WrapList(true, new string[]
             {
-                "Store your first name, your middle name (if you have one), and your last name in variables. Make a new variable with them all together and print it." + Section.WrapCode(Model.NameLower, new string[]
+                "Store your first name, your middle name (if you have one), and your last name in variables. Make a new variable with them all together with spaces in-between, and print it." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "nameFirst " + Model.Equals + " \"Joshua\"" + Model.Semicolon,
                     Model.VariableDeclare + "nameMiddle " + Model.Equals + " \"Kevin\"" + Model.Semicolon,
                     Model.VariableDeclare + "nameLast " + Model.Equals + " \"Goldberg\"" + Model.Semicolon,
-                    Model.VariableDeclare + "nameFull " + Model.Equals + " " + Model.ConcatenateStrings("nameFirst", " ", "nameMiddle", " ", "nameLast") + Model.Semicolon,
+                    Model.VariableDeclare + "nameFull " + Model.Equals + " " + Model.ConcatenateStrings("nameFirst", "\" \"", "nameMiddle", "\" \"", "nameLast") + Model.Semicolon,
                     Model.CallFunction(Model.PrintFunction, "nameFull") + Model.Semicolon + " " + Model.Commentor + " \"Joshua Kevin Goldberg\""
                 }),
                 "Store your full name in a variable and print it plus the String <code>\" likes coding!\"</code>. Print someone else's name plus the String <code>\" likes coding!\"</code>." + Section.WrapCode(Model.NameLower, new string[]
