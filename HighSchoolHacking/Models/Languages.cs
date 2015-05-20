@@ -206,7 +206,7 @@ namespace HighSchoolHacking.Models
 
                 return before + " " + left + " AN " + right;
             },
-            CustomPages = new HashSet<string> { },
+            CustomPages = new HashSet<string> { "Learn" },
             PageAliases = new Dictionary<string, string> { }
         };
 

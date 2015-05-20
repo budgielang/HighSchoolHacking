@@ -307,8 +307,9 @@
     <Content Include="Views\JavaScript\ChromeExtensions.cshtml" />
     <Content Include="Views\Python\WordSpam.cshtml" />
     <Content Include="Views\Templating\Switchers.cshtml" />
-    <Content Include="Views\LOLCODE\index.cshtml" />
+    <Content Include="Views\LOLCODE\Index.cshtml" />
     <Content Include="Views\Shared\Pages\Classes.cshtml" />
+    <Content Include="Views\LOLCODE\Learn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
