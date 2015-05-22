@@ -192,7 +192,7 @@
             "...while this code prints <em>Second!</em>.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.MakeConditional(Model.If, Model.BooleanTrue),
+                Model.MakeConditional(Model.If, Model.BooleanFalse),
                 "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
                 Model.MakeElse(),
                 "    " + Model.WhenFalse + Model.CallFunction(Model.PrintFunction, "\"Second!\"") + Model.Semicolon,

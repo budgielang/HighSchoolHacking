@@ -311,7 +311,7 @@
     <Content Include="Views\Shared\Pages\Classes.cshtml" />
     <Content Include="Views\LOLCODE\Learn.cshtml" />
     <Content Include="Views\CSharp\Index.cshtml" />
-    <Content Include="Views\CSharp\Learn.cshtml" />
+    <Content Include="Views\CSharp\HelloWorld.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

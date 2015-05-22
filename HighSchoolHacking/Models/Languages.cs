@@ -122,6 +122,8 @@ namespace HighSchoolHacking.Models
             Name = "C#",
             NameLower = "csharp",
             Color = "purple",
+            Start = "class Program\n{\n    static void Main()\n    {",
+            End = "    }\n}",
             ParenthesisLeft = "(",
             ParenthesisRight = ")",
             ConditionalLeft = " (",
@@ -163,9 +165,10 @@ namespace HighSchoolHacking.Models
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
             CustomPages = new HashSet<string> { 
-                "Variables", "Comments", "Strings", "Numbers", "Conditionals",
-                "WhileLoops", "Arrays", "ForLoops", "Dictionaries", "Functions",
-                "Recursion", "LINQ", "Delegates", "Async"
+                "HelloWorld", "Variables", "Comments", "Strings", "Numbers", 
+                "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
+                "Dictionaries", "Functions", "Recursion", "LINQ", "Delegates",
+                "Async"
             },
             PageAliases = new Dictionary<string, string> { }
         };
