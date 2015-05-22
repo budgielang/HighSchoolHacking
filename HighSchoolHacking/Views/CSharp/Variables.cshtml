@@ -1,0 +1,38 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 2),
+        Title = "Variables",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            Model.Name + "'s variables are normally strongly typed, which means during runtime you always know what type they are. So, like in Java, you declare variables using their type:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        int x = 7;",
+                "        double y = 11.7;",
+                "        string z = \"Hello world!\";",
+                Model.End
+            }),
+            Section.WrapHead("Implicit Types"),
+            Model.Name + " also supports <a href='https://msdn.microsoft.com/en-us/library/bb383973.aspx'><em>implicit typing</em></a>, which is when you don't tell the compiler what type a variable is. Languages like Java and C++ use <em>explicit typing</em>, which is what the code above was.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        int i = 7; // explicitly typed",
+                "        var i = 7; // implicitly typed",
+                Model.End
+            }),
+            "Implicit typing does <code>not</code> change how your code runs: the compiler will see that <code>i</code> is equal to an integer, and pretend you said <code>int i</code> all along. This is different from the dynamic types in Python or JavaScript, wherein you don't even declare what type arguments are, and just pass whatever you want.",
+            "You can code however you want, but the authors of this site prefer explicitly declared variables, as it's more precise and easier to debug. Other people often prefer implicit types as it lets you code more quickly. It's up to you."
+        }
+    });
+    
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Variables"));
+}

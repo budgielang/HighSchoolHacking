@@ -312,6 +312,8 @@
     <Content Include="Views\LOLCODE\Learn.cshtml" />
     <Content Include="Views\CSharp\Index.cshtml" />
     <Content Include="Views\CSharp\HelloWorld.cshtml" />
+    <Content Include="Views\CSharp\Variables.cshtml" />
+    <Content Include="Views\CSharp\Comments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
