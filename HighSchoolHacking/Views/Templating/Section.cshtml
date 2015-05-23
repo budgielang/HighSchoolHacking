@@ -1,10 +1,10 @@
 ﻿@model HighSchoolHacking.Models.Section
 
 @{
-    string title = String.IsNullOrWhiteSpace(Model.Title) ? "" : Model.Title.Replace(" ", "");
+    string title = String.IsNullOrWhiteSpace(Model.Title) ? "" : Model.Title.Replace(" ", "-");
 }
 
-<section class="changer border background @Model.Color" id="@title" contracted="@Model.Contracted">
+<section class="changer border background @Model.Color" id="@title.Replace(" ", "-")" contracted="@Model.Contracted">
     @{
         string head = @Model.Large ? "h1" : "h2";
         string articleClass = (Model.Paragraphs == null) ? "empty" : "filled";
