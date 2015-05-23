@@ -117,6 +117,62 @@ namespace HighSchoolHacking.Models
             }
         };
 
+        public static Language CSharp = new Language
+        {
+            Name = "C#",
+            NameLower = "csharp",
+            Color = "purple",
+            Start = "class Program\n{\n    static void Main()\n    {",
+            End = "    }\n}",
+            ParenthesisLeft = "(",
+            ParenthesisRight = ")",
+            ConditionalLeft = " (",
+            ConditionalRight = ") {",
+            ConditionalContinueLeft = "} ",
+            ConditionalContinueRight = " { ",
+            ConditionalEnd = "}",
+            BooleanTrue = "true",
+            BooleanFalse = "false",
+            Semicolon = ";",
+            Commentor = "//",
+            If = "if",
+            Else = "else",
+            Elif = "else if",
+            Equals = "=",
+            And = "&&",
+            Or = "||",
+            StringAnyApostrophes = true,
+            StringConcatenationBetween = "+",
+            ArrayName = "Array",
+            ArrayNamePlural = "Arrays",
+            DictionaryName = "Dictionary",
+            DictionaryNamePlural = "Dictionaries",
+            FunctionDefine = "function ",
+            FunctionRight = " {",
+            FunctionEnd = "}",
+            ClassEnd = "}",
+            ClassThis = "this",
+            LengthName = "Length",
+            StrictIntegers = false,
+            CanConcatenateNumbers = true,
+            LengthIsProperty = true,
+            DictionaryKeyInCheck = false,
+            DictionaryKeyCheckName = "Contains",
+            FunctionsFirstClass = true,
+            FunctionsAsVariables = true,
+            PrintFunction = "System.Console.WriteLine",
+            AppendFunction = "push",
+            VariableDeclare = "var ",
+            UndefinedError = "Uncaught ReferenceError:",
+            CustomPages = new HashSet<string> { 
+                "HelloWorld", "Variables", "Comments", "Strings", "Numbers", 
+                "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
+                "Dictionaries", "Functions", "Recursion", "LINQ", "Delegates",
+                "Async"
+            },
+            PageAliases = new Dictionary<string, string> { }
+        };
+
         public static Language LOLCODE = new Language
         {
             Name = "LOLCODE",

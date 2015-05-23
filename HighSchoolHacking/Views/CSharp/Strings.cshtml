@@ -1,0 +1,88 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 4),
+        Title = "Strings",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            Model.Name + " Strings are flexible. Like, really flexible.",
+            "To start, they support all the regular features you'd expect from normal Strings.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        string x = \"Hello\";",
+                "        x += \" \" + \"world\" + \"!\";",
+                "        " + Model.CallFunction(Model.PrintFunction, "x") + "; // \"Hello world!\"",
+                Model.End
+            }),
+            "The rest of this lesson takes liberally from an MSDN (Microsoft Developer Network) <a href='https://msdn.microsoft.com/en-us/library/ms228362.aspx'>article on Strings</a>.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "Immutability",
+        Paragraphs = new string[]
+        {
+            "Like a lot of other languages such as JavaScript and Python, " + Model.Name + "'s Strings are <em>immutable</em>: they can't be changed after they creation. All of the String methods and operators that appear to modify a String actually return the results in a new String.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        string y = \"Hello\";",
+                "        string z = y;",
+                "        y += \" \" + \"world\" + \"!\";",
+                "        " + Model.CallFunction(Model.PrintFunction, "z") + "; // \"Hello\"",
+                Model.End
+            }),
+            "Run that example and you'll see it just prints \"Hello\". That's because <code>z</code> points to the original \"Hello\" that <code>y</code> <em>used</em> to point to until it was set to the result of adding some more Strings to that."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 6),
+        Title = "String Literals",
+        Paragraphs = new string[]
+        {
+            "If you did our Python lessons with File I/O, you might already know that <code>\\n</code> is the character for a newline (enter). If you didn't, <code>\\n</code> is the character for a newline (enter). There you go.",
+            "<code>\\n</code> is something called an <em>escape character</em>. Escape characters are how you can put special and/or otherwise unusable characters in your Strings:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        " + Model.CallFunction(Model.PrintFunction, "\"The \\\"\\u00C6olean Harp\\\"\\n\\tby Samuel Taylor Coleridge\"") + ";",
+                "        /*",
+                "         \"\"The Æolean Harp\"",
+                "              by Samuel Taylor Coleridge\"",
+                "         */",
+                Model.End
+            }),
+            "<em>Some online " + Model.Name + " won't display the special characters correctly, or display them as '?'s.</em>",
+            Section.WrapHead("Verbatim Strings"),
+            Model.Name + " also has support for directly placing those characters in Strings via the <code>@</code> symbol before the String:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        string quote = @\"Luis: \"\"Patrick, where did you get that overnight bag?\"\"",
+                "Patrick: \"\"Jean Paul Gaultier.\"\"\";",
+                "",
+                "        " + Model.CallFunction(Model.PrintFunction, "quote") + ";",
+                "        /*",
+                "         Luis: \"Patrick, where did you get that overnight bag?\"",
+                "         Patrick: \"Jean Paul Gaultier.\"",
+                "         */",
+                Model.End
+            }),
+            "<em><small>The library we use to highlight code doesn't support quotes in verbatim Strings... We filed a <a href=''>bug report</a>.</small></em>",
+            "Everything inside the parenthesis was kept, including the newlines. Quotes were dealt with by putting two of them next to each other, instead of with a backslash.",
+        }
+    });
+
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Strings"));
+}
