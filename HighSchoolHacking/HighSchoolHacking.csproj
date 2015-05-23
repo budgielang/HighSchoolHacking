@@ -314,6 +314,7 @@
     <Content Include="Views\CSharp\HelloWorld.cshtml" />
     <Content Include="Views\CSharp\Variables.cshtml" />
     <Content Include="Views\CSharp\Comments.cshtml" />
+    <Content Include="Views\CSharp\Strings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
