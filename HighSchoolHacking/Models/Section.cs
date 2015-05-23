@@ -142,7 +142,7 @@ namespace HighSchoolHacking.Models
         {
             return String.Join("", new string[]
             {
-                "<" + tag + " id='" + text + "'>",
+                "<" + tag + " id='" + text.Replace(" ", "-") + "'>",
                 text,
                 "</" + tag + ">"
             });
