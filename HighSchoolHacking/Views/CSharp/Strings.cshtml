@@ -85,6 +85,52 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[] 
+        { 
+            Section.WrapList(new string[]
+            {
+                "Print a regular String (not a verbatim one) that contains both single ' and double \" quotes.",
+                "Print the same String as a verbatim one.",
+                "Use at least three of the escape strings from the <a href='https://msdn.microsoft.com/en-us/library/ms228362.aspx'>Strings article</a>'s table."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[] 
+        { 
+            Section.WrapList(new string[]
+            {
+                "Print a regular String (not a verbatim one) that contains both single ' and double \" quotes." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"\\\"What's your name?\\\", we asked.\"") + Model.Semicolon,
+                    Model.End
+                }),
+                "Print the same String as a verbatim one." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        " + Model.CallFunction(Model.PrintFunction, "@\"\"\"What's your name?\"\", we asked.\"") + Model.Semicolon,
+                    Model.End
+                }),
+                "Use a String with at least three of the escape Strings from the <a href='https://msdn.microsoft.com/en-us/library/ms228362.aspx'>Strings article</a>'s table." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"I\\'m falling\\ndown...\\t and \\\\deleting things...\"") + Model.Semicolon,
+                    Model.End
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
         Color = Section.GetNextColor(Model.Color, 7),
         Title = "Format Strings",
         Paragraphs = new string[]
@@ -102,7 +148,7 @@
                 "        System.Console.WriteLine(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\"",
                 Model.End
             }),
-            "To make it easier for yourself, you can use the <code>System</code> namespace, which contains the formal <code>String</code> class. Strings are a built-in part of the " + Model.Name + " runtime, but some fancier parts of them are stored in the namespace or class.",
+            "To make it easier for yourself, you can include the <code>System</code> namespace, which contains the formal <code>String</code> class. Strings are a built-in part of the " + Model.Name + " runtime, but some fancier parts of them are stored in the class.",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "using System;",
@@ -112,6 +158,50 @@
                 "        Console.WriteLine(x);",
                 Model.End
             }),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a String containing your first, middle (if you have one), and last name as format arguments using <code>String.Format</code>. Print it.",
+                "Directly print the above String using <code>Console.WriteLine</code>."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a String containing your first, middle (if you have one), and last name as format arguments using <code>String.Format</code>. Print it." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "using System;",
+                    "",
+                    Model.Start,
+                    "        string name = String.Format(\"{0} {1} {2}\", \"Joshua\", \"Kevin\", \"Goldberg\");",
+                    "        " + Model.CallFunction(Model.PrintFunction, "name") + Model.Semicolon,
+                    Model.End
+                }),
+                "Directly print the above String using <code>Console.WriteLine</code>." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "using System;",
+                    "",
+                    Model.Start,
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"{0} {1} {2}\", \"Joshua\", \"Kevin\", \"Goldberg\"") + Model.Semicolon,
+                    Model.End
+                })
+            })
         }
     });
 
