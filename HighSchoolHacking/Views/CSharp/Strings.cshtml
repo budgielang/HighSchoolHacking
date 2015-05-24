@@ -79,8 +79,39 @@
                 "         */",
                 Model.End
             }),
-            "<em><small>The library we use to highlight code doesn't support quotes in verbatim Strings... We filed a <a href='https://github.com/PrismJS/prism/issues/582'>bug report</a>.</small></em>",
             "Everything inside the parenthesis was kept, including the newlines. Quotes were dealt with by putting two of them next to each other, instead of with a backslash.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "Format Strings",
+        Paragraphs = new string[]
+        {
+            "Oftentimes when using Strings, you want to add other things inside them. You can concatenate Strings, but that gets messy. " + Model.Name + " allows you to mark in a String where things should go, <em>then</em> show them:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "System.String.Format(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\""
+            }),
+            "That code snippet takes in the string with <code>{<em>#</em>}</code> annotations and a bunch of other arguments. The arguments are inserted in order: the first argument replaces <code>{0}</code>, the second replaces <code>{1}</code>, and so on.",
+            "Incidentally, System.Console.WriteLine also allows you to pass in a format String with arguments after it.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        System.Console.WriteLine(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\"",
+                Model.End
+            }),
+            "To make it easier for yourself, you can use the <code>System</code> namespace, which contains the formal <code>String</code> class. Strings are a built-in part of the " + Model.Name + " runtime, but some fancier parts of them are stored in the namespace or class.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;",
+                "",
+                Model.Start,
+                "        string x = String.Format(\"{0} * {1} = {2}\", 2, 3, 6);",
+                "        Console.WriteLine(x);",
+                Model.End
+            }),
         }
     });
 
