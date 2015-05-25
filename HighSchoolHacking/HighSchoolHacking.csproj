@@ -316,6 +316,7 @@
     <Content Include="Views\CSharp\Comments.cshtml" />
     <Content Include="Views\CSharp\Strings.cshtml" />
     <Content Include="Views\CSharp\Numbers.cshtml" />
+    <Content Include="Views\CSharp\Conditionals.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
