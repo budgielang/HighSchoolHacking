@@ -315,6 +315,7 @@
     <Content Include="Views\CSharp\Variables.cshtml" />
     <Content Include="Views\CSharp\Comments.cshtml" />
     <Content Include="Views\CSharp\Strings.cshtml" />
+    <Content Include="Views\CSharp\Numbers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
