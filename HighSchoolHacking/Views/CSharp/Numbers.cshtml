@@ -1,0 +1,91 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "Numbers",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            "Numbers in " + Model.Name + " are pretty much the same as most other languages, so this lesson will be short.",
+            Section.WrapList(new string[]
+            {
+                "Addition: <code>x + y</code>",
+                "Subtraction: <code>x - y</code>",
+                "Multiplication: <code>x * y</code>",
+                "Division: <code>x / y</code>",
+                "Modulo: <code>x % y</code>"
+            }),
+            Model.Name + " also marks a difference between Integers, Doubles, and Floats, like in C++ and Java.",
+            Section.WrapList(new string[]
+            {
+                "Integers are integer numbers that don't have anything after the decimal (0, 1, 2, 7, -49, etc.).",
+                "Floats are floating point numbers that can have information after the decimal (0.0, 1.1, -49.7, etc.).",
+                "Doubles are like Floats, but can hold a little more data."
+            }),
+            "To keep it simple, we'll use <code>int</code> for Integer values, and <code>double</code> for anything else."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 6),
+        Title = "Math",
+        Paragraphs = new string[]
+        {
+            Model.Name + " also has a <code>System.Math</code> class you can use the methods of, which works similar to JavaScript's <code>Math</code>. The full list of member Functions it supports is in <a href='https://msdn.microsoft.com/en-us/library/system.math%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396'>this MSDN documentation</a>.",
+            "A few of the useful utilities are...",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "Math.Abs(-1); // 1 (the absolute value)",
+                "Math.Round(.49); // 0 (rounded)",
+                "Math.Round(0.123456789, 3); // 0.123 (Truncated to 3 decimal points)",
+                "Math.Ceiling(.49); // 1 (rounded up)",
+                "Math.Floor(.49); // 0 (rounded down)",
+                "Math.Min(3, 7); // 7 (the bigger number)",
+                "Math.Max(3, 7); // 3 (the smaller number)",
+                "Math.Pow(2, 4); // 16 (2 to the 4, or 2 * 2 * 2 * 2)",
+                "Math.Pow(16, 0.25); // 2 (16 to the 0.25, or the 1/4th root of 16)",
+                "Math.Sqrt(9); // 3 (square root of 9)",
+                "Math.Cos(0); // 1 (Cosine of 0 is 1)"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[] 
+        { 
+            "Write code that does the <a href='http://en.wikipedia.org/wiki/Pythagorean_theorem'>Pythagorean theorem</a>, given a and b."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Contracted = true,
+        Title = "Solutions",
+        Paragraphs = new string[] 
+        { 
+            "Write code that does the <a href='http://en.wikipedia.org/wiki/Pythagorean_theorem'>Pythagorean theorem</a>. Choose whatever Float values for a and b you'd like." + Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;",
+                "using System.Math;",
+                "",
+                Model.Start,
+                "        float a = 7;",
+                "        float b = 11;",
+                "        Console.WriteLine(\"The hypotenuse is {0}.\", Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2)));",
+                Model.End
+            })
+        }
+    });
+    
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Numbers"));
+}

@@ -12,7 +12,7 @@
         Paragraphs = new string[]
         {
             "We're going to spend the first few lessons getting you used to working in " + Model.Name + ". These are made assuming you're already experienced with basic coding, such as from one of the earlier lessons here, or from a high school level coding class.",
-            Model.Name + " isn't supported by repl.it, so start by going to <a href='http://www.tutorialspoint.com/compile_" + Model.NameLower + ".php'>tutorialspoint.com/compile_" + Model.NameLower + ".php</a>. Since " + Model.Name + " is a <em>compiled</em> language (code is converted to an executable, then run) instead of a <em>scripting</em> language (code is compiled and run line-by-line) like JavaScript or Python, running your code is a two-step process.",
+            Model.Name + " isn't supported by repl.it, so start by going to <a href='http://www.tutorialspoint.com/compile_" + Model.NameLower + "_online.php'>tutorialspoint.com/compile_" + Model.NameLower + "_online.php</a>. Since " + Model.Name + " is a <em>compiled</em> language (code is converted to an executable, then run) instead of a <em>scripting</em> language (code is compiled and run line-by-line) like JavaScript or Python, running your code is a two-step process.",
             Section.WrapList(new string[]
             {
                 "Click the Compile button to turn your code into an executable file.",
@@ -65,7 +65,34 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Model.Color, 2),
-        Title = "Extra Credt",
+        Title = "Namespaces",
+        Paragraphs = new string[]
+        {
+            Model.Name + " comes with a lot of functionality, and there are a lot of libraries people have written for it that you can get online. Therefore, the language uses something called <em>namespaces</em>, which you've probably seen used in other languages, or in the code that tutorialspoint.com gives you by default.",
+            "The following two code blocks do the same thing:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        " + Model.CallFunction(Model.PrintFunction, "Hello world!") + Model.Semicolon,
+                Model.End
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;",
+                "",
+                Model.Start,
+                "        Console.WriteLine(\"Hello world!\");",
+                Model.End
+            }),
+            "In the second one, the first line told the compiler that you're using the <code>System</code> namespace, which, among other things, includes <code>Console</code>.",
+            "Namespaces are an excellent way to organize your code (like classes, if you've used those), so a lot of the lessons in " + Model.Name + " use them."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 3),
+        Title = "Extra Credit",
         Paragraphs = new string[]
         {
             "You might be wondering why there are two steps to run this code, while repl.it has just one step for languages like Java that are also compiled. That's a good question to ask.",
