@@ -319,6 +319,7 @@
     <Content Include="Views\CSharp\Conditionals.cshtml" />
     <Content Include="Views\CSharp\WhileLoops.cshtml" />
     <Content Include="Views\CSharp\Arrays.cshtml" />
+    <Content Include="Views\CSharp\ForLoops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

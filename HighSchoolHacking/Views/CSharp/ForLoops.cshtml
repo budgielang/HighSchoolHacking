@@ -1,0 +1,19 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 9),
+        Title = "For Loops",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            ""
+        }
+    });
+
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "For Loops"));
+}
