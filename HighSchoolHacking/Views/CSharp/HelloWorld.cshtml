@@ -12,21 +12,15 @@
         Paragraphs = new string[]
         {
             "We're going to spend the first few lessons getting you used to working in " + Model.Name + ". These are made assuming you're already experienced with basic coding, such as from one of the earlier lessons here, or from a high school level coding class.",
-            Model.Name + " isn't supported by repl.it, so start by going to <a href='http://www.tutorialspoint.com/compile_" + Model.NameLower + "_online.php'>tutorialspoint.com/compile_" + Model.NameLower + "_online.php</a>. Since " + Model.Name + " is a <em>compiled</em> language (code is converted to an executable, then run) instead of a <em>scripting</em> language (code is compiled and run line-by-line) like JavaScript or Python, running your code is a two-step process.",
-            Section.WrapList(new string[]
-            {
-                "Click the Compile button to turn your code into an executable file.",
-                "If there weren't any errors, click the Execute button to run the code."
-            }),
-            "To start coding like this, delete whatever's in the editor (center of the screen), and copy & paste the following code to it:",
+            Model.Name + " isn't supported by repl.it, so start by going to <a href='http://csstub.com/'>csstub.com/</a>.",
+            "To start coding like this, delete whatever's in the editor (left half of the screen), and copy & paste the following code into it:",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.Start,
                 "        " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                 Model.End
             }),
-            "Once that's there, hit Compile, then Execute. You should see a <em>Hello world!</em> appear on the bottom part of the screen (the console), along with some <a href='http://en.wikipedia.org/wiki/Mono_(software)'>other words</a> that you don't have to worry about. If you did, great! If not, remember that you first have to compile the code, then execute it.",
-            "Any errors in your code will show up as red text in the bottom."
+            "To run code when you're on Windows or Linux, hit Control + Enter. If you're on Mac, hit Command + Enter. You should see a <em>Hello world!</em> appear on the right half of the screen (the console). If you did, great! If not, any errors should appear on the right side of the screen instead.",
         }
     });
 
@@ -86,20 +80,6 @@
             }),
             "In the second one, the first line told the compiler that you're using the <code>System</code> namespace, which, among other things, includes <code>Console</code>.",
             "Namespaces are an excellent way to organize your code (like classes, if you've used those), so a lot of the lessons in " + Model.Name + " use them."
-        }
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = Section.GetNextColor(Model.Color, 3),
-        Title = "Extra Credit",
-        Paragraphs = new string[]
-        {
-            "You might be wondering why there are two steps to run this code, while repl.it has just one step for languages like Java that are also compiled. That's a good question to ask.",
-            "repl.it both compiles and then executes code in compiled languages, so they're essentially clicking Compile, then clicking Execute if there wasn't an error. This makes it easier, but the downside is that if your code takes a while to compile, that makes the process longer every time. In this new site, execute doesn't have to also compile.",
-            "We're not doing very large programs, so it would be very convenient if someone were to make a browser extension that added a third button, \"Compile and Execute\", to do that. If you've already done the JavaScript part of this site, that could be you!",
-            "Here's a hint to make it easier:",
-            Section.WrapCode("javascript", "document.querySelector(\"#compile\").click();")
         }
     });
 
