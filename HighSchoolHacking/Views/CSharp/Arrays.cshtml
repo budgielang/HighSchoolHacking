@@ -225,7 +225,58 @@
             {
                 "object[] mixed = { 'a', \"bee\", 3, 4.0, new int[] { 5 }, null };"
             }),
-            "It'll be slightly slower (<a href='https://msdn.microsoft.com/en-us/library/yz2be5wk.aspx'>long story</a>) but if you don't care about that, you're good."
+            "It'll be slightly slower (<a href='https://msdn.microsoft.com/en-us/library/yz2be5wk.aspx'>long story</a>) but if you don't care about that, you're good.",
+            "You can directly pass primitives to <code>System.Console.WriteLine</code> and get them converted to a String: that means <code>int</code>s, <code>char</code>s, <code>string</code>s, and the like. Passing other things like Arrays technically works, but they'll print a summary of the Array and not the contents. This is also a <a href='http://www.dotnetperls.com/tostring'>long story</a>."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Choose seven foods. Create a Array of length 6 containing String Arrays, and for each food, rank it 0-5 by placing it in the appropriate Array.",
+                "Create an Array of <code>object</code>s that has at least three types in it. Print at least two of those types."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        //Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Choose at least seven foods. Create a Array of length 6 containing String Arrays, and for each food, rank it 0-5 by placing it in the appropriate Array." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[][] foods = {",
+                    "            new string[] { \"black licorice\" },",
+                    "            new string[] { \"fruitcake\" },",
+                    "            new string[] { \"eggplant\" },",
+                    "            new string[] { \"pancakes\", \"Ham\" },",
+                    "            new string[] { \"scrambled eggs\", \"pineapple\" },",
+                    "            new string[] { \"cheesecake\", \"steak\", \"bacon\" },",
+                    "        };",
+                    "        ",
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"There are {0} 5/5 foods.\"", "foods[foods.Length - 1].Length") + Model.Semicolon,
+                    Model.End
+                }),
+                "Create an Array of <code>object</code>s that has at least three types in it. Print at least two of those types." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        object[] stuff = { \"over\", 9000, '!' };",
+                    "        ",
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"It's {0} {1}{2}\"", "stuff[0]", "stuff[1]", "stuff[2]") + Model.Semicolon,
+                    Model.End
+                }),
+            })
         }
     });
     
