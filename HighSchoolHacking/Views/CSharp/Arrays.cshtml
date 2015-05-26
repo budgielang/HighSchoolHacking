@@ -5,7 +5,7 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Model.Color, 8),
-        Title = "Conditionals",
+        Title = "Arrays",
         Extension = Model.NameLower,
         Back = "/" + Model.Name + "/Learn",
         Large = true,
@@ -40,8 +40,16 @@
             "When providing initial values, you can leave out the <code>new</code> and <code>[<em>#</em>]</code> parts for convenience.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "int[] ints = { 4, 8, 15, 16, 23.0, 42.0 }; // SO CONVENIENT"
-            })
+                "double[] doubles = { 4, 8, 15, 16, 23.0, 42.0 }; // SO CONVENIENT"
+            }),
+            "By the way, Array length is <code>.Length</code>.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        double[] doubles = { 4, 8, 15, 16, 23.0, 42.0 };",
+                "        " + Model.CallFunction(Model.PrintFunction, "\"There are {0} doubles.\", doubles.Length") + Model.Semicolon,
+                Model.End
+            }),
         }
     });
 
@@ -71,7 +79,7 @@
             "Go wild.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "int[,,,,,,,] whynot = {{{{{{9001}}}}}};"
+                "int[,,,,,,,] whynot = {{{{{{{{9001}}}}}}}};"
             })
         }
     });
@@ -120,6 +128,7 @@
     {
         Color = "brown",
         Title = "Solutions",
+        Contracted = true,
         Paragraphs = new string[]
         {
             Section.WrapList(new string[]
@@ -177,6 +186,46 @@
                     Model.End
                 }),
             })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 11),
+        Title = "Jagged Arrays",
+        Paragraphs = new string[]
+        {
+            "Back to single-dimensional Arrays: there's nothing stopping you from having an Array of Arrays. You can make an Array where the type is an Array:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "// An Array of int[]s",
+                "int[][] factors = {",
+                "    new int[] { 0 }, // 0's factors: lets just say 0",
+                "    new int[] { 1 }, // 1's factors: 1",
+                "    new int[] { 1, 2 }, // 2's factors: 1, 2",
+                "    new int[] { 1, 2 }, // etc.",
+                "    new int[] { 1, 2, 4 },",
+                "    new int[] { 1, 5 },",
+                "};"
+            }),
+            "Don't think of jagged Arrays as substantially different from single-dimensional ones. They're just regular Arrays whose type happens to be an Array.",
+            "The difference between jagged Arrays and multi-dimensional Arrays is that multi-dimensional Arrays have fixed dimensional sizes, while jagged Arrays are just regular one-dimensional Arrays whose contents happen to be Arrays."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Multi-type Arrays",
+        Paragraphs = new string[]
+        {
+            "Everything in " + Model.Name + " derives from the generic <code>object</code> class. If you don't know about classes or polymorphism yet, don't worry about it: just know that everything is an <code>object</code>.",
+            "So, if you say your Array type is <code>object</code>, you can put anything into it.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "object[] mixed = { 'a', \"bee\", 3, 4.0, new int[] { 5 }, null };"
+            }),
+            "It'll be slightly slower (<a href='https://msdn.microsoft.com/en-us/library/yz2be5wk.aspx'>long story</a>) but if you don't care about that, you're good."
         }
     });
     
