@@ -320,6 +320,8 @@
     <Content Include="Views\CSharp\WhileLoops.cshtml" />
     <Content Include="Views\CSharp\Arrays.cshtml" />
     <Content Include="Views\CSharp\ForLoops.cshtml" />
+    <Content Include="Views\CSharp\Learn.cshtml" />
+    <Content Include="Views\CSharp\VariousCollections.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

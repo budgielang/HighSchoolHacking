@@ -1,0 +1,170 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = "Various Collections",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "There are a lot of different types of container types in " + Model.Name + ". You can use Dictionaries, HashTables, HashSets, Anonymous Types, and a bunch of other things that each work differently. We go over some of the common ones here."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 11),
+        Title = "Dictionaries",
+        Paragraphs = new string[]
+        {
+            "A Dictionary is a container class that stores a listing of key-value pairs. Like Arrays, they have constant lookups (approximately): smaller and bigger Dictionaries both take about the same amount of time to find key, as do Arrays.",
+            "The internal logic and math can get fancy, but <a href='<a href='http://en.wikipedia.org/wiki/Hash_table'>Wikipedia explains it well</a> (Dictionaries are also called hash tables or hash maps):",
+            Section.WrapQuote("In computing, a hash table (hash map) is a data structure used to implement an associative array, a structure that can map keys to values. A hash table uses a hash function to compute an index into an array of buckets or slots, from which the correct value can be found."),
+            "So, the Dictionary keeps an internal Array, and when you provide a key, it runs whatever hash Function is used for that key type to determine the spot in the internal Array to store the key. The hash Function always returns the same result for each key, so this is reliable.",
+            "If you don't quite get the logic behind this, that's ok. There are a lot of good explanations you can look up online, and if those don't work you can use Dictionaries without knowing their internals. Still, this is really important theory for a lot of computer science, so it's probably in your best interest to make an effort to ask around and eventually understand most or all of it.",
+            Section.WrapHead("Templating"),
+            "All you have to do as a programmer is tell the Dictionary what the key and value types are. This is called <em>templating</em>. You can think of regular Arrays as just Dictionaries whose key type is Integer.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "// By the way, since Dictionary is an object type, you do have to create it using `new`",
+                "Dictionary<string, string> dictionary = new Dictionary<string, string>();"
+            }),
+            "That code created a new Dictionary where the key type is String, and the value type is also String.",
+            "To use the Dictionary class in your code, include the <code>System.Collections.Generic</code> namespace.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System.Collections.Generic;",
+                "",
+                Model.Start,
+                "        // Stores the favorite foods of a bunch of people",
+                "        Dictionary<string, string> favorites = new Dictionary<string, string>();",
+                "        ",
+                "        // Store the value \"steak\" under the key \"Josh\", and \"sushi\" under \"Brandon\"",
+                "        favorites[\"Josh\"] = \"steak\";",
+                "        favorites[\"Brandon\"] = \"sushi\";",
+                "        ",
+                "        // Retrieves the value under key \"Josh\"",
+                "        " + Model.CallFunction(Model.PrintFunction, "\"{0}'s favorite is {1}.\"", "\"Josh\"", "favorites[\"Josh\"]") + Model.Semicolon,
+                Model.End
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Loops",
+        Paragraphs = new string[]
+        {
+            "You can loop over a Dictionary using a <code>foreach</code> loop like with Arrays... except there's a catch.",
+            "Some languages (e.g. Python) prefer you loop over the values of a Dictionary, while others (e.g. JavaScript) prefer you loop over the keys. " + Model.Name + " has you do both, using the <code>KeyValuePair</code> class. It's templated across whatever types the Dictionary is, and has a <code>.Key</code> member variable and a <code>.Value</code> member variable.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System.Collections.Generic;",
+                "",
+                Model.Start,
+                "        Dictionary<string, string> favorites = new Dictionary<string, string>();",
+                "        ",
+                "        favorites[\"Josh\"] = \"steak\";",
+                "        favorites[\"Brandon\"] = \"sushi\";",
+                "        ",
+                "        foreach (KeyValuePair<string, string> pair in favorites) {",
+                "            " + Model.CallFunction(Model.PrintFunction, "\"{0}'s favorite is {1}.\"", "pair.Key", "pair.Value") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "A Dictionary can be thought of as an Array of KeyValuePair objects, so it's natural that the <code>foreach</code> loop loops over them."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "More on Dictionary",
+        Paragraphs = new string[]
+        {
+            "To start, it would be inaccurate to use <code>.Length</code> with Dictionaries, as their internal representation's length isn't the same as their number of elements. Instead, they have <code>.Count</code>, which is the Number of elements it has inside.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System.Collections.Generic;",
+                "",
+                Model.Start,
+                "        Dictionary<string, string> favorites = new Dictionary<string, string>();",
+                "        ",
+                "        favorites[\"Josh\"] = \"steak\";",
+                "        favorites[\"Brandon\"] = \"sushi\";",
+                "        ",
+                "        " + Model.CallFunction(Model.PrintFunction, "\"There are {0} people.\"", "favorites.Count") + Model.Semicolon,
+                Model.End
+            }),
+            Section.WrapHead("Constructor"),
+            "Just like with Arrays, you can use the fancy shorthand syntax to initialize a Dictionary.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                 "Dictionary<string, string> favorites = new Dictionary<string, string> {",
+                 "    { \"Josh\", \"steak\" },",
+                 "    { \"Brandon\", \"sushi\" },",
+                 "};"
+            }),
+            "Note how it still had to say <code>new Dictionary&lt;string, string&gt;</code> before the contents. Also, since the internals of a Dictionary are a bunch of key-value pairs, you can use the <code>{ <em>key</em>, <em>value</em> }</code> to represent a single pair.",
+            Section.WrapHead("Levels"),
+            "It's completely reasonable to have a Dictionary of Dictionaries. The constructor shorthand doesn't stop you from using shorthand to initialize things within it, though it's more complicated to initialize internal Dictionaries.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "Dictionary<string, Dictionary<string, int>> ratings = new Dictionary<string, Dictionary<string, int>> {",
+                "    {",
+                "        \"Josh\",",
+                "        new Dictionary<string, int> {",
+                "            { \"steak\", 10 },",
+                "            { \"eggs\", 7 }",
+                "        }",
+                "    },",
+                "    {",
+                "        \"Brandon\",",
+                "        new Dictionary<string, int> {",
+                "            { \"sushi\", 10 },",
+                "            { \"waffles\", 2 }",
+                "        }",
+                "    }",
+                "};"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Other Containers",
+        Paragraphs = new string[]
+        {
+            "There are a bunch of other <a href='https://msdn.microsoft.com/en-us/library/System.Collections.Generic(v=vs.110).aspx'>containers</a> in .NET, and we won't go much into them. Some of the important ones are:",
+            Section.WrapList(false, new string[]
+            {
+                "<a href='https://msdn.microsoft.com/en-us/library/system.collections.hashtable(v=vs.110).aspx'><code>HashTable</code></a>" + Section.WrapList(false, new string[]
+                {
+                    "HashTable functionally works almost the exact same way as a Dictionary. However, it's not templated, so it stores every key and value as <code>object</code>s, which brings up the performance problem of <a href='/CSharp/Arrays#Multi-type-Arrays'>boxing and unboxing</a>."
+                }),
+                "<a href='https://msdn.microsoft.com/en-us/library/bb359438(v=vs.110).aspx'><code>HashSet</code></a>" + Section.WrapList(false, new string[]
+                {
+                    "HashSets are actually more similar to Dictionaries than HashTables. Instead of key-value pairs, they just store a single thing that acts as both the key and value. They're templated across one class, not two."
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 15),
+        Title = "Anonymous Types",
+        Paragraphs = new string[]
+        {
+            
+        }
+    });
+
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Various Collections"));
+}

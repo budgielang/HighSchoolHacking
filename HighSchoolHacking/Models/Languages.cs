@@ -165,10 +165,10 @@ namespace HighSchoolHacking.Models
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
             CustomPages = new HashSet<string> { 
-                "HelloWorld", "Variables", "Comments", "Strings", "Numbers", 
-                "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
-                "Dictionaries", "Functions", "Recursion", "LINQ", "Delegates",
-                "Async"
+                "Learn", "HelloWorld", "Variables", "Comments", "Strings",
+                "Numbers", "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
+                "VariousCollections", "Functions", "Recursion", "LINQ",
+                "Delegates", "Async"
             },
             PageAliases = new Dictionary<string, string> { }
         };

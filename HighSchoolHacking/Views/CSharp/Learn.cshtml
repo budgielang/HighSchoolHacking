@@ -1,0 +1,136 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    int colorIndex = Section.ColorIndices[Model.Color];
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Learn",
+        Large = true,
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name,
+        Paragraphs = new string[] {
+                "We're going to spend the first few lessons getting you used to working in " + Model.Name + ". If this is your first time coding, you're in for a great ride.",
+                "Go through these lessons in order."
+            },
+        Goto = "HelloWorld"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Variables",
+        Paragraphs = new string[]
+        {
+            "In code, a 'variable' stores value. Variables are called by their name, which is how you can set the value, get the value, and change the value.",
+        },
+        Goto = "Variables"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Comments",
+        Paragraphs = new string[]
+        {
+            "For the rest of the lessons, we're going to be using a feature called 'comments' in code. Comments do literally nothing: they're just there to help explain code. They're glorified footnotes that can be very helpful.",
+        },
+        Goto = "Comments"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Strings",
+        Paragraphs = new string[]
+        {
+            "In " + Model.Name + ", a 'String' is a bunch of characters (a character is a letter, number, or symbol). To create a String in " + Model.Name + ", put whatever characters you want between two quotes. "
+            + (Model.StringAnyApostrophes
+                ? "It doesn't matter if they're single apostrophes <code>'</code> or double apostrophes <code>\"</code>; they just have to be the same."
+                : "They have to be double apostrophes <code>\"</code>, not single apostrophes <code>'</code>."
+                )
+        },
+        Goto = "Strings"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Numbers",
+        Paragraphs = new string[]
+        {
+            "Numbers in " + Model.Name + " are just like in calculators. You can do all the basic operations on them (and more): addition, subtraction, multiplication, and division.",
+        },
+        Goto = "Numbers"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Conditionals",
+        Paragraphs = new string[]
+        {
+            "All the code we've used so far has been static: every single line is evaluated in order. More advanced programs need ways to check conditions and evaulate different code based on them.",
+        },
+        Goto = "Conditionals"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "While Loops",
+        Paragraphs = new string[]
+        {
+            "Loops are a convenient way for you to automate a block of code to run multiple times. Whenever you have to do something over and over again, a loop is a much better way than copy & pasting code repeatedly.",
+        },
+        Goto = "While Loops"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = Model.ArrayNamePlural,
+        Paragraphs = new string[]
+        {
+            "An " + Model.ArrayName + " in " + Model.Name + " is like a list in real life; it stores some number of objects. They can hold any number of elements and can be modified at will, so they're very convenient.",
+        },
+        Goto = Model.ArrayNamePlural
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "For Loops",
+        Paragraphs = new string[]
+        {
+            "For loops are another way to repeat tasks. They're especially nice because they make it a lot easier to loop over Strings and Lists, or over specific ranges of numbers.",
+        },
+        Goto = "For Loops"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Various Collections",
+        Paragraphs = new string[]
+        {
+            "There are a lot of different types of container types in " + Model.Name + ". You can use Dictionaries, HashTables, HashSets, Anonymous Types, and a bunch of other things that each work differently. We go over some of the common ones here."
+        },
+        Goto = "Various Collections"
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetColorAt(colorIndex += 1),
+        Title = "Functions",
+        Paragraphs = new string[]
+        {
+            "Functions are a way to repeat a set of tasks as many times as you want, and get the result from them. They're incredibly powerful and turn programming from just executing some lines to bigger, more flexible operations.",
+        },
+        Goto = "Functions"
+    });
+
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Learn"));
+}
