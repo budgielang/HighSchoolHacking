@@ -86,7 +86,7 @@
     {
         Color = "brown",
         Title = "Solutions",
-        // Contracted = true,
+        Contracted = true,
         Paragraphs = new string[]
         {
             Section.WrapList(new string[]
@@ -117,5 +117,105 @@
         }
     });
 
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 11),
+        Title = "Foreach Loops",
+        Paragraphs = new string[]
+        {
+            "When you have a collection of things (such as a String or an Array), " + Model.Name + " lets you loop over all the items in that collection using <code>foreach</code>. The meaning of a <code>foreach</code> is very similar to the English phrase it sounds like: <em>\"for each (thing) in the (collection), do (code)\"</em>.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        foreach (char syllable in \"Patrick\") {",
+                "            " + Model.CallFunction(Model.PrintFunction, "syllable") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "To make it even easier, if you're into that kind of thing, you can use the <code>var</code> keyword for the looping variable.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        foreach (var syllable in \"Rick\") {",
+                "            " + Model.CallFunction(Model.PrintFunction, "syllable") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "<code>foreach</code> loops can also have <code>break</code> and <code>continue</code> used in them, and work the same was as regular <code>for</code> loops.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        int count = 0;",
+                "        string word = \"Bananagram\";",
+                "        ",
+                "        // Print something if there are more than three 'a's in the word",
+                "        foreach (char syllable in word) {",
+                "            // Only count 'a's",
+                "            if (syllable != 'a') {",
+                "                continue;",
+                "            }",
+                "            ",
+                "            // Once you reach the first three 'a's, finish",
+                "            count += 1;",
+                "            if (count > 3) {",
+                "                " + Model.CallFunction(Model.PrintFunction, "\"Found three 'a's!\"") + Model.Semicolon,
+                "                break;",
+                "            }",
+                "        }",
+                Model.End
+            }),
+            "A drawback of <code>foreach</code> loops is that they can't modify the collection they're iterating over. The <a href='https://msdn.microsoft.com/en-us/library/ttw7t8t6.aspx'>MSDN documentation</a> goes into the internals a bit more, if you're interested. Just don't try it."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>foreach</code> loop.",
+                "Extend your loop to, for each String in that loop, print each character in a separate line using a <code>foreach</code> loop."
+            })
+        }
+    });
+    
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>foreach</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        foreach (string name in names) {",
+                    "            System.Console.WriteLine(name);",
+                    "        }",
+                    Model.End
+                }),
+                "Extend your loop to, for each String in that loop, print each character in a separate line using a <code>foreach</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        foreach (string name in names) {",
+                    "            foreach (char syllable in name) {",
+                    "                System.Console.WriteLine(syllable);",
+                    "            }",
+                    "        }",
+                    Model.End
+                }),
+            })
+        }
+    });
+    
     Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "For Loops"));
 }
