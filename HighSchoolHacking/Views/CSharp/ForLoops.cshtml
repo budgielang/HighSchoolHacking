@@ -11,7 +11,109 @@
         Large = true,
         Paragraphs = new string[]
         {
-            ""
+            "For loops in " + Model.Name + " are flexible. There are the typical <code>i = 0; i < N; ++i</code> style <code>for</code> loops, as well as collection iteration ones using <code>foreach</code>."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = "Traditional For Loops",
+        Paragraphs = new string[]
+        {
+            "Unless you've only done Python before, you're probably familiar with regular <code>for</code> loops. Just in case, here's a recap of how they work, partially taken from the <a href='https://msdn.microsoft.com/en-us/library/ch45axte.aspx'>MSDN documentation</a>.",
+            "Each <code>for</code> loop follows the same general syntax:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "for (initializer; condition; iterator) { }",
+            }),
+            Section.WrapList(false, new string[]
+            {
+                "The initializer section sets the initial conditions, such as <code>int i = 0</code>. The statements in this section run only once, before you enter the loop.",
+                "The condition section contains a boolean expression that’s evaluated <em>before</em> each iteration of the loop to determine whether the loop should exit or should run again, such as <code>i < 10</code>.",
+                "The iterator section defines what happens <em>after</em> each iteration of the loop, such as <code>i += 1</code>."
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        for (int i = 0; i < 10; i += 1) {",
+                "            " + Model.CallFunction(Model.PrintFunction, "\"i is {0}.\"", "i") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "Each of the three parts of the <code>for</code> loop are optional; you could just leave them all blank to have it run forever. <code>break</code> stops the loop, and <code>continue</code> makes it jump to the next iteration.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        int i = -1;",
+                "        ",
+                "        // Prints out all add numbers from 0 to 9",
+                "        for (;;) {",
+                "            i += 1;",
+                "            ",
+                "            // Skip printing if it's odd (% 2 == 1)",
+                "            if (i % 2 != 0) {",
+                "                continue;",
+                "            }",
+                "            ",
+                "            " + Model.CallFunction(Model.PrintFunction, "\"i is {0}.\"", "i") + Model.Semicolon,
+                "            ",
+                "            // Stop the loop once it reaches the bounds",
+                "            if (i >= 9) {",
+                "                break;",
+                "            }",
+                "        }",
+                Model.End
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>for</code> loop.",
+                "Extend your loop to, for each String in that loop, print each character in a separate line. Remember that String length, like Array length, is <code>.Length</code>."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        // Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>for</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        for (int i = 0; i < names.Length; i += 1) {",
+                    "            System.Console.WriteLine(names[i]);",
+                    "        }",
+                    Model.End
+                }),
+                "Extend your loop to, for each String in that loop, print each character in a separate line. Remember that String length, like Array length, is <code>.Length</code>." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        for (int i = 0; i < names.Length; i += 1) {",
+                    "            for (int j = 0; j < names[i].Length; j += 1) {",
+                    "                System.Console.WriteLine(names[i][j]);",
+                    "            }",
+                    "        }",
+                    Model.End
+                }),
+            })
         }
     });
 
