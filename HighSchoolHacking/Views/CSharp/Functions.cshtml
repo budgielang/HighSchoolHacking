@@ -30,12 +30,71 @@
             {
                 Model.Start,
                 "        // \"Hello, Josh.\"",
-                "        " + Model.CallFunction("sayHello", "\"Josh\"") + Model.Semicolon,
+                "        " + Model.CallFunction("SayHello", "\"Josh\"") + Model.Semicolon,
                 "    }",
                 "    ",
-                "    static void sayHello(string name) {",
+                "    static void SayHello(string name) {",
                 "        " + Model.CallFunction(Model.PrintFunction, "\"Hello, {0}.\"", "name") + Model.Semicolon,
                 Model.End
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in a String name and Number age, and tells a person they're that old.",
+                "Write a Function that takes in a String number and computes the <a href='http://en.wikipedia.org/wiki/Fibonacci_number'>Fibonacci Number</a> at that position (<code>fib(0) = 0; fib(1) = 1; fib(n) = fib(n - 1) + fib(n - 1);</code>). Keep this to fewer than a dozen lines.",
+                "Modify the Fibonacci Function to create an Array and use a <code>for</code> loop to fill in values from the beginning to the end."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in a String name and Integer age, and tells a person they're that old." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "static void SayAge(string name, int age) {",
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"{0}, you're {1}.\"", "name", "age") + Model.Semicolon,
+                    "}"
+                }),
+                "Write a Function that takes in a String number and computes the <a href='http://en.wikipedia.org/wiki/Fibonacci_number'>Fibonacci Number</a> at that position (<code>fib(0) = 0; fib(1) = 1; fib(n) = fib(n - 1) + fib(n - 1);</code>). Keep this to fewer than a dozen lines." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "static int Fibonacci(int n) {",
+                    "    if (n <= 1) {",
+                    "        return n;",
+                    "    }",
+                    "    ",
+                    "    return Fibonacci(n - 1) + Fibonacci(n - 2);",
+                    "}"
+                }),
+                "Modify the Fibonacci Function to create an Array and use a <code>for</code> loop to fill in values from the beginning to the end." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "static int Fibonacci(int n) {",
+                    "    int[] numbers = new int[n + 1];",
+                    "    ",
+                    "    numbers[0] = 0;",
+                    "    numbers[1] = 1;",
+                    "    ",
+                    "    for (int i = 2; i <= n; i += 1) {",
+                    "        numbers[i] = numbers[i - 1] + numbers[i - 2];",
+                    "    }",
+                    "    ",
+                    "    return numbers[n];",
+                    "}"
+                }),
             })
         }
     });
@@ -53,10 +112,10 @@
             {
                 Model.Start,
                 "        // \"Hello, anonymous.\"",
-                "        " + Model.CallFunction("sayHello") + Model.Semicolon,
+                "        " + Model.CallFunction("SayHello") + Model.Semicolon,
                 "    }",
                 "    ",
-                "    static void sayHello(string name = \"anonymous\") {",
+                "    static void SayHello(string name = \"anonymous\") {",
                 "        " + Model.CallFunction(Model.PrintFunction, "\"Hello, {0}.\"", "name") + Model.Semicolon,
                 Model.End
             }),
@@ -66,17 +125,17 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "// What does this do, and how do you remember all this!?",
-                @"processFile(""C:/Users/Josh/text.txt"", ""www.highschoolhacking.club"", ""ASCII"", ""de"");",
+                @"ProcessFile(""C:/Users/Josh/text.txt"", ""www.highschoolhacking.club"", ""ASCII"", ""de"");",
                 
             }),
             "Fortunately, if you know the names of a Function's parameters, you can directly name them in calling the Function, so the order doesn't matter.",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.Start,
-                "        " + Model.CallFunction("processFile", @"file: ""C:/Users/Josh/text.txt""", @"url: ""www.highschoolhacking.club""") + Model.Semicolon,
+                "        " + Model.CallFunction("ProcessFile", @"file: ""C:/Users/Josh/text.txt""", @"url: ""www.highschoolhacking.club""") + Model.Semicolon,
                 "    }",
                 "    ",
-                "    static void processFile(string file, string url, string encoding = \"UTF-8\", string locale = \"de\") {",
+                "    static void ProcessFile(string file, string url, string encoding = \"UTF-8\", string locale = \"de\") {",
                 "        // Do whatever here...",
                 Model.End
             }),
@@ -84,10 +143,79 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "// Good",
-                @"processFile(""C:/Users/Josh/text.txt"", site: ""www.highschoolhacking.club"");",
+                @"ProcessFile(""C:/Users/Josh/text.txt"", site: ""www.highschoolhacking.club"");",
                 "",
                 "// Bad",
-                @"// processFile(file: ""C:/Users/Josh/text.txt"", ""www.highschoolhacking.club"");"
+                @"// ProcessFile(file: ""C:/Users/Josh/text.txt"", ""www.highschoolhacking.club"");"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Modify the Functions above to have default parameters for everything. Call them using named parameters."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        //Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a Function that takes in a String name and Integer age, and tells a person they're that old." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        " + Model.CallFunction("sayAge", "name: \"Josh\"") + Model.Semicolon,
+                    "    }",
+                    "    ",
+                    "    static void SayAge(string name = \"anonymous\", int age = 7) {",
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"{0}, you're {1}.\"", "name", "age") + Model.Semicolon,
+                    Model.End
+                }),
+                "Write a Function that takes in a String number and computes the <a href='http://en.wikipedia.org/wiki/Fibonacci_number'>Fibonacci Number</a> at that position (<code>fib(0) = 0; fib(1) = 1; fib(n) = fib(n - 1) + fib(n - 1);</code>). Keep this to fewer than a dozen lines." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        " + Model.CallFunction("Fibonacci", "n: 20") + Model.Semicolon,
+                    "    }",
+                    "    ",
+                    "    static int Fibonacci(int n = 0) {",
+                    "        if (n <= 1) {",
+                    "            return n;",
+                    "        }",
+                    "        ",
+                    "        return Fibonacci(n: n - 1) + Fibonacci(n: n - 2);",
+                    Model.End
+                }),
+                "Modify the Fibonacci Function to create an Array and use a <code>for</code> loop to fill in values from the beginning to the end." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        " + Model.CallFunction("Fibonacci", "n: 20") + Model.Semicolon,
+                    "    }",
+                    "    ",
+                    "    static int Fibonacci(int n = 0) {",
+                    "        int[] numbers = new int[n + 1];",
+                    "        ",
+                    "        numbers[0] = 0;",
+                    "        numbers[1] = 1;",
+                    "        ",
+                    "        for (int i = 2; i <= n; i += 1) {",
+                    "            numbers[i] = numbers[i - 1] + numbers[i - 2];",
+                    "        }",
+                    "        ",
+                    "        return numbers[n];",
+                    Model.End
+                }),
             })
         }
     });
