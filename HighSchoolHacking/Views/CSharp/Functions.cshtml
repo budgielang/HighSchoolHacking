@@ -72,7 +72,8 @@
                 }),
                 "Write a Function that takes in a String number and computes the <a href='http://en.wikipedia.org/wiki/Fibonacci_number'>Fibonacci Number</a> at that position (<code>fib(0) = 0; fib(1) = 1; fib(n) = fib(n - 1) + fib(n - 1);</code>). Keep this to fewer than a dozen lines." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    "static int Fibonacci(int n) {",
+                    "static int Fibonacci(int n)",
+                    "    {",
                     "    if (n <= 1) {",
                     "        return n;",
                     "    }",
@@ -82,7 +83,8 @@
                 }),
                 "Modify the Fibonacci Function to create an Array and use a <code>for</code> loop to fill in values from the beginning to the end." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    "static int Fibonacci(int n) {",
+                    "static int Fibonacci(int n)",
+                    "    {",
                     "    int[] numbers = new int[n + 1];",
                     "    ",
                     "    numbers[0] = 0;",
@@ -189,7 +191,8 @@
                     "        " + Model.CallFunction("Fibonacci", "n: 20") + Model.Semicolon,
                     "    }",
                     "    ",
-                    "    static int Fibonacci(int n = 0) {",
+                    "    static int Fibonacci(int n = 0)",
+                    "    {",
                     "        if (n <= 1) {",
                     "            return n;",
                     "        }",
@@ -203,7 +206,8 @@
                     "        " + Model.CallFunction("Fibonacci", "n: 20") + Model.Semicolon,
                     "    }",
                     "    ",
-                    "    static int Fibonacci(int n = 0) {",
+                    "    static int Fibonacci(int n = 0)",
+                    "    {",
                     "        int[] numbers = new int[n + 1];",
                     "        ",
                     "        numbers[0] = 0;",
