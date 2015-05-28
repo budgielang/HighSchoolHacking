@@ -11,7 +11,7 @@
         Large = true,
         Paragraphs = new string[]
         {
-            "There are a lot of different types of container types in " + Model.Name + ". You can use Dictionaries, HashTables, HashSets, Anonymous Types, and a bunch of other things that each work differently. We go over some of the common ones here."
+            "There are a lot of different types of container types in " + Model.Name + ". You can use Dictionaries, HashTables, HashSets, and a bunch of other things that each work differently. We go over some of the common ones here.",
         }
     });
 
@@ -40,10 +40,10 @@
                 "using System.Collections.Generic;",
                 "",
                 Model.Start,
-                "        // Stores the favorite foods of a bunch of people",
+                "        // Container for the favorite foods of a bunch of people",
                 "        Dictionary<string, string> favorites = new Dictionary<string, string>();",
                 "        ",
-                "        // Store the value \"steak\" under the key \"Josh\", and \"sushi\" under \"Brandon\"",
+                "        // Stores the value \"steak\" under the key \"Josh\", and \"sushi\" under \"Brandon\"",
                 "        favorites[\"Josh\"] = \"steak\";",
                 "        favorites[\"Brandon\"] = \"sushi\";",
                 "        ",
@@ -56,8 +56,48 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a Dictionary to store three movies you've seen as Strings, with your rating of them as a 0-10 Integer. Print the key and value for one of them."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a Dictionary to store at least three movies you've seen as Strings, with your rating of them as a 0-10 Integer. Print the key and value for one of them." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "using System.Collections.Generic;",
+                    "",
+                    Model.Start,
+                    "        Dictionary<string, int> movies = new Dictionary<string, int>();",
+                    "        ",
+                    "        movies[\"The Big Lebowski\"] = 10;",
+                    "        movies[\"Shrek\"] = 8;",
+                    "        movies[\"Pokemon: The Movie 2000\"] = 0;",
+                    "        ",
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"{0}'s personal rating is {1}.\"", "\"Shrek\"", "movies[\"Shrek\"]") + Model.Semicolon,
+                    Model.End
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
         Color = Section.GetNextColor(Model.Color, 12),
-        Title = "Loops",
+        Title = "Dictionary Loops",
         Paragraphs = new string[]
         {
             "You can loop over a Dictionary using a <code>foreach</code> loop like with Arrays... except there's a catch.",
@@ -78,6 +118,48 @@
                 Model.End
             }),
             "A Dictionary can be thought of as an Array of KeyValuePair objects, so it's natural that the <code>foreach</code> loop loops over them."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a Dictionary to store at least three movies you've seen as Strings, with your rating of them as a 0-10 Integer. Print the key and value for each of them using a <code>foreach</code> loop."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a Dictionary to store at least three movies you've seen as Strings, with your rating of them as a 0-10 Integer. Print the key and value for each of them using a <code>foreach</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "using System.Collections.Generic;",
+                    "",
+                    Model.Start,
+                    "        Dictionary<string, int> movies = new Dictionary<string, int>();",
+                    "        ",
+                    "        movies[\"The Big Lebowski\"] = 10;",
+                    "        movies[\"Shrek\"] = 8;",
+                    "        movies[\"Pokemon: The Movie 2000\"] = 0;",
+                    "        ",
+                    "        foreach (KeyValuePair<string, int> pair in movies) {",
+                    "            " + Model.CallFunction(Model.PrintFunction, "\"{0}'s rating is {1}.\"", "pair.Key", "pair.Value") + Model.Semicolon,
+                    "        }",
+                    Model.End
+                })
+            })
         }
     });
 
@@ -111,6 +193,18 @@
                  "};"
             }),
             "Note how it still had to say <code>new Dictionary&lt;string, string&gt;</code> before the contents. Also, since the internals of a Dictionary are a bunch of key-value pairs, you can use the <code>{ <em>key</em>, <em>value</em> }</code> to represent a single pair.",
+            Section.WrapHead("ContainsKey"),
+            "You can check if a Dictionary already has an element using its member <code>.ContainsKey</code> Function. It takes in a single parameter of whatever key type the Dictionary is, and returns a <code>bool</code> representing whether that key exists in the Dictionary.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                 "Dictionary<string, string> favorites = new Dictionary<string, string> {",
+                 "    { \"Josh\", \"steak\" },",
+                 "    { \"Brandon\", \"sushi\" },",
+                 "};",
+                 "",
+                 "favorites.ContainsKey(\"Josh\"); // true",
+                 "favorites.ContainsKey(\"Mariah\"); // false"
+            }),
             Section.WrapHead("Levels"),
             "It's completely reasonable to have a Dictionary of Dictionaries. The constructor shorthand doesn't stop you from using shorthand to initialize things within it, though it's more complicated to initialize internal Dictionaries.",
             Section.WrapCode(Model.NameLower, new string[]
@@ -137,6 +231,63 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a Dictionary to store at least three movies you've seen as Strings, with your rating of them as a 0-10 Integer. Also create a Dictionary of <code>int</code> ratings to <code>string</code> listings of the titles of all movies at that rating with commas between them (e.x. \"Flubber, Kill Bill\"), and populate it using the first Dictionary.",
+                "Print out all the keys of the second Dictionary with their values."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a Dictionary to store at least three movies you've seen as Strings, with your rating of them as a 0-10 Integer. Also create a Dictionary of <code>int</code> ratings to <code>string</code> listings of the titles of all movies at that rating with commas between them (e.x. \"Flubber, Kill Bill\"), and populate it using the first Dictionary." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "using System.Collections.Generic;",
+                    "",
+                    Model.Start,
+                    "        Dictionary<string, int> movies = new Dictionary<string, int>() {",
+                    "            { \"The Big Lebowski\", 10 },",
+                    "            { \"Shrek\", 8 },",
+                    "            { \"Pokemon the Movie 2000\", 0 },",
+                    "        };",
+                    "        ",
+                    "        Dictionary<int, string> ratings = new Dictionary<int, string>();",
+                    "        ",
+                    "        foreach (KeyValuePair<string, int> pair in movies) {",
+                    "            if (ratings.ContainsKey(pair.Value)) {",
+                    "                ratings[pair.Value] += \", \" + pair.Key;",
+                    "            }",
+                    "            else {",
+                    "                ratings[pair.Value] = pair.Key;",
+                    "            }",
+                    "        }",
+                    Model.End
+                }),
+                "Print out all the keys of the second Dictionary with their values." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "// Add this code at the end of the Main() above",
+                    "foreach (KeyValuePair<int, string> pair in ratings) {",
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"{0}: {1}\"", "pair.Key", "pair.Value") + Model.Semicolon,
+                    "}"
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
         Color = Section.GetNextColor(Model.Color, 14),
         Title = "Other Containers",
         Paragraphs = new string[]
@@ -153,16 +304,6 @@
                     "HashSets are actually more similar to Dictionaries than HashTables. Instead of key-value pairs, they just store a single thing that acts as both the key and value. They're templated across one class, not two."
                 })
             })
-        }
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = Section.GetNextColor(Model.Color, 15),
-        Title = "Anonymous Types",
-        Paragraphs = new string[]
-        {
-            
         }
     });
 
