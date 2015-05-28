@@ -1,0 +1,221 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 9),
+        Title = "For Loops",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "For loops in " + Model.Name + " are flexible. There are the typical <code>i = 0; i < N; ++i</code> style <code>for</code> loops, as well as collection iteration ones using <code>foreach</code>."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = "Traditional For Loops",
+        Paragraphs = new string[]
+        {
+            "Unless you've only done Python before, you're probably familiar with regular <code>for</code> loops. Just in case, here's a recap of how they work, partially taken from the <a href='https://msdn.microsoft.com/en-us/library/ch45axte.aspx'>MSDN documentation</a>.",
+            "Each <code>for</code> loop follows the same general syntax:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "for (initializer; condition; iterator) { }",
+            }),
+            Section.WrapList(false, new string[]
+            {
+                "The initializer section sets the initial conditions, such as <code>int i = 0</code>. The statements in this section run only once, before you enter the loop.",
+                "The condition section contains a boolean expression that’s evaluated <em>before</em> each iteration of the loop to determine whether the loop should exit or should run again, such as <code>i < 10</code>.",
+                "The iterator section defines what happens <em>after</em> each iteration of the loop, such as <code>i += 1</code>."
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        for (int i = 0; i < 10; i += 1) {",
+                "            " + Model.CallFunction(Model.PrintFunction, "\"i is {0}.\"", "i") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "Each of the three parts of the <code>for</code> loop are optional; you could just leave them all blank to have it run forever. <code>break</code> stops the loop, and <code>continue</code> makes it jump to the next iteration.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        int i = -1;",
+                "        ",
+                "        // Prints out all add numbers from 0 to 9",
+                "        for (;;) {",
+                "            i += 1;",
+                "            ",
+                "            // Skip printing if it's odd (% 2 == 1)",
+                "            if (i % 2 != 0) {",
+                "                continue;",
+                "            }",
+                "            ",
+                "            " + Model.CallFunction(Model.PrintFunction, "\"i is {0}.\"", "i") + Model.Semicolon,
+                "            ",
+                "            // Stop the loop once it reaches the bounds",
+                "            if (i >= 9) {",
+                "                break;",
+                "            }",
+                "        }",
+                Model.End
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>for</code> loop.",
+                "Extend your loop to, for each String in that loop, print each character in a separate line. Remember that String length, like Array length, is <code>.Length</code>."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>for</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        for (int i = 0; i < names.Length; i += 1) {",
+                    "            System.Console.WriteLine(names[i]);",
+                    "        }",
+                    Model.End
+                }),
+                "Extend your loop to, for each String in that loop, print each character in a separate line. Remember that String length, like Array length, is <code>.Length</code>." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        for (int i = 0; i < names.Length; i += 1) {",
+                    "            for (int j = 0; j < names[i].Length; j += 1) {",
+                    "                System.Console.WriteLine(names[i][j]);",
+                    "            }",
+                    "        }",
+                    Model.End
+                }),
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 11),
+        Title = "Foreach Loops",
+        Paragraphs = new string[]
+        {
+            "When you have a collection of things (such as a String or an Array), " + Model.Name + " lets you loop over all the items in that collection using <code>foreach</code>. The meaning of a <code>foreach</code> is very similar to the English phrase it sounds like: <em>\"for each (thing) in the (collection), do (code)\"</em>.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        foreach (char syllable in \"Patrick\") {",
+                "            " + Model.CallFunction(Model.PrintFunction, "syllable") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "To make it even easier, if you're into that kind of thing, you can use the <code>var</code> keyword for the looping variable.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        foreach (var syllable in \"Rick\") {",
+                "            " + Model.CallFunction(Model.PrintFunction, "syllable") + Model.Semicolon,
+                "        }",
+                Model.End
+            }),
+            "<code>foreach</code> loops can also have <code>break</code> and <code>continue</code> used in them, and work the same was as regular <code>for</code> loops.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.Start,
+                "        int count = 0;",
+                "        string word = \"Bananagram\";",
+                "        ",
+                "        // Print something if there are more than three 'a's in the word",
+                "        foreach (char syllable in word) {",
+                "            // Only count 'a's",
+                "            if (syllable != 'a') {",
+                "                continue;",
+                "            }",
+                "            ",
+                "            // Once you reach the first three 'a's, finish",
+                "            count += 1;",
+                "            if (count > 3) {",
+                "                " + Model.CallFunction(Model.PrintFunction, "\"Found three 'a's!\"") + Model.Semicolon,
+                "                break;",
+                "            }",
+                "        }",
+                Model.End
+            }),
+            "A drawback of <code>foreach</code> loops is that they can't modify the collection they're iterating over. The <a href='https://msdn.microsoft.com/en-us/library/ttw7t8t6.aspx'>MSDN documentation</a> goes into the internals a bit more, if you're interested. Just don't try it."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>foreach</code> loop.",
+                "Extend your loop to, for each String in that loop, print each character in a separate line using a <code>foreach</code> loop."
+            })
+        }
+    });
+    
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create an Array of a few names. Print them using a <code>foreach</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        foreach (string name in names) {",
+                    "            System.Console.WriteLine(name);",
+                    "        }",
+                    Model.End
+                }),
+                "Extend your loop to, for each String in that loop, print each character in a separate line using a <code>foreach</code> loop." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Start,
+                    "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
+                    "        ",
+                    "        foreach (string name in names) {",
+                    "            foreach (char syllable in name) {",
+                    "                System.Console.WriteLine(syllable);",
+                    "            }",
+                    "        }",
+                    Model.End
+                }),
+            })
+        }
+    });
+    
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "For Loops"));
+}
