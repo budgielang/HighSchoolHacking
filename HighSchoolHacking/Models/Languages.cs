@@ -170,7 +170,9 @@ namespace HighSchoolHacking.Models
                 "VariousCollections", "Functions", "Recursion", "LINQ",
                 "Delegates", "Async"
             },
-            PageAliases = new Dictionary<string, string> { }
+            PageAliases = new Dictionary<string, string> { 
+                { "Recursion", "Functions" }
+            }
         };
 
         public static Language LOLCODE = new Language
@@ -271,7 +273,8 @@ namespace HighSchoolHacking.Models
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
         {
             { "Python", Python },
-            { "JavaScript", JavaScript }
+            { "JavaScript", JavaScript },
+            { "C#", CSharp }
         };
 
         public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };
