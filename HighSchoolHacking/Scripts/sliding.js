@@ -156,7 +156,7 @@
         var container = document.querySelector("#switchers"),
             languager = document.querySelector("#switcher-language select"),
             lessoner = document.querySelector("#switcher-lesson select"),
-            language, lesson, option;
+            language, lesson;
 
         if (!container) {
             return;
@@ -167,15 +167,17 @@
 
         if (languager) {
             languager.onchange = function () {
-                option = languager.options[languager.selectedIndex];
-                window.location = "/" + option.innerText + "/" + lesson.split(" ").join("-");
+                var option = languager.options[languager.selectedIndex],
+                    location = "/" + option.innerText + "/" + lesson.split(" ").join("").replace("#", "Sharp");
+                window.location = location.replace("#", "Sharp");
             };
         }
 
         if (lessoner) {
             lessoner.onchange = function () {
-                option = lessoner.options[lessoner.selectedIndex];
-                window.location = "/" + language + "/" + option.innerText.split(" ").join("-");
+                var option = lessoner.options[lessoner.selectedIndex],
+                    location = "/" + language + "/" + option.innerText.split(" ").join("-").replace("#", "Sharp");
+                window.location = location.replace("#", "Sharp");
             };
         }
     }

@@ -323,6 +323,8 @@
     <Content Include="Views\CSharp\Learn.cshtml" />
     <Content Include="Views\CSharp\VariousCollections.cshtml" />
     <Content Include="Views\CSharp\Functions.cshtml" />
+    <Content Include="Views\CSharp\LINQ.cshtml" />
+    <Content Include="Views\CSharp\Delegates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
