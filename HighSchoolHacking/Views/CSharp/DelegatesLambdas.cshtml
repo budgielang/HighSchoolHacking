@@ -67,13 +67,13 @@
                 "{",
                 "    public delegate void MyDelegate(string message);",
                 "    ",
-                "    static void Main()",
+                "    public static void Main()",
                 "    {",
                 "        MyDelegate handler = SayString;",
                 "        ",
                 "        // Prints \"Hello World!\"",
                 "        handler(\"Hello World!\");",
-                "    }",
+                "    };",
                 "    ",
                 "    public static void SayString(string message)",
                 "    {",
@@ -96,7 +96,7 @@
                 "{",
                 "    public delegate int MathFunction(int x, int y);",
                 "    ",
-                "    static void Main()",
+                "    public static void Main()",
                 "    {",
                 "        DoMath(14, 7, Add); // Result is 21.",
                 "        DoMath(14, 7, Subtract); // Result is 7.",
@@ -125,7 +125,7 @@
                 "    public delegate void MathApplier(int x, int y, MathFunction stuff);",
                 "    public delegate int MathFunction(int x, int y);",
                 "    ",
-                "    static void Main()",
+                "    public static void Main()",
                 "    {",
                 "        // Result is 21.",
                 "        // Result is 7.",
@@ -191,7 +191,7 @@
                     "    public delegate void MathApplier(int x, int y, MathFunction stuff);",
                     "    public delegate int MathFunction(int x, int y);",
                     "    ",
-                    "    static void Main()",
+                    "    public static void Main()",
                     "    {",
                     "        // Result is 21.",
                     "        // Result is 7.",
@@ -240,7 +240,7 @@
                     "{",
                     "    public delegate int LengthGetter(string a, string b);",
                     "    ",
-                    "    static void Main()",
+                    "    public static void Main()",
                     "    {",
                     "        // Result is 7.",
                     "        DoStrings(\"hello\", \"my\", GetTotal);",
@@ -270,7 +270,7 @@
                     "{",
                     "    public delegate int LengthGetter(string a, string b);",
                     "    ",
-                    "    static void Main()",
+                    "    public static void Main()",
                     "    {",
                     "        string[] names = new string[] { \"Geralt\", \"Triss\", \"Yennefer\" };",
                     "        ",
@@ -290,6 +290,174 @@
                     "        return b.Length - a.Length;",
                     Model.End,
                 }),
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Lambdas",
+        Paragraphs = new string[]
+        {
+            "Now that you know how to refer to Functions using type-safe delegates, you should know how to that you don't have to explicitly write out named Functions for every little thing you use delegates for.",
+            "A <em>lambda</em> is an anonymous Function that you can place anywhere in your code. It obeys the same type checking as regular Functions, but makes it much easier to pass delegates for small math.",
+            "You write them using the <code>=&gt;</code> operator, placing Function arguments on the left and the actual logic of the Function on the right:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "// Doubles a number",
+                "x => x * 2"
+            }),
+            "Note how you don't need to specify what type <code>x</code> is; the compiler will infer that for you.",
+            "If you want multiple arguments (or just to make it clear that it's a lambda), wrap the left part in parentheses:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "// Multiplies two numbers",
+                "(x, y) => x * y"
+            }),
+            "For instance, sorting an Array of Strings by length becomes:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "class Program",
+                "{",
+                "    public static void Main()",
+                "    {",
+                "        string[] names = new string[] { \"Geralt\", \"Triss\", \"Yennefer\" };",
+                "        ",
+                "        System.Array.Sort(names, (a, b) => b.Length - a.Length);",
+                "        ",
+                "        // Yennefer",
+                "        // Geralt",
+                "        // Triss",
+                "        foreach (string name in names)",
+                "        {",
+                "            System.Console.WriteLine(name);",
+                "        }",
+                "    }",
+                "}"
+            }),
+            Section.WrapHead("Lambdas and Delegates"),
+            "Lambdas can be placed anywhere in code that a delegate is trying to get a Function. You can directly set delegates equal to them like so:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "class Program",
+                "{",
+                "    public delegate void MyDelegate(string message);",
+                "    ",
+                "    public static void Main()",
+                "    {",
+                "        MyDelegate handler = message => " + Model.CallFunction(Model.PrintFunction, "message") + ";",
+                "        ",
+                "        // Prints \"Hello World!\"",
+                "        handler(\"Hello World!\");",
+                "    }",
+                "}"
+            }),
+            "You don't need to provide arguments to a lambda. It's also capable of seeing all other variables in its scope, which is actually a feature using regular Functions doesn't have.",
+            "If you want to have a more complicated one, wrap everything inside with <code>{}</code> brackets.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "class Program",
+                "{",
+                "    public delegate void MyDelegate();",
+                "    ",
+                "    public static void Main()",
+                "    {",
+                "        MyDelegate handler = () =>",
+                "        {",
+                "            if (2 * 2 == 4) {",
+                "                System.Console.WriteLine(\"Yup!\");",
+                "            }",
+                "            else",
+                "            {",
+                "                System.Console.WriteLine(\"Nope...\");",
+                "            }",
+                "        }",
+                "        ",
+                "        // \"Yup!\"",
+                "        handler();",
+                "    }",
+                "}"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            "Do the first two exercises from before using lambdas instead of defined Functions. There aren't more exercises on lambdas here because you'll get a ton of experience using them in the LINQ lesson."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Add <code>Multiply</code> and <code>Divide</code> to the second math example." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "class Program",
+                    "{",
+                    "    public delegate void MathApplier(int x, int y, MathFunction stuff);",
+                    "    public delegate int MathFunction(int x, int y);",
+                    "    ",
+                    "    public static void Main()",
+                    "    {",
+                    "        // Result is 21.",
+                    "        // Result is 7.",
+                    "        // Result is 98.",
+                    "        // Result is 2.",
+                    "        DoMultipleMath(",
+                    "            14,",
+                    "            7,",
+                    "            new MathFunction[]",
+                    "            {",
+                    "                (x, y) => x + y,",
+                    "                (x, y) => x - y,",
+                    "                (x, y) => x * y,",
+                    "                (x, y) => x / y",
+                    "            },",
+                    "            (x, y, stuff) => " + Model.CallFunction(Model.PrintFunction, "\"Result is {0}.\"", "stuff(x, y)"),
+                    "        );",
+                    "    }",
+                    "    ",
+                    "    // For each provided MathFunction in functions, runs the applier with it and the two numbers",
+                    "    public static void DoMultipleMath(int x, int y, MathFunction[] functions, MathApplier applier)",
+                    "    {",
+                    "        foreach (MathFunction function in functions)",
+                    "        {",
+                    "            applier(x, y, function);",
+                    "        }",
+                    "    }",
+                    "}",
+                }),
+                "Create a delegate that takes in two Strings and returns an int. Write one Function that returns their total Length, and another that returns their difference. Use them." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "class Program",
+                    "{",
+                    "    public delegate int LengthGetter(string a, string b);",
+                    "    ",
+                    "    public static void Main()",
+                    "    {",
+                    "        // Result is 7.",
+                    "        DoStrings(\"hello\", \"my\", (a, b) => a.Length + b.Length);",
+                    "        ",
+                    "        // Result is 3.",
+                    "        DoStrings(\"baby\", \"darling\", (a, b) => System.Math.Abs(a.Length - b.Length));",
+                    "    }",
+                    "    ",
+                    "    public static void DoStrings(string a, string b, LengthGetter stuff)",
+                    "    {",
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"Result is {0}.\"", "stuff(a, b)") + Model.Semicolon,
+                    Model.End,
+                })
             })
         }
     });

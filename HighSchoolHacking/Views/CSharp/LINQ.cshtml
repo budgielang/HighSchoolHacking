@@ -1,7 +1,17 @@
-﻿
+﻿@using HighSchoolHacking.Models
+@model Language
+
 @{
-    ViewBag.Title = "LINQ";
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "LINQ",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "<a href='http://en.wikipedia.org/wiki/Language_Integrated_Query'>LINQ</a> stands for <u>L</u>anguage <u>In</u>tegrated <u>Query</u>. It's a part of .NET that adds a ton of data manipulation capabilities to the various containers, such as Arrays and Dictionaries. It allows you to manipulate large amounts of data much easier, with significantly less code.",
+        }
+    });
 }
-
-<h2>LINQ</h2>
-

@@ -324,7 +324,7 @@
     <Content Include="Views\CSharp\VariousCollections.cshtml" />
     <Content Include="Views\CSharp\Functions.cshtml" />
     <Content Include="Views\CSharp\LINQ.cshtml" />
-    <Content Include="Views\CSharp\Delegates.cshtml" />
+    <Content Include="Views\CSharp\DelegatesLambdas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

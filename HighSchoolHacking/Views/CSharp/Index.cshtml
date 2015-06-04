@@ -33,12 +33,13 @@
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Languages.CSharp.Color, 2),
-        Title = "Delegates",
+        Title = "Delegates and Lambdas",
         Paragraphs = new string[]
         {
-            "Delegates are C#'s way of letting you pass Functions around as variables. They combine (some of) the flexibility of JavaScript's first-class Functions with C++'s type safe Function pointers."
+            "Delegates are C#'s way of letting you pass Functions around as variables. They combine (some of) the flexibility of JavaScript's first-class Functions with C++'s type safe Function pointers.",
+            "Lambdas are small anonymous Functions that you can pass around for ease of use, instead of writing them out."
         },
-        Goto = "/CSharp/Delegates"
+        Goto = "/CSharp/DelegatesLambdas"
     });
 
     <!--

@@ -167,8 +167,8 @@ namespace HighSchoolHacking.Models
             CustomPages = new HashSet<string> { 
                 "Learn", "HelloWorld", "Variables", "Comments", "Strings",
                 "Numbers", "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
-                "VariousCollections", "Functions", "Recursion", "LINQ",
-                "Delegates", "Async"
+                "VariousCollections", "Functions", "Recursion", 
+                "DelegatesLambdas", "LINQ", "Async"
             },
             PageAliases = new Dictionary<string, string> { 
                 { "Recursion", "Functions" }
