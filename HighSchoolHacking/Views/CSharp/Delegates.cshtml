@@ -1,0 +1,82 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Delegates",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "Virtually all programming languages allow you to pass Functions as parameters to other Functions. This is an extremely powerful concept that a lot of both ancient and modern languages embrace.",
+            "Some languages, like JavaScript, have \"first class Functions\", which allows you to treat them like any other object:",
+            Section.WrapCode("javascript", new string[]
+            {
+                "var sorter = function (a, b) {",
+                "    return b - a;",
+                "};",
+                "",
+                "var numbers = [117, 3, 7, 96];",
+                "",
+                "numbers.sort(sorter);",
+                "",
+                "console.log(numbers); // [3, 7, 96, 117]"
+            }),
+            "You don't really need to know JavaScript to understand what's going on there.",
+            "Other languages, like C++, treat Functions as places in memory (which is actually what they are), so the equivalent there is passing the memory address of the Function.",
+            Section.WrapCode("c++", new string[]
+            {
+                "#include <algorithm>",
+                "#include <iostream>",
+                "#include <vector>",
+                "",
+                "bool myfunction (int i, int j) {",
+                "    return (i<j);",
+                "}",
+                "",
+                "int main(int argc, char* argv[]) {",
+                "    int myints[] = { 117, 3, 7, 96 };",
+                "    std::vector<int> myvector(myints, myints + 4);",
+                "    ",
+                "    std::sort(myvector.begin(), myvector.end(), myfunction);",
+                "    ",
+                "    // 3, 7, 96, 117",
+                "    for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)",
+                "        std::cout << ' ' << *it;",
+                "    }",
+                "    std::cout << std::endl;",
+                "    ",
+                "    return 0;",
+                "}"
+            }),
+            "As before, you don't need to know C++ to understand generally that this code sorts a listing of integers.",
+            Section.WrapHead("Enter Delegates"),
+            "JavaScript's way of referring to Functions as variables is more flexible, but it doesn't have any sort of type checking (you can pass whatever you want). C++ has type checking, but is harder to use most of the time.",
+            Model.Name + " takes an approach closer to C++'s, but with type checking. In it, you have <em>delegates</em>, which are named declarations of what a Function should look like. The following delegate declares a Function that takes in a String:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "public delegate void MyDelegate(string message);"
+            }),
+            "You can then use <code>MyDelegate</code> as if it were a class of variable, where the value must be a Function matching the declaration.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "public delegate void MyDelegate(string message);",
+                "",
+                Model.Start,
+                "        MyDelegate handler = SayString;",
+                "        ",
+                "        // Prints \"Hello World!\"",
+                "        handler(\"Hello World!\");",
+                "    }",
+                "    ",
+                "    public static void SayString(string message)",
+                "    {",
+                "        " + Model.CallFunction(Model.PrintFunction, "message") + Model.Semicolon,
+                Model.End,
+            })
+        }
+    });
+}
