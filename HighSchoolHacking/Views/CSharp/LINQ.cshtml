@@ -153,14 +153,42 @@
         Title = "Exercises",
         Paragraphs = new string[]
         {
-            Section.WrapList(new string[]
-            {
             "Create a <code>String[]</code> of at least ten names.",
             Section.WrapList(new string[]
             {
                 "Use <code>ToDictionary</code> to map each name to its length.",
-                "Use <code>ToArray</code> to turn the Dictionary into a <code>KeyValuePair[]</code>.",
+                "Use <code>ToArray</code> to turn the Dictionary into a <code>KeyValuePair[]</code>."
             })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            "Create a <code>String[]</code> of at least ten names..." + Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System.Linq;",
+                "",
+                "class Program",
+                "{",
+                "    public static void Main()",
+                "    {",
+                "        string[] names = new string[]",
+                "        {",
+                "            \"Alex\", \"Bob\", \"Claire\", \"David\", \"Elsa\",",
+                "            \"Frank\", \"Gerald\", \"Hugh\", \"Ingrid\", \"Jerome\"",
+                "        };",
+                "        ",
+                "        string filtered = names",
+                "            .ToDictionary(a => a, a => a.Length)",
+                "            .ToArray();",
+                "    }",
+                "}",
+            }),
         }
     });
 }
