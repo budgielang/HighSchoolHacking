@@ -30,27 +30,27 @@
         Goto = "/CSharp/Learn"
     });
 
-    <!--
     Html.RenderPartial(Section.ViewFile, new Section
     {
         Color = Section.GetNextColor(Languages.CSharp.Color, 2),
+        Title = "Delegates",
+        Paragraphs = new string[]
+        {
+            "Delegates are C#'s way of letting you pass Functions around as variables. They combine (some of) the flexibility of JavaScript's first-class Functions with C++'s type safe Function pointers."
+        },
+        Goto = "/CSharp/Delegates"
+    });
+
+    <!--
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.CSharp.Color, 3),
         Title = "LINQ",
         Paragraphs = new string[]
         {
             "."
         },
         Goto = "/CSharp/LINQ"
-    });
-
-    Html.RenderPartial(Section.ViewFile, new Section
-    {
-        Color = Section.GetNextColor(Languages.CSharp.Color, 3),
-        Title = "Delegates",
-        Paragraphs = new string[]
-        {
-            "."
-        },
-        Goto = "/CSharp/Delegates"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
