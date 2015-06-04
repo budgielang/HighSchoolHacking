@@ -327,3 +327,38 @@ namespace HighSchoolHacking.Models
 
     }
 }
+
+class Program
+{
+    public delegate void MathApplier(int x, int y, MathFunction stuff);
+    public delegate int MathFunction(int x, int y);
+    
+    static void Main()
+    {
+        DoMultipleMath(14, 7, new MathFunction[] { Add, Subtract, Add }, DoMath);
+    }
+    
+    public static int Add(int x, int y)
+    {
+        return x + y;
+    }
+    
+    public static int Subtract(int x, int y)
+    {
+        return x - y;
+    }
+    
+    // Runs each of the given delegates on the two numbers via DoMath
+    public static void DoMultipleMath(int x, int y, MathFunction[] functions, MathApplier applier)
+    {
+        foreach (MathFunction function in functions)
+        {
+            applier(x, y, function);
+        }
+    }
+    
+    public static void DoMath(int x, int y, MathFunction stuff)
+    {
+        System.Console.WriteLine("Result is {0}.", stuff(x, y));
+    }
+}
