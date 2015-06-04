@@ -11,7 +11,56 @@
         Large = true,
         Paragraphs = new string[]
         {
-            "<a href='http://en.wikipedia.org/wiki/Language_Integrated_Query'>LINQ</a> stands for <u>L</u>anguage <u>In</u>tegrated <u>Query</u>. It's a part of .NET that adds a ton of data manipulation capabilities to the various containers, such as Arrays and Dictionaries. It allows you to manipulate large amounts of data much easier, with significantly less code.",
+            "<a href='http://en.wikipedia.org/wiki/Language_Integrated_Query'>LINQ</a> stands for <u>L</u>anguage <u>In</u>tegrated <u>Q</u>uery. It's a part of .NET that adds a ton of data manipulation capabilities to the various containers, such as Arrays and Dictionaries. It allows you to manipulate large amounts of data much easier, with significantly less code.",
+            Section.WrapHead("IEnumerable"),
+            "<em><strong>Enumerable</strong> - Capable of being enumerated; countable <small><a href='http://en.wiktionary.org/wiki/enumerable'>Wiktionary</a></small></em>",
+            "<em><strong>Enumerate</strong> - To specify each member of a sequence individually in incrementing order. <small><a href='http://en.wiktionary.org/wiki/enumerate'>Wiktionary</a></small></em>",
+            "In " + Model.Name + ", virtually every usable container inherits from the <code>IEnumerable</code> interface. If you're not familiar with interfaces, that's ok: an interface is like a parent class that doesn't actually define any member variables. It just declares that everything that implements it should behave in a general way to the outside world. You can read more on them in <a href='http://stackoverflow.com/questions/1913098/what-is-the-difference-between-an-interface-and-abstract-class'>this excellent StackOverflow answer</a>, though you don't have to.",
+            "Inheriting from <code>IEnumerable</code> is actually what allows <code>foreach</code> to work. LINQ adds to <code>IEnumerable</code> by defining a bunch of member Functions you can use on them to manipulate their data."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Basic LINQ",
+        Paragraphs = new string[]
+        {
+            "Finally, LINQ itself. You have to include <code>System.Linq</code>, by the way.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System.Linq;",
+                "",
+                "class Program",
+                "{",
+                "    public static void Main()",
+                "    {",
+                "        int[] original = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };",
+                "        string filtered = original",
+                "            .Where(x => x % 2 == 0) // Filters for even numbers",
+                "            .Select(x => x / 2) // Divides them all by two",
+                "            .Skip(2) // Skips the first 2",
+                "            .Take(3) // Returns the next 3",
+                "            .Select(x => x.ToString()) // Converts to Strings",
+                "            .Aggregate((a, b) => a + \", \" + b); // Joins Strings together",
+                "        ",
+                "        // Got 3, 4, 5",
+                "        System.Console.WriteLine(\"Got \" + filtered);",
+                "    }",
+                "}",
+            }),
+            "Now do you see why lambdas can be very preferable to Functions sometimes?",
+            "Each of the Functions (<code>Where</code>, <code>Select</code>, etc.) are provided by LINQ to the <code>IEnumerable</code> interface that return a modified version of the original. In order, the ones shown here are...",
+            Section.WrapList(false, new string[]
+            {
+                "<code>Where</code> - Filters for all values where the provided Function returns true. In the above example, that was where <code>% 2 == 0</code>, or the number is even.",
+                "<code>Select</code> - Transforms all values from one thing to another. The first usage above divides everything by two, whereas the the second converts everything to a String.",
+                "<code>Skip</code> - Skips the first N values. In the above example, this removed 1 and 2.",
+                "<code>Take</code> - Restricts the collection to the first N values. In the above example, this took 3, 4, and 5.",
+                "<code>Aggregate</code> - Continuously combines the first two values together until there's only one value left, and returns that."
+            }),
+            "The <a href='http://en.wikipedia.org/wiki/Language_Integrated_Query#Architecture_of_LINQ_in_the_.NET_Framework'>Wikipedia article</a> on LINQ has a good list of the basic commands you can use. Those are some of the more common ones.",
+            "Just to recap, the way this works is that each LINQ member Function returns a modified version of the original. It started with an <code>int[]</code>; <code>Where</code> returned another <code>int[]</code> with only even numbers; the first <code>Select</code> returned another <code>int[]</code> with numbers double those in the previous <code>int[]</code>, and so on."
         }
     });
 }
