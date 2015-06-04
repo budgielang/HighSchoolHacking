@@ -63,4 +63,104 @@
             "Just to recap, the way this works is that each LINQ member Function returns a modified version of the original. It started with an <code>int[]</code>; <code>Where</code> returned another <code>int[]</code> with only even numbers; the first <code>Select</code> returned another <code>int[]</code> with numbers double those in the previous <code>int[]</code>, and so on."
         }
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            "Create a <code>String[]</code> of at least ten names.",
+            Section.WrapList(new string[]
+            {
+                "Use <code>Skip</code> to skip the first one.",
+                "Use <code>Take</code> to take the next seven.",
+                "Use <code>Where</code> to filter only for the ones with even lengths.",
+                "Use <code>Select</code> to add on <code>\" codes\"</code> to each.",
+                "Use <code>Aggregate</code> to insert <code>\", and \"</code> between each of them."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            "Create a <code>String[]</code> of at least ten names..." + Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System.Linq;",
+                "",
+                "class Program",
+                "{",
+                "    public static void Main()",
+                "    {",
+                "        string[] names = new string[]",
+                "        {",
+                "            \"Alex\", \"Bob\", \"Claire\", \"David\", \"Elsa\",",
+                "            \"Frank\", \"Gerald\", \"Hugh\", \"Ingrid\", \"Jerome\"",
+                "        };",
+                "        ",
+                "        string filtered = names",
+                "            .Skip(1)",
+                "            .Take(7)",
+                "            .Where(a => a.Length % 2 == 0)",
+                "            .Select(x => x + \" codes\")",
+                "            .Aggregate((a, b) => a + \", and \" + b);",
+                "        ",
+                "        // Claire codes, and Elsa codes, and Gerald codes, and Hugh codes",
+                "        System.Console.WriteLine(filtered);",
+                "    }",
+                "}",
+            })
+        }
+    });
+    
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 15),
+        Title = "Container Manipulation",
+        Paragraphs = new string[]
+        {
+            "LINQ also allows you go between different container types.",
+            Section.WrapHead("ToArray"),
+            "A common usage of this is <code>ToArray</code>, which turns whatever <code>IEnumerable</code> is being manipulated into an Array.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "// { 5, 2, 4 }",
+                "int[] lengths = (new string[] { \"hello\", \"my\", \"baby\" })",
+                "    .Select(a => a.Length)",
+                "    .ToArray();"
+            }),
+            "That may seem unnecessary, but remember that LINQ adds to the <code>IEnumerable</code> class, <em>not</em> Array, so it returns <code>IEnumerable</code>s for most methods, <em>not</em> Arrays.",
+            Section.WrapHead("ToDictionary"),
+            "A Dictionary is, at its core, a <code>KeyValuePair[]</code>, so it fits surprisingly well into the LINQ/<code>IEnumerable</code> way of life.",
+            "<code>ToDictionary</code> takes in two lambdas. The first takes the original value and returns the new key, and the second takes the original value and returns the new value. This example creates a Dictionary that keys each String to its length:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "// { { \"hello\", 5}, { \"my\", 2 }, { \"baby\", 4} }",
+                "Dictionary<string, int> lengths = (new string[] { \"hello\", \"my\", \"baby\" })",
+                "    .ToDictionary(x => x, x => x.Length);"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+            "Create a <code>String[]</code> of at least ten names.",
+            Section.WrapList(new string[]
+            {
+                "Use <code>ToDictionary</code> to map each name to its length.",
+                "Use <code>ToArray</code> to turn the Dictionary into a <code>KeyValuePair[]</code>.",
+            })
+        }
+    });
 }
