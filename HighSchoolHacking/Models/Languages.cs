@@ -177,8 +177,12 @@ namespace HighSchoolHacking.Models
 
         public static Language Ruby = new Language
         {
+            Name = "Ruby",
+            NameLower = "ruby",
+            Color = "red",
             ParenthesisLeft = " ",
             ParenthesisRight = " ",
+            PageAliases = new Dictionary<string, string> { },
             CustomPages = new HashSet<string> { },
         };
 
