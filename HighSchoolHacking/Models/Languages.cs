@@ -175,6 +175,11 @@ namespace HighSchoolHacking.Models
             }
         };
 
+        public static Language Ruby = new Language
+        {
+            CustomPages = new HashSet<string> { },
+        };
+
         public static Language LOLCODE = new Language
         {
             Name = "LOLCODE",
@@ -274,6 +279,7 @@ namespace HighSchoolHacking.Models
         {
             { "Python", Python },
             { "JavaScript", JavaScript },
+            { "Ruby", Ruby },
             { "C#", CSharp }
         };
 

@@ -172,6 +172,7 @@
     <Compile Include="Controllers\JavaScriptController.cs" />
     <Compile Include="Controllers\LOLCODEController.cs" />
     <Compile Include="Controllers\PythonController.cs" />
+    <Compile Include="Controllers\RubyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -328,6 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Ruby\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
