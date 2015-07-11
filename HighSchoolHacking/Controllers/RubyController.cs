@@ -13,15 +13,15 @@ namespace HighSchoolHacking.Controllers
         {
             if (String.IsNullOrWhiteSpace(section) || section == "Index")
             {
-                return View("~/Views/Python/Index.cshtml");
+                return View("~/Views/Ruby/Index.cshtml");
             }
 
             if (Languages.Ruby.CustomPages.Contains(section))
             {
-                return View(Languages.GetSectionPage("Ruby", section), Languages.Python);
+                return View(Languages.GetSectionPage("Ruby", section), Languages.Ruby);
             }
 
-            return View(Languages.GetSharedPage(section), HighSchoolHacking.Models.Languages.Python);
+            return View(Languages.GetSharedPage(section), HighSchoolHacking.Models.Languages.Ruby);
         }
     }
 }
