@@ -183,6 +183,7 @@ namespace HighSchoolHacking.Models
             ParenthesisLeft = " ",
             ParenthesisRight = " ",
             Equals = "=",
+            PrintFunction = "puts",
             PageAliases = new Dictionary<string, string> { },
             CustomPages = new HashSet<string> { },
         };
