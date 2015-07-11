@@ -177,6 +177,8 @@ namespace HighSchoolHacking.Models
 
         public static Language Ruby = new Language
         {
+            ParenthesisLeft = " ",
+            ParenthesisRight = " ",
             CustomPages = new HashSet<string> { },
         };
 
