@@ -184,6 +184,7 @@ namespace HighSchoolHacking.Models
             ParenthesisRight = " ",
             Commentor = "#",
             Equals = "=",
+            StringConcatenationBetween = "+",
             PrintFunction = "puts",
             PageAliases = new Dictionary<string, string> { },
             CustomPages = new HashSet<string> { },
