@@ -182,6 +182,7 @@ namespace HighSchoolHacking.Models
             Color = "red",
             ParenthesisLeft = " ",
             ParenthesisRight = " ",
+            Equals = "=",
             PageAliases = new Dictionary<string, string> { },
             CustomPages = new HashSet<string> { },
         };
