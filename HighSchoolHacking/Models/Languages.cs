@@ -182,6 +182,7 @@ namespace HighSchoolHacking.Models
             Color = "red",
             ParenthesisLeft = " ",
             ParenthesisRight = " ",
+            Commentor = "#",
             Equals = "=",
             PrintFunction = "puts",
             PageAliases = new Dictionary<string, string> { },
