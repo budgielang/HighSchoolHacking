@@ -144,7 +144,7 @@
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
-            "The <code>for</code>/<code>in</code> loop works by setting the designated variable to be each of the members of the object in order. The first time it's the first element (<code>[0]</code>), the second time the second element (<code>[1]</code>), and so on. Other languages call it <code>foreach</code>, which is frankly a better way of phrasing it: \"for each <em>*thing*</em> in <em>*this*</em>, do ...\""
+            "This type of loop works by setting the designated variable to be each of the members of the object in order. The first time it's the first element (<code>[0]</code>), the second time the second element (<code>[1]</code>), and so on. Other languages call it <code>foreach</code>, which is frankly a better way of phrasing it: \"for each <em>*thing*</em> in <em>*this*</em>, do ...\""
         }
     });
 
@@ -165,6 +165,7 @@
     {
         Color = "brown",
         Title = "Solutions",
+        Contracted = true,
         Paragraphs = new string[]
         {
             Section.WrapList(new string[]
@@ -192,26 +193,29 @@
         {
             "Now that you've learned about while loops and two different kinds of for loops it's time to throw it all out the window!",
             "Ruby offers many other types of loops that are often much better in terms of performance and style than the classic loops you have seen thus far.",
+            "The following loops all do the same thing:",
 
             Section.WrapList(new string[]
             {
                 "Until Loop" + Section.WrapCode(Model.NameLower, new string[]
                 {
+                    Model.VariableDeclare + "sports = [\"Basketball\", \"Football\", \"Soccer\"]" + Model.Semicolon,
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "",
-                    "until" + Model.ConditionalLeft + "i == 14" + Model.ConditionalRight,
-                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                    "until" + Model.ConditionalLeft + "i == " + Model.UseLength("sports") + Model.ConditionalRight,
+                    "    " + Model.CallFunction(Model.PrintFunction, "sports[i]") + Model.Semicolon,
                     "    " + "i += 1" + Model.Semicolon,
                     Model.ConditionalEnd,
                 }) + "\nNotice this is very similar to a while loop.",
                 "Until Loop (modified)" + Section.WrapCode(Model.NameLower, new string[]
                 {
+                    Model.VariableDeclare + "sports = [\"Basketball\", \"Football\", \"Soccer\"]" + Model.Semicolon,
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "",
                     "begin",
-                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "sports[i]") + Model.Semicolon,
                     "    " + "i += 1" + Model.Semicolon,
-                    Model.ConditionalEnd + " until" + Model.ConditionalLeft + "i == 14" + Model.ConditionalRight + Model.Semicolon,
+                    Model.ConditionalEnd + " until" + Model.ConditionalLeft + "i == " + Model.UseLength("sports") + Model.ConditionalRight + Model.Semicolon,
                 }) + "\nThis version is rarely used but still useful to understand.",
                 "Each" + Section.WrapCode(Model.NameLower, new string[]
                 {
@@ -245,19 +249,31 @@
     {
         Color = "brown",
         Title = "Solutions",
+        Contracted = true,
         Paragraphs = new string[]
         {
             Section.WrapList(new string[]
             {
                 "Write an <code>until</code> loop to print all the numbers less than 14." + Section.WrapCode(Model.NameLower, new string[]
                 {
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "until" + Model.ConditionalLeft + "i == 14" + Model.ConditionalRight,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                    "    " + "i += 1" + Model.Semicolon,
+                    Model.ConditionalEnd
                 }),
                 "Write a modified <code>until</code> loop to pring all the numbers less than 14." + Section.WrapCode(Model.NameLower, new string[]
                 {
-
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                    "begin",
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                    "    " + "i += 1" + Model.Semicolon,
+                    Model.ConditionalEnd + " until" + Model.ConditionalLeft + "i == 14"
                 }),
                 "Create a new " + Model.ArrayName + ", then write an <code>until</code> loop that copies all numbers less than 14 into that " + Model.ArrayName + "." + Section.WrapCode(Model.NameLower, new string[]
                 {
+                    Model.VariableDeclare + "numbers = []" + Model.Semicolon,
+                    Model.VariableDeclare + "i = 0" + Model.Semicolon,
 
                 }),
                 "Write an <code>until</code> loop to print all odd numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[]
