@@ -18,13 +18,13 @@
             "The following piece of code will run forever, so don't run it!",
             Section.WrapCode(Model.NameLower, new string[] {
                 "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"LOL\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"LOL\"") + Model.Semicolon,
                 Model.ConditionalEnd
             }),
             "This one will do absolutely nothing so it's ok to run:",
             Section.WrapCode(Model.NameLower, new string[] {
                 "while" + Model.ConditionalLeft + Model.BooleanFalse + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"Nope.\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
                 Model.ConditionalEnd
             }),
             "Note that loops use indenting and conditions the same way conditionals do. The same rules apply about indenting: if you don't use a reasonable number of spaces, your code is bad and should feel bad.",
@@ -38,23 +38,23 @@
         Paragraphs = new string[] {
             "Loops are used for a whole bunch of stuff in programming, especially to automate tasks. Suppose you wanted to print all numbers from 0 to 9:",
             Section.WrapCode(Model.NameLower, new string[] {
-                Model.PrintFunction + "(0)" + Model.Semicolon,
-                Model.PrintFunction + "(1)" + Model.Semicolon,
-                Model.PrintFunction + "(2)" + Model.Semicolon,
-                Model.PrintFunction + "(3)" + Model.Semicolon,
-                Model.PrintFunction + "(4)" + Model.Semicolon,
-                Model.PrintFunction + "(5)" + Model.Semicolon,
-                Model.PrintFunction + "(6)" + Model.Semicolon,
-                Model.PrintFunction + "(7)" + Model.Semicolon,
-                Model.PrintFunction + "(8)" + Model.Semicolon,
-                Model.PrintFunction + "(9)" + Model.Semicolon
+                Model.CallFunction(Model.PrintFunction, "0") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "1") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "2") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "3") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "4") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "5") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "6") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "7") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "8") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "9") + Model.Semicolon
             }),
             "That's a lot of code. Don't do it that way.",
             "Instead, you can make a variable equal to 0, and each time the loop runs, increase it by 1. The loop can then decide that if the variable is greater than a certain amount, it should stop. This is how people do loops in almost every programming language, and it's really easy once you get used to it.",
             Section.WrapCode(Model.NameLower, new string[] {
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "while" + Model.ConditionalLeft + "count < 10" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
@@ -64,7 +64,7 @@
             Section.WrapCode(Model.NameLower, new string[] {
                 Model.VariableDeclare + "i = 2" + Model.Semicolon,
                 "while" + Model.ConditionalLeft + "i < 350" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    i = i * 2" + Model.Semicolon,
                 Model.ConditionalEnd
             })
@@ -96,21 +96,21 @@
                 "Write a loop to print all numbers less than 14." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 "Write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 7" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 "Write a loop to print all odd numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 7" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "i < 14" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 2" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
@@ -118,7 +118,7 @@
                     Model.VariableDeclare + "i = 1" + Model.Semicolon,
                     Model.VariableDeclare + "square = 1" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "square < 350" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(square)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "square") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     "    square = i * i" + Model.Semicolon,
                     Model.ConditionalEnd
@@ -127,7 +127,7 @@
                     Model.VariableDeclare + "i = 2" + Model.Semicolon,
                     Model.VariableDeclare + "square = i * i" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "square < 350" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(square)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "square") + Model.Semicolon,
                     "    i = i + 2" + Model.Semicolon,
                     "    square = i * i" + Model.Semicolon,
                     Model.ConditionalEnd
@@ -149,7 +149,7 @@
             {
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
@@ -160,7 +160,7 @@
                 "    if" + Model.ConditionalLeft + "i >= 10" + Model.ConditionalRight,
                 "        break" + Model.Semicolon,
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
@@ -172,7 +172,7 @@
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "while" + Model.ConditionalLeft + "i < 10" + Model.ConditionalRight,
                 "    if" + Model.ConditionalLeft + "i < 3 " + Model.Or + " i > 7" + Model.ConditionalRight,
-                "        " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "        " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                 Model.ConditionalEnd
@@ -184,7 +184,7 @@
                 "        continue" + Model.Semicolon,
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                 "    i = i + 1" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 Model.ConditionalEnd
             }),
             "As with using <code>break</code>, using <code>continue</code> is just a different way of doing things. It's up to you to use them correctly."
@@ -214,7 +214,7 @@
                 "Use a <code>break</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
                     "        break" + Model.Semicolon,
@@ -224,7 +224,7 @@
                 "Use a <code>break</code> statement inside a loop that uses <code>while True:</code> to write a loop to print all numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 7" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
                     "        break" + Model.Semicolon,
@@ -239,7 +239,7 @@
                     "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
                     "        break" + Model.Semicolon,
                     Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 2" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),

@@ -60,7 +60,7 @@
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                 Model.FunctionEnd,
                 "", 
-                "printForever()" + Model.Semicolon
+                "printNumbers(0)" + Model.Semicolon
             })
         }
     });
@@ -114,10 +114,10 @@
                 {
                     Model.VariableDeclare + "cache = {}" + Model.Semicolon,
                     "",
-                    Model.CheckDictionaryKey("0", "cache") + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse,
+                    Model.CallFunction(Model.PrintFunction, Model.CheckDictionaryKey("0", "cache")) + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse,
                     "",
                     "cache[0] = \"bar\"" + Model.Semicolon,
-                    Model.CheckDictionaryKey("0", "cache") + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanTrue                    
+                    Model.CallFunction(Model.PrintFunction, Model.CheckDictionaryKey("0", "cache")) + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanTrue                    
                 }),
                 "Run the same tests on this new Function. Can you get it to slow down?"
             })

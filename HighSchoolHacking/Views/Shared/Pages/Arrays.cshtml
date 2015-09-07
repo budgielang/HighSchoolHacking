@@ -21,7 +21,7 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = [\"Apple\", \"Banana\", \"Cherry\"]" + Model.Semicolon,
-                Model.PrintFunction + "(fruits)" + Model.Semicolon + " " + Model.Commentor + " ['a', 'b', 'c']"
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " ['a', 'b', 'c']"
             }),
         }
     });
@@ -36,10 +36,10 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = []" + Model.Semicolon,
-                Model.PrintFunction + "(fruits)" + Model.Semicolon + " " + Model.Commentor + " []",
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " []",
                 "",
                 "fruits." + Model.AppendFunction + "(\"apple\")" + Model.Semicolon,
-                Model.PrintFunction + "(fruits)" + Model.Semicolon + " " + Model.Commentor + " [\"apple\"]" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " [\"apple\"]" + Model.Semicolon,
             }),
             "In coding, you'll often be asked to make a list of Numbers, such as all numbers in a range, or all squares up to a point. You can do that nicely with a while loop: the following code generates a list of all numbers less than 10, starting with 0.",
             Section.WrapCode(Model.NameLower, new string[]
@@ -52,7 +52,7 @@
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd,
                 "",
-                Model.PrintFunction + "(numbers)" + Model.Semicolon + " " + Model.Commentor + " [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+                Model.CallFunction(Model.PrintFunction, "numbers") + Model.Semicolon + " " + Model.Commentor + " [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
             })
         }
     });
@@ -90,7 +90,7 @@
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(numbers)" + Model.Semicolon + " " + Model.Commentor + " [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]"
+                    Model.CallFunction(Model.PrintFunction, "numbers") + Model.Semicolon + " " + Model.Commentor + " [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]"
                 }),
                 "Make and print a new " + Model.ArrayName + " containing all odd numbers between 10 and 20." + Section.WrapCode(Model.NameLower, new string[]
                 {
@@ -102,7 +102,7 @@
                     "    i = i + 2" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(numbers)" + Model.Semicolon + " " + Model.Commentor + " [11, 13, 15, 17, 19]"
+                    Model.CallFunction(Model.PrintFunction, "numbers") + Model.Semicolon + " " + Model.Commentor + " [11, 13, 15, 17, 19]"
                 })
             })
         }
@@ -119,8 +119,8 @@
             {
                 Model.VariableDeclare + "fruits = [\"apple\", \"banana\", \"cherry\"]" + Model.Semicolon,
                 Model.VariableDeclare + "first = fruits[0]" + Model.Semicolon,
-                Model.PrintFunction + "(first)" + Model.Semicolon + " " + Model.Commentor + " \"apple\"",
-                Model.PrintFunction + "(fruits[1])" + Model.Semicolon + " " + Model.Commentor + " \"banana\""
+                Model.CallFunction(Model.PrintFunction, "first") + Model.Semicolon + " " + Model.Commentor + " \"apple\"",
+                Model.CallFunction(Model.PrintFunction, "fruits[1]") + Model.Semicolon + " " + Model.Commentor + " \"banana\""
             }),
             "You can think of index as the distance from that spot in the " +Model.ArrayName + " from the beginning. The first element is 0 away (from itself), the second is 1 away, and so on.",
             Model.ArrayNamePlural + " will complain if you try to access the element at an index that doesn't exist. If your length is 3, for example, the third element is at index [2], so trying to get [3] is like trying to get the fourth element.",
@@ -134,7 +134,7 @@
             {
                 Model.VariableDeclare + "fruit = \"apple\"" + Model.Semicolon,
                 Model.VariableDeclare + "letter = fruit[0]" + Model.Semicolon,
-                Model.PrintFunction + "(letter)" + Model.Semicolon + " " + Model.Commentor + " \"a\"",
+                Model.CallFunction(Model.PrintFunction, "letter") + Model.Semicolon + " " + Model.Commentor + " \"a\"",
             })
         }
     });
@@ -165,12 +165,12 @@
                 "Make a new " + Model.ArrayName + " containing the names of three of your friends. Print the second name." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "names = [\"Mariah\", \"Brandon\", \"Dylan\"]" + Model.Semicolon,
-                    Model.PrintFunction + "(names[1])" + Model.Semicolon + " " + Model.Commentor + " \"Brandon\""
+                    Model.CallFunction(Model.PrintFunction, "names[1]") + Model.Semicolon + " " + Model.Commentor + " \"Brandon\""
                 }),
                 "Try to print the seventh name in that " + Model.ArrayName + ". Does it work?" + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "names = [\"Mariah\", \"Brandon\", \"Dylan\"]" + Model.Semicolon,
-                    Model.PrintFunction + "(names[7])" + Model.Semicolon,
+                    Model.CallFunction(Model.PrintFunction, "names[7]") + Model.Semicolon,
                     Model.Commentor + " It shouldn't work!"
                 })
             })
@@ -188,7 +188,7 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = [\"Apple\", \"Banana\", \"Cherry\"]" + Model.Semicolon,
-                Model.PrintFunction + "(" + Model.UseLength("fruits") + ")" + Model.Semicolon + " " + Model.Commentor + " 3"
+                Model.CallFunction(Model.PrintFunction, Model.UseLength("fruits")) + Model.Semicolon + " " + Model.Commentor + " 3"
             }),
             "We then use <code>" + Model.LengthName + "</code> to write loops over " + Model.ArrayNamePlural + " that iterate for each element in the " + Model.ArrayName + ":",
             Section.WrapCode(Model.NameLower, new string[]
@@ -197,7 +197,7 @@
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "",
                 "while" + Model.ConditionalLeft + "i < " + Model.UseLength("fruits") + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(fruits[i])" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "fruits[i]") + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
@@ -214,7 +214,7 @@
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd,
                 "",
-                Model.PrintFunction + "(output)" + Model.Semicolon + " " + Model.Commentor + " \"Fruits are: Apple Banana Cherry\""
+                Model.CallFunction(Model.PrintFunction, "output") + Model.Semicolon + " " + Model.Commentor + " \"Fruits are: Apple Banana Cherry\""
             })
         }
     });
@@ -250,7 +250,7 @@
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "",
                     "while" + Model.ConditionalLeft + "i < " + Model.UseLength("numbers") + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(numbers[i])" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "numbers[i]") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
@@ -265,7 +265,7 @@
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(total)" + Model.Semicolon + " " + Model.Commentor + " 28"
+                    Model.CallFunction(Model.PrintFunction, "total") + Model.Semicolon + " " + Model.Commentor + " 28"
                 }),
                 "Modify the previous question's code to add every other number." + Section.WrapCode(Model.NameLower, new string[]
                 {
@@ -278,7 +278,7 @@
                     "    i = i + 2" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(total)" + Model.Semicolon + " " + Model.Commentor + " 16"
+                    Model.CallFunction(Model.PrintFunction, "total") + Model.Semicolon + " " + Model.Commentor + " 16"
                 }),
                 "Make a variable containing your name. Copy each character from that String into a new " + Model.ArrayName + ", and print that " + Model.ArrayName + "." + Section.WrapCode(Model.NameLower, new string[]
                 {
@@ -291,7 +291,7 @@
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
-                    Model.PrintFunction + "(letters)" + Model.Semicolon + " " + Model.Commentor + " [\"J\", \"o\", \"s\", \"h\"]" + Model.Semicolon
+                    Model.CallFunction(Model.PrintFunction, "letters") + Model.Semicolon + " " + Model.Commentor + " [\"J\", \"o\", \"s\", \"h\"]" + Model.Semicolon
                 }),
             })
         }
