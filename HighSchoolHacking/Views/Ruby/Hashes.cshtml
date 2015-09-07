@@ -27,7 +27,7 @@
                 "    \"cherry\"=> 21",
                 "}" + Model.Semicolon,
                 "",
-                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :apple=> 7, :banana=> 14}"
+                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {\"apple\"=>7, \"banana\"=>14, \"cherry\"=> 21}"
             }),
             "To look up a value in the " + Model.DictionaryName + ", you use the same syntax as " + Model.ArrayNamePlural + ":",
             Section.WrapCode(Model.NameLower, new string[]
@@ -99,12 +99,12 @@
                 "    \"cherry\"=> 21",
                 "}" + Model.Semicolon,
                 "",
-                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :apple=> 7, :banana=> 14}",
+                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {\"apple\"=>7, \"banana\"=>14, \"cherry\"=> 21}",
                 "",
                 "fruits[\"date\"] = 3" + Model.Semicolon,
                 "",
                 Model.PrintFunction + " fruits[\"date\"]" + Model.Semicolon + " " + Model.Commentor + " 3",
-                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :date=> 3, :apple=> 7, :banana=> 14}"
+                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {\"apple\"=>7, \"banana\"=>14, \"cherry\"=> 21, \"date\"=>3}"
             }),
             "You can set a value multiple times, too:",
             Section.WrapCode(Model.NameLower, new string[]
@@ -115,7 +115,7 @@
                 Model.PrintFunction + " fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " 3",
                 "",
                 "fruits[\"apple\"] = \"Hello!\"" + Model.Semicolon,
-                Model.PrintFunction + " fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " \"Hello!\"",
+                Model.PrintFunction + " fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " Hello!",
             })
         }
     });
@@ -170,7 +170,7 @@
             Section.WrapList(new string[]
             {
                 "Your loop keeps track of both the keys and values being looped through, not just the key.",
-                "The Dictionary has a <code>.each()</code> member Function that allows the loop to work."
+                "The Dictionary has a <code>.each</code> member Function that allows the loop to work."
             }),
             "The following block of code prints out everything in the " + Model.DictionaryName + ".",
             Section.WrapCode(Model.NameLower, new string[]
@@ -182,10 +182,10 @@
                 "}" + Model.Semicolon,
                 "",
                 "for" + Model.ConditionalLeft + Model.VariableDeclare + "key,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
-                "    " + Model.PrintFunction + " key + \" has \" + fruits[key].to_s()" + Model.Semicolon,
+                "    " + Model.PrintFunction + " key + \" has \" + fruits[key].to_s" + Model.Semicolon,
                 Model.ConditionalEnd
             }),
-            "<em>If you haven't seen <code>.to_s()</code> before, that turns a Number into a String so you can add them together.</em>",
+            "<em>If you haven't seen <code>.to_s</code> before, that turns a Number into a String so you can add them together.</em>",
             "When looping through a " + Model.DictionaryNamePlural + ", the <code>key</code> variable is set to each of the keys. One time it will be \"apple\", another \"banana\", and another \"cherry\".",
             "This can get really complicated with loops. Read through the following block of code carefully: for each String in the " + Model.ArrayName + ", it records in the " + Model.DictionaryName + " the length of the String.",
             Section.WrapCode(Model.NameLower, new string[]
@@ -260,11 +260,11 @@
                     Model.VariableDeclare + "likes = {}" + Model.Semicolon,
                     "",
                     "for fruit in fruits",
-                    "    likes[fruit] = " + Model.UseLength("fruit") + Model.Semicolon,
+                    "    likes[fruit] = " + Model.UseLength("fruit") + "to_s" + Model.Semicolon,
                     Model.ConditionalEnd,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "like,length in likes" + Model.DictionaryIterator + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + " like + \" has \" + length" + Model.Semicolon,
+                    "    " + Model.PrintFunction + " like + \" has \" + length.to_s" + Model.Semicolon,
                     Model.ConditionalEnd
                 })
             })
