@@ -26,6 +26,8 @@ namespace HighSchoolHacking.Models
             ConditionalEnd = null,
             BooleanTrue = "True",
             BooleanFalse = "False",
+            Continue = "continue",
+            Break = "break",
             If = "if",
             Else = "else",
             Elif = "elif",
@@ -79,6 +81,8 @@ namespace HighSchoolHacking.Models
             ConditionalEnd = "}",
             BooleanTrue = "true",
             BooleanFalse = "false",
+            Continue = "continue",
+            Break = "break",
             Semicolon = ";",
             Commentor = "//",
             If = "if",
@@ -133,6 +137,8 @@ namespace HighSchoolHacking.Models
             ConditionalEnd = "}",
             BooleanTrue = "true",
             BooleanFalse = "false",
+            Continue = "continue",
+            Break = "break",
             Semicolon = ";",
             Commentor = "//",
             If = "if",
@@ -270,11 +276,66 @@ namespace HighSchoolHacking.Models
             PageAliases = new Dictionary<string, string> { }
         };
 
+        public static Language Ruby = new Language
+        {
+            Name = "Ruby",
+            NameLower = "ruby",
+            Color = "red",
+            ParenthesisLeft = " ",
+            ParenthesisRight = " ",
+            ConditionalLeft = " ",
+            ConditionalRight = "",
+            ConditionalContinueLeft = " ",
+            ConditionalContinueRight = "",
+            ConditionalEnd = "end",
+            BooleanTrue = "true",
+            BooleanFalse = "false",
+            Continue = "next",
+            Break = "break",
+            Semicolon = "",
+            Commentor = "#",
+            If = "if",
+            Else = "else",
+            Elif = "elsif",
+            Equals = "=",
+            And = "and",
+            Or = "or",
+            StringAnyApostrophes = true,
+            StringConcatenationBetween = "+",
+            ArrayName = "Array",
+            ArrayNamePlural = "Arrays",
+            DictionaryName = "Hash",
+            DictionaryNamePlural = "Hashes",
+            FunctionDefine = "def ",
+            FunctionRight = "",
+            FunctionEnd = "end",
+            ClassEnd = "end",
+            ClassThis = "@", 
+            LengthName = "length",
+            StrictIntegers = false,
+            CanConcatenateNumbers = false,
+            LengthIsProperty = true,
+            DictionaryKeyInCheck = false,
+            DictionaryKeyCheckName = "has_key?",
+            FunctionsFirstClass = false,
+            FunctionsAsVariables = false,
+            PrintFunction = "puts",
+            AppendFunction = "push",
+            VariableDeclare = "",
+            UndefinedError = "undefined local variable or method:",
+            PageAliases = new Dictionary<string, string> {
+                { "Dictionaries", "Hashes" }
+            },
+            CustomPages = new HashSet<string> { },
+        };
+
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
         {
-            { "Python", Python },
+            { "C#", CSharp },
             { "JavaScript", JavaScript },
-            { "C#", CSharp }
+            { "Python", Python },
+            { "Ruby", Ruby }
+
         };
 
         public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };

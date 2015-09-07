@@ -1,0 +1,28 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Languages.Ruby.Color,
+        Title = "Ruby",
+        Extension = "highschoolhacking",
+        Large = true,
+        Back = "/",
+        Paragraphs = new string[]
+        {
+            "Ruby is an incredibly powerful, yet flexible language. It's the language behind the Ruby on Rails framework and is used in web development for text processing, games, and more.",
+            "If you've seen Python or JavaScript, you'll notice the similarities and get to the activities quickly. If you haven't, Ruby is still an easy language to pick up because it looks a lot like English."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Ruby.Color, 1),
+        Title = "Learn the Language",
+        Paragraphs = new string[]
+        {
+            "Start here to learn the basics of Ruby. If you've coded before this will seem easy but pay attention to some of the key differences between Ruby and other languages you know. If you've never programmed before, take these lessons slowly and let the concepts sink in before moving on.",
+        },
+        Goto = "/Ruby/Learn"
+    });
+}

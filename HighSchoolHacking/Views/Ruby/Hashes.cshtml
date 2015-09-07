@@ -1,0 +1,273 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 10),
+        Title = Model.DictionaryNamePlural,
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Paragraphs = new string[]
+        {
+            Model.DictionaryNamePlural + " let you store any number of objects kind of like how " + Model.ArrayNamePlural + " do, but keyed by Strings instead of Numbers. This is super useful for all sorts of stuff, and ends up being the answer to a lot of programming interview questions.",
+            "You can create new " + Model.DictionaryNamePlural + " like Arrays, but curly brackets instead of square. Alternatively, they can be created usng the <code>new</code> keyword.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "my" + Model.DictionaryName + " = {}" + Model.Semicolon,
+                Model.VariableDeclare + "my" + Model.DictionaryName + " = " + Model.DictionaryName + ".new" + Model.Semicolon
+            }),
+            "You can initially create the " + Model.DictionaryName + " with elements in it. Did you ever have the math questions in elementary school that went like \"You have seven apples, fourteen bananas, and twenty-one cherries?\" The following code does that by creating a " + Model.DictionaryName + " with fruit names keying to numbers.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = {",
+                "    \"apple\"=> 7,",
+                "    \"banana\"=> 14,",
+                "    \"cherry\"=> 21",
+                "}" + Model.Semicolon,
+                "",
+                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :apple=> 7, :banana=> 14}"
+            }),
+            "To look up a value in the " + Model.DictionaryName + ", you use the same syntax as " + Model.ArrayNamePlural + ":",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " 7"
+            }),
+            "A good way of thinking about " + Model.DictionaryNamePlural + " is that they store a bunch of key-value pairs. If you ask them for a key, you get the corresponding value. "
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a new " + Model.DictionaryName + " storing \"red\" as three, \"blue\" as seven, and \"green\" as four.",
+                "Suppose you're tracking a list of married couples. Put at least four names in a " + Model.DictionaryName + ", keyed to their spouses. Look up the spouse of one of them."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a new " + Model.DictionaryName + " storing \"red\" as three, \"blue\" as seven, and \"green\" as four." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "fruits = {",
+                    "    \"red\"=> 3,",
+                    "    \"blue\"=> 7,",
+                    "    \"green\"=> 4,",
+                    "}" + Model.Semicolon
+                }),
+                "Suppose you're tracking a list of married couples. Put at least four names in a " + Model.DictionaryName + ", keyed to their spouses. Look up the spouse of one of them." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "couples = {",
+                    "    \"Noah\"=> \"Sophia\",",
+                    "    \"Liam\"=> \"Emma\",",
+                    "    \"Alex\"=> \"Devin\",",
+                    "    \"Sophia\"=> \"Noah\",",
+                    "    \"Emma\"=> \"Liam\",",
+                    "    \"Devin\"=> \"Alex\",",
+                    "}" + Model.Semicolon
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 11),
+        Title = "Adding to " + Model.DictionaryNamePlural,
+        Paragraphs = new string[]
+        {
+            "You can always add to a " + Model.DictionaryName + ". You specify which element to set with " + Model.ArrayName + " syntax, and set it equal to whatever you want:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = {",
+                "    \"apple\"=> 7,",
+                "    \"banana\"=> 14,",
+                "    \"cherry\"=> 21",
+                "}" + Model.Semicolon,
+                "",
+                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :apple=> 7, :banana=> 14}",
+                "",
+                "fruits[\"date\"] = 3" + Model.Semicolon,
+                "",
+                Model.PrintFunction + " fruits[\"date\"]" + Model.Semicolon + " " + Model.Commentor + " 3",
+                Model.PrintFunction + " fruits" + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :date=> 3, :apple=> 7, :banana=> 14}"
+            }),
+            "You can set a value multiple times, too:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = {}" + Model.Semicolon,
+                "",
+                "fruits[\"apple\"] = 3" + Model.Semicolon,
+                Model.PrintFunction + " fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " 3",
+                "",
+                "fruits[\"apple\"] = \"Hello!\"" + Model.Semicolon,
+                Model.PrintFunction + " fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " \"Hello!\"",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            "Do the same examples as before, but start the " + Model.DictionaryNamePlural + " off empty, and add values to them individually."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Create a new " + Model.DictionaryName + " storing \"red\" as three, \"blue\" as seven, and \"green\" as four." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "fruits = {}" + Model.Semicolon,
+                    "fruits[\"red\"] = 3" + Model.Semicolon,
+                    "fruits[\"green\"] = 7" + Model.Semicolon,
+                    "fruits[\"blue\"] = 4" + Model.Semicolon
+                }),
+                "Suppose you're tracking a list of married couples. Put at least four names in a " + Model.DictionaryName + ", keyed to their spouses. Look up the spouse of one of them." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "couples = {}" + Model.Semicolon,
+                    "couples[\"Noah\"] = \"Sophia\"" + Model.Semicolon,
+                    "couples[\"Liam\"] = \"Emma\"" + Model.Semicolon,
+                    "couples[\"Alex\"] = \"Devin\"" + Model.Semicolon,
+                    "couples[\"Sophia\"] = \"Noah\"" + Model.Semicolon,
+                    "couples[\"Emma\"] = \"Liam\"" + Model.Semicolon,
+                    "couples[\"Devin\"] = \"Alex\"" + Model.Semicolon
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Looping through " + Model.DictionaryNamePlural,
+        Paragraphs = new string[]
+        {
+            "Just like with " + Model.ArrayNamePlural + ", you can loop through " + Model.DictionaryNamePlural + " with <code>for</code> loops. The syntax is pretty similar, just with two changes: ",
+            Section.WrapList(new string[]
+            {
+                "Your loop keeps track of both the keys and values being looped through, not just the key.",
+                "The Dictionary has a <code>.each()</code> member Function that allows the loop to work."
+            }),
+            "The following block of code prints out everything in the " + Model.DictionaryName + ".",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "fruits = {",
+                "    \"apple\"=> 7,",
+                "    \"banana\"=> 14,",
+                "    \"cherry\"=> 21",
+                "}" + Model.Semicolon,
+                "",
+                "for" + Model.ConditionalLeft + Model.VariableDeclare + "key,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
+                "    " + Model.PrintFunction + " key + \" has \" + fruits[key].to_s()" + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            "<em>If you haven't seen <code>.to_s()</code> before, that turns a Number into a String so you can add them together.</em>",
+            "When looping through a " + Model.DictionaryNamePlural + ", the <code>key</code> variable is set to each of the keys. One time it will be \"apple\", another \"banana\", and another \"cherry\".",
+            "This can get really complicated with loops. Read through the following block of code carefully: for each String in the " + Model.ArrayName + ", it records in the " + Model.DictionaryName + " the length of the String.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "words = [\"apple\", \"banana\", \"cherry\"]" + Model.Semicolon,
+                Model.VariableDeclare + "lengths = {}" + Model.Semicolon,
+                String.IsNullOrWhiteSpace(Model.VariableDeclare)
+                    ? null
+                    : Model.VariableDeclare + "word" + Model.Semicolon,
+                "",
+                "for word in words",
+                "    lengths[word] = " + Model.UseLength("word") + Model.Semicolon,
+                Model.ConditionalEnd,
+                "",
+                Model.PrintFunction + " lengths" + Model.Semicolon,
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Loop through each of the original examples above, printing each of the pairs.",
+                "Create a new " + Model.ArrayName + " of your three favorite fruits, with a new empty " + Model.DictionaryName + ". Use a <code>for</code> loop to copy each fruit from the " + Model.ArrayName + " to the " + Model.DictionaryName + ", keyed to the length of the fruit's name. Print each of the pairs.",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Loop through each of the original exercises above, printing each of the pairs." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "fruits = {",
+                    "    \"red\"=> 3,",
+                    "    \"blue\"=> 7,",
+                    "    \"green\"=> 4,",
+                    "}" + Model.Semicolon,
+                    "",
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "fruit,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + " fruit + \" has \" + value.to_s" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }) + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "couples = {",
+                    "    \"Noah\"=> \"Sophia\",",
+                    "    \"Liam\"=> \"Emma\",",
+                    "    \"Alex\"=> \"Devin\",",
+                    "    \"Sophia\"=> \"Noah\",",
+                    "    \"Emma\"=> \"Liam\",",
+                    "    \"Devin\"=> \"Alex\",",
+                    "}" + Model.Semicolon,
+                    "",
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "couple,value in couples" + Model.DictionaryIterator + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + " couple + \" has \" + value" + Model.Semicolon,
+                    Model.ConditionalEnd
+                }),
+                "Create a new " + Model.ArrayName + " of your three favorite fruits, with a new empty " + Model.DictionaryName + ". Use a <code>for</code> loop to copy each fruit from the " + Model.ArrayName + " to the " + Model.DictionaryName + ", keyed to the length of the fruit's name. Print each of the pairs." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "fruits = [\"mango\", \"peach\", \"cherry\"]" + Model.Semicolon,
+                    Model.VariableDeclare + "likes = {}" + Model.Semicolon,
+                    "",
+                    "for fruit in fruits",
+                    "    likes[fruit] = " + Model.UseLength("fruit") + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    "",
+                    "for" + Model.ConditionalLeft + Model.VariableDeclare + "like,length in likes" + Model.DictionaryIterator + Model.ConditionalRight,
+                    "    " + Model.PrintFunction + " like + \" has \" + length" + Model.Semicolon,
+                    Model.ConditionalEnd
+                })
+            })
+        }
+    });
+}

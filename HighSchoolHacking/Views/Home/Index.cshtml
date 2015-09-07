@@ -26,7 +26,7 @@
         Color = "steel centered",
         Large = true,
         Goto = "/About",
-        Slogans = new string[] 
+        Slogans = new string[]
         {
             "A little Object Oriented Programming never hurt anyone.",
             "What's a pirate's favorite language? It's not C, it's R!",
@@ -65,11 +65,11 @@
     {
         Color = "blue",
         Title = "JavaScript",
-        Slogans = new string[] 
+        Slogans = new string[]
         {
             "You're more advanced, so we can do some mischief now.",
         },
-        Paragraphs = new string[] 
+        Paragraphs = new string[]
         {
             "JavaScript is an incredibly popular language, and is the the language of the web. That means learning JavaScript will give you power over websites on the internet. It's still easier than Java.",
             "After introducing you to the basics of JavaScript and how it's different from Python or Java, these lessons will show you how to tinker with recipe ingredient names, cheat at Cookie Clicker, spam Facebook messages, and make images on Tumblr and other sites look demonic."
@@ -83,30 +83,50 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
+        Color = "red",
+        Title = "Ruby",
+        Slogans = new string[]
+        {
+            "So similar to English, you wont notice you're coding!",
+        },
+        Paragraphs = new string[]
+        {
+            "Ruby is an incredibly powerful, yet flexible language. It's the language behind the Ruby on Rails framework and is used in web development for text processing, games, and more.",
+            "If you've seen Python or JavaScript, you'll notice the similarities and get to the activities quickly. If you haven't, Ruby is still an easy language to pick up because it looks a lot like English."
+        },
+        Goto = "/Ruby",
+        Links = new Dictionary<string, string>
+        {
+            { "Ruby Online", "http://repl.it/languages/ruby" }
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
         Color = "steel",
         Title = "Project Euler",
-        Slogans = new string[] 
+        Slogans = new string[]
         {
             "You're too good for us. Go away."
         },
-        Paragraphs = new string[] 
-        { 
+        Paragraphs = new string[]
+        {
             "We don't have any more lesson plans for you, now that you've finished our Python and JavaScript ones. Sorry!",
-            "Fortunately, Project Euler is a site that has a lot of more advanced puzzles similar to ours. You can do them in whatever language you want, and they get progressively harder."    
+            "Fortunately, Project Euler is a site that has a lot of more advanced puzzles similar to ours. You can do them in whatever language you want, and they get progressively harder."
         },
         Goto = "https://www.projecteuler.net"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
-        Color = "red",
+        Color = "purple",
         Title = "LOLCODE",
-        Slogans = new string[] 
+        Slogans = new string[]
         {
             "Worst. Language. Ever."
         },
-        Paragraphs = new string[] 
-        { 
+        Paragraphs = new string[]
+        {
             "LOLCODE is a programming language made to look like the old internet cat memes. It's horrendous and weird, but interesting to look at.",
             "If you're bored and don't feel like doing anything with your time, take a look.",
         },

@@ -25,7 +25,7 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "printHelloWorld()" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"Hello world!\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                 Model.FunctionEnd,
                 "",
                 Model.Commentor + " " + Model.PrintFunction + " three times...",
@@ -64,7 +64,7 @@
                 "Write a Function that prints your name. Use it." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.FunctionDefine + "printName()" + Model.FunctionRight,
-                    "    " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Josh\"") + Model.Semicolon,
                     Model.FunctionEnd,
                     "",
                     "printName()" + Model.Semicolon,
@@ -72,12 +72,12 @@
                 "Use a loop to call that Function seven times." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.FunctionDefine + "printName()" + Model.FunctionRight,
-                    "    " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Josh\"") + Model.Semicolon,
                     Model.FunctionEnd,
                     "",
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                     "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
@@ -86,7 +86,7 @@
                     Model.FunctionDefine + "printName()" + Model.FunctionRight,
                     "    " + Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "    while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
-                    "        " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"Josh\"") + Model.Semicolon,
                     "        i = i + 1" + Model.Semicolon,
                     "    " + Model.ConditionalEnd,
                     Model.FunctionEnd,
@@ -98,7 +98,7 @@
                     Model.FunctionDefine + "printName()" + Model.FunctionRight,
                     "    " + Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "    while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
-                    "        " + Model.PrintFunction + "(\"Josh\")" + Model.Semicolon,
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"Josh\"") + Model.Semicolon,
                     "        i = i + 1" + Model.Semicolon,
                     "    " + Model.ConditionalEnd,
                     Model.FunctionEnd,
@@ -127,7 +127,7 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "printSum(x, y)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(x + y)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "x + y") + Model.Semicolon,
                 Model.FunctionEnd,
                 "",
                 "printSum(3, 4)" + Model.Semicolon + " " + Model.Commentor + " 7"
@@ -136,17 +136,17 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"Hello, \" + name + \"!\")" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Hello, \" + name + \"!\"") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 Model.FunctionEnd,
             }),
             "Technically, the Function declares <em>parameters</em> (x and y), and the user then gives <em>arguments</em> (3 and 4) to the Function to fill them out. You can have as many parameters as you want.",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "doWhatever(parameterOne, parameterTwo)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"Argument given to parameterOne: \" + parameterOne)" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"Argument given to parameterTwo: \" + parameterTwo)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Argument given to parameterOne: \" + parameterOne") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Argument given to parameterTwo: \" + parameterTwo") + Model.Semicolon,
                 Model.FunctionEnd,
                 "",
                 "doWhatever(\"aww\", \"yeah\")" + Model.Semicolon,
@@ -156,40 +156,40 @@
             "Just to really reinforce how Functions can save you time and energy, here's an example of using \"greet\" to make it easier. It takes almost 30 lines to greet seven people normally, but only a little over 10 with the Function.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.PrintFunction + "(\"Hello, Alejandro!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Alejandro!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 "",
-                Model.PrintFunction + "(\"Hello, Blake!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Blake!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 "",
-                Model.PrintFunction + "(\"Hello, Camila!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Camila!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 "",
-                Model.PrintFunction + "(\"Hello, Daniel!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Daniel!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 "",
-                Model.PrintFunction + "(\"Hello, Edgar!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Edgar!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 "",
-                Model.PrintFunction + "(\"Hello, Farrell!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Farrell!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 "",
-                Model.PrintFunction + "(\"Hello, Gabby!\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"Hello, Gabby!\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"Hello, \" + name + \"!\")" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Hello, \" + name + \"!\"") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 Model.FunctionEnd,
                 "",
                 "greet(\"Alejandro\")" + Model.Semicolon,
@@ -203,9 +203,9 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"Hello, \" + name + \"!\")" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"How are you?\")" + Model.Semicolon,
-                "    " + Model.PrintFunction + "(\"\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Hello, \" + name + \"!\"") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"How are you?\"") + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"\"") + Model.Semicolon,
                 Model.FunctionEnd,
                 "",
                 Model.VariableDeclare + "names = [\"Alejandro\", \"Blake\", \"Camila\", \"Daniel\", \"Edgar\", \"Farrell\", \"Gabby\"]" + Model.Semicolon,
@@ -243,7 +243,7 @@
                 "Write a Function that takes in a name and prints it. Use it." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.FunctionDefine + "greet(name)" + Model.FunctionRight,
-                    "    " + Model.PrintFunction + "(name)" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "name") + Model.Semicolon,
                     Model.FunctionEnd,
                     "",
                     "greet(\"Josh\")"
@@ -253,7 +253,7 @@
                     Model.FunctionDefine + "greet(name, times)" + Model.FunctionRight,
                     "    " + Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "    while" + Model.ConditionalLeft + "i < times" + Model.ConditionalRight,
-                    "        " + Model.PrintFunction + "(name)" + Model.Semicolon,
+                    "        " + Model.CallFunction(Model.PrintFunction, "name") + Model.Semicolon,
                     "        i = i + 1" + Model.Semicolon,
                     "    " + Model.ConditionalEnd,
                     Model.FunctionEnd,
@@ -279,7 +279,7 @@
                 Model.FunctionEnd,
                 "",
                 Model.VariableDeclare + "sum = getSum(3, 4) ",
-                Model.PrintFunction + "(sum)" + Model.Semicolon + " " + Model.Commentor + " " + 7
+                Model.CallFunction(Model.PrintFunction, "sum") + Model.Semicolon + " " + Model.Commentor + " " + 7
             }),
             "Functions can return different things based on their arguments. There's nothing against having more than one <code>return</code>:",
             Section.WrapCode(Model.NameLower, new string[]
@@ -292,7 +292,7 @@
                 "    " + Model.ConditionalEnd,
                 Model.FunctionEnd,
                 "",
-                Model.PrintFunction + "(findMax(3, 4))" + Model.Semicolon + " " + Model.Commentor + " 4"
+                Model.CallFunction(Model.PrintFunction, "findMax(3, 4)") + Model.Semicolon + " " + Model.Commentor + " 4"
             })
         }
     });
@@ -330,7 +330,7 @@
                     "    " + Model.ConditionalEnd,
                     Model.FunctionEnd,
                     "",
-                    Model.PrintFunction + "(findMin(3, 4))" + Model.Semicolon + " " + Model.Commentor + " 3"
+                    Model.CallFunction(Model.PrintFunction, "findMin(3, 4)") + Model.Semicolon + " " + Model.Commentor + " 3"
                 }),
                 "Write a Function that takes in two numbers and returns the square of the larger. Use it." + Section.WrapCode(Model.NameLower, new string[]
                 {
@@ -342,7 +342,7 @@
                     "    " + Model.ConditionalEnd,
                     Model.FunctionEnd,
                     "",
-                    Model.PrintFunction + "(findMaxSquare(3, 4))" + Model.Semicolon + " " + Model.Commentor + " 16"
+                    Model.CallFunction(Model.PrintFunction, "findMaxSquare(3, 4)") + Model.Semicolon + " " + Model.Commentor + " 16"
                 }),
             })
         }
@@ -361,7 +361,7 @@
                 Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.FunctionDefine + "sayHello()" + Model.FunctionRight,
-                    "    " + Model.PrintFunction + "(\"Hello world!\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                     Model.FunctionEnd,
                     "",
                     Model.VariableDeclare + "x = sayHello" + Model.Semicolon,
@@ -396,7 +396,7 @@
                     "Write and use a Function that takes in another Function as a parameter and calls it." + Section.WrapCode(Model.NameLower, new string[]
                     {
                         Model.FunctionDefine + "sayHello()" + Model.FunctionRight,
-                        "    " + Model.PrintFunction + "(\"Hello world!\")" + Model.Semicolon,
+                        "    " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                         Model.FunctionEnd,
                         "",
                         Model.FunctionDefine + "curry(callback)" + Model.FunctionRight,
@@ -408,12 +408,12 @@
                     "Write and use a Function that takes in another Function as a parameter, stores the result of calling it as a variable, and " + Model.PrintFunction + "s that variable." + Section.WrapCode(Model.NameLower, new string[]
                     {
                         Model.FunctionDefine + "sayHello()" + Model.FunctionRight,
-                        "    " + Model.PrintFunction + "(\"Hello world!\")" + Model.Semicolon,
+                        "    " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                         Model.FunctionEnd,
                         "",
                         Model.FunctionDefine + "curry(callback)" + Model.FunctionRight,
                         "    " + Model.VariableDeclare + "result = callback()" + Model.Semicolon,
-                        "    " + Model.PrintFunction + "(result)" + Model.Semicolon,
+                        "    " + Model.CallFunction(Model.PrintFunction, "result") + Model.Semicolon,
                         Model.FunctionEnd,
                         "",
                         "curry(sayHello)" + Model.Semicolon + " " + Model.Commentor + " \"Hello world!\""
