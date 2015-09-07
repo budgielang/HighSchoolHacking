@@ -327,9 +327,9 @@
     <Content Include="Views\CSharp\Functions.cshtml" />
     <Content Include="Views\CSharp\LINQ.cshtml" />
     <Content Include="Views\CSharp\DelegatesLambdas.cshtml" />
-    <Content Include="Views\Ruby\Hashes.cshtml" />
     <Content Include="Views\Ruby\Index.cshtml" />
     <Content Include="Views\Shared\Pages\Hashes.cshtml" />
+    <Content Include="Views\Ruby\ForLoops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -326,7 +326,7 @@ namespace HighSchoolHacking.Models
             PageAliases = new Dictionary<string, string> {
                 { "Dictionaries", "Hashes" }
             },
-            CustomPages = new HashSet<string> { },
+            CustomPages = new HashSet<string> { "ForLoops" }, 
         };
 
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>
