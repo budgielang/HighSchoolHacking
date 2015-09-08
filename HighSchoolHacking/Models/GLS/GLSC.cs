@@ -32,7 +32,7 @@ namespace HighSchoolHacking.Models.GLS
             string output = "";
             int numTabs = 0;
             int lastTabRequest = 0;
-            bool lastLineSkipped = false;
+            bool lastLineSkipped = true;
             object[] command;
             int i;
             int j;
