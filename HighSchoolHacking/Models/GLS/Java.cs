@@ -1,24 +1,23 @@
 using System.Collections.Generic;
 
-namespace HighSchoolHacking.Models.GLS 
+namespace HighSchoolHacking.Models.GLS
 {
-    static partial class Languages {
-        public static Language CSharp = new Language()
-            .setName("CSharp")
-            .setExtension("cs")
-            .setPrintFunction("System.Console.WriteLine")
+    static partial class Languages
+    {
+        public static Language Java = new Language()
+            .setName("Java")
+            .setExtension("java")
+            .setPrintFunction("System.out.println")
             .setSemiColon(";")
             .setArrayClass("Array")
             .setArrayInitializationAsNewTyped(true)
-            .setArrayLength(".Length")
+            .setArrayLength(".length")
             .setBreak("break")
             .setCastStarter("(")
             .setCastEnder(")")
             .setClassConstructorName("")
-            .setClassConstructorInheritedShorthand(true)
             .setClassEnder("};")
             .setClassExtends("extends")
-            .setClassFunctionsTakeThis(false)
             .setClassFunctionsStart("")
             .setClassMemberFunctionGetStart("")
             .setClassMemberFunctionGetEnd("")
@@ -26,12 +25,12 @@ namespace HighSchoolHacking.Models.GLS
             .setClassMemberVariablePrivacy(true)
             .setClassMemberVariableStarter("")
             .setClassNewer("new ")
-            .setClassParentName("base")
-            .setClassPublicAlias("public ")
+            .setClassParentName("super")
             .setClassPrivacy(true)
             .setClassStaticLabel("static ")
             .setClassStartLeft("class ")
             .setClassStartRight(" {")
+            .setClassPublicAlias("public ")
             .setClassTemplates(true)
             .setClassTemplatesBetween(", ")
             .setClassThis("this")
@@ -45,20 +44,21 @@ namespace HighSchoolHacking.Models.GLS
             .setConditionContinueRight(" {")
             .setConditionEnd("}")
             .setContinue("continue")
-            .setDictionaryInitializeEnder("}")
-            .setDictionaryInitializeKeyComma(",")
-            .setDictionaryInitializeStarter(" {")
-            .setDictionaryClass("Dictionary")
+            .setDictionaryInitializeEnder("}}")
+            .setDictionaryInitializeKeyComma(";")
+            .setDictionaryInitializeKeyWithSemicolon(true)
+            .setDictionaryInitializeStarter("() {{")
+            .setDictionaryClass("HashMap")
             .setDictionaryInitializationAsNew(true)
             .setDictionaryKeyCheckAsFunction(true)
-            .setDictionaryKeyChecker("ContainsKey")
-            .setDictionaryKeyLeft("{ ")
+            .setDictionaryKeyChecker("containsKey")
+            .setDictionaryKeyLeft("add(")
             .setDictionaryKeyMiddle(", ")
-            .setDictionaryKeyRight(" }")
+            .setDictionaryKeyRight(")")
             .setElif("} else if")
             .setElse("} else")
             .setExceptionCatch("} catch (")
-            .setExceptionClass("System.Exception")
+            .setExceptionClass("Exception")
             .setExceptionErrorPrefix(" ")
             .setExceptionFinally("} finally")
             .setExceptionThrow("throw")
@@ -67,32 +67,34 @@ namespace HighSchoolHacking.Models.GLS
             .setFileStartLeft("public class ")
             .setFileStartRight(" {")
             .setForEachInner(" in ")
-            .setForEachKeysGet(".Keys")
-            .setForEachPairsGet("")
-            .setForEachPairsPairClass("KeyValuePair")
+            .setForEachKeysGet(".KeySet()")
+            .setForEachPairsGet(".EntrySet()")
+            .setForEachPairsPairClass("MapEntry")
             .setForEachPairsAsPair(true)
-            .setForEachPairsRetrieveKey(".Key")
-            .setForEachPairsRetrieveValue(".Value")
-            .setForEachStarter("foreach (")
+            .setForEachPairsRetrieveKey(".getKey()")
+            .setForEachPairsRetrieveValue(".getValue()")
+            .setForEachStarter("for (")
             .setFunctionDefine("")
             .setFunctionDefineRight(" {")
             .setFunctionDefineEnd("}")
             .setFunctionReturnsExplicit(true)
             .setFunctionTypeAfterName(false)
             .setIf("if")
-            .setIncludeDictionaryType("System.Collections.Generic")
-            .setIncludeEnder(";")
-            .setIncludeStarter("using ")
+            .setIncludeDictionaryType("java.util.*")
+            .setIncludeEnder("")
+            .setIncludeStarter("import ")
             .setLambdaDeclareEnder("")
-            .setLambdaDeclareMiddle(") => ")
+            .setLambdaDeclareMiddle(") -> ")
             .setLambdaDeclareStarter("(")
-            .setLambdaTypeDeclarationEnd(new string[] { "", ";" })
-            .setLambdaTypeDeclarationMiddle(new string[] { "(", ")" })
+            .setLambdaTypeDeclarationAsInterface(true)
+            .setLambdaTypeDeclarationEnd(new string[] { "}" })
+            .setLambdaTypeDeclarationMiddle(new string[] { "run", ";" })
             .setLambdaTypeDeclarationRequired(true)
-            .setLambdaTypeDeclarationStart(new string[] { "", "delegate"})
+            .setLambdaTypeDeclarationStart(new string[] { "interface ", " {" })
             .setMainEndLine("}")
-            .setMainStartLine("public static void Main() {")
-            .setToString(".ToString()")
+            .setMainStartLine("public void main() {")
+            .setToString("String.valueOf")
+            .setToStringAsFunction(true)
             .setUndefined("null")
             .setRangedForLoops(false)
             .setVariableDeclareStart("")
@@ -102,19 +104,19 @@ namespace HighSchoolHacking.Models.GLS
                 new Dictionary<string, string>
                 {
                     { "number", "int" },
-                    { "boolean", "bool" },
-                    { "mixed", "object" },
+                    { "string", "String" },
+                    { "mixed", "Object" },
                     { "character", "char" }
                 })
             .addNativeFunctionAliases(
                 "array",
-                new Dictionary<string, Dictionary<string, string>> 
+                new Dictionary<string, Dictionary<string, string>>
                 {
-                    { 
+                    {
                         "length",
                         new Dictionary<string, string>
                         {
-                            { "alias", "Length" },
+                            { "alias", "length" },
                             { "placement", "member" },
                             { "usage", "variable" }
                         }
@@ -122,22 +124,22 @@ namespace HighSchoolHacking.Models.GLS
                 })
             .addNativeFunctionAliases(
                 "string",
-                new Dictionary<string, Dictionary<string, string>> 
+                new Dictionary<string, Dictionary<string, string>>
                 {
                     {
                         "length",
                         new Dictionary<string, string>
                         {
-                            { "alias", "Length"},
+                            { "alias", "length" },
                             { "placement", "member" },
-                            { "usage", "variable" }
+                            { "usage", "function" }
                         }
                     },
                     {
                         "find",
                         new Dictionary<string, string>
                         {
-                            { "alias", "IndexOf" },
+                            { "alias", "indexOf" },
                             { "placement", "member" },
                             { "usage", "function" }
                         }
@@ -146,7 +148,7 @@ namespace HighSchoolHacking.Models.GLS
                         "substring",
                         new Dictionary<string, string>
                         {
-                            { "alias", "Substring" },
+                            { "alias", "substring" },
                             { "placement", "member" },
                             { "usage", "function" }
                         }
