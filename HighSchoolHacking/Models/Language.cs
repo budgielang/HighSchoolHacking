@@ -42,6 +42,10 @@ namespace HighSchoolHacking.Models
 
         public string ConditionalEnd { get; set; }
 
+        public string Continue { get; set; }
+
+        public string Break { get; set; }
+
         public string BooleanTrue { get; set; }
 
         public string BooleanFalse { get; set; }

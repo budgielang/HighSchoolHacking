@@ -27,13 +27,13 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(\"YUP\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"YUP\"") + Model.Semicolon,
                 Model.ConditionalEnd
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "printForever()" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"YUP\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"YUP\"") + Model.Semicolon,
                 "    printForever()" + Model.Semicolon,
                 Model.FunctionEnd,
                 "", 
@@ -46,7 +46,7 @@
             {
                 Model.VariableDeclare + "i = 0" + Model.Semicolon,
                 "while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    i = i + 1" + Model.Semicolon,
                 Model.ConditionalEnd,
                 ""
@@ -54,13 +54,13 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "printNumbers(i)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(i)" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
                 "    if" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
                 "        printNumbers(i + 1)" + Model.Semicolon,
                 Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                 Model.FunctionEnd,
                 "", 
-                "printForever()" + Model.Semicolon
+                "printNumbers(0)" + Model.Semicolon
             })
         }
     });
@@ -114,10 +114,10 @@
                 {
                     Model.VariableDeclare + "cache = {}" + Model.Semicolon,
                     "",
-                    Model.CheckDictionaryKey("0", "cache") + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse,
+                    Model.CallFunction(Model.PrintFunction, Model.CheckDictionaryKey("0", "cache")) + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse,
                     "",
                     "cache[0] = \"bar\"" + Model.Semicolon,
-                    Model.CheckDictionaryKey("0", "cache") + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanTrue                    
+                    Model.CallFunction(Model.PrintFunction, Model.CheckDictionaryKey("0", "cache")) + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanTrue                    
                 }),
                 "Run the same tests on this new Function. Can you get it to slow down?"
             })
