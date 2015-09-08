@@ -190,7 +190,7 @@ namespace HighSchoolHacking.Models.GLS
                     end = argumentsRaw.Length;
                 }
 
-                argument = argumentsRaw.Substring(i, end);
+                argument = argumentsRaw.Substring(i, end - 1);
                 i = end;
 
                 if (starter == commandStarter)
