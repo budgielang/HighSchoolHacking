@@ -7,7 +7,7 @@ namespace HighSchoolHacking.Models.GLS
         private Dictionary<string, Language> Languages;
         private Dictionary<char, char> SearchEnds;
 
-        GLSC()
+        public GLSC()
         {
             this.Languages = new Dictionary<string, Language>();
             this.SearchEnds = new Dictionary<char, char> {
@@ -61,8 +61,8 @@ namespace HighSchoolHacking.Models.GLS
                     }
                     else
                     {
-                        // Just '\0' changes numTabs without adding a line
-                        if ((char)command[j] != '\0' && !lastLineSkipped)
+                        // Just "\0" changes numTabs without adding a line
+                        if ((string)command[j] != "\0" && !lastLineSkipped)
                         {
                             output += "\n";
                         }
