@@ -223,7 +223,7 @@
                     "sports.each { |sport|",
                     "    puts sport",
                     "}"
-                }) + "\nThis works like the <code>in</code> loop we discussed earlier but is much better because it works on more types (like Strings!)."
+                }) + "\nThis works like the <code>in</code> loop we discussed earlier but is much better because it works on more types (like Strings!). Keep in mind that there are lots of different versions of the <code>each</code> method depending on what type of variable you want to iterate over. For example, Strings have <code>.each_char</code> and <code>.each_line</code>."
                     })
 }
     });
@@ -274,15 +274,28 @@
                 {
                     Model.VariableDeclare + "numbers = []" + Model.Semicolon,
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
-
+                    "until" + Model.ConditionalLeft + "i == 14" + Model.ConditionalRight,
+                    "    " + "numbers." + Model.AppendFunction + "(i)" + Model.Semicolon,
+                    "    " + "i += 1" + Model.Semicolon,
+                    Model.ConditionalEnd,
+                    Model.CallFunction(Model.PrintFunction, "numbers") + Model.Semicolon
                 }),
                 "Write an <code>until</code> loop to print all odd numbers less than 14, starting with 7." + Section.WrapCode(Model.NameLower, new string[]
                 {
-
+                    Model.VariableDeclare + "i = 7" + Model.Semicolon,
+                    "until" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
+                    "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                    "    " + "i += 2" + Model.Semicolon,
+                    Model.ConditionalEnd,
                 }),
                 "Make a variable equal to your name. Using <code>each</code>, copy all characters from it into a new " + Model.ArrayName + ". Print that " + Model.ArrayName + "." + Section.WrapCode(Model.NameLower, new string[]
                 {
-
+                    Model.VariableDeclare + "name = \"Will\"" + Model.Semicolon,
+                    Model.VariableDeclare + "letters = []" + Model.Semicolon,
+                    "name.each_char { |letter|",
+                    "    " + "letters." + Model.AppendFunction + "(letter)" + Model.Semicolon,
+                    "}",
+                    Model.CallFunction(Model.PrintFunction, "letters")
                 })
             })
         }
