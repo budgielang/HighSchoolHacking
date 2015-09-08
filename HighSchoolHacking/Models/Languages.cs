@@ -335,7 +335,15 @@ namespace HighSchoolHacking.Models
             { "JavaScript", JavaScript },
             { "Python", Python },
             { "Ruby", Ruby }
+        };
 
+        public static Dictionary<string, GLS.Language> GlsLanguagesByName = new Dictionary<string, GLS.Language>
+        {
+            { "csharp", GLS.Languages.CSharp },
+            { "java", GLS.Languages.Java },
+            { "python", GLS.Languages.Python },
+            { "ruby", GLS.Languages.Ruby },
+            { "typeScript", GLS.Languages.TypeScript }
         };
 
         public static string[] LessonPages = { "Learn", "Hello World", "Variables", "Comments", "Strings", "Numbers", "Conditionals", "While Loops", "Arrays", "For Loops", "Dictionaries", "Functions", "Recursion" };
