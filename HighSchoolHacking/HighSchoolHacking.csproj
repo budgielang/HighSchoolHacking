@@ -179,7 +179,11 @@
     </Compile>
     <Compile Include="Models\GLS\CSharp.cs" />
     <Compile Include="Models\GLS\GLSC.cs" />
+    <Compile Include="Models\GLS\Java.cs" />
     <Compile Include="Models\GLS\Language.cs" />
+    <Compile Include="Models\GLS\Python.cs" />
+    <Compile Include="Models\GLS\Ruby.cs" />
+    <Compile Include="Models\GLS\TypeScript.cs" />
     <Compile Include="Models\Languages.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\Section.cs" />

@@ -1,33 +1,33 @@
 using System.Collections.Generic;
 
-namespace HighSchoolHacking.Models.GLS 
+namespace HighSchoolHacking.Models.GLS
 {
-    static partial class Languages {
-        public static Language CSharp = new Language()
-            .setName("CSharp")
-            .setExtension("cs")
-            .setPrintFunction("System.Console.WriteLine")
+    static partial class Languages
+    {
+        public static Language TypeScript = new Language()
+            .setName("TypeScript")
+            .setExtension("ts")
+            .setPrintFunction("console.log")
             .setSemiColon(";")
             .setArrayClass("Array")
-            .setArrayInitializationAsNewTyped(true)
-            .setArrayLength(".Length")
+            .setArrayLength(".length")
             .setBreak("break")
-            .setCastStarter("(")
-            .setCastEnder(")")
-            .setClassConstructorName("")
-            .setClassConstructorInheritedShorthand(true)
-            .setClassEnder("};")
+            .setCastStarter("<")
+            .setCastEnder(">")
+            .setClassConstructorName("constructor")
+            .setClassEnder("}")
             .setClassExtends("extends")
             .setClassFunctionsTakeThis(false)
             .setClassFunctionsStart("")
+            .setClassMemberFunctionGetBind(true)
             .setClassMemberFunctionGetStart("")
-            .setClassMemberFunctionGetEnd("")
+            .setClassMemberFunctionGetEnd(".bind")
             .setClassMemberVariableDefault("")
             .setClassMemberVariablePrivacy(true)
             .setClassMemberVariableStarter("")
             .setClassNewer("new ")
-            .setClassParentName("base")
-            .setClassPublicAlias("public ")
+            .setClassParentName("super")
+            .setClassPublicAlias("export ")
             .setClassPrivacy(true)
             .setClassStaticLabel("static ")
             .setClassStartLeft("class ")
@@ -45,76 +45,77 @@ namespace HighSchoolHacking.Models.GLS
             .setConditionContinueRight(" {")
             .setConditionEnd("}")
             .setContinue("continue")
+            .setDictionaryClass("any")
             .setDictionaryInitializeEnder("}")
             .setDictionaryInitializeKeyComma(",")
-            .setDictionaryInitializeStarter(" {")
-            .setDictionaryClass("Dictionary")
-            .setDictionaryInitializationAsNew(true)
+            .setDictionaryInitializeStarter("{")
             .setDictionaryKeyCheckAsFunction(true)
-            .setDictionaryKeyChecker("ContainsKey")
-            .setDictionaryKeyLeft("{ ")
-            .setDictionaryKeyMiddle(", ")
-            .setDictionaryKeyRight(" }")
+            .setDictionaryKeyChecker("hasOwnProperty")
+            .setDictionaryKeyLeft("")
+            .setDictionaryKeyMiddle(": ")
+            .setDictionaryKeyRight("")
             .setElif("} else if")
             .setElse("} else")
             .setExceptionCatch("} catch (")
-            .setExceptionClass("System.Exception")
+            .setExceptionClass("Error")
             .setExceptionErrorPrefix(" ")
             .setExceptionFinally("} finally")
             .setExceptionThrow("throw")
             .setExceptionTry("try")
             .setFileEndLine("}")
-            .setFileStartLeft("public class ")
+            .setFileStartLeft("module ")
             .setFileStartRight(" {")
             .setForEachInner(" in ")
-            .setForEachKeysGet(".Keys")
+            .setForEachKeysGet("")
             .setForEachPairsGet("")
-            .setForEachPairsPairClass("KeyValuePair")
-            .setForEachPairsAsPair(true)
-            .setForEachPairsRetrieveKey(".Key")
-            .setForEachPairsRetrieveValue(".Value")
-            .setForEachStarter("foreach (")
-            .setFunctionDefine("")
+            .setForEachStarter("for (")
+            .setFunctionDefine("function ")
             .setFunctionDefineRight(" {")
             .setFunctionDefineEnd("}")
             .setFunctionReturnsExplicit(true)
-            .setFunctionTypeAfterName(false)
+            .setFunctionTypeMarker(": ")
+            .setFunctionTypeAfterName(true)
             .setIf("if")
-            .setIncludeDictionaryType("System.Collections.Generic")
-            .setIncludeEnder(";")
-            .setIncludeStarter("using ")
+            .setIncludeDictionaryType("")
+            .setIncludeEnder("' />")
+            .setIncludeFileExtension(true)
+            .setIncludeStarter("/// <reference path='")
             .setLambdaDeclareEnder("")
             .setLambdaDeclareMiddle(") => ")
             .setLambdaDeclareStarter("(")
-            .setLambdaTypeDeclarationEnd(new string[] { "", ";" })
-            .setLambdaTypeDeclarationMiddle(new string[] { "(", ")" })
+            .setLambdaTypeDeclarationAsInterface(true)
+            .setLambdaTypeDeclarationEnd(new string[] { "}" })
+            .setLambdaTypeDeclarationMiddle(new string[] { "", ";" })
             .setLambdaTypeDeclarationRequired(true)
-            .setLambdaTypeDeclarationStart(new string[] { "", "delegate"})
+            .setLambdaTypeDeclarationStart(new string[] { "interface ", " {" })
             .setMainEndLine("}")
-            .setMainStartLine("public static void Main() {")
-            .setToString(".ToString()")
-            .setUndefined("null")
+            .setMainStartLine("export function Main(): void {")
+            .setToString("")
+            .setUndefined("undefined")
             .setRangedForLoops(false)
-            .setVariableDeclareStart("")
             .setVariableTypesExplicit(true)
-            .setVariableTypesAfterName(false)
+            .setVariableTypesAfterName(true)
+            .setVariableTypeMarker(": ")
+            .setVariableDeclareStart("var ")
             .addTypeAliases(
                 new Dictionary<string, string>
                 {
-                    { "number", "int" },
-                    { "boolean", "bool" },
-                    { "mixed", "object" },
-                    { "character", "char" }
+                    { "int", "number" },
+                    { "double", "number" },
+                    { "float", "number" },
+                    { "bool", "boolean" },
+                    { "mixed", "any" },
+                    { "character", "string" }
                 })
             .addNativeFunctionAliases(
                 "array",
-                new Dictionary<string, Dictionary<string, string>> 
+                new Dictionary<string, Dictionary<string, string>>
                 {
-                    { 
+                    {
                         "length",
                         new Dictionary<string, string>
                         {
-                            { "alias", "Length" },
+                            { "alias", "length" },
                             { "placement", "member" },
                             { "usage", "variable" }
                         }
@@ -122,13 +123,13 @@ namespace HighSchoolHacking.Models.GLS
                 })
             .addNativeFunctionAliases(
                 "string",
-                new Dictionary<string, Dictionary<string, string>> 
+                new Dictionary<string, Dictionary<string, string>>
                 {
                     {
                         "length",
                         new Dictionary<string, string>
                         {
-                            { "alias", "Length"},
+                            { "alias", "length" },
                             { "placement", "member" },
                             { "usage", "variable" }
                         }
@@ -137,7 +138,7 @@ namespace HighSchoolHacking.Models.GLS
                         "find",
                         new Dictionary<string, string>
                         {
-                            { "alias", "IndexOf" },
+                            { "alias", "indexOf" },
                             { "placement", "member" },
                             { "usage", "function" }
                         }
@@ -146,11 +147,11 @@ namespace HighSchoolHacking.Models.GLS
                         "substring",
                         new Dictionary<string, string>
                         {
-                            { "alias", "Substring" },
+                            { "alias", "substring" },
                             { "placement", "member" },
                             { "usage", "function" }
                         }
                     }
-                });
+            });
     }
 }
