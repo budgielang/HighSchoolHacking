@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>015fb059</NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/f9c9f2f7-b0c2-4a3e-b11c-03b347775ec8/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/HighSchoolHacking</ApplicationInsightsResourceId>
     <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -172,6 +173,7 @@
     <Compile Include="Controllers\JavaScriptController.cs" />
     <Compile Include="Controllers\LOLCODEController.cs" />
     <Compile Include="Controllers\PythonController.cs" />
+    <Compile Include="Controllers\RubyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -332,6 +334,9 @@
     <Content Include="Views\CSharp\Functions.cshtml" />
     <Content Include="Views\CSharp\LINQ.cshtml" />
     <Content Include="Views\CSharp\DelegatesLambdas.cshtml" />
+    <Content Include="Views\Ruby\Index.cshtml" />
+    <Content Include="Views\Shared\Pages\Hashes.cshtml" />
+    <Content Include="Views\Ruby\ForLoops.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

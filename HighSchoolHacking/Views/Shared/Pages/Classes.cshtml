@@ -27,7 +27,7 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.FunctionDefine + "greetPerson(person)" + Model.FunctionRight,
-                "    " + Model.PrintFunction + "(\"Hello, \" + person.name + \"!\")" + Model.Semicolon,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"Hello, \" + person.name + \"!\"") + Model.Semicolon,
                 Model.FunctionEnd,
                 "",
                 "greetPerson(Josh)" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\""
@@ -73,7 +73,7 @@
                 Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
                 "",
                 "    " + Model.FunctionDefine + Model.ClassMemberFunction("greet"),
-                "        " + Model.PrintFunction + "(\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\")" + Model.Semicolon,
+                "        " + Model.CallFunction(Model.PrintFunction, "\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\"") + Model.Semicolon,
                 Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
                 Model.ClassEnd,
                 "",
@@ -92,7 +92,7 @@
                 Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
                 "",
                 "    " + Model.FunctionDefine + Model.ClassMemberFunction("greet"),
-                "        " + Model.PrintFunction + "(\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\")" + Model.Semicolon,
+                "        " + Model.CallFunction(Model.PrintFunction, "\"Hello, \" + " + Model.ClassThis + ".name + " + "\"!\"") + Model.Semicolon,
                 Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
                 "",
                 "    " + Model.FunctionDefine + Model.ClassMemberFunction("isAboveAge", new string[] { "threshold" }),
@@ -102,7 +102,7 @@
                 "",
                 Model.VariableDeclare + "josh = new Person(\"Josh\", 21)" + Model.Semicolon,
                 "josh.greet()" + Model.Semicolon + " " + Model.Commentor + " \"Hello, Josh!\"",
-                Model.PrintFunction + "(josh.isAboveAge(35))" + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse
+                Model.CallFunction(Model.PrintFunction, "josh.isAboveAge(35)") + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse
             })
         }
     });
@@ -142,21 +142,21 @@
                 Model.FunctionEnd == null ? null : "    " + Model.FunctionEnd,
                 Model.ClassEnd,
                 "",
-                Model.PrintFunction + "(Person.species)" + Model.Semicolon + " " + Model.Commentor + " \"human\"",
+                Model.CallFunction(Model.PrintFunction, "Person.species") + Model.Semicolon + " " + Model.Commentor + " \"human\"",
                 "",
                 Model.VariableDeclare + "josh = Person(\"Josh\", 21)" + Model.Semicolon,
-                Model.PrintFunction + "(josh.species)" + Model.Semicolon + " " + Model.Commentor + " \"human\"",
+                Model.CallFunction(Model.PrintFunction, "josh.species") + Model.Semicolon + " " + Model.Commentor + " \"human\"",
             }),
             "If you want to set a different species for a Person instance, that's fine: it'll create a new member variable for that instance only.",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "josh.species = \"alien\"" + Model.Semicolon,
-                Model.PrintFunction + "(josh.species)" + Model.Semicolon + " " + Model.Commentor + " \"alien\"",
-                Model.PrintFunction + "(Person.species)" + Model.Semicolon + " " + Model.Commentor + " \"human\"",
+                Model.CallFunction(Model.PrintFunction, "josh.species") + Model.Semicolon + " " + Model.Commentor + " \"alien\"",
+                Model.CallFunction(Model.PrintFunction, "Person.species") + Model.Semicolon + " " + Model.Commentor + " \"human\"",
                 "",
                 "Person.species = \"homo sapien sapien\"" + Model.Semicolon,
-                Model.PrintFunction + "(josh.species)" + Model.Semicolon + " " + Model.Commentor + " \"alien\"",
-                Model.PrintFunction + "(Person.species)" + Model.Semicolon + " " + Model.Commentor + " \"homo sapien sapien\"",
+                Model.CallFunction(Model.PrintFunction, "josh.species") + Model.Semicolon + " " + Model.Commentor + " \"alien\"",
+                Model.CallFunction(Model.PrintFunction, "Person.species") + Model.Semicolon + " " + Model.Commentor + " \"homo sapien sapien\"",
             })
         }
     });

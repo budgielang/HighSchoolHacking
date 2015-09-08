@@ -295,21 +295,21 @@
                 {
                     "if" + Model.ConditionalLeft + "1 + 1 == 2" + Model.ConditionalRight,
                     "    if" + Model.ConditionalLeft + "2 + 2 == 4" + Model.ConditionalRight,
-                    "        " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    "        " + Model.CallFunction(Model.PrintFunction, "\"Math!\"") + Model.Semicolon,
                     Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                     Model.ConditionalEnd
                 }),
                 Section.WrapCode(Model.NameLower, new string[]
                 {
                     "if" + Model.ConditionalLeft + "1 + 1 == 2 " + Model.And + " 2 + 2 == 4" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Math!\"") + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 "If either of the conditions are false, the inside code won't run:",
                 Section.WrapCode(Model.NameLower, new string[]
                 {
                     "if" + Model.ConditionalLeft + "1 + 1 == 2 " + Model.And + " 2 + 2 == \"Fish\"" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Nope.\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Nope.\"") + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 Section.WrapHead("Or"),
@@ -317,16 +317,16 @@
                 Section.WrapCode(Model.NameLower, new string[]
                 {
                     "if" + Model.ConditionalLeft + "2 + 2 == \"Fish\"" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Math!\"") + Model.Semicolon,
                     Model.ConditionalEnd,
                     "if" + Model.ConditionalLeft + "2 + 2 == 4" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Math!\"") + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 Section.WrapCode(Model.NameLower, new string[]
                 {
                     "if" + Model.ConditionalLeft + "2 + 2 == \"Fish\" " + Model.Or + " 2 + 2 == 4" + Model.ConditionalRight,
-                    "    " + Model.PrintFunction + "(\"Math!\")" + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "\"Math!\"") + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
                 "The first statement was obviously false, but <em>Math!</em> still gets printed because the second one is true."
@@ -360,7 +360,7 @@
                     {
                         Model.VariableDeclare + "song = \"Never Gonna Give You Up\"" + Model.Semicolon,
                         "if" + Model.ConditionalLeft + "song == \"Never Gonna Give You Up\" " + Model.Or + " song != \"Never Gonna Give You Up\"" + Model.ConditionalRight,
-                        "    " + Model.PrintFunction + "(\"Yes!\")" + Model.Semicolon,
+                        "    " + Model.CallFunction(Model.PrintFunction, "\"Yes!\"") + Model.Semicolon,
                         Model.ConditionalEnd
                     }),
                     "Using one <code>if</code> statement and one <code>else</code> statement, check if your age is above 10 and your weight is below 700, printing out either \"Both!\" or \"One or two were wrong!\"." + Section.WrapCode(Model.NameLower, new string[]
@@ -368,9 +368,9 @@
                         Model.VariableDeclare + "age = 21" + Model.Semicolon,
                         Model.VariableDeclare + "weight = 182" + Model.Semicolon,
                         "if" + Model.ConditionalLeft + "age > 10 " + Model.And + " weight < 700" + Model.ConditionalRight,
-                        "    " + Model.PrintFunction + "(\"Both!\")" + Model.Semicolon,
+                        "    " + Model.CallFunction(Model.PrintFunction, "\"Both!\"") + Model.Semicolon,
                         Model.ConditionalContinueLeft + "else" + Model.ConditionalContinueRight,
-                        "    " + Model.PrintFunction + "(\"One or two were wrong!\")" + Model.Semicolon,
+                        "    " + Model.CallFunction(Model.PrintFunction, "\"One or two were wrong!\"") + Model.Semicolon,
                         Model.ConditionalEnd
                     })
                 })

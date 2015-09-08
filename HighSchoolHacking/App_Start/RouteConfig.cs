@@ -47,6 +47,17 @@ namespace HighSchoolHacking
             );
 
             routes.MapRoute(
+                "Ruby",
+                "Ruby/{section}",
+                new
+                {
+                    controller = "Ruby",
+                    action = "Index",
+                    section = "Index",
+                }
+            );
+
+            routes.MapRoute(
                 "LOLCODE",
                 "LOLCODE/{section}",
                 new
