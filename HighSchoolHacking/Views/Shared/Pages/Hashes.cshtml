@@ -22,12 +22,12 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
-                "    \"apple\"=> 7,",
-                "    \"banana\"=> 14,",
-                "    \"cherry\"=> 21",
+                "    \"apple\" => 7,",
+                "    \"banana\" => 14,",
+                "    \"cherry\" => 21",
                 "}" + Model.Semicolon,
                 "",
-                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :apple=> 7, :banana=> 14}"
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {\"cherry\"=> 21, \"apple\"=> 7, \"banana\"=> 14}"
             }),
             "To look up a value in the " + Model.DictionaryName + ", you use the same syntax as " + Model.ArrayNamePlural + ":",
             Section.WrapCode(Model.NameLower, new string[]
@@ -64,20 +64,20 @@
                 "Create a new " + Model.DictionaryName + " storing \"red\" as three, \"blue\" as seven, and \"green\" as four." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "fruits = {",
-                    "    \"red\"=> 3,",
-                    "    \"blue\"=> 7,",
-                    "    \"green\"=> 4,",
+                    "    \"red\" => 3,",
+                    "    \"blue\" => 7,",
+                    "    \"green\" => 4,",
                     "}" + Model.Semicolon
                 }),
                 "Suppose you're tracking a list of married couples. Put at least four names in a " + Model.DictionaryName + ", keyed to their spouses. Look up the spouse of one of them." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "couples = {",
-                    "    \"Noah\"=> \"Sophia\",",
-                    "    \"Liam\"=> \"Emma\",",
-                    "    \"Alex\"=> \"Devin\",",
-                    "    \"Sophia\"=> \"Noah\",",
-                    "    \"Emma\"=> \"Liam\",",
-                    "    \"Devin\"=> \"Alex\",",
+                    "    \"Noah\" => \"Sophia\",",
+                    "    \"Liam\" => \"Emma\",",
+                    "    \"Alex\" => \"Devin\",",
+                    "    \"Sophia\" => \"Noah\",",
+                    "    \"Emma\" => \"Liam\",",
+                    "    \"Devin\" => \"Alex\",",
                     "}" + Model.Semicolon
                 })
             })
@@ -94,17 +94,17 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
-                "    \"apple\"=> 7,",
-                "    \"banana\"=> 14,",
-                "    \"cherry\"=> 21",
+                "    \"apple\" => 7,",
+                "    \"banana\" => 14,",
+                "    \"cherry\" => 21",
                 "}" + Model.Semicolon,
                 "",
-                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :apple=> 7, :banana=> 14}",
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {\"cherry\"=> 21, \"apple\"=> 7, \"banana\"=> 14}",
                 "",
                 "fruits[\"date\"] = 3" + Model.Semicolon,
                 "",
                 Model.CallFunction(Model.PrintFunction, "fruits[\"date\"]") + Model.Semicolon + " " + Model.Commentor + " 3",
-                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {:cherry=> 21, :date=> 3, :apple=> 7, :banana=> 14}"
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {\"cherry\"=> 21, \"date\"=> 3, \"apple\"=> 7, \"banana\"=> 14}"
             }),
             "You can set a value multiple times, too:",
             Section.WrapCode(Model.NameLower, new string[]
@@ -115,7 +115,7 @@
                 Model.CallFunction(Model.PrintFunction, "fruits[\"apple\"]") + Model.Semicolon + " " + Model.Commentor + " 3",
                 "",
                 "fruits[\"apple\"] = \"Hello!\"" + Model.Semicolon,
-                Model.CallFunction(Model.PrintFunction, "fruits[\"apple\"]") + Model.Semicolon + " " + Model.Commentor + " \"Hello!\"",
+                Model.CallFunction(Model.PrintFunction, "fruits[\"apple\"]") + Model.Semicolon + " " + Model.Commentor + " Hello!",
             })
         }
     });
@@ -176,9 +176,9 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
-                "    \"apple\"=> 7,",
-                "    \"banana\"=> 14,",
-                "    \"cherry\"=> 21",
+                "    \"apple\" => 7,",
+                "    \"banana\" => 14,",
+                "    \"cherry\" => 21",
                 "}" + Model.Semicolon,
                 "",
                 "for" + Model.ConditionalLeft + Model.VariableDeclare + "key,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
@@ -213,7 +213,7 @@
         {
             Section.WrapList(new string[]
             {
-                "Loop through each of the original examples above, printing each of the pairs.",
+                "Loop through the hashes you created for the first two exercises, printing each of the pairs (use for/in syntax!).",
                 "Create a new " + Model.ArrayName + " of your three favorite fruits, with a new empty " + Model.DictionaryName + ". Use a <code>for</code> loop to copy each fruit from the " + Model.ArrayName + " to the " + Model.DictionaryName + ", keyed to the length of the fruit's name. Print each of the pairs.",
             })
         }
@@ -228,12 +228,12 @@
         {
             Section.WrapList(new string[]
             {
-                "Loop through each of the original exercises above, printing each of the pairs." + Section.WrapCode(Model.NameLower, new string[]
+                "Loop through the hashes you created for the first two exercises, printing each of the pairs (use for/in syntax!)." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "fruits = {",
-                    "    \"red\"=> 3,",
-                    "    \"blue\"=> 7,",
-                    "    \"green\"=> 4,",
+                    "    \"red\" => 3,",
+                    "    \"blue\" => 7,",
+                    "    \"green\" => 4,",
                     "}" + Model.Semicolon,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "fruit,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
@@ -242,12 +242,12 @@
                 }) + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "couples = {",
-                    "    \"Noah\"=> \"Sophia\",",
-                    "    \"Liam\"=> \"Emma\",",
-                    "    \"Alex\"=> \"Devin\",",
-                    "    \"Sophia\"=> \"Noah\",",
-                    "    \"Emma\"=> \"Liam\",",
-                    "    \"Devin\"=> \"Alex\",",
+                    "    \"Noah\" => \"Sophia\",",
+                    "    \"Liam\" => \"Emma\",",
+                    "    \"Alex\" => \"Devin\",",
+                    "    \"Sophia\" => \"Noah\",",
+                    "    \"Emma\" => \"Liam\",",
+                    "    \"Devin\" => \"Alex\",",
                     "}" + Model.Semicolon,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "couple,value in couples" + Model.DictionaryIterator + Model.ConditionalRight,
@@ -264,7 +264,7 @@
                     Model.ConditionalEnd,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "like,length in likes" + Model.DictionaryIterator + Model.ConditionalRight,
-                    "    " + Model.CallFunction(Model.PrintFunction, "like + \" has \" + length") + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "like + \" has \" + length.to_s()") + Model.Semicolon,
                     Model.ConditionalEnd
                 })
             })
