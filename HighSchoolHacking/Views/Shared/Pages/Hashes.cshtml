@@ -237,7 +237,7 @@
                     "}" + Model.Semicolon,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "fruit,value in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
-                    "    " + Model.CallFunction(Model.PrintFunction, "fruit + \" has \" + value.to_s") + Model.Semicolon,
+                    "    " + Model.CallFunction(Model.PrintFunction, "fruit + \" has \" + value.to_s()") + Model.Semicolon,
                     Model.ConditionalEnd
                 }) + Section.WrapCode(Model.NameLower, new string[]
                 {
