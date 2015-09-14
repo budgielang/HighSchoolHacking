@@ -22,7 +22,7 @@
                 Model.ConditionalEnd,
                 Model.EndIf
             }),
-            Model.Name + " knows that <code>" + Model.BooleanTrue + "</code> is true (in conditionals, things should run), and <code>" + Model.BooleanFalse + "</code> is false (they shouldn't). Try running this code (it should print <em>Yes!</em>). Don't forget to write the <code>" + (String.IsNullOrWhiteSpace(Model.ConditionalRight) ? Model.If : Model.ConditionalRight) + "</code> at the end of the if statement!",
+            Model.Name + " knows that <code>" + Model.BooleanTrue + "</code> is true (in conditionals, things should run), and <code>" + Model.BooleanFalse + "</code> is false (they shouldn't). Try running this code (it should print <em>Yes!</em>). Don't forget to write the <code>" + (String.IsNullOrWhiteSpace(Model.ConditionalRight) ? Model.ConditionalEnd : Model.ConditionalRight) + "</code> at the end of the if statement!",
             "Note that there are four spaces at the beginning of the second line. You don't have to use four (you can just use one), but your code becomes really ugly and hard to read so if you only use one or two, you're an evil person. This is called indenting your code, and you really should do it. Languages like Python even force you to, though most don't.",
             "The following code should only print <em>B</em>, because the first print is inside an <code>if</code> statement that won't be run:",
             Section.WrapCode(Model.NameLower, new string[]
@@ -88,7 +88,7 @@
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.MakeConditional(Model.If, Model.ComputeMath(Model.ComputeMath("2", "*", Model.ComputeMath("1", "+", "2")), "==", Model.ComputeMath(Model.ComputeMath("2", "*", "1"), "+", Model.ComputeMath("2", "*", "2")))),
+                Model.MakeConditional(Model.If, Model.ComputeMath(Model.ComputeMath("2", "*", Model.ComputeMath("(1", "+", "2)")), "==", Model.ComputeMath(Model.ComputeMath("(2", "*", "1)"), "+", Model.ComputeMath("(2", "*", "2)")))),
                 "    " + Model.WhenTrue + Model.CallFunction(Model.PrintFunction, "\"Distributive Property!\"") + Model.Semicolon,
                 Model.ConditionalEnd,
                 Model.EndIf
