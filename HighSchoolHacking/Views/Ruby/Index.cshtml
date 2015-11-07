@@ -25,4 +25,15 @@
         },
         Goto = "/Ruby/Learn"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Ruby.Color, 2),
+        Title = "Ruby Koans",
+        Paragraphs = new string[]
+        {
+            "After learning the basics, \"Koans\" is your next step on \"the path to enlightenment\". In this section, you will learn how to run, test, and debug basic Ruby programs."
+        },
+        Goto = "/Ruby/Koans"
+    });
 }

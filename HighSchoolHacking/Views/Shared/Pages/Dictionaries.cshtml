@@ -21,14 +21,14 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
-                "    \"apple\": 7,",
-                "    \"banana\": 14,",
-                "    \"cherry\": 21",
+                "    \"apple\" " + Model.DictionaryValueDefinition + " 7,",
+                "    \"banana\" " + Model.DictionaryValueDefinition + " 14,",
+                "    \"cherry\" " + Model.DictionaryValueDefinition + " 21",
                 "}" + Model.Semicolon,
                 "",
-                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {'cherry': 21, 'apple': 7, 'banana': 14}"
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {'cherry' " + Model.DictionaryValueDefinition + " 21, 'apple' " + Model.DictionaryValueDefinition + " 7, 'banana' " + Model.DictionaryValueDefinition + " 14}"
             }),
-            "To look up a value in the " + Model.DictionaryName + ", you use the same syntax as " + Model.ArrayNamePlural + ":",
+            "To look up a value in the " + Model.DictionaryName + ", you use the same syntax as " + Model.ArrayNamePlural + " " + Model.DictionaryValueDefinition + "",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 "fruits[\"apple\"]" + Model.Semicolon + " " + Model.Commentor + " 7"
@@ -63,20 +63,20 @@
                 "Create a new " + Model.DictionaryName + " storing \"red\" as three, \"blue\" as seven, and \"green\" as four." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "fruits = {",
-                    "    \"red\": 3,",
-                    "    \"blue\": 7,",
-                    "    \"green\": 4,",
+                    "    \"red\" " + Model.DictionaryValueDefinition + " 3,",
+                    "    \"blue\" " + Model.DictionaryValueDefinition + " 7,",
+                    "    \"green\" " + Model.DictionaryValueDefinition + " 4,",
                     "}" + Model.Semicolon
                 }),
                 "Suppose you're tracking a list of married couples. Put at least four names in a " + Model.DictionaryName + ", keyed to their spouses. Look up the spouse of one of them." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "couples = {",
-                    "    \"Noah\": \"Sophia\",",
-                    "    \"Liam\": \"Emma\",",
-                    "    \"Alex\": \"Devin\",",
-                    "    \"Sophia\": \"Noah\",",
-                    "    \"Emma\": \"Liam\",",
-                    "    \"Devin\": \"Alex\",",
+                    "    \"Noah\" " + Model.DictionaryValueDefinition + " \"Sophia\",",
+                    "    \"Liam\" " + Model.DictionaryValueDefinition + " \"Emma\",",
+                    "    \"Alex\" " + Model.DictionaryValueDefinition + " \"Devin\",",
+                    "    \"Sophia\" " + Model.DictionaryValueDefinition + " \"Noah\",",
+                    "    \"Emma\" " + Model.DictionaryValueDefinition + " \"Liam\",",
+                    "    \"Devin\" " + Model.DictionaryValueDefinition + " \"Alex\",",
                     "}" + Model.Semicolon
                 })
             })
@@ -89,23 +89,23 @@
         Title = "Adding to " + Model.DictionaryNamePlural,
         Paragraphs = new string[]
         {
-            "You can always add to a " + Model.DictionaryName + ". You specify which element to set with " + Model.ArrayName + " syntax, and set it equal to whatever you want:",
+            "You can always add to a " + Model.DictionaryName + ". You specify which element to set with " + Model.ArrayName + " syntax, and set it equal to whatever you want " + Model.DictionaryValueDefinition + "",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
-                "    \"apple\": 7,",
-                "    \"banana\": 14,",
-                "    \"cherry\": 21",
+                "    \"apple\" " + Model.DictionaryValueDefinition + " 7,",
+                "    \"banana\" " + Model.DictionaryValueDefinition + " 14,",
+                "    \"cherry\" " + Model.DictionaryValueDefinition + " 21",
                 "}" + Model.Semicolon,
                 "",
-                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {'cherry': 21, 'apple': 7, 'banana': 14}",
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {'cherry' " + Model.DictionaryValueDefinition + " 21, 'apple' " + Model.DictionaryValueDefinition + " 7, 'banana' " + Model.DictionaryValueDefinition + " 14}",
                 "",
                 "fruits[\"date\"] = 3" + Model.Semicolon,
                 "",
                 Model.CallFunction(Model.PrintFunction, "fruits[\"date\"]") + Model.Semicolon + " " + Model.Commentor + " 3",
-                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {'cherry': 21, 'date': 3, 'apple': 7, 'banana': 14}"
+                Model.CallFunction(Model.PrintFunction, "fruits") + Model.Semicolon + " " + Model.Commentor + " {'cherry' " + Model.DictionaryValueDefinition + " 21, 'date' " + Model.DictionaryValueDefinition + " 3, 'apple' " + Model.DictionaryValueDefinition + " 7, 'banana' " + Model.DictionaryValueDefinition + " 14}"
             }),
-            "You can set a value multiple times, too:",
+            "You can set a value multiple times, too " + Model.DictionaryValueDefinition + "",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {}" + Model.Semicolon,
@@ -169,24 +169,24 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "fruits = {",
-                "    \"apple\": 7,",
-                "    \"banana\": 14,",
-                "    \"cherry\": 21",
+                "    \"apple\" " + Model.DictionaryValueDefinition + " 7,",
+                "    \"banana\" " + Model.DictionaryValueDefinition + " 14,",
+                "    \"cherry\" " + Model.DictionaryValueDefinition + " 21",
                 "}" + Model.Semicolon,
                 "",
                 "for" + Model.ConditionalLeft + Model.VariableDeclare + "key in fruits" + Model.ConditionalRight,
                 "    " + Model.CallFunction(Model.PrintFunction, "key + \" has \" + fruits[key]") + Model.Semicolon,
                 Model.ConditionalEnd
             }),
-            "When looping through a " + Model.DictionaryNamePlural + ", the <code>key</code> variable is set to each of the keys. One time it will be \"apple\", another \"banana\", and another \"cherry\".",
-            "This can get really complicated with loops. Read through the following block of code carefully: for each String in the " + Model.ArrayName + ", it records in the " + Model.DictionaryName + " the length of the String.",
+            "When looping through a " + Model.DictionaryName + ", the <code>key</code> variable is set to each of the keys. One time it will be \"apple\", another \"banana\", and another \"cherry\".",
+            "This can get really complicated with loops. Read through the following block of code carefully " + Model.DictionaryValueDefinition + " for each String in the " + Model.ArrayName + ", it records in the " + Model.DictionaryName + " the length of the String.",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "words = [\"apple\", \"banana\", \"cherry\"]" + Model.Semicolon,
                 Model.VariableDeclare + "lengths = {}" + Model.Semicolon,
                 String.IsNullOrWhiteSpace(Model.VariableDeclare)
                     ? null
-                    : Model.VariableDeclare + "word" + Model.Semicolon,
+                     :Model.VariableDeclare + "word" + Model.Semicolon,
                 "",
                 Model.StartLengthLoop("i", "word", "words"),
                 "    lengths[word] = " + Model.UseLength("word") + Model.Semicolon,
@@ -221,9 +221,9 @@
                 "Loop through each of the original exercises above, printing each of the pairs." + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "fruits = {",
-                    "    \"red\": 3,",
-                    "    \"blue\": 7,",
-                    "    \"green\": 4,",
+                    "    \"red\" " + Model.DictionaryValueDefinition + " 3,",
+                    "    \"blue\" " + Model.DictionaryValueDefinition + " 7,",
+                    "    \"green\" " + Model.DictionaryValueDefinition + " 4,",
                     "}" + Model.Semicolon,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "fruit in fruits" + Model.DictionaryIterator + Model.ConditionalRight,
@@ -232,12 +232,12 @@
                 }) + Section.WrapCode(Model.NameLower, new string[]
                 {
                     Model.VariableDeclare + "couples = {",
-                    "    \"Noah\": \"Sophia\",",
-                    "    \"Liam\": \"Emma\",",
-                    "    \"Alex\": \"Devin\",",
-                    "    \"Sophia\": \"Noah\",",
-                    "    \"Emma\": \"Liam\",",
-                    "    \"Devin\": \"Alex\",",
+                    "    \"Noah\" " + Model.DictionaryValueDefinition + " \"Sophia\",",
+                    "    \"Liam\" " + Model.DictionaryValueDefinition + " \"Emma\",",
+                    "    \"Alex\" " + Model.DictionaryValueDefinition + " \"Devin\",",
+                    "    \"Sophia\" " + Model.DictionaryValueDefinition + " \"Noah\",",
+                    "    \"Emma\" " + Model.DictionaryValueDefinition + " \"Liam\",",
+                    "    \"Devin\" " + Model.DictionaryValueDefinition + " \"Alex\",",
                     "}" + Model.Semicolon,
                     "",
                     "for" + Model.ConditionalLeft + Model.VariableDeclare + "couple in couples" + Model.ConditionalRight,

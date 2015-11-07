@@ -127,6 +127,8 @@ namespace HighSchoolHacking.Models
 
         public bool DictionaryIterateAsPair { get; set; }
 
+        public string DictionaryValueDefinition { get; set; }
+
         public bool FunctionsFirstClass { get; set; }
 
         public bool FunctionsAsVariables { get; set; }

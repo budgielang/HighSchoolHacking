@@ -1,0 +1,187 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 12),
+        Title = "Recursion",
+        Extension = Model.NameLower,
+        Large = true,
+        Back = "/" + Model.Name + "/Learn",
+        Goto = "/" + Model.Name + "/Recursion",
+        Paragraphs = new string[]
+        {
+            "This lesson will probably blow your mind if you've never seen recursion before, so be careful to read it very carefully and understand each section before moving to the next. There's no new syntax, but this is consistently the most confusing /Learn lesson of all.",
+            "Recursion is the practice of making a Function call itself. This is used where solving a problem requires solving smaller versions of that problem, so it's useful to have a Function be able to run itself on different inputs.",
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 13),
+        Title = "Basic usage",
+        Paragraphs = new string[]
+        {
+            "Consider these blocks of code (don't run them!):",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"YUP\"") + Model.Semicolon,
+                Model.ConditionalEnd
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "printForever()" + Model.FunctionRight,
+                "    " + Model.CallFunction(Model.PrintFunction, "\"YUP\"") + Model.Semicolon,
+                "    printForever()" + Model.Semicolon,
+                Model.FunctionEnd,
+                "", 
+                "printForever()" + Model.Semicolon
+            }),
+            "As you might have guessed, they do the same thing, which is print \"YUP\" forever.",
+            "When you make a Function call itself, it follows the same logic as normal programming. The Function starts running and starts going through each line of code in order. When it reaches the call to itself, nothing unusual happens: it starts running the called Function, which starts running and going through each of its lines in order.",
+            "Normally, you'll want recursive Functions to stop at some point instead of continuing forever. This is called the <em>base case</em>. For example, the following code blocks both print numbers from 0 to 7:",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.VariableDeclare + "i = 0" + Model.Semicolon,
+                "while" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                "    i = i + 1" + Model.Semicolon,
+                Model.ConditionalEnd,
+                ""
+            }),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                Model.FunctionDefine + "printNumbers(i)" + Model.FunctionRight,
+                "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
+                "    if" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                "        printNumbers(i + 1)" + Model.Semicolon,
+                Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                Model.FunctionEnd,
+                "", 
+                "printNumbers(0)" + Model.Semicolon
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a recursive Function that prints numbers from 7 to 0, decreasing.",
+                "Write a recursive Function that prints odd numbers from 0 to 7, increasing.",
+                "Write a recursive Function that prints multiples of 3 from 0 to 50, increasing (including 0)."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Fibonacci Numbers",
+        Paragraphs = new string[]
+        {
+            "The Fibonacci sequence is one of the most important number sequences in math, and has helped advance the fields of math, economics, networking, audio compression, geometry, graphics, biology, and more. If you're ever bored, you can <a href=\"http://en.wikipedia.org/wiki/Fibonacci_number\">read up on them</a>.",
+            "The sequence is defined as:",
+            Section.WrapQuote("F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>"),
+            "Each number in the sequence is equal to the prior two numbers added together. The first two numbers are 0 and 1, so the next number is 1 (0 + 1 = 1), followed by 2 (1 + 1 = 2), then 3 (1 + 2 = 3), then 5 (2 + 3 = 5), and so on.",
+            Section.WrapQuote("0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ..."),
+            "This definition works really well in code! You can write a recursive Function that computes the N<sup>th</sup> Fibonacci number. To write the Fibonacci Function, there are two steps:",
+            Section.WrapList(new string[]
+            {
+                "If N is 0 or 1, return N.",
+                "Return Fibonacci(N - 1) + Fibonacci(N - 2)."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write the Fibonacci Function.",
+                "Test the Function on smaller Ns first, then get really big. Find out when your computer starts to take more than a few seconds to finish.",
+                "The Function is taking a while because it has to re-compute smaller Ns over and over again. Modify your Function to initially create a new " + Model.DictionaryName + " to store results, and make your Function check if that " + Model.DictionaryName + " already has a result before computing it again.<br /><em>Hint: you can check if your " + Model.DictionaryName + " has a key in it using <code>" + Model.DictionaryKeyCheckName + "</code>:</em>" + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "$ache = {}" + Model.Semicolon,
+                    "",
+                    Model.CallFunction(Model.PrintFunction, Model.CheckDictionaryKey("0", "cache")) + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanFalse,
+                    "",
+                    "cache[0] = \"bar\"" + Model.Semicolon,
+                    Model.CallFunction(Model.PrintFunction, Model.CheckDictionaryKey("0", "cache")) + Model.Semicolon + " " + Model.Commentor + " " + Model.BooleanTrue                    
+                }),
+                "Run the same tests on this new Function. Can you get it to slow down?"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write the Fibonacci Function." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.FunctionDefine + "calculateFibonacci(n)" + Model.FunctionRight,
+                    "    if" + Model.ConditionalLeft + "n <= 1" + Model.ConditionalRight,
+                    "        return n" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                    "    return calculateFibonacci(n - 1) + calculateFibonacci(n - 2)" + Model.Semicolon,
+                    Model.FunctionEnd
+                }),
+                "Test the Function on smaller Ns first, then get really big. Find out when your computer starts to take more than a few seconds to finish." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.Commentor + " Tests were done on JavaScript. Results may vary...",
+                    "",
+                    "calculateFibonacci(1) " + Model.Commentor + " Nearly instant.",
+                    "calculateFibonacci(10) " + Model.Commentor + " Still nearly instant.",
+                    "calculateFibonacci(20) " + Model.Commentor + " Still nearly instant.",
+                    "calculateFibonacci(30) " + Model.Commentor + " Slight pause before result.",
+                    "calculateFibonacci(35) " + Model.Commentor + " Pause of about a second before result.",
+                    "calculateFibonacci(37) " + Model.Commentor + " Pause of a few seconds before result.",
+                    "calculateFibonacci(40) " + Model.Commentor + " Really long pause before result...",
+                }),
+                "The Function is taking a while because it has to re-compute smaller Ns over and over again. Modify your Function to initially create a new " + Model.DictionaryName + " to store results, and make your Function check if that " + Model.DictionaryName + " already has a result before computing it again." + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    Model.VariableDeclare + "$cache = {}" + Model.Semicolon,
+                    "",
+                    Model.FunctionDefine + "calculateFibonacci(n)" + Model.FunctionRight,
+                    "    if" + Model.ConditionalLeft + "n <= 1" + Model.ConditionalRight,
+                    "        return n" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                    "    ",
+                    "    if" + Model.ConditionalLeft + Model.CheckDictionaryKey("n", "$cache") + Model.ConditionalRight,
+                    "        return $cache[n]" + Model.Semicolon,
+                    Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
+                    "    ",
+                    "    " + Model.VariableDeclare + "result = calculateFibonacci(n - 1) + calculateFibonacci(n - 2)" + Model.Semicolon,
+                    "    $cache[n] = result" + Model.Semicolon,
+                    "    return result" + Model.Semicolon,
+                    Model.FunctionEnd
+                }) + "Note that we put $ before cache in this solution. In Ruby, we define global variables by starting their name with a $. This was just a work-around in this case as we typically don't want to use global variables unless it's absolutely necessary.",
+                "Run the same tests on this new Function. Can you get it to slow down?" + Section.WrapCode(Model.NameLower, new string[]
+                {
+                    "calculateFibonacci(5) " + Model.Commentor + " No pause.",
+                    "calculateFibonacci(10) " + Model.Commentor + " No pause.",
+                    "calculateFibonacci(50) " + Model.Commentor + " No pause.",
+                    "calculateFibonacci(100) " + Model.Commentor + " No pause.",
+                })
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.SwitcherFile, new KeyValuePair<string, string>(Model.Name, "Recursion"));
+}
