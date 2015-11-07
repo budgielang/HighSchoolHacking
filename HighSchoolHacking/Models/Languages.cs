@@ -54,6 +54,7 @@ namespace HighSchoolHacking.Models
             DictionaryKeyCheckName = " in ",
             DictionaryIterator = ".items()",
             DictionaryIterateAsPair = true,
+            DictionaryValueDefinition = ":",
             DirectArrayLoops = true,
             FunctionsFirstClass = true,
             PrintFunction = "print",
@@ -96,6 +97,7 @@ namespace HighSchoolHacking.Models
             ArrayName = "Array",
             ArrayNamePlural = "Arrays",
             DictionaryName = "Object",
+            DictionaryValueDefinition = ":",
             DictionaryNamePlural = "Objects",
             FunctionDefine = "function ",
             FunctionRight = " {",
@@ -153,6 +155,7 @@ namespace HighSchoolHacking.Models
             ArrayNamePlural = "Arrays",
             DictionaryName = "Various Collections",
             DictionaryNamePlural = "Various Collections",
+            DictionaryValueDefinition = ":",
             FunctionDefine = "function ",
             FunctionRight = " {",
             FunctionEnd = "}",
@@ -214,6 +217,7 @@ namespace HighSchoolHacking.Models
             ArrayNamePlural = "Arrays",
             DictionaryName = "Object",
             DictionaryNamePlural = "Objects",
+            DictionaryValueDefinition = ":",
             FunctionDefine = "function ",
             FunctionRight = " {",
             FunctionEnd = "}",
@@ -317,6 +321,7 @@ namespace HighSchoolHacking.Models
             LengthIsProperty = true,
             DictionaryKeyInCheck = false,
             DictionaryKeyCheckName = "has_key?",
+            DictionaryValueDefinition = "=>",
             FunctionsFirstClass = false,
             FunctionsAsVariables = false,
             PrintFunction = "puts",
@@ -326,7 +331,7 @@ namespace HighSchoolHacking.Models
             PageAliases = new Dictionary<string, string> {
                 { "Dictionaries", "Hashes" }
             },
-            CustomPages = new HashSet<string> { "ForLoops" }, 
+            CustomPages = new HashSet<string> { "ForLoops", "Recursion", "Koans" }, 
         };
 
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>

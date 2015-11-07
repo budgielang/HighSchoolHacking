@@ -234,13 +234,14 @@
                 "Use a <code>" + Model.Break + "</code> statement inside a loop that uses <code>while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight + "</code> to write a loop to print all numbers less than 14, starting with 7. Start your counter at 0, and use a <code>" + Model.Continue + "</code> statement." + Section.WrapCode(Model.NameLower, new string[] {
                     Model.VariableDeclare + "i = 0" + Model.Semicolon,
                     "while" + Model.ConditionalLeft + Model.BooleanTrue + Model.ConditionalRight,
-                    "    if" + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                    "    " + Model.If + Model.ConditionalLeft + "i < 7" + Model.ConditionalRight,
+                    "        i = i + 1" + Model.Semicolon
                     "        " + Model.Continue + Model.Semicolon,
-                    "    if" + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
+                    "    " + Model.Elif + Model.ConditionalLeft + "i >= 14" + Model.ConditionalRight,
                     "        " + Model.Break + Model.Semicolon,
                     Model.ConditionalEnd == null ? null : "    " + Model.ConditionalEnd,
                     "    " + Model.CallFunction(Model.PrintFunction, "i") + Model.Semicolon,
-                    "    i = i + 2" + Model.Semicolon,
+                    "    i = i + 1" + Model.Semicolon,
                     Model.ConditionalEnd
                 }),
             })

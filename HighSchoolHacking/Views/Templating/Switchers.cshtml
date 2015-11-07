@@ -19,7 +19,7 @@
                 }
                 else
                 {
-                    <option>@name</option>
+                    <option>@name.Replace(" ", "")</option>
                 }
             }
         </select>
@@ -37,11 +37,11 @@
 
                     if (pageName == Model.Value)
                     {
-                        <option selected="selected">@pageName</option>
+                        <option selected="selected">@pageName.Replace(" ", "")</option>
                     }
                     else
                     {
-                        <option>@pageName</option>
+                        <option>@pageName.Replace(" ", "")</option>
                     }
                 }
             }
