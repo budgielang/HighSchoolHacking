@@ -207,6 +207,7 @@
     <Content Include="Content\Images\DeveloperTools\ElementStyle.png" />
     <Content Include="Content\Images\Front Background.jpg" />
     <Content Include="Content\Images\Microsoft Small.png" />
+    <Content Include="Content\Images\RubyGoal\Screenshot.jpg" />
     <Content Include="Content\Images\WingIDE\BlankDocument.png" />
     <Content Include="Content\Images\WingIDE\BlankWindow.png" />
     <Content Include="Content\Images\WingIDE\HelpWindow.png" />
