@@ -1,0 +1,137 @@
+﻿@using HighSchoolHacking.Models
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 4),
+        Title = "RubyGoal",
+        Goto = "https://github.com/wyeworks/rubygoal",
+        Extension = "ruby",
+        Large = true,
+        Back = "/Ruby",
+        Paragraphs = new string[]
+        {
+            "What Ruby calls gems, most other languages refer to as libraries. In this exercise, we are going to learn about using other people's code through gems.",
+            "The gem we will be using is called RubyGoal. RubyGoal gives you the tools to create teams, strategize, and eventually simulate a soccer match. We'll use this gem to have a little competition between students! Here's what it looks like when two teams are playing:",
+             Section.WrapImage("RubyGoal/Screenshot.jpg"),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 5),
+        Title = "Installing Gems",
+        Paragraphs = new string[]
+        {
+            "In order to use RubyGoal we need to install its gem.",
+            Section.WrapList(true, new string[]
+            {
+                "Open up the command prompt by pressing Win+R and typing cmd.",
+                "Type <code>gem install rubygoal</code> and let the installer run",
+                "If you have any issues, try the following:\n" +
+                    Section.WrapList(true, new string[]
+                    {
+                        "Type <code>gem sources -a http://rubygems.org/</code>",
+                        "Type <code>gem sources -r https://rubygems.org/</code>",
+                        "Press y followed by Enter when prompted",
+                        "Try installing the gem again"
+                    })
+            }),
+            "That's it! Gems are really easy to install because any dependencies they have (other gems that they require in order to work) are installed automatically."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 6),
+        Title = "Defining Coaches and Teams",
+        Paragraphs = new string[]
+        {
+            "First, go to <code>C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\rubygoal-core-1.0.0\\lib\\rubygoal</code>. This is where you can find most of the files defining how the gem behaves. If you open the \"coaches\" folder, you'll find two example coaches. Each of these files is represents a different class for the Rubygoal module. Let's take a look at the home coach first.",
+            Section.WrapHead(""),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "require 'rubygoal/coach_definition'",
+                "require 'rubygoal/formation'"
+            }),
+            "The <code>require</code> keyword in ruby specifies other modules that this module requires in order to work.",
+            Section.WrapHead(""),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "module Rubygoal",
+                "    class CoachDefinitionHome < CoachDefinition"
+            }),
+            "These two lines define the module that this class is a part of and create the class. The <code>< CoachDefinition</code> operator defines this class as a subclass of <code>CoachDefinition</code>. This means that it <i>inherits</i> all the functions and properties from the <code>CoachDefinition</code> class. Then, we can modify parts of our class and the <code>CoachDefinition</code> class can remain the same.",
+            Section.WrapHead(""),
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "team do",
+                "    name \"Uruguay\"",
+                "",
+                "    players do",
+                "        captain :godin",
+                "        fast :cavani",
+                "        average :pereira",
+                "    end",
+                "end"
+            }),
+            "The entire definition isn't here but you can see what's going on. Inside the team class (which is inherited), we define the teams name. Then, inside the players class (which is within the team class) we define the player names. Note that the difference between <code>\"Uruguay\"</code> and <code>:godin</code> is that the first is a string and the second is a symbol. Don't worry about the actual difference for now, just know what they are."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 7),
+        Title = "Match Properties",
+        Paragraphs = new string[]
+        {
+            "The following methods are at your disposal so that you can determine the current state of the match and adapt your player's positioning/behavior accordingly.",
+            Section.WrapHead("<code>match.me</code>"),
+            Section.WrapList(false, new string[]
+            {
+                "<code>.draw?</code> - Returns <code>true</code> if the game is tied",
+                "<code>.losing?</code> - Returns <code>true</code> if your team is losing",
+                "<code>.winning?</code> - Returns <code>true</code> if your team is winning",
+                "<code>.score</code> - Returns the number of goals made by your team"
+            }),
+            Section.WrapHead("<code>match.other</code>"),
+            Section.WrapList(false, new string[]
+            {
+                "<code>.formation</code> - Returns the alignment of the opposing team",
+                "<code>.draw?</code> - Returns <code>true</code> if the game is tied",
+                "<code>.losing?</code> - Returns <code>true</code> if the opposing team is losing",
+                "<code>.winning?</code> - Returns <code>true</code> if the opposing team is winning",
+                "<code>.score</code> - Returns the number of goals made by the opposing team"
+            }),
+            Section.WrapHead("<code>match.ball</code>"),
+            Section.WrapList(false, new string[]
+            {
+                "<code>.x</code> - Returns the x value of the ball <code>[0 - 100]</code>",
+                "<code>.y</code> - Returns the y value of the ball <code>[0 - 100]</code>"
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 8),
+        Title = "Guidelines for Your Coach",
+        Paragraphs = new string[]
+        {
+            "Rules:\n" +
+            Section.WrapList(true, new string[]
+            {
+                "The name of your class <i>must</i> be the same as the name of your custom coach file.",
+                "Each team should consist of the following players:\n" +
+                Section.WrapList(false, new string[]
+                {
+                    "1 captain",
+                    "3 fast",
+                    "6 average"
+                }) + "\nTeams that break this rule are automatically disqualified.",
+            }),
+            "Get creative with your team and player names. Be sure to change your strategy depending on the position of the ball (you can even mirror your opponent's players)!",
+            "Make sure you understand both the home and away coaches before you try your own."
+        }
+    });
+}
