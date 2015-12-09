@@ -339,6 +339,7 @@
     <Content Include="Views\Ruby\Recursion.cshtml" />
     <Content Include="Views\Shared\Pages\Hashes.cshtml" />
     <Content Include="Views\Ruby\Koans.cshtml" />
+    <Content Include="Views\Ruby\RubyGoal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
