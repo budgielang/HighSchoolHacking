@@ -331,7 +331,7 @@ namespace HighSchoolHacking.Models
             PageAliases = new Dictionary<string, string> {
                 { "Dictionaries", "Hashes" }
             },
-            CustomPages = new HashSet<string> { "ForLoops", "Recursion", "Koans", "RubyGoal" }, 
+            CustomPages = new HashSet<string> { "ForLoops", "Recursion", "Koans", "Goal" }, 
         };
 
         public static Dictionary<string, Language> LanguagesByName = new Dictionary<string, Language>

@@ -36,4 +36,15 @@
         },
         Goto = "/Ruby/Koans"
     });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.Ruby.Color, 3),
+        Title = "RubyGoal",
+        Paragraphs = new string[]
+        {
+            "Much of Ruby's flexibility is thanks to its libraries called gems. In this section, you'll learn about gems by defining a coach for a soccer team. You'll then compete against the coaches made by other students to see who can train the best team!"
+        },
+        Goto = "/Ruby/Goal"
+    });
 }
