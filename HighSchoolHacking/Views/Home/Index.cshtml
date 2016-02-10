@@ -103,6 +103,27 @@
 
     Html.RenderPartial(Section.ViewFile, new Section
     {
+        Color = "purple",
+        Title = "C#",
+        Slogans = new string[]
+        {
+            "Why do Java programmers wear glasses? Because they dont C#!"
+        },
+        Paragraphs = new string[]
+        {
+            /// TODO: C# Description
+            "C# is intended to be a simple, modern, general-purpose, object-oriented programming language. It was developed by Microsoft to provide a \"standard\" for other programming languages and to be compatible with their .NET initiative.",
+            "C# looks a lot like Java or C++ so if you have experience with those you'll be at home here. You will learn..." /// finish this
+        },
+        Goto = "/CSharp",
+        Links = new Dictionary<string, string>
+        {
+            { "C# Online", "http://repl.it/languages/csharp" }
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
         Color = "steel",
         Title = "Project Euler",
         Slogans = new string[]
@@ -111,10 +132,10 @@
         },
         Paragraphs = new string[]
         {
-            "We don't have any more lesson plans for you, now that you've finished our Python and JavaScript ones. Sorry!",
+            "We don't have any more lesson plans for you, now that you've finished the languages above. Sorry!",
             "Fortunately, Project Euler is a site that has a lot of more advanced puzzles similar to ours. You can do them in whatever language you want, and they get progressively harder."
         },
-        Goto = "https://www.projecteuler.net"
+        Goto = "http://www.projecteuler.net"
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
