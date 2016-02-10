@@ -169,7 +169,7 @@ namespace HighSchoolHacking.Models
             LengthIsProperty = true,
             FunctionsFirstClass = true,
             FunctionsAsVariables = true,
-            PrintFunction = "console.log",
+            PrintFunction = "Console.WriteLine",
             AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
