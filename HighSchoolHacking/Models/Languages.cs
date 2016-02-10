@@ -173,8 +173,15 @@ namespace HighSchoolHacking.Models
             AppendFunction = "push",
             VariableDeclare = "var ",
             UndefinedError = "Uncaught ReferenceError:",
-            CustomPages = new HashSet<string> { },
-            PageAliases = new Dictionary<string, string> { }
+            CustomPages = new HashSet<string> { 
+ -                "Learn", "HelloWorld", "Variables", "Comments", "Strings",
+ -                "Numbers", "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
+ -                "VariousCollections", "Functions", "Recursion", 
+ -                "DelegatesLambdas", "LINQ", "Async"
+ -          },
+ -          PageAliases = new Dictionary<string, string> { 
+ -              { "Recursion", "Functions" }
+ -          }
         };
 
         public static Language LOLCODE = new Language
