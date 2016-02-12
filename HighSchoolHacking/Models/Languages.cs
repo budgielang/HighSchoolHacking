@@ -142,7 +142,7 @@ namespace HighSchoolHacking.Models
             Continue = "continue",
             Break = "break",
             Semicolon = ";",
-            Commentor = "///",
+            Commentor = "//",
             If = "if",
             Else = "else",
             Elif = "else if",
@@ -163,18 +163,24 @@ namespace HighSchoolHacking.Models
             FunctionEnd = "}",
             ClassEnd = "}",
             ClassThis = "this",
-            LengthName = "length",
+            LengthName = "Length",
             StrictIntegers = false,
             CanConcatenateNumbers = true,
             LengthIsProperty = true,
             FunctionsFirstClass = true,
             FunctionsAsVariables = true,
-            PrintFunction = "console.log",
-            AppendFunction = "push",
-            VariableDeclare = "var ",
+            PrintFunction = "Console.WriteLine",
+            AppendFunction = "Add",
             UndefinedError = "Uncaught ReferenceError:",
-            CustomPages = new HashSet<string> { },
-            PageAliases = new Dictionary<string, string> { }
+            CustomPages = new HashSet<string> {
+                "Learn", "HelloWorld", "Variables", "Comments", "Strings",
+                "Numbers", "Conditionals", "WhileLoops", "Arrays", "ForLoops",
+                "VariousCollections", "Functions", "Recursion",
+                "DelegatesLambdas", "LINQ", "Async"
+            },
+            PageAliases = new Dictionary<string, string> {
+                { "Recursion", "Functions" }
+            }
         };
 
         public static Language LOLCODE = new Language
