@@ -47,7 +47,7 @@
                 Model.Start,
                 "        int i = -1;",
                 "        ",
-                "        // Prints out all add numbers from 0 to 9",
+                "        // Prints out all even numbers from 0 to 9",
                 "        for (;;) {",
                 "            i += 1;",
                 "            ",
@@ -127,8 +127,8 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.Start,
-                "        foreach (char syllable in \"Patrick\") {",
-                "            " + Model.CallFunction(Model.PrintFunction, "syllable") + Model.Semicolon,
+                "        foreach (char letter in \"Patrick\") {",
+                "            " + Model.CallFunction(Model.PrintFunction, "letter") + Model.Semicolon,
                 "        }",
                 Model.End
             }),
@@ -136,8 +136,8 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.Start,
-                "        foreach (var syllable in \"Rick\") {",
-                "            " + Model.CallFunction(Model.PrintFunction, "syllable") + Model.Semicolon,
+                "        foreach (var letter in \"Rick\") {",
+                "            " + Model.CallFunction(Model.PrintFunction, "letter") + Model.Semicolon,
                 "        }",
                 Model.End
             }),
@@ -149,9 +149,9 @@
                 "        string word = \"Bananagram\";",
                 "        ",
                 "        // Print something if there are more than three 'a's in the word",
-                "        foreach (char syllable in word) {",
+                "        foreach (char letter in word) {",
                 "            // Only count 'a's",
-                "            if (syllable != 'a') {",
+                "            if (letter != 'a') {",
                 "                continue;",
                 "            }",
                 "            ",
@@ -207,8 +207,8 @@
                     "        string[] names = { \"Jeff\", \"Donny\", \"Walter\" };",
                     "        ",
                     "        foreach (string name in names) {",
-                    "            foreach (char syllable in name) {",
-                    "                System.Console.WriteLine(syllable);",
+                    "            foreach (char letter in name) {",
+                    "                System.Console.WriteLine(letter);",
                     "            }",
                     "        }",
                     Model.End

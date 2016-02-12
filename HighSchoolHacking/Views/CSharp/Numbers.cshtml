@@ -76,9 +76,7 @@
             "Write code that does the <a href='http://en.wikipedia.org/wiki/Pythagorean_theorem'>Pythagorean theorem</a>. Choose whatever Float values for a and b you'd like." + Section.WrapCode(Model.NameLower, new string[]
             {
                 "using System;",
-                "using System.Math;",
-                "",
-                Model.Start,
+                "using System.Math;\n\nclass Program\n{\n    static void Main()\n    {",
                 "        float a = 7;",
                 "        float b = 11;",
                 "        Console.WriteLine(\"The hypotenuse is {0}.\", Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2)));",

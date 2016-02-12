@@ -139,14 +139,16 @@
             "Oftentimes when using Strings, you want to add other things inside them. You can concatenate Strings, but that gets messy. " + Model.Name + " allows you to mark in a String where things should go, <em>then</em> show them:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "System.String.Format(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\""
+                "String.Format(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\""
             }),
             "That code snippet takes in the string with <code>{<em>#</em>}</code> annotations and a bunch of other arguments. The arguments are inserted in order: the first argument replaces <code>{0}</code>, the second replaces <code>{1}</code>, and so on.",
-            "Incidentally, System.Console.WriteLine also allows you to pass in a format String with arguments after it.",
+            "Incidentally, Console.WriteLine also allows you to pass in a format String with arguments after it.",
             Section.WrapCode(Model.NameLower, new string[]
             {
+                "using System;",
+                "",
                 Model.Start,
-                "        System.Console.WriteLine(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\"",
+                "        Console.WriteLine(\"{0} * {1} = {2}\", 2, 3, 6); // \"2 * 3 = 6\"",
                 Model.End
             }),
             "To make it easier for yourself, you can include the <code>System</code> namespace, which contains the formal <code>String</code> class. Strings are a built-in part of the " + Model.Name + " runtime, but some fancier parts of them are stored in the class.",
@@ -196,8 +198,6 @@
                 }),
                 "Directly print the above String using <code>Console.WriteLine</code>." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                    "using System;",
-                    "",
                     Model.Start,
                     "        " + Model.CallFunction(Model.PrintFunction, "\"{0} {1} {2}\", \"Joshua\", \"Kevin\", \"Goldberg\"") + Model.Semicolon,
                     Model.End
