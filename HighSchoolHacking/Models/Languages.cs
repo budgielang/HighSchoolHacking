@@ -128,7 +128,7 @@ namespace HighSchoolHacking.Models
             Name = "C#",
             NameLower = "csharp",
             Color = "purple",
-            Start = "class Program\n{\n    static void Main()\n    {",
+            Start = "using System;\n\nclass Program\n{\n    static void Main()\n    {",
             End = "    }\n}",
             ParenthesisLeft = "(",
             ParenthesisRight = ")",
@@ -175,11 +175,11 @@ namespace HighSchoolHacking.Models
             CustomPages = new HashSet<string> { 
                   "Learn", "HelloWorld", "Variables", "Comments", "Strings",
                   "Numbers", "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
-                  "VariousCollections", "Functions", "Recursion", 
+                  "VariousCollections", "Functions", "Recursion",
                   "DelegatesLambdas", "LINQ", "Async"
             },
             PageAliases = new Dictionary<string, string> { 
-                { "Recursion", "Functions" }
+                { "Dictionaries", "VariousCollections" }
             }
         };
 

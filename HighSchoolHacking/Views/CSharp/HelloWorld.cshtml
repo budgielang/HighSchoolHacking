@@ -12,15 +12,13 @@
         Paragraphs = new string[]
         {
             "We're going to spend the first few lessons getting you used to working in " + Model.Name + ". These are made assuming you're already experienced with basic coding, such as from one of the earlier lessons here, or from a high school level coding class.",
-            Model.Name + " isn't supported by repl.it, so start by going to <a href='http://csstub.com/'>csstub.com</a>.",
-            "To start coding like this, delete whatever's in the editor (left half of the screen), and copy & paste the following code into it:",
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.Start,
                 "        " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                 Model.End
             }),
-            "To run code when you're on Windows or Linux, hit Control + Enter. If you're on Mac, hit Command + Enter. You should see a <em>Hello world!</em> appear on the right half of the screen (the console). If you did, great! If not, any errors should appear on the right side of the screen instead.",
+            "In this code, just focus on the line that says <code>System.Console.WriteLine(\"Hello world!\");</code>, we'll learn about the rest later."
         }
     });
 
@@ -49,7 +47,7 @@
                 "Instead of printing <em>Hello World</em>, print out your full name." + Section.WrapCode("python", new string[]
                 {
                 Model.Start,
-                "        " + Model.CallFunction(Model.PrintFunction, "\"Joshua Kevin Goldberg.\"") + Model.Semicolon,
+                "        System." + Model.CallFunction(Model.PrintFunction, "\"John Jacob Jingleheimer Schmidt.\"") + Model.Semicolon,
                 Model.End
                 })
             })
@@ -72,9 +70,7 @@
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "using System;",
-                "",
-                Model.Start,
+                "using System;\n\nclass Program\n{\n    static void Main()\n    {",
                 "        Console.WriteLine(\"Hello world!\");",
                 Model.End
             }),
