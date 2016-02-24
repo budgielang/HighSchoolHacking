@@ -14,8 +14,8 @@
             "We're going to spend the first few lessons getting you used to working in " + Model.Name + ". These are made assuming you're already experienced with basic coding, such as from one of the earlier lessons here, or from a high school level coding class.",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.Start,
-                "        " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
+                "class Program\n{\n    static void Main()\n    {",
+                "        System.Console.WriteLine(\"Hello world!\");",
                 Model.End
             }),
             "In this code, just focus on the line that says <code>System.Console.WriteLine(\"Hello world!\");</code>, we'll learn about the rest later."
@@ -44,10 +44,10 @@
         {
             Section.WrapList(new string[]
             {
-                "Instead of printing <em>Hello World</em>, print out your full name." + Section.WrapCode("python", new string[]
+                "Instead of printing <em>Hello World</em>, print out your full name." + Section.WrapCode(Model.NameLower, new string[]
                 {
-                Model.Start,
-                "        System." + Model.CallFunction(Model.PrintFunction, "\"John Jacob Jingleheimer Schmidt.\"") + Model.Semicolon,
+                "class Program\n{\n    static void Main()\n    {",
+                "        System.Console.WriteLine(\"John Jacob Jingleheimer Schmidt\")" + Model.Semicolon,
                 Model.End
                 })
             })
