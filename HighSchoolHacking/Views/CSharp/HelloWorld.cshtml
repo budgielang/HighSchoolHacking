@@ -64,14 +64,14 @@
             "The following two code blocks do the same thing:",
             Section.WrapCode(Model.NameLower, new string[]
             {
-                Model.Start,
-                "        " + Model.CallFunction(Model.PrintFunction, "Hello world!") + Model.Semicolon,
+                "class Program\n{\n    static void Main()\n    {",
+                "        System.Console.WriteLine(\"Hello world!\");",
                 Model.End
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
-                "using System;\n\nclass Program\n{\n    static void Main()\n    {",
-                "        Console.WriteLine(\"Hello world!\");",
+                Model.Start,
+                "        " + Model.CallFunction(Model.PrintFunction, "\"Hello world!\"") + Model.Semicolon,
                 Model.End
             }),
             "In the second one, the first line told the compiler that you're using the <code>System</code> namespace, which, among other things, includes <code>Console</code>.",
