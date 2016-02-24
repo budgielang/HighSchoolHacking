@@ -15,7 +15,11 @@
                 "We're going to spend the first few lessons getting you used to working in " + Model.Name + ". If this is your first time coding, you're in for a great ride.",
                 "Go through these lessons in order."
             },
-        Goto = "HelloWorld"
+        Goto = "HelloWorld",
+        Links = new Dictionary<string, string>
+        {
+            { "C# Online", "http://repl.it/languages/csharp" }
+        }
     });
 
     Html.RenderPartial(Section.ViewFile, new Section
