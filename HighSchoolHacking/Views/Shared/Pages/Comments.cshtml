@@ -15,12 +15,12 @@
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "foo " + Model.Equals + " \"Hello world!\"",
-                Model.CallFunction(Model.PrintFunction, "foo") + Model.Commentor + " If all goes well, this should output 'Hello World!'"
+                Model.CallFunction(Model.PrintFunction, "foo") + Model.Semicolon + " " + Model.Commentor + " If all goes well, this should output 'Hello World!'"
             }),
             Section.WrapCode(Model.NameLower, new string[]
             {
                 Model.VariableDeclare + "foo " + Model.Equals + " \"Hello world!\"",
-                Model.CallFunction(Model.PrintFunction, "fooo") + Model.Commentor + " " + Model.UndefinedError + " 'fooo' is not defined"
+                Model.CallFunction(Model.PrintFunction, "fooo") + Model.Semicolon + " " + Model.Commentor + " " + Model.UndefinedError + " 'fooo' is not defined"
             }),
             "You put comments with a <code>" + Model.Commentor + "</code> before them. We'll expect you to do this around complicated blocks of code, since in later lessons it can be hard to understand your code without you commenting it."
         }
