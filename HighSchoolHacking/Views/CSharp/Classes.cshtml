@@ -1,0 +1,390 @@
+﻿@using HighSchoolHacking.Models
+@model Language
+
+@{
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 14),
+        Title = "Classes",
+        Extension = Model.NameLower,
+        Back = "/" + Model.Name + "/Learn",
+        Large = true,
+        Paragraphs = new string[]
+        {
+            "Object-oriented programming is the most common type of programming done today. It focuses on objects instead of actions. This means that we organize our code more around the objects we use to represent data, instead of around the actual actions we use to get our code working.",
+            "Classes are a fundamental concept in object-oriented programming. Classes allow us to create objects, and use them as an abstract representation of our world or the data in our program. In order to really excel with C#, a good grasp of classes and basic object-oriented programming is extremely important.",
+            "You may already be familiar with various object-oriented programming concepts from experience with Java, but take this lesson nice and slow as it is extremely important."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 15),
+        Title = "The Basics of Classes",
+        Paragraphs = new string[]
+        {
+            "To understand classes you must first understand their structure. The class <b>definition</b> is where the variables and functions for the class are described. After the class is defined, it can be used in the rest of the program.",
+            "Let's look at a simple definition for a class that represents a soda.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "class Soda",
+                "{",
+                "    public string name;         // Name of a soda",
+                "    public int sugar;           // Amount of sugar in soda (g)",
+                "    public string[] vendors;    // Sellers of this soda",
+                "}"
+            }),
+            "In this class definition we start by calling our class <code>Soda</code>. Then, we define a few variables that can be used to represent a particular <code>Soda</code>, such as its name, the amount of sugar it contains, and where it's sold. These variables are called <b>member</b> variables and we say that they are members of the class they belong to. It's that simple!",
+            "Next, let's look at some examples of how to use this class definition.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;\n\nclass SodaTester\n{",
+                "    class Soda",
+                "    {",
+                "        public string name;         // Name of a soda",
+                "        public int sugar;           // Amount of sugar in soda (g)",
+                "        public string[] vendors;    // Vendors of soda",
+                "    }",
+                "",
+                "    static void Main()\n    {",
+                "        Soda MySoda = new Soda();   // Create a new object of type Soda",
+                "",
+                "        // Pepc# specification",
+                "        MySoda.name = \"Pepc#\";",
+                "        MySoda.sugar = 41;",
+                "        MySoda.vendors = new string[2];",
+                "        MySoda.vendors[0] = \"Bigmart\";",
+                "        MySoda.vendors[1] = \"Food n Stuff\";",
+                "",
+                "        Console.WriteLine(\"Sugar in {0}: {1}g\", MySoda.name, MySoda.sugar); // Sugar in Pepc#: 41g",
+                Model.End
+            }),
+            "In the program above, we use <code>Soda MySoda = new Soda()</code> to create a new object (sometimes referred to as an instance) of the <code>Soda</code> class. This object represents one specific soda. If we wanted to represent another soda, we'd have to create another object.",
+            "After creating <code>MySoda</code>, we give values to its variables using <code>=</code>, just as we would for normal variables. The last line is an example of how we can access the member variables of the class."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Write a definition for a class called <code>Rectangle</code>. Include variables for color, width, and height. Use <code>double</code> instead of <code>int</code> for the width and height.",
+                "Create a new instance of your <code>Rectangle</code> class with whatever values you want.",
+                "Print the rectangle's width and height.",
+                "Calculate and print the area of your rectangle.",
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;\n\nclass RectangleTester\n{",
+                "    class Rectangle",
+                "    {",
+                "        public string color;",
+                "        public double width;",
+                "        public double height;",
+                "    }",
+                "",
+                "    static void Main()",
+                "    {",
+                "        Rectangle TRextangle = new Rectangle();",
+                "",
+                "        TRextangle.color = \"red\";",
+                "        TRextangle.width = 5.5;",
+                "        TRextangle.height = 2.2;",
+                "",
+                "        Console.WriteLine(\"Width: {0}\", TRextangle.width);     // Width: 5.5",
+                "        Console.WriteLine(\"Height: {0}\", TRextangle.width);    // Height: 2.2",
+                "",
+                "        double area = TRextangle.width * TRextangle.height;",
+                "        Console.WriteLine(\"Area: {0}\", area);                  // Area: 12.1",
+                Model.End
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 16),
+        Title = "Functions and Privacy",
+        Paragraphs = new string[]
+        {
+            "By adding functions to our classes, we can actually do stuff with the objects we create. Similar to variables, functions that belong to a particular class are called member functions. For example, say we want to extend the <code>Soda</code> class with a function that easily prints the value of each member variable.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;\n\nclass SodaTester\n{",
+                "    class Soda",
+                "    {",
+                "        public string name;         // Name of a soda",
+                "        public int sugar;           // Amount of sugar in soda (g)",
+                "        public string[] vendors;    // Vendors of soda",
+                "",
+                "        public void PrintData()",
+                "        {",
+                "            Console.WriteLine(\"Name: {0}\", name);",
+                "            Console.WriteLine(\"Sugar: {0}\", sugar);",
+                "            Console.WriteLine(\"Vendors: {0}, {1}\", vendors[0], vendors[1]);",
+                "        }",
+                "    }",
+                "",
+                "    static void Main()\n    {",
+                "        Soda MySoda = new Soda();   // Create a new object of type Soda",
+                "",
+                "        // Pepc# specification",
+                "        MySoda.name = \"Pepc#\";",
+                "        MySoda.sugar = 41;",
+                "        MySoda.vendors = new string[2];",
+                "        MySoda.vendors[0] = \"Bigmart\";",
+                "        MySoda.vendors[1] = \"Food n Stuff\";",
+                "",
+                "        MySoda.PrintData();    // Name: Pepc#",
+                "                               // Sugar: 41",
+                "                               // Vendors: Bigmart, Food n Stuff",
+                Model.End
+            }),
+            "As you can see, member functions are defined in the same way as normal functions, they're just inside the class definition. These functions are used with dot notation, as seen in <code>MySoda.PrintData()</code>. Now that we understand member functions, let's talk about privacy.",
+            "You may have noticed the use of the <code>public</code> keyword before each member of the class. What this means is that the variable or function can be directly accessed from anywhere in the current program. Examples of direct access to public members are <code>MySoda.name = \"Pepc#\"</code> and <code>MySoda.PrintData()</code>.",
+            "In our applications this is usually fine. However, I want to mention that you will often see the use of <code>private</code> instead. Members using this keyword will only be accessible from other members of the class. As such, they typically require functions called \"getter\" and \"setter\" functions to get and set their values when needed.",
+            "For reference, getter and setter functions for the member variable sugar, would look like this.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "public void SetSugar(double s)",
+                "{",
+                "    sugar = s;",
+                "}",
+                "",
+                "public double GetSugar()",
+                "{",
+                "    return sugar;",
+                "}"
+            }),
+            "For now, keep privacy in the back of your mind for future use. After this section we'll go back to just using <code>public</code> member variables."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapList(new string[]
+            {
+                "Change the variables from your <code>Rectangle</code> class to <code>private</code>.",
+                "Write a <code>GetArea</code> function that returns the area of the rectangle.",
+                "Write getter and setter functions for each variable in the <code>Rectangle</code> class.",
+                "Define a rectangle with your setter functions.",
+                "Print the width, height, and area of your rectangle using your getter functions."
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;\n\nclass RectangleTester\n{",
+                "    class Rectangle",
+                "    {",
+                "        private string color;",
+                "        private double width;",
+                "        private double height;",
+                "",
+                "        public void SetColor(string c)",
+                "        {",
+                "            color = c;",
+                "        }",
+                "",
+                "        public void SetWidth(double w)",
+                "        {",
+                "            width = w;",
+                "        }",
+                "",
+                "        public void SetHeight(double h)",
+                "        {",
+                "            height = h;",
+                "        }",
+                "",
+                "        public string GetColor()",
+                "        {",
+                "            return color;",
+                "        }",
+                "",
+                "        public double GetWidth()",
+                "        {",
+                "            return width;",
+                "        }",
+                "",
+                "        public double GetHeight()",
+                "        {",
+                "            return height;",
+                "        }",
+                "",
+                "        public double GetArea()",
+                "        {",
+                "            return height * width;",
+                "        }",
+                "    }",
+                "",
+                "    static void Main()",
+                "    {",
+                "        Rectangle TRextangle = new Rectangle();",
+                "",
+                "        TRextangle.SetColor(\"red\");",
+                "        TRextangle.SetWidth(5.5);",
+                "        TRextangle.SetHeight(2.2);",
+                "",
+                "        Console.WriteLine(\"Width: {0}\", TRextangle.GetWidth());      // Width: 5.5",
+                "        Console.WriteLine(\"Height: {0}\", TRextangle.GetHeight());    // Height: 2.2",
+                "        Console.WriteLine(\"Area: {0}\", TRextangle.GetArea());        // Area: 12.1",
+                Model.End
+            })
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Model.Color, 17),
+        Title = "Constructors",
+        Paragraphs = new string[]
+        {
+            "Having to manually set each value in an object is really tedious, repetitive, and just plain annoying. But there is a solution! A <b>constructor</b> is a special member function that is used when we create new objects of that class. We can use a constructor to clean up the creation of new objects.",
+            "To add a constructor to the <code>Soda</code> class, add the following function to the class definition.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "public Soda()",
+                "{",
+                "    name = \"\";",
+                "    sugar = 0;",
+                "    vendors = new string[2];",
+                "}"
+            }),
+            "This function is known as the <b>default constructor</b>. It has the same name as the class and takes no parameters. Similarly, a <b>custom constructor</b> also shares the name of the class, but it may take parameters. Here's what a custom constructor for the <code>Soda</code> class would look like.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "public Soda(string n, int s, string v1, string v2)",
+                "{",
+                "    name = n;",
+                "    sugar = s;",
+                "    vendors = new string[2];",
+                "    vendors[0] = v1;",
+                "    vendors[1] = v2;",
+                "}"
+            }),
+            "Lastly, here's what using these constructors to create new objects looks like. After creating the objects, we can use the <code>PrintData</code> function to print the values of their member variables.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "Soda DefaultSoda = new Soda();",
+                "Soda CustomSoda = new Soda(\"Pepc#\", 41, \"Bigmart\", \"Food n Stuff\");",
+                "",
+                "DefaultSoda.PrintData();    // name:",
+                "                            // sugar: 0g",
+                "                            // vendors: ,",
+                "CustomSoda.PrintData();     // name: Pepc#",
+                "                            // sugar: 41g",
+                "                            // vendors: Bigmart, Food n Stuff"
+            }),
+            "A quick note before you move on. Custom constructors are all fine and dandy, however their use is limited to situations where you know all (or most) of the values being used to create an object. Sometimes an object needs to be created, but its values need to be set later. When this happens, the default constructor is used (there are other reasons too)."
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "steel",
+        Title = "Exercises",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            "Add a default constructor and a custom constructor to the following starter code. Then create one object with each constructor and print its area.",
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;\n\nclass RectangleTester\n{",
+                "    class Rectangle",
+                "    {",
+                "        public string color;",
+                "        public double width;",
+                "        public double height;",
+                "",
+                "        // Write your constructors here",
+                "",
+                "        public double GetArea()",
+                "        {",
+                "            return height * width;",
+                "        }",
+                "    }",
+                "",
+                "    static void Main()",
+                "    {",
+                "        // Create your objects here",
+                Model.End
+            }),
+        }
+    });
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = "brown",
+        Title = "Solutions",
+        Contracted = true,
+        Paragraphs = new string[]
+        {
+            Section.WrapCode(Model.NameLower, new string[]
+            {
+                "using System;\n\nclass RectangleTester\n{",
+                "    class Rectangle",
+                "    {",
+                "        public string color;",
+                "        public double width;",
+                "        public double height;",
+                "",
+                "        public Rectangle()",
+                "        {",
+                "            color = \"\";",
+                "            width = 0.0;",
+                "            height = 0.0;",
+                "        }",
+                "",
+                "        public Rectangle(string c, double w, double h)",
+                "        {",
+                "            color = c;",
+                "            width = w;",
+                "            height = h;",
+                "        }",
+                "",
+                "        public double GetArea()",
+                "        {",
+                "            return height * width;",
+                "        }",
+                "    }",
+                "",
+                "    static void Main()",
+                "    {",
+                "        Rectangle DefaultRectangle = new Rectangle();",
+                "        Rectangle CustomRectangle = new Rectangle(\"red\", 5.5, 2.2);",
+                "",
+                "        Console.WriteLine(\"default area: {0}\", DefaultRectangle.GetArea()); // default area: 0",
+                "        Console.WriteLine(\"custom area: {0}\", CustomRectangle.GetArea());   // custom area: 12.1",
+                Model.End
+            })
+        }
+    });
+}

@@ -52,7 +52,18 @@
         },
         Goto = "/CSharp/LINQ"
     });
-    
+
+    Html.RenderPartial(Section.ViewFile, new Section
+    {
+        Color = Section.GetNextColor(Languages.CSharp.Color, 4),
+        Title = "Classes",
+        Paragraphs = new string[]
+        {
+            "Classes are a fundamental concept in object-oriented programming. Classes allow us to create objects, and use them as an abstract representation of our world or the data in our program. In order to really excel with C#, a good grasp of classes and basic object-oriented programming is extremely important. This lesson is where you'll learn all about these concepts."
+        },
+        Goto = "/CSharp/Classes"
+    });
+
     <!--
     Html.RenderPartial(Section.ViewFile, new Section
     {

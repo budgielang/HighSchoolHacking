@@ -176,7 +176,7 @@ namespace HighSchoolHacking.Models
                   "Learn", "HelloWorld", "Variables", "Comments", "Strings",
                   "Numbers", "Conditionals", "WhileLoops", "Arrays", "ForLoops", 
                   "VariousCollections", "Functions", "Recursion",
-                  "DelegatesLambdas", "LINQ", "Async"
+                  "DelegatesLambdas", "LINQ", "Async", "Classes"
             },
             PageAliases = new Dictionary<string, string> { 
                 { "Dictionaries", "VariousCollections" }
